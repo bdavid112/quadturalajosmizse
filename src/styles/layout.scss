@@ -1,15 +1,27 @@
 @import './tokens.scss';
 
-/* 12-col grid system */
+/* Centered container */
 
 .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
   width: 100%;
-  max-width: 1440px; // Adjust based on your design
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 12-col grid */
+
+.grid {
+  width: 100%;
+  max-width: 1200px; // Adjust based on your design
   margin: 0 auto;
   padding: 0; // Adjust padding
   display: grid;
   grid-template-columns: repeat(12, 1fr); // 12 equal columns
-  gap: $space-lg; // Adjust spacing
+  gap: $space-xl; // Adjust spacing
 }
 
 .row {

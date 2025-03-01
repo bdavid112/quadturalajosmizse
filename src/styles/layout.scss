@@ -5,7 +5,7 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0;
   width: 100%;
   display: flex;
   align-items: center;
@@ -65,14 +65,20 @@
   grid-column: span 12;
 }
 
+/* Responsive media qeuries */
+
 @media (max-width: $screen-tablet) {
   .container {
+    padding: 0 $space-lg;
+  }
+
+  .grid {
     grid-template-columns: repeat(6, 1fr); // Switch to 6 columns for tablets
   }
 }
 
 @media (max-width: $screen-mobile) {
-  .container {
+  .grid {
     grid-template-columns: repeat(2, 1fr); // Switch to 2 columns for mobile
   }
 }

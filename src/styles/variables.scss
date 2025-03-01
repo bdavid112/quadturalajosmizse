@@ -1,0 +1,111 @@
+/* Colors */
+
+$jungle-green-50: #eefbf6;
+$jungle-green-100: #d5f6e6;
+$jungle-green-200: #afebd2;
+$jungle-green-300: #7bdab8;
+$jungle-green-400: #59c9a5;
+$jungle-green-500: #22a781;
+$jungle-green-600: #148768;
+$jungle-green-700: #106c56;
+$jungle-green-800: #0f5645;
+$jungle-green-900: #0e4639;
+
+$sand-dune-50: #f4f3f2;
+$sand-dune-100: #e4e0dd;
+$sand-dune-200: #cac4be;
+$sand-dune-300: #aca098;
+$sand-dune-400: #93867c;
+$sand-dune-500: #81726a;
+$sand-dune-600: #71635d;
+$sand-dune-700: #5c4e4c;
+$sand-dune-800: #504543;
+$sand-dune-900: #463d3d;
+
+$gray-50: #ffffff;
+$gray-100: #efefef;
+$gray-200: #dcdcdc;
+$gray-300: #bdbdbd;
+$gray-400: #989898;
+$gray-500: #7c7c7c;
+$gray-600: #656565;
+$gray-700: #525252;
+$gray-800: #464646;
+$gray-900: #3d3d3d;
+
+$neutral-100: #f5f5f5;
+$neutral-300: #e0e0e0;
+$neutral-500: #9e9e9e;
+$neutral-700: #616161;
+$neutral-900: #212121;
+
+$green: #4caf50;
+$red: #ce392f;
+$yellow: #f5b000;
+$blue: #03a9f4;
+
+/* Spacing */
+
+$space-0: 0rem;
+$space-4: 0.25rem;
+$space-8: 0.5rem;
+$space-12: 0.75rem;
+$space-16: 1rem;
+$space-24: 1.5rem;
+$space-32: 2rem;
+$space-40: 2.5rem;
+$space-64: 4rem;
+$space-80: 5rem;
+
+/* Radii */
+
+$radius-4: 4px;
+$radius-8: 8px;
+$radius-12: 12px;
+$radius-full: 999px;
+
+/* Z-Index */
+
+$z-10: 10;
+$z-100: 100;
+$z-1000: 1000;
+
+/* Breakpoints */
+
+$breakpoint-480: 480px;
+$breakpoint-768: 768px;
+$breakpoint-1024: 1024px;
+$breakpoint-1440: 1440px;
+
+/* Border widths */
+
+$border-1: 1px;
+$border-2: 2px;
+$border-3: 3px;
+
+/* Font sizes */
+
+$font-size-12: 0.75rem;
+$font-size-14: 0.875rem;
+$font-size-16: 1rem;
+$font-size-18: 1.125rem;
+$font-size-20: 1.25rem;
+$font-size-24: 1.5rem;
+$font-size-28: 1.75rem;
+$font-size-30: 1.875rem;
+$font-size-36: 2.25rem;
+$font-size-42: 2.625rem;
+$font-size-64: 4rem;
+
+/* Text colors */
+
+$text-dark: $neutral-900;
+$text-neutral: $neutral-700;
+$text-light: $neutral-500;
+$text-white: $neutral-100;
+
+/* Shadows */
+
+$shadow-sm: 0px 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-sm: 0px 2px 8px rgba(0, 0, 0, 0.3);
+$shadow-sm: 0px 4px 12px 1px rgba(0, 0, 0, 0.5);

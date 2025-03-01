@@ -1,0 +1,66 @@
+@import './tokens.scss';
+
+/* 12-col grid system */
+
+.container {
+  width: 100%;
+  max-width: 1440px; // Adjust based on your design
+  margin: 0 auto;
+  padding: 0; // Adjust padding
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); // 12 equal columns
+  gap: $space-lg; // Adjust spacing
+}
+
+.row {
+  display: contents; // Allows direct child `.col-*` items to behave like grid elements
+}
+
+.col-1 {
+  grid-column: span 1;
+}
+.col-2 {
+  grid-column: span 2;
+}
+.col-3 {
+  grid-column: span 3;
+}
+.col-4 {
+  grid-column: span 4;
+}
+.col-5 {
+  grid-column: span 5;
+}
+.col-6 {
+  grid-column: span 6;
+}
+.col-7 {
+  grid-column: span 7;
+}
+.col-8 {
+  grid-column: span 8;
+}
+.col-9 {
+  grid-column: span 9;
+}
+.col-10 {
+  grid-column: span 10;
+}
+.col-11 {
+  grid-column: span 11;
+}
+.col-12 {
+  grid-column: span 12;
+}
+
+@media (max-width: $screen-tablet) {
+  .container {
+    grid-template-columns: repeat(6, 1fr); // Switch to 6 columns for tablets
+  }
+}
+
+@media (max-width: $screen-mobile) {
+  .container {
+    grid-template-columns: repeat(2, 1fr); // Switch to 2 columns for mobile
+  }
+}

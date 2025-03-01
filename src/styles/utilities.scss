@@ -1,5 +1,76 @@
 @import './tokens.scss';
 
+/* Display */
+
+.block {
+  display: block;
+}
+
+.flex {
+  display: flex;
+}
+
+/* Flex */
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-start {
+  align-items: start;
+}
+
+.flex-gap-xs {
+  gap: $space-xs;
+}
+
+.flex-gap-sm {
+  gap: $space-sm;
+}
+
+.flex-gap-md {
+  gap: $space-md;
+}
+
+.flex-gap-lg {
+  gap: $space-lg;
+}
+
+.flex-gap-xl {
+  gap: $space-xl;
+}
+
+.flex-gap-2xl {
+  gap: $space-2xl;
+}
+
+.flex-gap-3xl {
+  gap: $space-3xl;
+}
+
+.flex-gap-4xl {
+  gap: $space-4xl;
+}
+
+.flex-gap-5xl {
+  gap: $space-5xl;
+}
+
+/* Width */
+
+.width-full {
+  width: 100%;
+}
+
 /* Typography */
 
 .text-center {
@@ -86,4 +157,47 @@
 
 .padding-x-5xl {
   padding-inline: $space-5xl;
+}
+
+/* Dividers */
+
+@mixin divider($color: $color-primary-500, $height: 2px) {
+  width: 100%;
+  height: $height;
+  background: linear-gradient(
+    to right,
+    $surface-100,
+    $color-primary-500,
+    $surface-100
+  );
+}
+
+.divider-green {
+  @include divider;
+}
+
+/* Shadows */
+
+.box-shadow-light {
+  box-shadow: $shadow-light;
+}
+
+.box-shadow-medium {
+  box-shadow: $shadow-medium;
+}
+
+.box-shadow-strong {
+  box-shadow: $shadow-strong;
+}
+
+.text-shadow-light {
+  text-shadow: $shadow-light;
+}
+
+.text-shadow-medium {
+  text-shadow: $shadow-medium;
+}
+
+.text-shadow-strong {
+  text-shadow: $shadow-strong;
 }

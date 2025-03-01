@@ -1,0 +1,36 @@
+@import '../../styles/tokens.scss';
+
+@mixin button-secondary {
+  font-size: $font-size-base;
+  min-height: 56px;
+  border: none;
+  border-radius: $radius-sm;
+  transition:
+    background-color linear 100ms,
+    box-shadow linear 100ms;
+}
+
+.button-secondary-enabled {
+  @include button-secondary();
+
+  background-color: $color-secondary-500;
+  color: $text-inverted;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-secondary-600; // Slightly darker on hover
+    box-shadow: $shadow-hover;
+  }
+
+  &:active {
+    background-color: $color-secondary-700; // Darkest on click
+  }
+}
+
+.button-secondary-disabled {
+  @include button-secondary();
+
+  background-color: $color-secondary-100;
+  color: $color-secondary-400;
+  cursor: not-allowed;
+}

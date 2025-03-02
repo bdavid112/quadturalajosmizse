@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { motion } from 'framer-motion' // Import motion
-import '../../styles/utilities.scss'
-import './button-secondary.scss'
+import '/src/styles/utilities.scss'
+import './button-secondary-outline.scss'
 
 interface Props {
   text: string
@@ -9,12 +9,12 @@ interface Props {
   isDisabled?: boolean
 }
 
-const ButtonSecondary: React.FunctionComponent<Props> = (props) => {
+const ButtonSecondaryOutline: React.FunctionComponent<Props> = (props) => {
   return (
     <>
       {!props.isDisabled ? (
         <motion.button
-          className={'padding-x-lg box-shadow-light button-secondary-enabled'}
+          className={'padding-x-lg button-secondary-outline-enabled'}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: 'spring', stiffness: 150 }}
@@ -24,7 +24,7 @@ const ButtonSecondary: React.FunctionComponent<Props> = (props) => {
         </motion.button>
       ) : (
         <motion.button
-          className={'padding-x-lg box-shadow-light button-secondary-disabled'}
+          className={'padding-x-lg button-secondary-outline-disabled'}
         >
           {props.text}
         </motion.button>
@@ -33,4 +33,4 @@ const ButtonSecondary: React.FunctionComponent<Props> = (props) => {
   )
 }
 
-export default ButtonSecondary
+export default ButtonSecondaryOutline

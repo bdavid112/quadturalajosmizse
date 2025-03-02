@@ -1,0 +1,37 @@
+@import '/src/styles/tokens.scss';
+
+@mixin button-primary-outline {
+  font-size: $font-size-base;
+  min-height: 56px;
+  border-radius: $radius-sm;
+  background-color: $surface-100;
+  transition:
+    background-color linear 100ms,
+    box-shadow linear 100ms;
+}
+
+.button-primary-outline-enabled {
+  @include button-primary-outline();
+
+  border: $border-thin solid $color-primary-500;
+  color: $color-primary-500;
+  cursor: pointer;
+
+  &:hover {
+    color: $text-inverted;
+    background-color: $color-primary-500; // Fill with primary color on hover
+    box-shadow: $shadow-hover;
+  }
+
+  &:active {
+    background-color: $color-primary-600; // Slightly darker on click
+  }
+}
+
+.button-primary-outline-disabled {
+  @include button-primary-outline();
+
+  border: $border-thin solid $color-primary-200;
+  color: $color-primary-400;
+  cursor: not-allowed;
+}

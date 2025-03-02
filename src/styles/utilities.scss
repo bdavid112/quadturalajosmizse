@@ -1,74 +1,133 @@
 @import './tokens.scss';
 
-/* Display */
+/* ============================================= */
+/* =============== DISPLAY HELPERS ============= */
+/* ============================================= */
 
 .block {
   display: block;
 }
-
+.inline {
+  display: inline;
+}
+.inline-block {
+  display: inline-block;
+}
 .flex {
   display: flex;
 }
+.grid {
+  display: grid;
+}
 
-/* Flex */
+/* ============================================= */
+/* ============= FLEXBOX HELPERS ============== */
+/* ============================================= */
 
 .flex-col {
   flex-direction: column;
 }
-
 .flex-row {
   flex-direction: row;
 }
-
-.flex-center {
-  align-items: center;
-  justify-content: center;
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
 }
 
-.flex-start {
-  align-items: start;
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+.align-end {
+  align-items: flex-end;
+}
+.align-center {
+  align-items: center;
+}
+.align-stretch {
+  align-items: stretch;
 }
 
 .flex-gap-xs {
   gap: $space-xs;
 }
-
 .flex-gap-sm {
   gap: $space-sm;
 }
-
 .flex-gap-md {
   gap: $space-md;
 }
-
 .flex-gap-lg {
   gap: $space-lg;
 }
-
 .flex-gap-xl {
   gap: $space-xl;
 }
-
 .flex-gap-2xl {
   gap: $space-2xl;
 }
-
 .flex-gap-3xl {
   gap: $space-3xl;
 }
-
 .flex-gap-4xl {
   gap: $space-4xl;
 }
-
 .flex-gap-5xl {
   gap: $space-5xl;
 }
 
-/* Width */
+/* ============================================= */
+/* ============== WIDTH & HEIGHT ============== */
+/* ============================================= */
 
 .width-full {
   width: 100%;
+}
+.height-full {
+  height: 100%;
+}
+.height-screen {
+  height: 100vh;
+}
+.width-screen {
+  width: 100vw;
+}
+
+.max-width-xs {
+  max-width: 480px;
+}
+.max-width-sm {
+  max-width: 768px;
+}
+.max-width-md {
+  max-width: 1024px;
+}
+.max-width-lg {
+  max-width: 1280px;
+}
+.max-width-xl {
+  max-width: 1440px;
 }
 
 /* Typography */
@@ -81,30 +140,59 @@
   text-align: right;
 }
 
-/* Padding */
+/* ============================================= */
+/* =============== SPACING HELPERS ============ */
+/* ============================================= */
 
-/* Vertical padding */
+/* Margins */
+.margin-y-xs {
+  margin-block: $space-xs;
+}
+.margin-y-sm {
+  margin-block: $space-sm;
+}
+.margin-y-md {
+  margin-block: $space-md;
+}
+.margin-y-lg {
+  margin-block: $space-lg;
+}
+.margin-y-xl {
+  margin-block: $space-xl;
+}
 
+.margin-x-xs {
+  margin-inline: $space-xs;
+}
+.margin-x-sm {
+  margin-inline: $space-sm;
+}
+.margin-x-md {
+  margin-inline: $space-md;
+}
+.margin-x-lg {
+  margin-inline: $space-lg;
+}
+.margin-x-xl {
+  margin-inline: $space-xl;
+}
+
+/* Paddings */
 .padding-y-xs {
   padding-block: $space-xs;
 }
-
 .padding-y-sm {
   padding-block: $space-sm;
 }
-
 .padding-y-md {
   padding-block: $space-md;
 }
-
 .padding-y-lg {
   padding-block: $space-lg;
 }
-
 .padding-y-xl {
   padding-block: $space-xl;
 }
-
 .padding-y-2xl {
   padding-block: $space-2xl;
 }
@@ -121,28 +209,21 @@
   padding-block: $space-5xl;
 }
 
-/* Horizontal padding */
-
 .padding-x-xs {
   padding-inline: $space-xs;
 }
-
 .padding-x-sm {
   padding-inline: $space-sm;
 }
-
 .padding-x-md {
   padding-inline: $space-md;
 }
-
 .padding-x-lg {
   padding-inline: $space-lg;
 }
-
 .padding-x-xl {
   padding-inline: $space-xl;
 }
-
 .padding-x-2xl {
   padding-inline: $space-2xl;
 }
@@ -157,6 +238,166 @@
 
 .padding-x-5xl {
   padding-inline: $space-5xl;
+}
+
+/* ============================================= */
+/* ============== TYPOGRAPHY HELPERS ========== */
+/* ============================================= */
+
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-lowercase {
+  text-transform: lowercase;
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.font-light {
+  font-weight: 300;
+}
+.font-normal {
+  font-weight: 400;
+}
+.font-medium {
+  font-weight: 500;
+}
+.font-bold {
+  font-weight: 700;
+}
+
+.leading-tight {
+  line-height: 1.2;
+}
+.leading-normal {
+  line-height: 1.5;
+}
+.leading-loose {
+  line-height: 1.8;
+}
+
+/* ============================================= */
+/* ============== SHADOW HELPERS ============== */
+/* ============================================= */
+
+.box-shadow-light {
+  box-shadow: $shadow-light;
+}
+.box-shadow-medium {
+  box-shadow: $shadow-medium;
+}
+.box-shadow-strong {
+  box-shadow: $shadow-strong;
+}
+
+.text-shadow-light {
+  text-shadow: $shadow-light;
+}
+.text-shadow-medium {
+  text-shadow: $shadow-medium;
+}
+.text-shadow-strong {
+  text-shadow: $shadow-strong;
+}
+
+.box-shadow-hover {
+  transition: box-shadow 200ms ease-in-out;
+
+  &:hover {
+    box-shadow: $shadow-medium;
+  }
+}
+
+.box-shadow-inset {
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================= */
+/* ============ BORDER & OUTLINE ============== */
+/* ============================================= */
+
+.border {
+  border: 1px solid $neutral-300;
+}
+.border-thin {
+  border-width: 1px;
+}
+.border-thick {
+  border-width: 3px;
+}
+.border-rounded {
+  border-radius: $radius-md;
+}
+.border-circle {
+  border-radius: 50%;
+}
+.outline-focus {
+  outline: 2px solid $color-primary-500;
+}
+
+/* ============================================= */
+/* =========== VISIBILITY & OPACITY =========== */
+/* ============================================= */
+
+.hidden {
+  display: none;
+}
+.invisible {
+  visibility: hidden;
+}
+.opacity-0 {
+  opacity: 0;
+}
+.opacity-50 {
+  opacity: 0.5;
+}
+.opacity-100 {
+  opacity: 1;
+}
+
+/* ============================================= */
+/* ============ CURSOR HELPERS ================ */
+/* ============================================= */
+
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-default {
+  cursor: default;
+}
+.cursor-wait {
+  cursor: wait;
+}
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+/* ============================================= */
+/* =============== POSITIONING ================ */
+/* ============================================= */
+
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
+.fixed {
+  position: fixed;
+}
+.sticky {
+  position: sticky;
 }
 
 /* Dividers */
@@ -174,30 +415,4 @@
 
 .divider-green {
   @include divider;
-}
-
-/* Shadows */
-
-.box-shadow-light {
-  box-shadow: $shadow-light;
-}
-
-.box-shadow-medium {
-  box-shadow: $shadow-medium;
-}
-
-.box-shadow-strong {
-  box-shadow: $shadow-strong;
-}
-
-.text-shadow-light {
-  text-shadow: $shadow-light;
-}
-
-.text-shadow-medium {
-  text-shadow: $shadow-medium;
-}
-
-.text-shadow-strong {
-  text-shadow: $shadow-strong;
 }

@@ -114,6 +114,19 @@
   width: 100vw;
 }
 
+.min-width-xs {
+  min-width: 140px;
+}
+.min-width-sm {
+  min-width: 200px;
+}
+.min-width-md {
+  min-width: 240px;
+}
+.min-width-lg {
+  min-width: 0px;
+}
+
 .max-width-xs {
   max-width: 480px;
 }
@@ -130,14 +143,14 @@
   max-width: 1440px;
 }
 
-/* Typography */
-
-.text-center {
-  text-align: center;
+.min-height-sm {
+  min-height: 36px;
 }
-
-.text-right {
-  text-align: right;
+.min-height-md {
+  min-height: 48px;
+}
+.min-height-lg {
+  min-height: 56px;
 }
 
 /* ============================================= */
@@ -287,6 +300,41 @@
   line-height: 1.8;
 }
 
+.font-size-caption {
+  font-size: $font-size-xs;
+}
+.font-size-secondary {
+  font-size: $font-size-sm;
+}
+.font-size-base {
+  font-size: $font-size-base;
+}
+
+.text-primary {
+  color: $text-primary;
+}
+.text-secondary {
+  color: $text-secondary;
+}
+.text-muted {
+  color: $text-muted;
+}
+.text-inverted {
+  color: $text-inverted;
+}
+.text-success {
+  color: $text-success !important;
+}
+.text-error {
+  color: $text-error !important;
+}
+.text-warning {
+  color: $text-warning !important;
+}
+.text-info {
+  color: $text-info !important;
+}
+
 /* ============================================= */
 /* ============== SHADOW HELPERS ============== */
 /* ============================================= */
@@ -328,7 +376,7 @@
 /* ============================================= */
 
 .border {
-  border: 1px solid $neutral-300;
+  border: 1px solid $text-muted;
 }
 .border-thin {
   border-width: 1px;
@@ -341,6 +389,18 @@
 }
 .border-circle {
   border-radius: 50%;
+}
+.border-success {
+  border-color: $color-status-success !important;
+}
+.border-error {
+  border-color: $color-status-error !important;
+}
+.border-warning {
+  border-color: $color-status-warning !important;
+}
+.border-info {
+  border-color: $color-status-info !important;
 }
 .outline-focus {
   outline: 2px solid $color-primary-500;
@@ -400,6 +460,20 @@
   position: sticky;
 }
 
+/* ============================================= */
+/* =============== Z-INDEX ===================== */
+/* ============================================= */
+
+.z-base {
+  z-index: $z-base;
+}
+.z-overlay {
+  z-index: $z-overlay;
+}
+.z-top {
+  z-index: $z-top;
+}
+
 /* Dividers */
 
 @mixin divider($color: $color-primary-500, $height: 2px) {
@@ -412,7 +486,6 @@
     $surface-100
   );
 }
-
 .divider-green {
   @include divider;
 }

@@ -1,0 +1,43 @@
+@import '/src/styles/tokens.scss';
+
+@mixin label-focused($color: $color-primary-500) {
+  margin: 0;
+  font-size: $font-size-sm;
+  padding-inline: $space-sm;
+  transform: translateY(-130%);
+  left: $space-sm;
+  color: $color;
+  background-color: $surface-100 !important;
+}
+
+.populated {
+  @include label-focused($text-secondary);
+}
+
+.input-label {
+  transition:
+    font-size ease-in 70ms,
+    transform ease-in 70ms;
+  background-color: transparent;
+  cursor: text;
+  user-select: none;
+  color: $text-muted;
+}
+
+.input-container {
+  border-radius: $radius-sm;
+
+  &:focus-within {
+    border-color: $color-primary-500;
+  }
+
+  &:focus-within .input-label {
+    @include label-focused();
+  }
+}
+
+.input-field {
+  border: none;
+  outline: none;
+  border-radius: $radius-sm;
+}

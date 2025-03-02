@@ -13,11 +13,19 @@ interface Props {
   helperText: string
 }
 
-const NumberInputOutline: React.FunctionComponent<Props> = (props) => {
-  const [value, setValue] = useState(2)
+const NumberInputOutline: React.FunctionComponent<Props> = ({
+  id,
+  name,
+  label,
+  min,
+  max,
+  error = false,
+  helperText,
+}) => {
+  const [value, setValue] = useState(min)
 
   const setValueIfInRange = (newValue: number) => {
-    if (newValue >= props.min && newValue <= props.max) {
+    if (newValue >= min && newValue <= max) {
       setValue(newValue)
     }
   }
@@ -26,13 +34,13 @@ const NumberInputOutline: React.FunctionComponent<Props> = (props) => {
     <>
       <div>
         <div
-          className={`flex align-center min-width-md relative input-container border ${props.error && 'border-error'}`}
+          className={`flex align-center min-width-md relative input-container border ${error && 'border-error'}`}
         >
           <label
-            htmlFor={props.id}
-            className={`absolute z-overlay input-label padding-x-lg ${value && 'populated'} ${props.error && 'text-error'}`}
+            htmlFor={id}
+            className={`absolute z-overlay input-label padding-x-lg ${value && 'populated'} ${error && 'text-error'}`}
           >
-            {props.label}
+            {label}
           </label>
           <div className="button-container absolute z-overlay flex">
             <button onClick={() => setValueIfInRange(value - 1)}>
@@ -44,8 +52,8 @@ const NumberInputOutline: React.FunctionComponent<Props> = (props) => {
             </button>
           </div>
           <input
-            id={props.id}
-            name={props.name}
+            id={id}
+            name={name}
             type="number"
             value={value}
             onChange={(e) => setValueIfInRange(Number(e.target.value))}
@@ -54,9 +62,9 @@ const NumberInputOutline: React.FunctionComponent<Props> = (props) => {
         </div>
         <div className="padding-x-lg">
           <span
-            className={`font-size-caption text-muted ${props.error && 'text-error'}`}
+            className={`font-size-caption text-muted ${error && 'text-error'}`}
           >
-            {props.helperText}
+            {helperText}
           </span>
         </div>
       </div>

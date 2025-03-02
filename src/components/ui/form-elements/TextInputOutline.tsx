@@ -11,24 +11,30 @@ interface Props {
   helperText: string
 }
 
-const TextInputOutline: React.FunctionComponent<Props> = (props) => {
+const TextInputOutline: React.FunctionComponent<Props> = ({
+  id,
+  name,
+  label,
+  error = false,
+  helperText,
+}) => {
   const [value, setValue] = useState('')
 
   return (
     <>
       <div>
         <div
-          className={`flex align-center min-width-md relative input-container border ${props.error && 'border-error'}`}
+          className={`flex align-center min-width-md relative input-container border ${error && 'border-error'}`}
         >
           <label
-            htmlFor={props.id}
-            className={`absolute z-overlay input-label padding-x-lg ${value && 'populated'} ${props.error && 'text-error'}`}
+            htmlFor={id}
+            className={`absolute z-overlay input-label padding-x-lg ${value && 'populated'} ${error && 'text-error'}`}
           >
-            {props.label}
+            {label}
           </label>
           <input
-            id={props.id}
-            name={props.name}
+            id={id}
+            name={name}
             type="text"
             value={value}
             onChange={(e) => setValue(e.target.value)}
@@ -37,9 +43,9 @@ const TextInputOutline: React.FunctionComponent<Props> = (props) => {
         </div>
         <div className="padding-x-lg">
           <span
-            className={`font-size-caption text-muted ${props.error && 'text-error'}`}
+            className={`font-size-caption text-muted ${error && 'text-error'}`}
           >
-            {props.helperText}
+            {helperText}
           </span>
         </div>
       </div>

@@ -1,0 +1,17 @@
+@import './input.scss';
+@import '/src/styles/utilities.scss';
+
+textarea {
+  resize: none;
+  font-family: 'Instrument Sans', sans-serif;
+}
+
+.textarea-container {
+  min-height: 120px;
+}
+
+.input-container {
+  &:focus-within .textarea-label {
+    margin-block: $space-lg;
+  }
+}

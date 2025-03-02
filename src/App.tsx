@@ -4,6 +4,7 @@ import HeroLayout from './layouts/HeroLayout'
 import TextInputOutline from './components/ui/form-elements/TextInputOutline'
 import { useId } from 'react'
 import NumberInputOutline from './components/ui/form-elements/NumberInputOutline'
+import TextAreaOutline from './components/ui/form-elements/TextAreaOutline'
 
 function App() {
   return (
@@ -34,6 +35,14 @@ function App() {
                 max={4}
                 error={false}
               ></NumberInputOutline>
+              <TextAreaOutline
+                id={useId()}
+                name="textarea"
+                label="Text area"
+                helperText="Helper text"
+                maxLength={250}
+                error={false}
+              ></TextAreaOutline>
             </div>
           </div>
         </div>

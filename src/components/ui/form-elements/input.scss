@@ -1,10 +1,10 @@
 @import '/src/styles/tokens.scss';
 
-@mixin label-focused($color: $color-primary-500) {
+@mixin label-focused($color: $color-primary-500, $transform: -135%) {
   margin: 0;
   font-size: $font-size-sm;
-  padding-inline: $space-sm;
-  transform: translateY(-135%);
+  padding-inline: $space-sm !important;
+  transform: translateY($transform);
   left: $space-sm;
   color: $color;
   background-color: $surface-100 !important;

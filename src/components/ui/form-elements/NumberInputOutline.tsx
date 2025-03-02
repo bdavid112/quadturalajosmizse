@@ -1,18 +1,26 @@
 import * as React from 'react'
 import '/src/styles/utilities.scss'
-import './text-input-outline.scss'
+import './number-input-outline.scss'
 import { useState } from 'react'
 
 interface Props {
   id: string
   name: string
   label: string
+  min: number
+  max: number
   error?: boolean
   helperText: string
 }
 
-const TextInputOutline: React.FunctionComponent<Props> = (props) => {
-  const [value, setValue] = useState('')
+const NumberInputOutline: React.FunctionComponent<Props> = (props) => {
+  const [value, setValue] = useState(2)
+
+  const setValueIfInRange = (newValue: number) => {
+    if (newValue >= props.min && newValue <= props.max) {
+      setValue(newValue)
+    }
+  }
 
   return (
     <>
@@ -26,12 +34,21 @@ const TextInputOutline: React.FunctionComponent<Props> = (props) => {
           >
             {props.label}
           </label>
+          <div className="button-container absolute z-overlay flex">
+            <button onClick={() => setValueIfInRange(value - 1)}>
+              <span className="material-symbols-rounded size-20">remove</span>
+            </button>
+            <div className="button-divider"></div>
+            <button onClick={() => setValueIfInRange(value + 1)}>
+              <span className="material-symbols-rounded size-20">add</span>
+            </button>
+          </div>
           <input
             id={props.id}
             name={props.name}
-            type="text"
+            type="number"
             value={value}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => setValueIfInRange(Number(e.target.value))}
             className="relative z-base min-height-lg width-full font-size-base input-field padding-x-lg"
           ></input>
         </div>
@@ -47,4 +64,4 @@ const TextInputOutline: React.FunctionComponent<Props> = (props) => {
   )
 }
 
-export default TextInputOutline
+export default NumberInputOutline

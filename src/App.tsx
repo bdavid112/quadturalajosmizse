@@ -3,6 +3,7 @@ import './styles/layout.scss'
 import HeroLayout from './layouts/HeroLayout'
 import TextInputOutline from './components/ui/form-elements/TextInputOutline'
 import { useId } from 'react'
+import NumberInputOutline from './components/ui/form-elements/NumberInputOutline'
 
 function App() {
   return (
@@ -20,8 +21,19 @@ function App() {
               <TextInputOutline
                 id={useId()}
                 name="name"
+                label="Text input"
+                helperText="Helper text"
                 error={false}
               ></TextInputOutline>
+              <NumberInputOutline
+                id={useId()}
+                name="number"
+                label="Number input"
+                helperText="Helper text"
+                min={2}
+                max={4}
+                error={false}
+              ></NumberInputOutline>
             </div>
           </div>
         </div>

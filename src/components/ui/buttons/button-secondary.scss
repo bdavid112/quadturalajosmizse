@@ -1,17 +1,8 @@
 @import '/src/styles/tokens.scss';
-
-@mixin button-secondary {
-  font-size: $font-size-base;
-  min-height: 56px;
-  border: none;
-  border-radius: $radius-sm;
-  transition:
-    background-color linear 100ms,
-    box-shadow linear 100ms;
-}
+@import './button.scss';
 
 .button-secondary-enabled {
-  @include button-secondary();
+  @include button();
 
   background-color: $color-secondary-500;
   color: $text-inverted;
@@ -28,7 +19,7 @@
 }
 
 .button-secondary-disabled {
-  @include button-secondary();
+  @include button();
 
   background-color: $color-secondary-100;
   color: $color-secondary-400;

@@ -1,17 +1,8 @@
 @import '/src/styles/tokens.scss';
-
-@mixin button-primary {
-  font-size: $font-size-base;
-  min-height: 56px;
-  border: none;
-  border-radius: $radius-sm;
-  transition:
-    background-color linear 100ms,
-    box-shadow linear 100ms;
-}
+@import './button.scss';
 
 .button-primary-enabled {
-  @include button-primary();
+  @include button();
 
   background-color: $color-primary-500;
   color: $text-inverted;
@@ -28,7 +19,7 @@
 }
 
 .button-primary-disabled {
-  @include button-primary();
+  @include button();
 
   background-color: $color-primary-100;
   color: $color-primary-400;

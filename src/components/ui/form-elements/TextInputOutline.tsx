@@ -28,7 +28,7 @@ const TextInputOutline: React.FunctionComponent<Props> = ({
         >
           <label
             htmlFor={id}
-            className={`absolute z-overlay input-label padding-x-lg ${value && 'populated'} ${error && 'text-error'}`}
+            className={`absolute input-label padding-x-lg ${value && 'populated'} ${error && 'text-error'}`}
           >
             {label}
           </label>
@@ -38,7 +38,7 @@ const TextInputOutline: React.FunctionComponent<Props> = ({
             type="text"
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            className="relative z-base min-height-lg width-full font-size-base input-field padding-x-lg"
+            className="relative z-base min-height-lg width-full font-size-base input-field padding-x-lg background-transparent"
           ></input>
         </div>
         <div className="padding-x-lg">

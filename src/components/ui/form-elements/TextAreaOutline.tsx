@@ -59,7 +59,7 @@ const TextAreaOutline: React.FunctionComponent<Props> = ({
         >
           <label
             htmlFor={id}
-            className={`absolute z-overlay input-label textarea-label padding-x-lg margin-y-lg ${text && 'populated'} ${error && 'text-error'}`}
+            className={`absolute input-label textarea-label padding-x-lg margin-y-lg ${text && 'populated'} ${error && 'text-error'}`}
           >
             {label}
           </label>
@@ -69,7 +69,7 @@ const TextAreaOutline: React.FunctionComponent<Props> = ({
             value={text}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
-            className="relative z-base min-height-lg width-full font-size-base input-field padding-x-lg padding-y-lg"
+            className="relative z-base min-height-lg width-full font-size-base input-field padding-x-lg padding-y-lg background-transparent"
           ></textarea>
         </div>
         <div className="padding-x-lg flex min-height-xs align-center justify-between">

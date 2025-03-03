@@ -5,6 +5,7 @@ import TextInputOutline from './components/ui/form-elements/TextInputOutline'
 import { useId } from 'react'
 import NumberInputOutline from './components/ui/form-elements/NumberInputOutline'
 import TextAreaOutline from './components/ui/form-elements/TextAreaOutline'
+import DropdownOutline from './components/ui/form-elements/DropdownOutline'
 
 function App() {
   return (
@@ -43,6 +44,17 @@ function App() {
                 maxLength={250}
                 error={false}
               ></TextAreaOutline>
+              <DropdownOutline
+                id={useId()}
+                name="dropdown"
+                label="Dropdown"
+                helperText="Helper text"
+                error={false}
+                options={[
+                  { label: 'Option 1', value: 1 },
+                  { label: 'Option 2', value: 2 },
+                ]}
+              ></DropdownOutline>
             </div>
           </div>
         </div>

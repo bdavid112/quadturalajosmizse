@@ -42,6 +42,14 @@ const NumberInputOutline: React.FunctionComponent<Props> = ({
           >
             {label}
           </label>
+          <input
+            id={id}
+            name={name}
+            type="number"
+            value={value}
+            onChange={(e) => setValueIfInRange(Number(e.target.value))}
+            className="relative z-base min-height-lg width-full font-size-base input-field padding-x-lg"
+          ></input>
           <div className="button-container absolute z-overlay flex">
             <button onClick={() => setValueIfInRange(value - 1)}>
               <span className="material-symbols-rounded size-20">remove</span>
@@ -51,14 +59,6 @@ const NumberInputOutline: React.FunctionComponent<Props> = ({
               <span className="material-symbols-rounded size-20">add</span>
             </button>
           </div>
-          <input
-            id={id}
-            name={name}
-            type="number"
-            value={value}
-            onChange={(e) => setValueIfInRange(Number(e.target.value))}
-            className="relative z-base min-height-lg width-full font-size-base input-field padding-x-lg"
-          ></input>
         </div>
         <div className="padding-x-lg">
           <span

@@ -387,11 +387,17 @@
 .border-thick {
   border-width: 3px;
 }
-.border-rounded {
+.border-rounded-sm {
+  border-radius: $radius-sm;
+}
+.border-rounded-md {
   border-radius: $radius-md;
 }
-.border-circle {
-  border-radius: 50%;
+.border-rounded-lg {
+  border-radius: $radius-lg;
+}
+.border-rounded-full {
+  border-radius: $radius-full;
 }
 .border-success {
   border-color: $color-status-success !important;
@@ -445,6 +451,17 @@
 .cursor-not-allowed {
   cursor: not-allowed;
 }
+.cursor-none {
+  cursor: none;
+}
+
+/* ============================================= */
+/* ============ USER SELECT ==================== */
+/* ============================================= */
+
+.user-select-none {
+  user-select: none;
+}
 
 /* ============================================= */
 /* =============== POSITIONING ================ */
@@ -475,6 +492,40 @@
 }
 .z-top {
   z-index: $z-top;
+}
+
+/* ============================================= */
+/* =============== ROTATE  ===================== */
+/* ============================================= */
+
+.rotate-45 {
+  transform: rotate(45deg);
+}
+.rotate-90 {
+  transform: rotate(90deg);
+}
+.rotate-135 {
+  transform: rotate(135deg);
+}
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* ============================================= */
+/* =============== TRANSITION  ================= */
+/* ============================================= */
+
+.transition-linear {
+  transition: all linear 90ms;
+}
+.transition-ease-in {
+  transition: all ease-in 90ms;
+}
+.transition-ease-out {
+  transition: all ease-out 90ms;
+}
+.transition-ease-in-out {
+  transition: all ease-in-out 90ms;
 }
 
 /* Dividers */
@@ -510,4 +561,10 @@ span.size-40 {
 span.size-48 {
   font-size: 48px;
   font-variation-settings: 'OPSZ' 48;
+}
+
+/* Transparent */
+
+.background-transparent {
+  background-color: transparent;
 }

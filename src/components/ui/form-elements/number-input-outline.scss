@@ -1,49 +1,6 @@
 @import '/src/styles/tokens.scss';
 @import './input.scss';
 
-.button-container {
-  right: $space-none;
-  height: 100%;
-
-  button {
-    border: none;
-    display: flex;
-    cursor: pointer;
-    min-height: 56px;
-    justify-content: center;
-    align-items: center;
-    padding-inline: $space-lg;
-    background-color: transparent;
-    transition: all linear 90ms;
-
-    &:hover {
-      background-color: $gray-100;
-
-      span {
-        color: $text-secondary;
-      }
-    }
-
-    &:active {
-      background-color: $gray-200;
-
-      span {
-        color: $text-primary;
-      }
-    }
-
-    span {
-      color: $text-muted;
-      transition: all linear 90ms;
-    }
-  }
-
-  button ~ button {
-    border-top-right-radius: $radius-sm;
-    border-bottom-right-radius: $radius-sm;
-  }
-}
-
 .button-divider {
   margin: auto;
   width: 1px;

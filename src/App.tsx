@@ -18,6 +18,11 @@ function App() {
       ></HeroLayout>
       <section className="grid padding-y-5xl">
         <div className="row">
+          <div className="col-6">
+            <h1>Custom UI components</h1>
+          </div>
+        </div>
+        <div className="row">
           <div className="col-12 width-full">
             <div className="flex flex-gap-lg">
               <TextInputOutline

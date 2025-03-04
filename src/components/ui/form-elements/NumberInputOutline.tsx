@@ -2,6 +2,7 @@ import * as React from 'react'
 import '/src/styles/utilities.scss'
 import './number-input-outline.scss'
 import { useState } from 'react'
+import InputButton from '../buttons/InputButton'
 
 interface Props {
   id: string
@@ -51,18 +52,20 @@ const NumberInputOutline: React.FunctionComponent<Props> = ({
             className="relative z-base min-height-lg width-full font-size-base input-field padding-x-lg"
           ></input>
           <div className="button-container absolute z-overlay flex">
-            <button onClick={() => setValueIfInRange(value - 1)}>
-              <span className="material-symbols-rounded size-20">remove</span>
-            </button>
+            <InputButton
+              icon="remove"
+              onClick={() => setValueIfInRange(value - 1)}
+            ></InputButton>
             <div className="button-divider"></div>
-            <button onClick={() => setValueIfInRange(value + 1)}>
-              <span className="material-symbols-rounded size-20">add</span>
-            </button>
+            <InputButton
+              icon="add"
+              onClick={() => setValueIfInRange(value + 1)}
+            ></InputButton>
           </div>
         </div>
         <div className="padding-x-lg">
           <span
-            className={`font-size-caption text-muted ${error && 'text-error'}`}
+            className={`font-size-caption text-secondary ${error && 'text-error'}`}
           >
             {helperText}
           </span>

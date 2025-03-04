@@ -43,7 +43,7 @@ const TextInputOutline: React.FunctionComponent<Props> = ({
         </div>
         <div className="padding-x-lg">
           <span
-            className={`font-size-caption text-muted ${error && 'text-error'}`}
+            className={`font-size-caption text-secondary ${error && 'text-error'}`}
           >
             {helperText}
           </span>

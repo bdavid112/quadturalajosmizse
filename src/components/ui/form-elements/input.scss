@@ -9,8 +9,20 @@
   background-color: $surface-100 !important;
 }
 
+@mixin input-focused {
+  border-color: $color-primary-500 !important;
+
+  label {
+    @include label-focused();
+  }
+}
+
 .populated {
   @include label-focused($text-secondary);
+}
+
+.input-focused {
+  @include input-focused();
 }
 
 .input-label {
@@ -20,14 +32,14 @@
   background-color: transparent;
   cursor: text;
   user-select: none;
-  color: $text-muted;
+  color: $text-secondary;
 }
 
 .input-container {
   border-radius: $radius-sm;
 
   &:focus-within {
-    border-color: $color-primary-500;
+    @include input-focused();
   }
 
   &:focus-within .input-label {
@@ -44,39 +56,6 @@
 .button-container {
   right: $space-none;
   height: 100%;
-
-  button {
-    border: none;
-    display: flex;
-    cursor: pointer;
-    min-height: 56px;
-    justify-content: center;
-    align-items: center;
-    padding-inline: $space-lg;
-    background-color: transparent;
-    transition: all linear 90ms;
-
-    &:hover {
-      background-color: $gray-100;
-
-      span {
-        color: $text-secondary;
-      }
-    }
-
-    &:active {
-      background-color: $gray-200;
-
-      span {
-        color: $text-primary;
-      }
-    }
-
-    span {
-      color: $text-muted;
-      transition: all linear 90ms;
-    }
-  }
 
   button:last-of-type {
     border-top-right-radius: $radius-sm;

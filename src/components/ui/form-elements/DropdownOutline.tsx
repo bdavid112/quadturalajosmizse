@@ -2,6 +2,8 @@ import * as React from 'react'
 import '/src/styles/utilities.scss'
 import './dropdown-outline.scss'
 import { useEffect, useRef, useState } from 'react'
+import InputButton from '../buttons/InputButton'
+import CustomOption from './CustomOption'
 
 interface Option {
   value: number
@@ -33,7 +35,14 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
   const [selectedOption, setSelectedOption] = useState(
     defaultValue ? defaultValue : null
   )
+  const [focusedOptionValue, setFocusedOptionValue] = useState(0)
+  const [activeOptionValue, setActiveOptionValue] = useState(0)
+
   const containerRef = useRef<HTMLDivElement>(null)
+  const optionContainerRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
+
+  /* Handle if the user clicks outside of the container */
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -42,11 +51,42 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
         !containerRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false)
+        setFocusedOptionValue(0)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
+
+  /* Handle if the user presses tab or esc */
+
+  useEffect(() => {
+    const handleCloseOnKeyDown = (event: KeyboardEvent) => {
+      if (isOpen && (event.key == 'Tab' || event.key == 'Escape')) {
+        setIsOpen(false)
+        setFocusedOptionValue(0)
+      }
+    }
+
+    if (isOpen && optionContainerRef.current) {
+      optionContainerRef.current.focus()
+    } else if (!isOpen && buttonRef.current && selectedOption) {
+      buttonRef.current.focus()
+    }
+
+    document.addEventListener('keydown', handleCloseOnKeyDown)
+    return () => document.removeEventListener('keydown', handleCloseOnKeyDown)
+  }, [isOpen])
+
+  /* Only change focusedOptionValue within bounds */
+
+  const changeFocusedOptionValue = (newValue: number) => {
+    if (newValue <= 0) newValue = options.length
+    if (newValue > options.length) newValue = 1
+    setFocusedOptionValue(newValue)
+  }
+
+  /* Handle selecting an option */
 
   const handleOptionClick = (option: Option) => {
     setSelectedOption(option)
@@ -54,15 +94,52 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
     setIsOpen(false)
   }
 
+  const toggleIsOpen = () => {
+    setIsOpen(!isOpen)
+  }
+
+  /* Handle navigating between options with arrow keys and select with enter */
+
+  const handleArrowKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (isOpen && event.key == 'ArrowDown') {
+      event.preventDefault()
+      changeFocusedOptionValue(focusedOptionValue + 1)
+    }
+  }
+
+  const handleArrowKeyUp = (event: React.KeyboardEvent) => {
+    if (isOpen && event.key == 'ArrowUp') {
+      event.preventDefault()
+      changeFocusedOptionValue(focusedOptionValue - 1)
+    }
+  }
+
+  const handleEnterKeyDown = (event: React.KeyboardEvent) => {
+    if (isOpen && event.key == 'Enter') {
+      event.preventDefault()
+      if (focusedOptionValue > 0) setActiveOptionValue(focusedOptionValue)
+    }
+  }
+
+  const handleEnterKeyUp = (event: React.KeyboardEvent) => {
+    if (isOpen && event.key == 'Enter') {
+      event.preventDefault()
+      const option = options.find((o) => o.value === focusedOptionValue)
+      option && handleOptionClick(option)
+      setFocusedOptionValue(0)
+      setActiveOptionValue(0)
+    }
+  }
+
   return (
     <>
       <div ref={containerRef}>
         <div
-          className={`flex align-center min-width-md relative input-container border background-transparent ${error && 'border-error'}`}
+          className={`flex align-center min-width-md relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${error && 'border-error'}`}
         >
           <label
             htmlFor={id}
-            className={`absolute z-overlay input-label padding-x-lg populated ${error && 'text-error'}`}
+            className={`absolute z-overlay input-label padding-x-lg populated ${error ? 'text-error' : ''}`}
           >
             {label}
           </label>
@@ -70,17 +147,15 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
             {selectedOption ? selectedOption.label : 'Select an option'}
           </span>
           <div className="button-container absolute z-overlay flex">
-            <button
+            <InputButton
+              ref={buttonRef}
+              icon={'keyboard_arrow_down'}
               onClick={() => {
-                setIsOpen(!isOpen)
+                toggleIsOpen()
               }}
-            >
-              <span
-                className={`material-symbols-rounded size-20 transition-ease-in ${isOpen && 'rotate-180'}`}
-              >
-                keyboard_arrow_down
-              </span>
-            </button>
+              isParentOpen={isOpen}
+              rotate={true}
+            ></InputButton>
           </div>
           <select
             id={id}
@@ -91,29 +166,39 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
               setIsOpen(!isOpen)
             }}
             onChange={() => {}}
+            tabIndex={-1}
           ></select>
         </div>
         <div className="padding-x-lg">
           <span
-            className={`font-size-caption text-muted ${isOpen && 'hidden'} ${error && 'text-error'}`}
+            className={`font-size-caption text-secondary ${isOpen ? 'hidden' : ''} ${error ? 'text-error' : ''}`}
           >
             {helperText}
           </span>
         </div>
         {isOpen && (
-          <div className="option-container border-rounded-sm box-shadow-medium">
+          <div
+            ref={optionContainerRef}
+            onKeyDown={(e) => {
+              handleArrowKeyDown(e)
+              handleArrowKeyUp(e)
+              handleEnterKeyDown(e)
+            }}
+            onKeyUp={(e) => {
+              handleEnterKeyUp(e)
+            }}
+            className="option-container border-rounded-sm box-shadow-medium"
+            tabIndex={0}
+          >
             {options.map((option) => (
-              <div
-                key={option.value}
-                className="min-height-lg flex align-center padding-x-lg cursor-pointer custom-option transition-ease-out"
-                role="option"
-                aria-selected={selectedOption?.value === option.value}
+              <CustomOption
+                option={option}
+                isFocused={focusedOptionValue == option.value}
+                isActive={activeOptionValue == option.value}
                 onClick={() => {
                   handleOptionClick(option)
                 }}
-              >
-                {option.label}
-              </div>
+              ></CustomOption>
             ))}
           </div>
         )}

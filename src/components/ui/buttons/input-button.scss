@@ -1,0 +1,43 @@
+@import '/src/styles/tokens.scss';
+
+@mixin input-button-active {
+  background-color: $gray-200 !important;
+
+  span {
+    color: $text-primary !important;
+  }
+}
+
+.input-button-active {
+  @include input-button-active();
+}
+
+.input-button {
+  border: none;
+  display: flex;
+  cursor: pointer;
+  min-height: 56px;
+  justify-content: center;
+  align-items: center;
+  padding-inline: $space-lg;
+  background-color: transparent;
+  transition: all linear 90ms;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $gray-100;
+
+    span {
+      color: $text-secondary;
+    }
+  }
+
+  &:active {
+    @include input-button-active();
+  }
+
+  span {
+    color: $text-muted;
+    transition: all linear 90ms;
+  }
+}

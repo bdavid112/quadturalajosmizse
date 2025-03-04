@@ -74,12 +74,12 @@ const TextAreaOutline: React.FunctionComponent<Props> = ({
         </div>
         <div className="padding-x-lg flex min-height-xs align-center justify-between">
           <span
-            className={`font-size-caption text-muted ${error && 'text-error'}`}
+            className={`font-size-caption text-secondary ${error && 'text-error'}`}
           >
             {helperText}
           </span>
           <span
-            className={`font-size-caption text-muted ${error && 'text-error'}`}
+            className={`font-size-caption text-secondary ${error && 'text-error'}`}
           >
             {text.length}/{maxLength}
           </span>

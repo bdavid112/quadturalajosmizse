@@ -1,0 +1,38 @@
+@import '/src/styles/tokens.scss';
+
+@mixin custom-option-hover {
+  background-color: $gray-100;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@mixin custom-option-active {
+  background-color: $gray-200;
+}
+
+.custom-option-focus {
+  @include custom-option-hover();
+}
+
+.custom-option-active {
+  @include custom-option-active();
+}
+
+.custom-option {
+  &:first-of-type {
+    border-top-left-radius: $radius-sm;
+    border-top-right-radius: $radius-sm;
+  }
+
+  &:last-of-type {
+    border-bottom-left-radius: $radius-sm;
+    border-bottom-right-radius: $radius-sm;
+  }
+
+  &:hover {
+    @include custom-option-hover();
+  }
+
+  &:active {
+    @include custom-option-active();
+  }
+}

@@ -24,11 +24,11 @@ const TextInputOutline: React.FunctionComponent<Props> = ({
     <>
       <div>
         <div
-          className={`flex align-center min-width-md relative input-container border ${error && 'border-error'}`}
+          className={`flex align-center min-width-md relative input-container border ${error ? 'border-error' : ''}`}
         >
           <label
             htmlFor={id}
-            className={`absolute input-label padding-x-lg ${value && 'populated'} ${error && 'text-error'}`}
+            className={`absolute input-label padding-x-lg ${value ? 'populated' : ''} ${error ? 'text-error' : ''}`}
           >
             {label}
           </label>
@@ -43,7 +43,7 @@ const TextInputOutline: React.FunctionComponent<Props> = ({
         </div>
         <div className="padding-x-lg">
           <span
-            className={`font-size-caption text-secondary ${error && 'text-error'}`}
+            className={`font-size-caption text-secondary ${error ? 'text-error' : ''}`}
           >
             {helperText}
           </span>

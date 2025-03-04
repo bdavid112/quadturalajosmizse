@@ -1,9 +1,10 @@
 import * as React from 'react'
 import '/src/styles/utilities.scss'
-import './dropdown-outline.scss'
+import './date-picker-outline.scss'
 import { useEffect, useRef, useState } from 'react'
 import InputButton from '../buttons/InputButton'
-import CustomOption from './CustomOption'
+import { generateCalendarDays } from '../../../utils/calendarDayGenerator'
+import CustomCalendar from './CustomCalendar'
 
 interface Option {
   value: number
@@ -16,19 +17,19 @@ interface Props {
   label: string
   error?: boolean
   helperText: string
-  options: Option[]
   defaultValue?: Option
+  currentDate: Date
   onChange?: (option: Option) => void
 }
 
-const DropdownOutline: React.FunctionComponent<Props> = ({
+const DatePickerOutline: React.FunctionComponent<Props> = ({
   id,
   name,
   label,
   error = false,
   helperText,
-  options,
   defaultValue,
+  currentDate,
   onChange,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -37,9 +38,12 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
   )
   const [focusedOptionValue, setFocusedOptionValue] = useState(0)
   const [activeOptionValue, setActiveOptionValue] = useState(0)
+  const [calendarDays, setCalendarDays] = useState(
+    generateCalendarDays(currentDate)
+  )
 
   const containerRef = useRef<HTMLDivElement>(null)
-  const optionContainerRef = useRef<HTMLDivElement>(null)
+  const calendarContainerRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
   /* Handle if the user clicks outside of the container */
@@ -68,8 +72,8 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
       }
     }
 
-    if (isOpen && optionContainerRef.current) {
-      optionContainerRef.current.focus()
+    if (isOpen && calendarContainerRef.current) {
+      calendarContainerRef.current.focus()
     } else if (!isOpen && buttonRef.current && selectedOption) {
       buttonRef.current.focus()
     }
@@ -80,11 +84,11 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
 
   /* Only change focusedOptionValue within bounds */
 
-  const changeFocusedOptionValue = (newValue: number) => {
+  /* const changeFocusedOptionValue = (newValue: number) => {
     if (newValue <= 0) newValue = options.length
     if (newValue > options.length) newValue = 1
     setFocusedOptionValue(newValue)
-  }
+  } */
 
   /* Handle selecting an option */
 
@@ -100,19 +104,19 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
 
   /* Handle navigating between options with arrow keys and select with enter */
 
-  const handleArrowKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+  /* const handleArrowKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (isOpen && event.key == 'ArrowDown') {
       event.preventDefault()
       changeFocusedOptionValue(focusedOptionValue + 1)
     }
-  }
+  } */
 
-  const handleArrowKeyUp = (event: React.KeyboardEvent) => {
+  /* const handleArrowKeyUp = (event: React.KeyboardEvent) => {
     if (isOpen && event.key == 'ArrowUp') {
       event.preventDefault()
       changeFocusedOptionValue(focusedOptionValue - 1)
     }
-  }
+  } */
 
   const handleEnterKeyDown = (event: React.KeyboardEvent) => {
     if (isOpen && event.key == 'Enter') {
@@ -121,7 +125,7 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
     }
   }
 
-  const handleEnterKeyUp = (event: React.KeyboardEvent) => {
+  /* const handleEnterKeyUp = (event: React.KeyboardEvent) => {
     if (isOpen && event.key == 'Enter') {
       event.preventDefault()
       const option = options.find((o) => o.value === focusedOptionValue)
@@ -129,13 +133,13 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
       setFocusedOptionValue(0)
       setActiveOptionValue(0)
     }
-  }
+  } */
 
   return (
     <>
       <div ref={containerRef}>
         <div
-          className={`flex align-center min-width-md relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${error ? 'border-error' : ''}`}
+          className={`flex align-center min-width-lg relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${error ? 'border-error' : ''}`}
         >
           <label
             htmlFor={id}
@@ -144,62 +148,53 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
             {label}
           </label>
           <span className="padding-x-lg width-full absolute user-select-none">
-            {selectedOption ? selectedOption.label : 'Select an option'}
+            {selectedOption ? selectedOption.label : 'Pick a date'}
           </span>
           <div className="button-container absolute z-overlay flex">
             <InputButton
               ref={buttonRef}
-              icon={'keyboard_arrow_down'}
+              icon={'calendar_month'}
               onClick={() => {
                 toggleIsOpen()
               }}
               isParentOpen={isOpen}
-              rotate={true}
             ></InputButton>
           </div>
-          <select
+          <input
             id={id}
             name={name}
             value={selectedOption ? selectedOption.value : 0}
-            className="relative z-base min-height-lg width-full font-size-base input-field padding-x-lg background-transparent"
+            type="date"
+            className="cursor-pointer relative z-base min-height-lg width-full font-size-base input-field padding-x-lg background-transparent custom-date-picker"
             onClick={() => {
               setIsOpen(!isOpen)
             }}
             onChange={() => {}}
             tabIndex={-1}
-          ></select>
+          ></input>
         </div>
         <div className="padding-x-lg">
           <span
-            className={`font-size-caption text-secondary ${isOpen ? 'hidden' : ''} ${error ? 'text-error' : ''}`}
+            className={`font-size-caption text-secondary ${1 ? 'hidden' : ''} ${error ? 'text-error' : ''}`}
           >
             {helperText}
           </span>
         </div>
-        {isOpen && (
+        {1 && (
           <div
-            ref={optionContainerRef}
+            ref={calendarContainerRef}
             onKeyDown={(e) => {
-              handleArrowKeyDown(e)
-              handleArrowKeyUp(e)
+              /* handleArrowKeyDown(e)
+              handleArrowKeyUp(e) */
               handleEnterKeyDown(e)
             }}
             onKeyUp={(e) => {
-              handleEnterKeyUp(e)
+              /*  handleEnterKeyUp(e) */
             }}
             className="option-container border-rounded-sm box-shadow-medium"
             tabIndex={0}
           >
-            {options.map((option) => (
-              <CustomOption
-                option={option}
-                isFocused={focusedOptionValue == option.value}
-                isActive={activeOptionValue == option.value}
-                onClick={() => {
-                  handleOptionClick(option)
-                }}
-              ></CustomOption>
-            ))}
+            <CustomCalendar calendarDays={calendarDays}></CustomCalendar>
           </div>
         )}
       </div>
@@ -207,4 +202,4 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
   )
 }
 
-export default DropdownOutline
+export default DatePickerOutline

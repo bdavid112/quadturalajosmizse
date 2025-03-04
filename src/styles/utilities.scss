@@ -124,7 +124,7 @@
   min-width: 240px;
 }
 .min-width-lg {
-  min-width: 0px;
+  min-width: 296px;
 }
 
 .max-width-xs {
@@ -212,15 +212,12 @@
 .padding-y-2xl {
   padding-block: $space-2xl;
 }
-
 .padding-y-3xl {
   padding-block: $space-3xl;
 }
-
 .padding-y-4xl {
   padding-block: $space-4xl;
 }
-
 .padding-y-5xl {
   padding-block: $space-5xl;
 }
@@ -243,17 +240,42 @@
 .padding-x-2xl {
   padding-inline: $space-2xl;
 }
-
 .padding-x-3xl {
   padding-inline: $space-3xl;
 }
-
 .padding-x-4xl {
   padding-inline: $space-4xl;
 }
-
 .padding-x-5xl {
   padding-inline: $space-5xl;
+}
+
+.padding-left-xs {
+  padding-left: $space-xs;
+}
+.padding-left-sm {
+  padding-left: $space-sm;
+}
+.padding-left-md {
+  padding-left: $space-md;
+}
+.padding-left-lg {
+  padding-left: $space-lg;
+}
+.padding-left-xl {
+  padding-left: $space-xl;
+}
+.padding-left-2xl {
+  padding-left: $space-2xl;
+}
+.padding-left-3xl {
+  padding-left: $space-3xl;
+}
+.padding-left-4xl {
+  padding-left: $space-4xl;
+}
+.padding-left-5xl {
+  padding-left: $space-5xl;
 }
 
 /* ============================================= */
@@ -314,16 +336,16 @@
 }
 
 .text-primary {
-  color: $text-primary;
+  color: $text-primary !important;
 }
 .text-secondary {
-  color: $text-secondary;
+  color: $text-secondary !important;
 }
 .text-muted {
-  color: $text-muted;
+  color: $text-muted !important;
 }
 .text-inverted {
-  color: $text-inverted;
+  color: $text-inverted !important;
 }
 .text-success {
   color: $text-success !important;
@@ -399,6 +421,14 @@
 .border-rounded-full {
   border-radius: $radius-full;
 }
+.border-rounded-full-left {
+  border-top-left-radius: $radius-full;
+  border-bottom-left-radius: $radius-full;
+}
+.border-rounded-full-right {
+  border-top-right-radius: $radius-full;
+  border-bottom-right-radius: $radius-full;
+}
 .border-success {
   border-color: $color-status-success !important;
 }
@@ -440,19 +470,19 @@
 /* ============================================= */
 
 .cursor-pointer {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 .cursor-default {
-  cursor: default;
+  cursor: default !important;
 }
 .cursor-wait {
-  cursor: wait;
+  cursor: wait !important;
 }
 .cursor-not-allowed {
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
 .cursor-none {
-  cursor: none;
+  cursor: none !important;
 }
 
 /* ============================================= */

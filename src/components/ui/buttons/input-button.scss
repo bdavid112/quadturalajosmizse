@@ -1,25 +1,11 @@
 @import '/src/styles/tokens.scss';
 
-@mixin input-button-active {
-  background-color: $gray-200 !important;
-
-  span {
-    color: $text-primary !important;
-  }
-}
-
-.input-button-active {
-  @include input-button-active();
-}
-
-.input-button {
+@mixin input-button {
   border: none;
   display: flex;
   cursor: pointer;
-  min-height: 56px;
   justify-content: center;
   align-items: center;
-  padding-inline: $space-lg;
   background-color: transparent;
   transition: all linear 90ms;
 
@@ -33,11 +19,35 @@
   }
 
   &:active {
-    @include input-button-active();
+    @include active();
   }
 
   span {
     color: $text-muted;
     transition: all linear 90ms;
   }
+}
+
+@mixin active {
+  background-color: $gray-200 !important;
+
+  span {
+    color: $text-primary !important;
+  }
+}
+
+.input-button-active {
+  @include active();
+}
+
+.input-button {
+  @include input-button();
+  min-height: 56px;
+  min-width: 56px;
+}
+
+.input-button-small {
+  @include input-button();
+  min-height: 40px;
+  min-width: 40px;
 }

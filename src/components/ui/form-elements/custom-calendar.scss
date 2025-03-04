@@ -1,0 +1,43 @@
+@import '/src/styles/tokens.scss';
+
+@mixin calendar-cell-size {
+  min-height: $space-3xl;
+  min-width: $space-3xl;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-headrow {
+  div {
+    @include calendar-cell-size();
+    margin-block: $space-sm;
+  }
+}
+
+.calendar-row {
+  display: contents;
+}
+
+.calendar-cell {
+  @include calendar-cell-size();
+  cursor: pointer;
+  margin-block: $space-sm;
+
+  &:hover {
+    color: $text-inverted;
+  }
+
+  &:hover .calendar-cell-background {
+    background-color: $color-primary-500;
+    border-radius: $radius-full;
+  }
+}
+
+.calendar-today {
+  color: $color-primary-500;
+  border: 1px solid $color-primary-500;
+  border-radius: $radius-full;
+}

@@ -5,13 +5,27 @@ import { useState } from 'react'
 
 interface Props {
   icon: string
+  label?: string
   onClick?: () => void
   isParentOpen?: boolean
   rotate?: boolean
+  rounded?: string
+  small?: boolean
 }
 
 const InputButton = React.forwardRef<HTMLButtonElement, Props>(
-  ({ icon, onClick, isParentOpen = false, rotate = false }, ref) => {
+  (
+    {
+      icon,
+      label,
+      onClick,
+      isParentOpen = false,
+      rotate = false,
+      rounded = false,
+      small = false,
+    },
+    ref
+  ) => {
     const [isActive, setIsActive] = useState(false)
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
@@ -31,13 +45,19 @@ const InputButton = React.forwardRef<HTMLButtonElement, Props>(
     return (
       <button
         ref={ref}
-        className={`input-button ${isActive ? 'input-button-active' : ''}`}
+        className={`${!small ? 'input-button' : 'input-button-small'} ${label ? 'padding-left-sm' : ''} ${isActive ? 'input-button-active' : ''} ${rounded}`}
         onClick={() => {
           onClick && onClick()
         }}
         onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}
+        onBlur={() => {
+          setIsActive(false)
+        }}
       >
+        {label && (
+          <span className="text-secondary font-size-secondary">{label}</span>
+        )}
         <span
           className={`material-symbols-rounded size-20 transition-ease-in ${
             rotate && isParentOpen ? 'rotate-180' : ''

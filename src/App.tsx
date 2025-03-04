@@ -6,6 +6,7 @@ import { useId } from 'react'
 import NumberInputOutline from './components/ui/form-elements/NumberInputOutline'
 import TextAreaOutline from './components/ui/form-elements/TextAreaOutline'
 import DropdownOutline from './components/ui/form-elements/DropdownOutline'
+import DatePickerOutline from './components/ui/form-elements/DatePickerOutline'
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
         <div className="row">
           <div className="col-12 width-full">
             <div className="flex flex-gap-lg">
-              <TextInputOutline
+              {/* <TextInputOutline
                 id={useId()}
                 name="name"
                 label="Text input"
@@ -41,14 +42,6 @@ function App() {
                 max={4}
                 error={false}
               ></NumberInputOutline>
-              <TextAreaOutline
-                id={useId()}
-                name="textarea"
-                label="Text area"
-                helperText="Helper text"
-                maxLength={250}
-                error={false}
-              ></TextAreaOutline>
               <DropdownOutline
                 id={useId()}
                 name="dropdown"
@@ -60,6 +53,22 @@ function App() {
                   { label: 'Option 2', value: 2 },
                 ]}
               ></DropdownOutline>
+              <TextAreaOutline
+                id={useId()}
+                name="textarea"
+                label="Text area"
+                helperText="Helper text"
+                maxLength={250}
+                error={false}
+              ></TextAreaOutline> */}
+              <DatePickerOutline
+                id={useId()}
+                name="calendar"
+                label="Calendar"
+                helperText="Helper text"
+                error={false}
+                currentDate={new Date()}
+              ></DatePickerOutline>
             </div>
           </div>
         </div>

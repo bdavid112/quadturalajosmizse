@@ -45,7 +45,7 @@ const InputButton = React.forwardRef<HTMLButtonElement, Props>(
     return (
       <button
         ref={ref}
-        className={`${!small ? 'input-button' : 'input-button-small'} ${label ? 'padding-left-sm' : ''} ${isActive ? 'input-button-active' : ''} ${rounded}`}
+        className={`${!small ? 'input-button' : 'input-button-small'} ${label ? 'padding-left-sm label-input-button' : ''} ${isActive ? 'input-button-active' : ''} ${rounded}`}
         onClick={() => {
           onClick && onClick()
         }}

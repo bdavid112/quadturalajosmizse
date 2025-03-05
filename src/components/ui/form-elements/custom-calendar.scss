@@ -24,7 +24,7 @@
 .calendar-cell {
   @include calendar-cell-size();
   cursor: pointer;
-  margin-block: $space-sm;
+  margin-block: $space-xs;
 
   &:hover {
     color: $text-inverted;

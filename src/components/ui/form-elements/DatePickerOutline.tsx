@@ -3,7 +3,6 @@ import '/src/styles/utilities.scss'
 import './date-picker-outline.scss'
 import { useEffect, useRef, useState } from 'react'
 import InputButton from '../buttons/InputButton'
-import { generateCalendarDays } from '../../../utils/calendarDayGenerator'
 import CustomCalendar from './CustomCalendar'
 
 interface Option {
@@ -18,7 +17,6 @@ interface Props {
   error?: boolean
   helperText: string
   defaultValue?: Option
-  currentDate: Date
   onChange?: (option: Option) => void
 }
 
@@ -29,7 +27,6 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
   error = false,
   helperText,
   defaultValue,
-  currentDate,
   onChange,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -38,9 +35,6 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
   )
   const [focusedOptionValue, setFocusedOptionValue] = useState(0)
   const [activeOptionValue, setActiveOptionValue] = useState(0)
-  const [calendarDays, setCalendarDays] = useState(
-    generateCalendarDays(currentDate)
-  )
 
   const containerRef = useRef<HTMLDivElement>(null)
   const calendarContainerRef = useRef<HTMLDivElement>(null)
@@ -194,7 +188,7 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
             className="option-container border-rounded-sm box-shadow-medium"
             tabIndex={0}
           >
-            <CustomCalendar calendarDays={calendarDays}></CustomCalendar>
+            <CustomCalendar></CustomCalendar>
           </div>
         )}
       </div>

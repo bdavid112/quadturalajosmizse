@@ -1,4 +1,32 @@
 {
+  "ui": {
+    "calendar": {
+      "placeholder-text": "Válassz egy dátumot",
+      "months": {
+        "0": "Jan",
+        "1": "Febr",
+        "2": "Márc",
+        "3": "Ápr",
+        "4": "Máj",
+        "5": "Jún",
+        "6": "Júl",
+        "7": "Aug",
+        "8": "Szept",
+        "9": "Okt",
+        "10": "Nov",
+        "11": "Dec"
+      },
+      "days": {
+        "0": "H",
+        "1": "K",
+        "2": "SZ",
+        "3": "CS",
+        "4": "P",
+        "5": "SZ",
+        "6": "V"
+      }
+    }
+  },
   "about-us": {
     "hero": {
       "title": "Rólunk",

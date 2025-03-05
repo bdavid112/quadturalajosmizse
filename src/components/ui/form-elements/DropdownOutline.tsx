@@ -192,6 +192,7 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
           >
             {options.map((option) => (
               <CustomOption
+                key={option.value}
                 option={option}
                 isFocused={focusedOptionValue == option.value}
                 isActive={activeOptionValue == option.value}

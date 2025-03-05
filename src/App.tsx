@@ -67,7 +67,6 @@ function App() {
                 label="Calendar"
                 helperText="Helper text"
                 error={false}
-                currentDate={new Date()}
               ></DatePickerOutline>
             </div>
           </div>

@@ -1,3 +1,5 @@
+import { t } from './translator'
+
 export const generateCalendarDays = (date: Date, lang: string = 'hu') => {
   const year = date.getFullYear()
   const month = date.getMonth()
@@ -21,4 +23,10 @@ export const generateCalendarDays = (date: Date, lang: string = 'hu') => {
   }
 
   return calendarDays
+}
+
+/* Format month from number to string */
+
+export const formatMonthToString = (month: number, lang: string = 'hu') => {
+  return t(`ui.calendar.months.${month}`, lang)
 }

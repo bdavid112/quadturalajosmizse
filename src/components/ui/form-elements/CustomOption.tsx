@@ -12,6 +12,8 @@ interface Props {
   option: Option
   isFocused: boolean
   isActive: boolean
+  isSelected?: boolean
+  icon?: string
 }
 
 const CustomOption: React.FunctionComponent<Props> = ({
@@ -19,11 +21,13 @@ const CustomOption: React.FunctionComponent<Props> = ({
   option,
   isFocused,
   isActive,
+  isSelected = false,
+  icon,
 }) => {
   return (
     <div
       key={option.value}
-      className={`min-height-lg flex align-center padding-x-lg cursor-pointer custom-option transition-ease-out ${isFocused ? 'custom-option-focus' : ''} ${isActive ? 'custom-option-active' : ''}`}
+      className={`min-height-lg flex justify-between align-center padding-x-lg cursor-pointer custom-option transition-ease-out ${isFocused ? 'custom-option-focus' : ''} ${isActive ? 'custom-option-active' : ''}`}
       role="option"
       /* aria-selected={selectedOption?.value === option.value} */
       onClick={() => {
@@ -32,6 +36,11 @@ const CustomOption: React.FunctionComponent<Props> = ({
       tabIndex={0}
     >
       {option.label}
+      {icon && isSelected && (
+        <span className="material-symbols-rounded size-20 transition-ease-in">
+          {icon}
+        </span>
+      )}
     </div>
   )
 }

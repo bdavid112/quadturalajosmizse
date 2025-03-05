@@ -121,7 +121,7 @@
 }
 
 .min-width-xs {
-  min-width: 140px;
+  min-width: 144px;
 }
 .min-width-sm {
   min-width: 200px;
@@ -160,6 +160,19 @@
 }
 .min-height-lg {
   min-height: 56px;
+}
+
+.max-height-xs {
+  max-height: 96px;
+}
+.max-height-sm {
+  max-height: 120px;
+}
+.max-height-md {
+  max-height: 156px;
+}
+.max-height-lg {
+  max-height: 196px;
 }
 
 /* ============================================= */
@@ -564,20 +577,87 @@
   transition: all ease-in-out 90ms;
 }
 
+/* ============================================= */
+/* ============= OVERFLOW ====================== */
+/* ============================================= */
+
+/* General Overflow */
+
+.overflow-visible {
+  overflow: visible;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+/* Horizontal Overflow */
+
+.overflow-x-visible {
+  overflow-x: visible;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.overflow-x-scroll {
+  overflow-x: scroll;
+}
+
+/* Vertical Overflow */
+
+.overflow-y-visible {
+  overflow-y: visible;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+/* Text Overflow (for handling text truncation) */
+
+.text-overflow-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* Dividers */
 
 @mixin divider($color: $color-primary-500, $height: 2px) {
   width: 100%;
   height: $height;
-  background: linear-gradient(
-    to right,
-    $surface-100,
-    $color-primary-500,
-    $surface-100
-  );
+  background: linear-gradient(to right, $surface-100, $color, $surface-100);
 }
 .divider-green {
   @include divider;
+}
+.divider-gray {
+  @include divider($gray-300, 1px);
+}
+.divider-gray.solid {
+  background: $gray-300;
 }
 
 /* Icons */

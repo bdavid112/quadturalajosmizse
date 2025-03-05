@@ -26,11 +26,17 @@
   cursor: pointer;
   margin-block: $space-xs;
 
-  &:hover {
+  &:focus {
+    border-radius: $radius-full;
+  }
+
+  &:hover,
+  &:focus {
     color: $text-inverted;
   }
 
-  &:hover .calendar-cell-background {
+  &:hover .calendar-cell-background,
+  &:focus .calendar-cell-background {
     background-color: $color-primary-500;
     border-radius: $radius-full;
   }
@@ -38,6 +44,15 @@
 
 .calendar-today {
   color: $color-primary-500;
-  border: 1px solid $color-primary-500;
-  border-radius: $radius-full;
+
+  .calendar-cell-background {
+    border: 1px solid $color-primary-500;
+    border-radius: $radius-full;
+  }
+}
+
+.calendar-cell-active {
+  .calendar-cell-background {
+    background-color: $color-primary-600 !important;
+  }
 }

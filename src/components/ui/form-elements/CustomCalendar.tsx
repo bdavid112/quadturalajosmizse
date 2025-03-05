@@ -12,21 +12,21 @@ import './custom-calendar.scss'
 import CustomOption from './CustomOption'
 
 interface Props {
-  onClick?: () => void
+  lang?: string
   currentDate?: Date
   minYear?: number
   maxYear?: number
-  lang?: string
+  onDateSelect?: (date: Date) => void
 }
 
 const CustomCalendar: React.FunctionComponent<Props> = ({
-  onClick,
+  lang = 'hu',
   currentDate = new Date(),
   minYear = 2000,
   maxYear = 2100,
-  lang = 'hu',
+  onDateSelect: onDateSelect,
 }) => {
-  /* Dict of day labels localized to selected language */
+  /* Array of day labels localized */
 
   const dayLabels = [
     {
@@ -51,6 +51,14 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
     yearOptions.push({ label: i.toString(), value: i })
   }
 
+  /* Array of options for month selecting localized */
+
+  const monthOptions = []
+  for (let i = 0; i < 12; i++) {
+    const month = t(`ui.calendar.months.long.${i}`, lang)
+    monthOptions.push({ label: month, value: i })
+  }
+
   /* State variables */
 
   const [calendarDays, setCalendarDays] = useState(
@@ -58,12 +66,16 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
   )
   const [selectedYear, setSelectedYear] = useState(currentDate.getFullYear())
   const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth())
-  const [yearView, setYearView] = useState(true)
+  const [yearView, setYearView] = useState(false)
   const [monthView, setMonthView] = useState(false)
+  const [focusedDateIndex, setFocusedDateIndex] = useState(0)
+  const [activeDateIndex, setActiveDateIndex] = useState(0)
 
   /* Refs */
 
-  const currentYearOptionRef = useRef<HTMLDivElement>(null)
+  const selectedYearOptionRef = useRef<HTMLDivElement>(null)
+  const selectedMonthOptionRef = useRef<HTMLDivElement>(null)
+  const dateRefs = useRef<(HTMLDivElement | null)[]>([])
 
   /* Effects */
 
@@ -74,13 +86,29 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
   }, [selectedYear, selectedMonth])
 
   useEffect(() => {
-    if (yearView && currentYearOptionRef.current) {
-      currentYearOptionRef.current.scrollIntoView({
+    if (yearView && selectedYearOptionRef.current) {
+      selectedYearOptionRef.current.scrollIntoView({
         behavior: 'instant',
         block: 'center',
       })
     }
   }, [yearView])
+
+  useEffect(() => {
+    if (monthView && selectedMonthOptionRef.current) {
+      selectedMonthOptionRef.current.scrollIntoView({
+        behavior: 'instant',
+        block: 'center',
+      })
+    }
+  }, [monthView])
+
+  useEffect(() => {
+    if (focusedDateIndex) {
+      dateRefs.current[focusedDateIndex]?.focus()
+    }
+    console.log(dateRefs)
+  }, [focusedDateIndex])
 
   /* Increase/decrease the value of selected year and month on left and right arrow button clicks within the bounds  */
 
@@ -100,7 +128,60 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
     setSelectedMonth(newValue)
   }
 
-  /* Helper function to style the current day in the calendar */
+  /* Handles for keyboard navigation */
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    switch (e.key) {
+      case 'ArrowLeft':
+        e.preventDefault()
+        changeDateIndex(focusedDateIndex - 1, setFocusedDateIndex)
+        break
+      case 'ArrowRight':
+        e.preventDefault()
+        changeDateIndex(focusedDateIndex + 1, setFocusedDateIndex)
+        break
+      case 'ArrowUp':
+        e.preventDefault()
+        changeDateIndex(
+          focusedDateIndex - dayLabels.length,
+          setFocusedDateIndex,
+          true
+        )
+        break
+      case 'ArrowDown':
+        e.preventDefault()
+        changeDateIndex(
+          focusedDateIndex + dayLabels.length,
+          setFocusedDateIndex,
+          true
+        )
+        break
+      case 'Enter':
+        if (focusedDateIndex > 0 && focusedDateIndex <= calendarDays.length) {
+          e.preventDefault()
+          setActiveDateIndex(focusedDateIndex)
+        }
+        break
+    }
+  }
+
+  const handleKeyUp = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    switch (e.key) {
+      case 'Enter':
+        if (activeDateIndex > 0 && activeDateIndex <= calendarDays.length) {
+          e.preventDefault()
+          onDateSelect &&
+            onDateSelect(new Date(selectedYear, selectedMonth, activeDateIndex))
+          setActiveDateIndex(0)
+          setFocusedDateIndex(0)
+        }
+        break
+    }
+  }
+
+  /* Helper functions */
+
+  // Style the current day in the calendar
 
   const isToday = (day: number) => {
     return (
@@ -108,6 +189,36 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
       selectedMonth == currentDate.getMonth() &&
       day == currentDate.getDate()
     )
+  }
+
+  // Set values only within bounds
+
+  /* TODO Tidy up */
+  const changeDateIndex = (
+    newValue: number,
+    setter: React.Dispatch<React.SetStateAction<number>>,
+    week: boolean = false
+  ) => {
+    const filteredCalendarDays = calendarDays.filter((day) => day != null)
+    if (newValue <= 0) {
+      if (week) {
+        while (newValue + dayLabels.length <= filteredCalendarDays.length) {
+          newValue = newValue + dayLabels.length
+        }
+      } else {
+        newValue = filteredCalendarDays.length
+      }
+    }
+    if (newValue > filteredCalendarDays.length) {
+      if (week) {
+        while (newValue - dayLabels.length > 0) {
+          newValue = newValue - dayLabels.length
+        }
+      } else {
+        newValue = 1
+      }
+    }
+    setter(newValue)
   }
 
   return (
@@ -132,8 +243,10 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
               label={selectedYear.toString()}
               small={true}
               rotate={true}
+              isParentOpen={yearView}
               onClick={() => {
                 setYearView(!yearView)
+                setMonthView(false)
               }}
             ></InputButton>
             {!yearView && !monthView && (
@@ -162,6 +275,12 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
               icon="keyboard_arrow_down"
               label={formatMonthToString(selectedMonth, lang)}
               small={true}
+              rotate={true}
+              isParentOpen={monthView}
+              onClick={() => {
+                setYearView(false)
+                setMonthView(!monthView)
+              }}
             ></InputButton>
             {!yearView && !monthView && (
               <InputButton
@@ -176,7 +295,7 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
           </div>
         </div>
       </div>
-      {!yearView && (
+      {!yearView && !monthView && (
         <>
           <div className="calendar-row calendar-headrow">
             {dayLabels.map((day, index) => (
@@ -193,7 +312,28 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
             {calendarDays.map((day, index) => (
               <div
                 key={index}
-                className={`relative calendar-cell flex align-center justify-center transition-ease-out ${!day ? 'cursor-default' : ''} ${day && isToday(day) ? 'calendar-today' : ''}`}
+                className={`relative calendar-cell flex align-center justify-center transition-ease-out ${day == activeDateIndex ? 'calendar-cell-active' : ''} ${!day ? 'cursor-default' : ''} ${day && isToday(day) ? 'calendar-today' : ''}`}
+                ref={(el) => {
+                  if (day) {
+                    dateRefs.current[day] = el
+                  }
+                }}
+                onClick={() => {
+                  if (onDateSelect && day) {
+                    onDateSelect(new Date(selectedYear, selectedMonth, day))
+                  }
+                }}
+                onKeyDown={(e) => {
+                  handleKeyDown(e)
+                }}
+                onKeyUp={(e) => {
+                  handleKeyUp(e)
+                }}
+                onFocus={() => {
+                  day && setFocusedDateIndex(day)
+                }}
+                role="button"
+                tabIndex={day ? 0 : -1}
               >
                 <p className="z-overlay">{day ? day : ''}</p>
                 {day && (
@@ -212,7 +352,7 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
           <div className="max-height-lg col-7 overflow-y-scroll">
             {yearOptions.map((year, index) => {
               const refProp =
-                year.value == selectedYear ? { ref: currentYearOptionRef } : {}
+                year.value == selectedYear ? { ref: selectedYearOptionRef } : {}
 
               return (
                 <div key={index} {...refProp}>
@@ -225,6 +365,37 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
                     onClick={() => {
                       setSelectedYear(year.value)
                       setYearView(false)
+                    }}
+                  ></CustomOption>
+                </div>
+              )
+            })}
+          </div>
+        </>
+      )}
+      {monthView && (
+        <>
+          <div className="calendar-row">
+            <div className="divider-gray solid col-7 margin-y-sm"></div>
+          </div>
+          <div className="max-height-lg col-7 overflow-y-scroll">
+            {monthOptions.map((month, index) => {
+              const refProp =
+                month.value == selectedMonth
+                  ? { ref: selectedMonthOptionRef }
+                  : {}
+
+              return (
+                <div key={index} {...refProp}>
+                  <CustomOption
+                    option={{ label: month.label, value: month.value }}
+                    isActive={false}
+                    isFocused={false}
+                    icon="check"
+                    isSelected={month.value == selectedMonth}
+                    onClick={() => {
+                      setSelectedMonth(month.value)
+                      setMonthView(false)
                     }}
                   ></CustomOption>
                 </div>

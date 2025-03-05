@@ -29,7 +29,7 @@ const CustomOption: React.FunctionComponent<Props> = ({
       key={option.value}
       className={`min-height-lg flex justify-between align-center padding-x-lg cursor-pointer custom-option transition-ease-out ${isFocused ? 'custom-option-focus' : ''} ${isActive ? 'custom-option-active' : ''}`}
       role="option"
-      /* aria-selected={selectedOption?.value === option.value} */
+      aria-selected={isSelected}
       onClick={() => {
         onClick && onClick()
       }}

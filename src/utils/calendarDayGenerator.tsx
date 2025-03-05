@@ -27,6 +27,12 @@ export const generateCalendarDays = (date: Date, lang: string = 'hu') => {
 
 /* Format month from number to string */
 
-export const formatMonthToString = (month: number, lang: string = 'hu') => {
-  return t(`ui.calendar.months.${month}`, lang)
+export const formatMonthToString = (
+  month: number,
+  lang: string = 'hu',
+  short: boolean = true
+) => {
+  return short
+    ? t(`ui.calendar.months.short.${month}`, lang)
+    : t(`ui.calendar.months.long.${month}`, lang)
 }

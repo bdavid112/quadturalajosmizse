@@ -4,23 +4,21 @@ import './date-picker-outline.scss'
 import { useEffect, useRef, useState } from 'react'
 import InputButton from '../buttons/InputButton'
 import CustomCalendar from './CustomCalendar'
-
-interface Option {
-  value: number
-  label: string
-}
+import { t } from '../../../utils/translator'
 
 interface Props {
+  lang?: string
   id: string
   name: string
   label: string
   error?: boolean
   helperText: string
-  defaultValue?: Option
-  onChange?: (option: Option) => void
+  defaultValue?: Date
+  onChange?: (date: Date) => void
 }
 
 const DatePickerOutline: React.FunctionComponent<Props> = ({
+  lang = 'hu',
   id,
   name,
   label,
@@ -29,12 +27,10 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
   defaultValue,
   onChange,
 }) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [selectedOption, setSelectedOption] = useState(
+  const [isOpen, setIsOpen] = useState(true)
+  const [selectedDate, setSelectedDate] = useState(
     defaultValue ? defaultValue : null
   )
-  const [focusedOptionValue, setFocusedOptionValue] = useState(0)
-  const [activeOptionValue, setActiveOptionValue] = useState(0)
 
   const containerRef = useRef<HTMLDivElement>(null)
   const calendarContainerRef = useRef<HTMLDivElement>(null)
@@ -49,7 +45,6 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
         !containerRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false)
-        setFocusedOptionValue(0)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -60,15 +55,14 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
 
   useEffect(() => {
     const handleCloseOnKeyDown = (event: KeyboardEvent) => {
-      if (isOpen && (event.key == 'Tab' || event.key == 'Escape')) {
+      if (isOpen && (event.key == '' || event.key == 'Escape')) {
         setIsOpen(false)
-        setFocusedOptionValue(0)
       }
     }
 
     if (isOpen && calendarContainerRef.current) {
       calendarContainerRef.current.focus()
-    } else if (!isOpen && buttonRef.current && selectedOption) {
+    } else if (!isOpen && buttonRef.current && selectedDate) {
       buttonRef.current.focus()
     }
 
@@ -86,9 +80,9 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
 
   /* Handle selecting an option */
 
-  const handleOptionClick = (option: Option) => {
-    setSelectedOption(option)
-    onChange && onChange(option)
+  const handleDateSelect = (date: Date) => {
+    setSelectedDate(date)
+    onChange && onChange(date)
     setIsOpen(false)
   }
 
@@ -115,7 +109,7 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
   const handleEnterKeyDown = (event: React.KeyboardEvent) => {
     if (isOpen && event.key == 'Enter') {
       event.preventDefault()
-      if (focusedOptionValue > 0) setActiveOptionValue(focusedOptionValue)
+      /* if (focusedOptionValue > 0) setActiveOptionValue(focusedOptionValue) */
     }
   }
 
@@ -142,7 +136,9 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
             {label}
           </label>
           <span className="padding-x-lg width-full absolute user-select-none">
-            {selectedOption ? selectedOption.label : 'Pick a date'}
+            {selectedDate
+              ? selectedDate.toLocaleDateString()
+              : `${t('ui.calendar.placeholder-text', lang)}`}
           </span>
           <div className="button-container absolute z-overlay flex">
             <InputButton
@@ -157,7 +153,7 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
           <input
             id={id}
             name={name}
-            value={selectedOption ? selectedOption.value : 0}
+            value={selectedDate ? selectedDate.toLocaleString() : 0}
             type="date"
             className="cursor-pointer relative z-base min-height-lg width-full font-size-base input-field padding-x-lg background-transparent custom-date-picker"
             onClick={() => {
@@ -169,12 +165,12 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
         </div>
         <div className="padding-x-lg">
           <span
-            className={`font-size-caption text-secondary ${1 ? 'hidden' : ''} ${error ? 'text-error' : ''}`}
+            className={`font-size-caption text-secondary ${isOpen ? 'hidden' : ''} ${error ? 'text-error' : ''}`}
           >
             {helperText}
           </span>
         </div>
-        {1 && (
+        {isOpen && (
           <div
             ref={calendarContainerRef}
             onKeyDown={(e) => {
@@ -186,9 +182,11 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
               /*  handleEnterKeyUp(e) */
             }}
             className="option-container border-rounded-sm box-shadow-medium"
-            tabIndex={0}
           >
-            <CustomCalendar></CustomCalendar>
+            <CustomCalendar
+              lang={lang}
+              onDateSelect={handleDateSelect}
+            ></CustomCalendar>
           </div>
         )}
       </div>

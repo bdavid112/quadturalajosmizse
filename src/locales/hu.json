@@ -3,18 +3,34 @@
     "calendar": {
       "placeholder-text": "Válassz egy dátumot",
       "months": {
-        "0": "Jan",
-        "1": "Febr",
-        "2": "Márc",
-        "3": "Ápr",
-        "4": "Máj",
-        "5": "Jún",
-        "6": "Júl",
-        "7": "Aug",
-        "8": "Szept",
-        "9": "Okt",
-        "10": "Nov",
-        "11": "Dec"
+        "short": {
+          "0": "Jan",
+          "1": "Febr",
+          "2": "Márc",
+          "3": "Ápr",
+          "4": "Máj",
+          "5": "Jún",
+          "6": "Júl",
+          "7": "Aug",
+          "8": "Szept",
+          "9": "Okt",
+          "10": "Nov",
+          "11": "Dec"
+        },
+        "long": {
+          "0": "Január",
+          "1": "Február",
+          "2": "Március",
+          "3": "Április",
+          "4": "Május",
+          "5": "Június",
+          "6": "Július",
+          "7": "Augusztus",
+          "8": "Szeptemper",
+          "9": "Október",
+          "10": "November",
+          "11": "December"
+        }
       },
       "days": {
         "0": "H",

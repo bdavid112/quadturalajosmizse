@@ -1,32 +1,46 @@
-import { useEffect, useRef } from 'react'
 import '/src/styles/utilities.scss'
+import CustomOption from './CustomOption'
+import { useOptionsMenu } from '../../../hooks/useOptionsMenu'
 
-interface Props {
-  isOpen: boolean
-  selectedValue: number
-  children: React.ReactNode
+interface Option {
+  value: number
+  label: string
 }
 
-const OptionsMenu: React.FunctionComponent<Props> = ({ isOpen, children }) => {
-  const menuRef = useRef<HTMLDivElement>(null)
+interface Props {
+  options: Option[]
+  selectedOptionValue: number
+  handleOptionClick?: (optionValue: number) => void
+}
 
-  /* Scroll into view when the menu opens */
-  useEffect(() => {
-    if (isOpen && menuRef.current) {
-      const selectedOption = menuRef.current.querySelector(
-        `[aria-selected="true"]`
-      ) as HTMLDivElement
+const OptionsMenu: React.FunctionComponent<Props> = ({
+  options,
+  selectedOptionValue,
+  handleOptionClick,
+}) => {
+  const { menuRef, optionRefs, handleKeyDown } = useOptionsMenu(options.length)
 
-      if (selectedOption) {
-        selectedOption.scrollIntoView({
-          behavior: 'instant',
-          block: 'center',
-        })
-      }
-    }
-  }, [isOpen])
-
-  return <div ref={menuRef}>{children}</div>
+  return (
+    <div ref={menuRef}>
+      {options.map((option) => (
+        <CustomOption
+          ref={(el) => {
+            if (option) {
+              optionRefs.current[option.value] = el
+            }
+          }}
+          key={option.value}
+          icon="check"
+          option={option}
+          isSelected={option.value == selectedOptionValue}
+          onClick={() => {
+            handleOptionClick && handleOptionClick(option.value)
+          }}
+          onKeyDown={handleKeyDown}
+        ></CustomOption>
+      ))}
+    </div>
+  )
 }
 
 export default OptionsMenu

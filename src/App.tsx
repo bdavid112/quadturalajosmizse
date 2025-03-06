@@ -41,7 +41,7 @@ function App() {
                 min={2}
                 max={4}
                 error={false}
-              ></NumberInputOutline>
+              ></NumberInputOutline> */}
               <DropdownOutline
                 id={useId()}
                 name="dropdown"
@@ -53,7 +53,7 @@ function App() {
                   { label: 'Option 2', value: 2 },
                 ]}
               ></DropdownOutline>
-              <TextAreaOutline
+              {/* <TextAreaOutline
                 id={useId()}
                 name="textarea"
                 label="Text area"

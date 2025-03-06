@@ -9,6 +9,7 @@ import {
 export const useCalendarDayView = (
   lang: string,
   currentDate: Date,
+  closeDatePicker: () => void,
   onDateSelect?: (date: Date) => void
 ) => {
   /* Array of localized calendar days of the selected month */
@@ -34,12 +35,11 @@ export const useCalendarDayView = (
     if (focusedDateIndex) {
       dateRefs.current[focusedDateIndex]?.focus()
     }
-    console.log(dateRefs)
   }, [focusedDateIndex])
 
   /* Set values only within bounds */
 
-  const changeDateIndex = (
+  const changeStateVariable = (
     newValue: number,
     setter: React.Dispatch<React.SetStateAction<number>>,
     week: boolean = false
@@ -65,7 +65,7 @@ export const useCalendarDayView = (
 
     if (directionMap[e.key] !== undefined) {
       e.preventDefault()
-      changeDateIndex(
+      changeStateVariable(
         focusedDateIndex + directionMap[e.key],
         setFocusedDateIndex,
         e.key.includes('ArrowUp') || e.key.includes('ArrowDown')
@@ -79,6 +79,13 @@ export const useCalendarDayView = (
     ) {
       e.preventDefault()
       setActiveDateIndex(focusedDateIndex)
+    }
+
+    if (
+      e.key === 'Tab' &&
+      focusedDateIndex == calendarDays[calendarDays.length - 1]
+    ) {
+      closeDatePicker()
     }
   }
 

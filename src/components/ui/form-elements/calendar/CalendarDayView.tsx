@@ -1,22 +1,24 @@
 import * as React from 'react'
-import { isToday } from '../../../utils/calendarUtils'
+import { isToday } from '../../../../utils/calendarUtils'
 
 import '/src/styles/utilities.scss'
 import './custom-calendar.scss'
-import { useCalendarDayView } from '../../../hooks/useCalendarDayView'
+import { useCalendarDayView } from '../../../../hooks/useCalendarDayView'
 
 interface Props {
   lang?: string
   selectedYear: number
   selectedMonth: number
   onDateSelect?: (date: Date) => void
+  closeDatePicker: () => void
 }
 
 const CalendarDayView: React.FunctionComponent<Props> = ({
   lang = 'hu',
   selectedYear,
   selectedMonth,
-  onDateSelect: onDateSelect,
+  onDateSelect,
+  closeDatePicker,
 }) => {
   const {
     dayLabels,
@@ -29,6 +31,7 @@ const CalendarDayView: React.FunctionComponent<Props> = ({
   } = useCalendarDayView(
     lang,
     new Date(selectedYear, selectedMonth),
+    closeDatePicker,
     onDateSelect
   )
 

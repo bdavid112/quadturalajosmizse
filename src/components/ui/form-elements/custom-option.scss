@@ -6,11 +6,12 @@
 }
 
 @mixin custom-option-active {
-  background-color: $gray-200;
+  background-color: $gray-200 !important;
 }
 
-.custom-option-focus {
+@mixin custom-option-focus {
   @include custom-option-hover();
+  outline-offset: -2px;
 }
 
 .custom-option-active {
@@ -34,5 +35,9 @@
 
   &:active {
     @include custom-option-active();
+  }
+
+  &:focus {
+    @include custom-option-focus();
   }
 }

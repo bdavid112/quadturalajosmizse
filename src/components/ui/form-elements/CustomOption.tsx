@@ -26,8 +26,9 @@ const CustomOption: React.FunctionComponent<Props> = ({
 }) => {
   return (
     <div
-      key={option.value}
-      className={`min-height-lg flex justify-between align-center padding-x-lg cursor-pointer custom-option transition-ease-out ${isFocused ? 'custom-option-focus' : ''} ${isActive ? 'custom-option-active' : ''}`}
+      className={`min-height-lg flex justify-between align-center padding-x-lg cursor-pointer custom-option transition-ease-out ${
+        isFocused ? 'custom-option-focus' : ''
+      } ${isActive ? 'custom-option-active' : ''}`}
       role="option"
       aria-selected={isSelected}
       onClick={() => {

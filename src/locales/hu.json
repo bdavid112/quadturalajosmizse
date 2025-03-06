@@ -33,13 +33,13 @@
         }
       },
       "days": {
-        "0": "H",
-        "1": "K",
-        "2": "SZ",
-        "3": "CS",
-        "4": "P",
-        "5": "SZ",
-        "6": "V"
+        "0": { "label": "H", "weekend": false },
+        "1": { "label": "K", "weekend": false },
+        "2": { "label": "SZ", "weekend": false },
+        "3": { "label": "CS", "weekend": false },
+        "4": { "label": "P", "weekend": false },
+        "5": { "label": "SZ", "weekend": true },
+        "6": { "label": "V", "weekend": true }
       }
     }
   },

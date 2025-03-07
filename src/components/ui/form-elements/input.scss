@@ -1,5 +1,7 @@
 @import '/src/styles/tokens.scss';
 
+$input-container-min-width: 19.5rem;
+
 @mixin label-focused($color: $color-primary-500, $transform: -135%) {
   font-size: $font-size-sm;
   padding-inline: $space-sm !important;
@@ -27,8 +29,8 @@
 
 .input-label {
   transition:
-    font-size ease-in 70ms,
-    transform ease-in 70ms;
+    font-size $bezier-fast,
+    transform $bezier-fast;
   background-color: transparent;
   cursor: text;
   user-select: none;
@@ -36,6 +38,7 @@
 }
 
 .input-container {
+  min-width: $input-container-min-width;
   border-radius: $radius-sm;
 
   &:focus-within {

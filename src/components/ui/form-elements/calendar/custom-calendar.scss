@@ -1,13 +1,25 @@
 @import '/src/styles/tokens.scss';
 
+$view-container-width: 18rem;
+$view-container-height: 21.5rem;
+
 @mixin calendar-cell-size {
   min-height: $space-3xl;
   min-width: $space-3xl;
 }
 
+.view-container {
+  width: $view-container-width;
+  height: $view-container-height;
+}
+
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-options-menu {
+  height: calc($view-container-height - 2 * $space-md);
 }
 
 .calendar-headrow {

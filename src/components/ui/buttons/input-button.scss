@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  transition: all linear 90ms;
+  transition: all $bezier-fast;
 
   &:hover,
   &:focus-visible {
@@ -24,7 +24,7 @@
 
   span {
     color: $text-muted;
-    transition: all linear 90ms;
+    transition: all $bezier-fast;
   }
 }
 
@@ -42,14 +42,14 @@
 
 .input-button {
   @include input-button();
-  min-height: 56px;
-  min-width: 56px;
+  min-height: 3.5rem;
+  min-width: 3.5rem;
 }
 
 .input-button-small {
   @include input-button();
-  min-height: 40px;
-  min-width: 40px;
+  min-height: 2.5rem;
+  min-width: 2.5rem;
 }
 
 .label-input-button {

@@ -5,6 +5,7 @@ import * as React from 'react'
 import { useRef, useState } from 'react'
 import InputButton from '../buttons/InputButton'
 import OptionsMenu from './OptionsMenu'
+import { useAutoClose } from '../../../hooks/useAutoClose'
 
 interface Option {
   value: number
@@ -43,6 +44,14 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
 
   const containerRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
+
+  /* Callback function to close the date picker */
+
+  const closeDropdown = () => setIsOpen(false)
+
+  /* Custom hook to close the date picker if the users tabs out */
+
+  useAutoClose(containerRef, isOpen, closeDropdown)
 
   /* Handle selecting an option */
 

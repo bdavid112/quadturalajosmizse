@@ -20,10 +20,10 @@ const CalendarMonthView: React.FunctionComponent<Props> = ({
 
   return (
     <>
-      <div className="calendar-row">
-        <div className="divider-gray solid col-7 margin-y-sm"></div>
+      <div className="padding-y-md">
+        <div className="divider-gray solid"></div>
       </div>
-      <div className="max-height-lg col-7 overflow-y-scroll">
+      <div className="calendar-options-menu overflow-y-scroll">
         <OptionsMenu
           options={monthOptions}
           selectedOptionValue={selectedMonth}

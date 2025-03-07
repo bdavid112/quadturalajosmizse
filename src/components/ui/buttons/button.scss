@@ -1,21 +1,23 @@
+@mixin button-transition {
+  transition:
+    background-color $bezier-fast,
+    box-shadow $bezier-fast;
+}
+
 @mixin button {
   font-size: $font-size-base;
-  min-height: 56px;
+  min-height: 3.5rem;
   max-height: fit-content;
   border: none;
   border-radius: $radius-sm;
-  transition:
-    background-color linear 100ms,
-    box-shadow linear 100ms;
+  @include button-transition();
 }
 
 @mixin button-outline {
   font-size: $font-size-base;
-  min-height: 56px;
+  min-height: 3.5rem;
   max-height: fit-content;
   border-radius: $radius-sm;
   background-color: $surface-100;
-  transition:
-    background-color linear 100ms,
-    box-shadow linear 100ms;
+  @include button-transition();
 }

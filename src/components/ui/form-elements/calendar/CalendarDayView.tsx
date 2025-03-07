@@ -52,7 +52,7 @@ const CalendarDayView: React.FunctionComponent<Props> = ({
         {calendarDays.map((day, index) => (
           <div
             key={index}
-            className={`relative calendar-cell flex align-center justify-center transition-ease-out ${day == activeDateIndex ? 'calendar-cell-active' : ''} ${!day ? 'cursor-default' : ''} ${day && isToday(selectedYear, selectedMonth, day) ? 'calendar-today' : ''}`}
+            className={`relative calendar-cell flex align-center justify-center transition-bezier-fast ${day == activeDateIndex ? 'calendar-cell-active' : ''} ${!day ? 'cursor-default' : ''} ${day && isToday(selectedYear, selectedMonth, day) ? 'calendar-today' : ''}`}
             ref={(el) => {
               if (day) {
                 dateRefs.current[day] = el

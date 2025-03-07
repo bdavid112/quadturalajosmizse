@@ -59,7 +59,7 @@ const InputButton = React.forwardRef<HTMLButtonElement, Props>(
           <span className="text-secondary font-size-secondary">{label}</span>
         )}
         <span
-          className={`material-symbols-rounded size-20 transition-ease-in ${
+          className={`material-symbols-rounded size-20 transition-bezier-fast ${
             rotate && isParentOpen ? 'rotate-180' : ''
           }`}
         >

@@ -15,6 +15,7 @@ interface Props {
   icon?: string
   onClick?: () => void
   onKeyDown?: (e: React.KeyboardEvent<HTMLDivElement>) => void
+  onKeyUp?: (e: React.KeyboardEvent<HTMLDivElement>) => void
 }
 
 const CustomOption = React.forwardRef<HTMLDivElement, Props>(
@@ -24,7 +25,7 @@ const CustomOption = React.forwardRef<HTMLDivElement, Props>(
     return (
       <div
         ref={ref}
-        className={`min-height-lg flex justify-between align-center padding-x-lg cursor-pointer custom-option transition-ease-out ${isActive ? 'custom-option-active' : ''}`}
+        className={`min-height-lg flex justify-between align-center padding-x-lg cursor-pointer custom-option transition-bezier-fast ${isActive ? 'custom-option-active' : ''}`}
         role="option"
         aria-selected={isSelected}
         onClick={() => {
@@ -46,9 +47,13 @@ const CustomOption = React.forwardRef<HTMLDivElement, Props>(
         }}
         tabIndex={0}
       >
-        {option.label}
+        <span className={`${isSelected ? 'font-medium' : ''}`}>
+          {option.label}
+        </span>
         {icon && isSelected && (
-          <span className="material-symbols-rounded size-20 transition-ease-in">
+          <span
+            className={`material-symbols-rounded size-20 transition-bezier-fast`}
+          >
             {icon}
           </span>
         )}

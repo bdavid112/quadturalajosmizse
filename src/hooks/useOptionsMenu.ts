@@ -54,6 +54,7 @@ export const useOptionsMenu = (optionsLength: number) => {
 
     if (directionMap[e.key] !== undefined) {
       e.preventDefault()
+      console.log(e.key)
       changeFocusedOptionValue(focusedOptionValue + directionMap[e.key])
     }
 

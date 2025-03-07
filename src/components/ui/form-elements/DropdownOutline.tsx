@@ -2,9 +2,11 @@ import '/src/styles/utilities.scss'
 import './dropdown-outline.scss'
 
 import * as React from 'react'
-import { useRef, useState } from 'react'
 import InputButton from '../buttons/InputButton'
 import OptionsMenu from './OptionsMenu'
+import CustomOption from './CustomOption'
+import { useDropdown } from '../../../hooks/useDropdown'
+import { useKeyboardMenu } from '../../../hooks/useKeyboardMenu'
 import { useAutoClose } from '../../../hooks/useAutoClose'
 
 interface Option {
@@ -33,46 +35,43 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
   defaultValue,
   onChange,
 }) => {
-  /* State variables */
+  /* Dropdown state manager */
 
-  const [isOpen, setIsOpen] = useState(false)
-  const [selectedOption, setSelectedOption] = useState(
-    defaultValue ? defaultValue : null
-  )
+  const {
+    isOpen,
+    setIsOpen,
+    selectedOption,
+    componentContainerRef,
+    inputContainerRef,
+    toggleIsOpen,
+    setSelectedOption,
+    closeDropdown,
+  } = useDropdown(defaultValue)
 
-  /* Refs */
+  /* Keyboard navigation for dropdown menu */
 
-  const containerRef = useRef<HTMLDivElement>(null)
-  const buttonRef = useRef<HTMLButtonElement>(null)
+  const {
+    focusedOptionIndex,
+    activeOptionIndex,
+    optionRefs,
+    handleKeyDown,
+    handleKeyUp,
+    handleOptionClick,
+  } = useKeyboardMenu(isOpen, options, setSelectedOption, setIsOpen, onChange)
 
-  /* Callback function to close the date picker */
+  /* Close dropdown on clicking outside the container or pressing ESC */
 
-  const closeDropdown = () => setIsOpen(false)
-
-  /* Custom hook to close the date picker if the users tabs out */
-
-  useAutoClose(containerRef, isOpen, closeDropdown)
-
-  /* Handle selecting an option */
-
-  const handleOptionClick = (optionValue: number) => {
-    const option = options.find((o) => o.value == optionValue)
-    if (option) {
-      setSelectedOption(option)
-      onChange && onChange(option)
-      setIsOpen(false)
-    }
-  }
-
-  const toggleIsOpen = () => {
-    setIsOpen(!isOpen)
-  }
+  useAutoClose(componentContainerRef, isOpen, closeDropdown)
 
   return (
     <>
-      <div ref={containerRef}>
+      <div ref={componentContainerRef}>
         <div
+          tabIndex={0}
           className={`flex align-center min-width-md relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${error ? 'border-error' : ''}`}
+          onKeyDown={(e) => handleKeyDown(e)}
+          onKeyUp={(e) => handleKeyUp(e)}
+          ref={inputContainerRef}
         >
           <label
             htmlFor={id}
@@ -85,7 +84,6 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
           </span>
           <div className="button-container absolute z-overlay flex">
             <InputButton
-              ref={buttonRef}
               icon={'keyboard_arrow_down'}
               onClick={() => {
                 toggleIsOpen()
@@ -100,7 +98,7 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
             value={selectedOption ? selectedOption.value : 0}
             className="relative z-base min-height-lg width-full font-size-base input-field padding-x-lg background-transparent"
             onClick={() => {
-              setIsOpen(!isOpen)
+              toggleIsOpen()
             }}
             onChange={() => {}}
             tabIndex={-1}
@@ -115,11 +113,28 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
         </div>
         {isOpen && (
           <div className="option-container border-rounded-sm box-shadow-medium">
-            <OptionsMenu
-              options={options}
-              selectedOptionValue={selectedOption ? selectedOption.value : -1}
-              handleOptionClick={handleOptionClick}
-            ></OptionsMenu>
+            <OptionsMenu selectedOptionValue={selectedOption?.value}>
+              {options.map((option, index) => (
+                <CustomOption
+                  ref={(el) => {
+                    if (option) {
+                      optionRefs.current[index] = el
+                    }
+                  }}
+                  key={index}
+                  icon="check"
+                  option={option}
+                  isSelected={option.value == selectedOption?.value}
+                  isFocused={focusedOptionIndex == index}
+                  isActive={activeOptionIndex == index}
+                  onClick={() => {
+                    handleOptionClick && handleOptionClick(option.value)
+                    inputContainerRef.current &&
+                      inputContainerRef.current.focus()
+                  }}
+                ></CustomOption>
+              ))}
+            </OptionsMenu>
           </div>
         )}
       </div>

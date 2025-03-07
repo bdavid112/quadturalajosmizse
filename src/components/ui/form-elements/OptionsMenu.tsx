@@ -1,46 +1,28 @@
 import '/src/styles/utilities.scss'
 import CustomOption from './CustomOption'
 import { useOptionsMenu } from '../../../hooks/useOptionsMenu'
-
-interface Option {
-  value: number
-  label: string
-}
+import { ReactNode } from 'react'
 
 interface Props {
-  options: Option[]
-  selectedOptionValue: number
+  selectedOptionValue?: number
   handleOptionClick?: (optionValue: number) => void
+  closeParent?: () => void
+  children?: ReactNode
 }
 
 const OptionsMenu: React.FunctionComponent<Props> = ({
-  options,
   selectedOptionValue,
   handleOptionClick,
+  closeParent,
+  children,
 }) => {
-  const { menuRef, optionRefs, handleKeyDown } = useOptionsMenu(options.length)
+  /* const { menuRef, optionRefs, handleKeyDown } = useOptionsMenu(
+ 
+    selectedOptionValue,
+    closeParent
+  ) */
 
-  return (
-    <div ref={menuRef}>
-      {options.map((option) => (
-        <CustomOption
-          ref={(el) => {
-            if (option) {
-              optionRefs.current[option.value] = el
-            }
-          }}
-          key={option.value}
-          icon="check"
-          option={option}
-          isSelected={option.value == selectedOptionValue}
-          onClick={() => {
-            handleOptionClick && handleOptionClick(option.value)
-          }}
-          onKeyDown={handleKeyDown}
-        ></CustomOption>
-      ))}
-    </div>
-  )
+  return <div /* ref={menuRef} */>{children}</div>
 }
 
 export default OptionsMenu

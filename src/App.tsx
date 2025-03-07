@@ -27,7 +27,7 @@ function App() {
         <div className="row">
           <div className="col-12 width-full">
             <div className="flex flex-gap-lg">
-              <TextInputOutline
+              {/* <TextInputOutline
                 id={useId()}
                 name="name"
                 label="Text input"
@@ -42,7 +42,7 @@ function App() {
                 min={2}
                 max={4}
                 error={false}
-              ></NumberInputOutline>
+              ></NumberInputOutline> */}
               <DropdownOutline
                 id={useId()}
                 name="dropdown"
@@ -54,14 +54,14 @@ function App() {
                   { label: 'Option 2', value: 2 },
                 ]}
               ></DropdownOutline>
-              <TextAreaOutline
+              {/*     <TextAreaOutline
                 id={useId()}
                 name="textarea"
                 label="Text area"
                 helperText="Helper text"
                 maxLength={250}
                 error={false}
-              ></TextAreaOutline>
+              ></TextAreaOutline> */}
               <DatePickerOutline
                 id={useId()}
                 name="calendar"

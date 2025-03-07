@@ -1,11 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
-export const useOptionsMenu = (optionsLength: number) => {
-  /* State variables */
-
-  const [focusedOptionValue, setFocusedOptionValue] = useState(0)
-  const [activeOptionValue, setActiveOptionValue] = useState(0)
-
+export const useOptionsMenu = () => {
   /* Refs */
 
   const menuRef = useRef<HTMLDivElement>(null)
@@ -28,49 +23,8 @@ export const useOptionsMenu = (optionsLength: number) => {
     }
   }, [])
 
-  /* Only change focusedOptionValue within bounds */
-
-  const changeFocusedOptionValue = (newValue: number) => {
-    if (newValue <= 0) newValue = optionsLength
-    if (newValue > optionsLength) newValue = 1
-    setFocusedOptionValue(newValue)
+  return {
+    menuRef,
+    optionRefs,
   }
-
-  /* Auto-focus on the newly selected date */
-
-  useEffect(() => {
-    if (focusedOptionValue) {
-      optionRefs.current[focusedOptionValue]?.focus()
-    }
-  }, [focusedOptionValue])
-
-  /* Handle keyboard navigation */
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    const directionMap: Record<string, number> = {
-      ArrowUp: 1,
-      ArrowDown: -1,
-    }
-
-    if (directionMap[e.key] !== undefined) {
-      e.preventDefault()
-      console.log(e.key)
-      changeFocusedOptionValue(focusedOptionValue + directionMap[e.key])
-    }
-
-    if (
-      e.key === 'Enter' &&
-      focusedOptionValue > 0 &&
-      focusedOptionValue <= optionsLength
-    ) {
-      e.preventDefault()
-      setActiveOptionValue(focusedOptionValue)
-    }
-
-    if (e.key === 'Tab' && focusedOptionValue == optionsLength) {
-      /* closeDatePicker() */
-    }
-  }
-
-  return { menuRef, optionRefs, activeOptionValue, handleKeyDown }
 }

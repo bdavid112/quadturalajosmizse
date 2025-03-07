@@ -52,7 +52,7 @@
   box-sizing: border-box;
 
   &:focus-visible {
-    outline: 2px solid $color-primary-600;
+    outline: 1px solid $color-primary-500;
     border-radius: $radius-sm;
   }
 }

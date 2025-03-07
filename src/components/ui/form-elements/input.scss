@@ -12,7 +12,8 @@ $input-container-min-width: 19.5rem;
 }
 
 @mixin input-focused {
-  border-color: $color-primary-500 !important;
+  border-color: $color-primary-500;
+  outline: 1px solid $color-primary-500;
 
   label {
     @include label-focused();
@@ -40,6 +41,10 @@ $input-container-min-width: 19.5rem;
 .input-container {
   min-width: $input-container-min-width;
   border-radius: $radius-sm;
+
+  &:hover {
+    border: 1px solid $color-primary-500;
+  }
 
   &:focus-within {
     @include input-focused();

@@ -43,6 +43,12 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
       <div ref={containerRef}>
         <div
           className={`flex align-center min-width-lg relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${error ? 'border-error' : ''}`}
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key == 'Enter') {
+              toggleIsOpen()
+            }
+          }}
         >
           <label
             htmlFor={id}

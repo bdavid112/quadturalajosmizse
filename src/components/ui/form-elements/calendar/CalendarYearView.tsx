@@ -4,6 +4,7 @@ import { generateYearOptions } from '../../../../utils/calendarUtils'
 
 import '/src/styles/utilities.scss'
 import './custom-calendar.scss'
+import CustomOption from '../CustomOption'
 
 interface Props {
   selectedYear: number
@@ -16,7 +17,7 @@ const CalendarYearView: React.FunctionComponent<Props> = ({
   selectedYear,
   minYear = 2000,
   maxYear = 2100,
-  handleOptionClick: handleOptionClick,
+  handleOptionClick,
 }) => {
   const yearOptions = generateYearOptions(minYear, maxYear)
 
@@ -25,12 +26,22 @@ const CalendarYearView: React.FunctionComponent<Props> = ({
       <div className="padding-y-md">
         <div className="divider-gray solid"></div>
       </div>
-      <div className="calendar-options-menu overflow-y-scroll">
-        <OptionsMenu
-          options={yearOptions}
-          selectedOptionValue={selectedYear}
-          handleOptionClick={handleOptionClick}
-        ></OptionsMenu>
+      <div className="calendar-options-menu overflow-y-scroll" tabIndex={-1}>
+        <OptionsMenu>
+          {yearOptions.map((option, index) => (
+            <CustomOption
+              key={index}
+              icon="check"
+              option={option}
+              isSelected={option.value == selectedYear}
+              /* isFocused={focusedOptionIndex == index}
+              isActive={activeOptionIndex == index} */
+              onClick={() => {
+                handleOptionClick && handleOptionClick(option.value)
+              }}
+            ></CustomOption>
+          ))}
+        </OptionsMenu>
       </div>
     </>
   )

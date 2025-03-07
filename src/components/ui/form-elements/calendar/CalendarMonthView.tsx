@@ -4,6 +4,7 @@ import { generateMonthOptions } from '../../../../utils/calendarUtils'
 
 import '/src/styles/utilities.scss'
 import './custom-calendar.scss'
+import CustomOption from '../CustomOption'
 
 interface Props {
   lang?: string
@@ -14,7 +15,7 @@ interface Props {
 const CalendarMonthView: React.FunctionComponent<Props> = ({
   lang = 'hu',
   selectedMonth,
-  handleOptionClick: handleOptionClick,
+  handleOptionClick,
 }) => {
   const monthOptions = generateMonthOptions(lang)
 
@@ -24,11 +25,21 @@ const CalendarMonthView: React.FunctionComponent<Props> = ({
         <div className="divider-gray solid"></div>
       </div>
       <div className="calendar-options-menu overflow-y-scroll">
-        <OptionsMenu
-          options={monthOptions}
-          selectedOptionValue={selectedMonth}
-          handleOptionClick={handleOptionClick}
-        ></OptionsMenu>
+        <OptionsMenu>
+          {monthOptions.map((option, index) => (
+            <CustomOption
+              key={index}
+              icon="check"
+              option={option}
+              isSelected={option.value == selectedMonth}
+              /* isFocused={focusedOptionIndex == index}
+              isActive={activeOptionIndex == index} */
+              onClick={() => {
+                handleOptionClick && handleOptionClick(option.value)
+              }}
+            ></CustomOption>
+          ))}
+        </OptionsMenu>
       </div>
     </>
   )

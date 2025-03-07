@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { useState } from 'react'
 
 import '/src/styles/utilities.scss'
 import './custom-option.scss'
@@ -11,21 +10,32 @@ interface Option {
 
 interface Props {
   option: Option
-  isSelected?: boolean
   icon?: string
+  isSelected?: boolean
+  isFocused?: boolean
+  isActive?: boolean
   onClick?: () => void
   onKeyDown?: (e: React.KeyboardEvent<HTMLDivElement>) => void
   onKeyUp?: (e: React.KeyboardEvent<HTMLDivElement>) => void
 }
 
 const CustomOption = React.forwardRef<HTMLDivElement, Props>(
-  ({ option, isSelected = false, icon, onClick, onKeyDown }, ref) => {
-    const [isActive, setIsActive] = useState(false)
-
+  (
+    {
+      option,
+      icon,
+      isSelected = false,
+      isFocused,
+      isActive,
+      onClick,
+      onKeyDown,
+    },
+    ref
+  ) => {
     return (
       <div
         ref={ref}
-        className={`min-height-lg flex justify-between align-center padding-x-lg cursor-pointer custom-option transition-bezier-fast ${isActive ? 'custom-option-active' : ''}`}
+        className={`min-height-lg flex justify-between align-center padding-x-lg cursor-pointer custom-option transition-bezier-fast ${isFocused ? 'custom-option-focus' : ''} ${isActive ? 'custom-option-active' : ''}`}
         role="option"
         aria-selected={isSelected}
         onClick={() => {
@@ -34,18 +44,17 @@ const CustomOption = React.forwardRef<HTMLDivElement, Props>(
         onKeyDown={(e) => {
           onKeyDown && onKeyDown(e)
           if (e.key == 'Enter') {
-            setIsActive(true)
+            /* setIsActive(true) */
           }
         }}
         onKeyUp={(e) => {
           if (e.key == 'Enter') {
             if (onClick) {
               onClick()
-              setIsActive(false)
+              /* setIsActive(false) */
             }
           }
         }}
-        tabIndex={0}
       >
         <span className={`${isSelected ? 'font-medium' : ''}`}>
           {option.label}

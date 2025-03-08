@@ -1,8 +1,10 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { generateCalendarDays } from '../utils/calendarUtils'
 
 export const useDatePicker = (
   lang: string,
+  minYear: number,
+  maxYear: number,
   defaultValue?: Date,
   onChange?: (date: Date) => void
 ) => {
@@ -11,16 +13,18 @@ export const useDatePicker = (
 
   /* State variables */
 
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
   const [activeView, setActiveView] = useState('date')
-  const [selectedDate, setSelectedDate] = useState(
-    defaultValue ? defaultValue : null
-  )
   const [calendarDays, setCalendarDays] = useState(
     generateCalendarDays(currentDate, lang)
   )
+  const [selectedDate, setSelectedDate] = useState(
+    defaultValue ? defaultValue : null
+  )
+  const [selectedYear, setSelectedYear] = useState(currentDate.getFullYear())
+  const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth())
 
-  /* Callback function to close the date picker */
+  /* Function to close the date picker */
 
   const closeDatePicker = () => setIsOpen(false)
 
@@ -35,6 +39,34 @@ export const useDatePicker = (
     onChange && onChange(date)
     setIsOpen(false)
   }
+
+  /* Increase/decrease the value of selected year and month on left and right arrow button clicks within the bounds  */
+
+  const changeSelectedYear = (newValue: number, clicked?: boolean) => {
+    if (newValue >= minYear && newValue <= maxYear) setSelectedYear(newValue)
+    if (clicked) toggleYearView()
+  }
+
+  const changeSelectedMonth = (newValue: number, clicked?: boolean) => {
+    if (newValue > 11) {
+      newValue = 0
+      changeSelectedYear(selectedYear + 1)
+    }
+    if (newValue < 0) {
+      newValue = 11
+      changeSelectedYear(selectedYear - 1)
+    }
+    setSelectedMonth(newValue)
+    if (clicked) toggleMonthView()
+  }
+
+  /* Generate new calendar days on chaning the selected year or month */
+
+  useEffect(() => {
+    setCalendarDays(
+      generateCalendarDays(new Date(selectedYear, selectedMonth), lang)
+    )
+  }, [selectedYear, selectedMonth])
 
   /* Helper function to toggle isOpen state */
 
@@ -60,6 +92,10 @@ export const useDatePicker = (
     isOpen,
     setIsOpen,
     selectedDate,
+    selectedYear,
+    setSelectedYear,
+    selectedMonth,
+    setSelectedMonth,
     activeView,
     calendarDays,
     containerRef,
@@ -67,5 +103,7 @@ export const useDatePicker = (
     toggleIsOpen,
     closeDatePicker,
     onDateSelect,
+    changeSelectedYear,
+    changeSelectedMonth,
   }
 }

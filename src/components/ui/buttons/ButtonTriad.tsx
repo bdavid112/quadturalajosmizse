@@ -34,7 +34,6 @@ const ButtonTriad: React.FunctionComponent<Props> = ({
         ></InputButton>
       )}
       <InputButton
-        tabIndex={0}
         icon="keyboard_arrow_down"
         label={label}
         small={small}

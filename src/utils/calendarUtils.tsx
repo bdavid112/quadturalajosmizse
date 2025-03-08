@@ -88,16 +88,22 @@ export const jumpWeek = (
   newValue: number,
   increment: number
 ) => {
+  let prevMonth = false
+  let nextMonth = false
+
   if (newValue < minValue) {
+    prevMonth = true
     while (newValue + increment <= maxValue) {
       newValue += increment
     }
   } else if (newValue > maxValue) {
+    nextMonth = true
     while (newValue - increment >= minValue) {
       newValue -= increment
     }
   }
-  return newValue
+
+  return { value: newValue, prevMonth: prevMonth, nextMonth: nextMonth }
 }
 
 export const jumpDay = (
@@ -105,10 +111,16 @@ export const jumpDay = (
   maxValue: number,
   newValue: number
 ) => {
-  if (newValue <= 0) {
+  let prevMonth = false
+  let nextMonth = false
+
+  if (newValue < minValue) {
+    prevMonth = true
     newValue = maxValue
   } else if (newValue > maxValue) {
+    nextMonth = true
     newValue = minValue
   }
-  return newValue
+
+  return { value: newValue, prevMonth: prevMonth, nextMonth: nextMonth }
 }

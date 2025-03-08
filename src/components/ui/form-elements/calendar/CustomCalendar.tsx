@@ -3,7 +3,6 @@ import './custom-calendar.scss'
 
 import * as React from 'react'
 import { formatMonthToString } from '../../../../utils/calendarUtils'
-import { useCustomCalendar } from '../../../../hooks/useCustomCalendar'
 import CalendarDayView from './CalendarDayView'
 import CalendarYearView from './CalendarYearView'
 import CalendarMonthView from './CalendarMonthView'
@@ -11,40 +10,31 @@ import ButtonTriad from '../../buttons/ButtonTriad'
 
 interface Props {
   lang?: string
-  currentDate?: Date
-  minYear?: number
-  maxYear?: number
+  selectedYear: number
+  selectedMonth: number
   activeView: string
   calendarDays: (number | null)[]
   dateIndice: number[]
-  yearIndice: number[]
   viewTogglers: (() => void)[]
   handleDateSelect?: (date: Date) => void
   closeDatePicker: () => void
+  changeSelectedYear: (year: number) => void
+  changeSelectedMonth: (month: number) => void
 }
 
 const CustomCalendar: React.FunctionComponent<Props> = ({
   lang = 'hu',
-  currentDate = new Date(),
-  minYear = 2000,
-  maxYear = 2100,
+  selectedYear,
+  selectedMonth,
   activeView,
   calendarDays,
   dateIndice,
-  yearIndice,
   viewTogglers,
   handleDateSelect,
   closeDatePicker,
+  changeSelectedYear,
+  changeSelectedMonth,
 }) => {
-  /* Calendar state manager */
-
-  const {
-    selectedYear,
-    changeSelectedYear,
-    selectedMonth,
-    changeSelectedMonth,
-  } = useCustomCalendar(lang, currentDate, minYear, maxYear)
-
   return (
     <div className="padding-x-md padding-y-md calendar-container">
       <div
@@ -93,7 +83,6 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
         {activeView == 'year' && (
           <CalendarYearView
             selectedYear={selectedYear}
-            yearIndice={yearIndice}
             handleOptionSelect={changeSelectedYear}
           ></CalendarYearView>
         )}

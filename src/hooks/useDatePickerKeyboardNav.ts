@@ -3,9 +3,11 @@ import { jumpDay, jumpWeek } from '../utils/calendarUtils'
 
 export const useDatePickerKeyboardNav = (
   isParentOpen: boolean,
-  calendarDays: (number | null)[],
-  activeView: string,
   setIsParentOpen: React.Dispatch<React.SetStateAction<boolean>>,
+  calendarDays: (number | null)[],
+  selectedYear: number,
+  selectedMonth: number,
+  changeSelectedMonth: (newValue: number) => void,
   onDateSelect?: (date: Date) => void
 ) => {
   /* Get the actual date for intitial opening (the first focus is going to be today's date) */
@@ -26,29 +28,29 @@ export const useDatePickerKeyboardNav = (
 
   const dateIndice = [focusedDateIndex, activeDateIndex]
 
-  /* Track the current focus of year options */
-
-  const [selectedYearIndex, setSelectedYearIndex] = useState(
-    currentDate.getFullYear()
-  )
-  const [focusedYearIndex, setFocusedYearIndex] = useState(0)
-  const [activeYearIndex, setActiveYearIndex] = useState(0)
-
-  const yearIndice = [focusedYearIndex, activeYearIndex]
-
   /* Set index values only within bounds */
 
   const setIndex = (
     newValue: number,
+    minValue: number,
+    maxValue: number,
     setter: React.Dispatch<React.SetStateAction<number>>,
     week: boolean = false
   ) => {
-    const filteredCalendarDays = calendarDays.filter((day) => day != null)
-    const monthLenght = filteredCalendarDays.length
+    const result = week
+      ? jumpWeek(minValue, maxValue, newValue, 7)
+      : jumpDay(minValue, maxValue, newValue)
 
-    week
-      ? setter(jumpWeek(1, monthLenght, newValue, 7))
-      : setter(jumpDay(1, monthLenght, newValue))
+    if (result.prevMonth) {
+      const prevMonthLength = new Date(selectedYear, selectedMonth, 0).getDate()
+
+      changeSelectedMonth(selectedMonth - 1)
+      result.value = prevMonthLength
+    } else if (result.nextMonth) {
+      changeSelectedMonth(selectedMonth + 1)
+      result.value = 1
+    }
+    setter(result.value)
   }
 
   /* Handle selecting a date */
@@ -65,7 +67,9 @@ export const useDatePickerKeyboardNav = (
 
   /* Handle keyboard navigation */
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLDivElement> | KeyboardEvent
+  ) => {
     if (!isParentOpen && e.key === 'Enter') {
       e.preventDefault()
       setIsParentOpen(true)
@@ -83,14 +87,14 @@ export const useDatePickerKeyboardNav = (
     }
 
     if (directionMap[e.key] !== undefined) {
-      if (activeView == 'date') {
-        e.preventDefault()
-        setIndex(
-          focusedDateIndex + directionMap[e.key],
-          setFocusedDateIndex,
-          e.key.includes('ArrowUp') || e.key.includes('ArrowDown')
-        )
-      }
+      e.preventDefault()
+      setIndex(
+        focusedDateIndex + directionMap[e.key],
+        1,
+        filteredCalendarDays.length,
+        setFocusedDateIndex,
+        e.key.includes('ArrowUp') || e.key.includes('ArrowDown')
+      )
     }
 
     if (
@@ -103,7 +107,9 @@ export const useDatePickerKeyboardNav = (
     }
   }
 
-  const handleKeyUp = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  const handleKeyUp = (
+    e: React.KeyboardEvent<HTMLDivElement> | KeyboardEvent
+  ) => {
     switch (e.key) {
       case 'Enter':
         if (activeDateIndex > 0 && activeDateIndex <= calendarDays.length) {
@@ -122,7 +128,6 @@ export const useDatePickerKeyboardNav = (
 
   return {
     dateIndice,
-    yearIndice,
     handleKeyDown,
     handleKeyUp,
     handleDateSelect,

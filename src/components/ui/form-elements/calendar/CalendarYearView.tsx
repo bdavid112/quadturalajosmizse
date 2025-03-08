@@ -1,27 +1,23 @@
-import * as React from 'react'
-import OptionsMenu from '../OptionsMenu'
-import { generateYearOptions } from '../../../../utils/calendarUtils'
-
 import '/src/styles/utilities.scss'
 import './custom-calendar.scss'
+
+import * as React from 'react'
+import OptionsMenu from '../OptionsMenu'
 import CustomOption from '../CustomOption'
+import { generateYearOptions } from '../../../../utils/calendarUtils'
 
 interface Props {
   selectedYear: number
-  minYear?: number
-  maxYear?: number
-  yearIndice?: number[]
-  handleOptionSelect?: (year: number) => void
+  handleOptionSelect?: (year: number, clicked: boolean) => void
 }
 
 const CalendarYearView: React.FunctionComponent<Props> = ({
   selectedYear,
-  minYear = 2000,
-  maxYear = 2100,
-  yearIndice,
   handleOptionSelect,
 }) => {
-  const yearOptions = generateYearOptions(minYear, maxYear)
+  /* Array of options for year selecting */
+
+  const yearOptions = generateYearOptions(2025, 2050)
 
   return (
     <>
@@ -36,10 +32,8 @@ const CalendarYearView: React.FunctionComponent<Props> = ({
               icon="check"
               option={option}
               isSelected={option.value == selectedYear}
-              isFocused={yearIndice && yearIndice[0] == index}
-              isActive={yearIndice && yearIndice[1] == index}
               onClick={() => {
-                handleOptionSelect && handleOptionSelect(option.value)
+                handleOptionSelect && handleOptionSelect(option.value, true)
               }}
             ></CustomOption>
           ))}

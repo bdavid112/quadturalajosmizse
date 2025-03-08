@@ -17,6 +17,8 @@ interface Props {
   error?: boolean
   helperText: string
   defaultValue?: Date
+  minYear?: number
+  maxYear?: number
   onChange?: (date: Date) => void
 }
 
@@ -28,6 +30,8 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
   error = false,
   helperText,
   defaultValue,
+  minYear = 2000,
+  maxYear = 2100,
   onChange,
 }) => {
   /* Date picker state manager */
@@ -36,6 +40,8 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
     isOpen,
     setIsOpen,
     selectedDate,
+    selectedYear,
+    selectedMonth,
     activeView,
     calendarDays,
     containerRef,
@@ -43,7 +49,9 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
     toggleIsOpen,
     closeDatePicker,
     onDateSelect,
-  } = useDatePicker(lang, defaultValue, onChange)
+    changeSelectedYear,
+    changeSelectedMonth,
+  } = useDatePicker(lang, minYear, maxYear, defaultValue, onChange)
 
   /* Custom hook to close the date picker if the users tabs out */
 
@@ -51,19 +59,16 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
 
   /* Keyboard navigation for date picker */
 
-  const {
-    dateIndice,
-    yearIndice,
-    handleKeyDown,
-    handleKeyUp,
-    handleDateSelect,
-  } = useDatePickerKeyboardNav(
-    isOpen,
-    calendarDays,
-    activeView,
-    setIsOpen,
-    onDateSelect
-  )
+  const { dateIndice, handleKeyDown, handleKeyUp, handleDateSelect } =
+    useDatePickerKeyboardNav(
+      isOpen,
+      setIsOpen,
+      calendarDays,
+      selectedYear,
+      selectedMonth,
+      changeSelectedMonth,
+      onDateSelect
+    )
 
   return (
     <>
@@ -126,7 +131,10 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
               calendarDays={calendarDays}
               viewTogglers={viewTogglers}
               dateIndice={dateIndice}
-              yearIndice={yearIndice}
+              selectedYear={selectedYear}
+              selectedMonth={selectedMonth}
+              changeSelectedYear={changeSelectedYear}
+              changeSelectedMonth={changeSelectedMonth}
               handleDateSelect={handleDateSelect}
               closeDatePicker={closeDatePicker}
             ></CustomCalendar>

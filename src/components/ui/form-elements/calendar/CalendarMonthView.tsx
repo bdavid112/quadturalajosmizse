@@ -1,15 +1,15 @@
+import '/src/styles/utilities.scss'
+import './custom-calendar.scss'
+
 import * as React from 'react'
 import OptionsMenu from '../OptionsMenu'
 import { generateMonthOptions } from '../../../../utils/calendarUtils'
-
-import '/src/styles/utilities.scss'
-import './custom-calendar.scss'
 import CustomOption from '../CustomOption'
 
 interface Props {
   lang?: string
   selectedMonth: number
-  handleOptionSelect?: (month: number) => void
+  handleOptionSelect?: (month: number, clicked: boolean) => void
 }
 
 const CalendarMonthView: React.FunctionComponent<Props> = ({
@@ -17,6 +17,8 @@ const CalendarMonthView: React.FunctionComponent<Props> = ({
   selectedMonth,
   handleOptionSelect,
 }) => {
+  /* Array of options for month selecting localized */
+
   const monthOptions = generateMonthOptions(lang)
 
   return (
@@ -32,10 +34,8 @@ const CalendarMonthView: React.FunctionComponent<Props> = ({
               icon="check"
               option={option}
               isSelected={option.value == selectedMonth}
-              /* isFocused={focusedOptionIndex == index}
-              isActive={activeOptionIndex == index} */
               onClick={() => {
-                handleOptionSelect && handleOptionSelect(option.value)
+                handleOptionSelect && handleOptionSelect(option.value, true)
               }}
             ></CustomOption>
           ))}

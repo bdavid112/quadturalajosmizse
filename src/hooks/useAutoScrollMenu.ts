@@ -1,10 +1,9 @@
 import { useEffect, useRef } from 'react'
 
-export const useOptionsMenu = () => {
+export const useAutoScrollMenu = () => {
   /* Refs */
 
   const menuRef = useRef<HTMLDivElement>(null)
-  const optionRefs = useRef<(HTMLDivElement | null)[]>([])
 
   /* Scroll into view when the menu opens */
 
@@ -25,6 +24,5 @@ export const useOptionsMenu = () => {
 
   return {
     menuRef,
-    optionRefs,
   }
 }

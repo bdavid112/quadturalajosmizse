@@ -6,7 +6,7 @@ import InputButton from '../buttons/InputButton'
 import OptionsMenu from './OptionsMenu'
 import CustomOption from './CustomOption'
 import { useDropdown } from '../../../hooks/useDropdown'
-import { useKeyboardMenu } from '../../../hooks/useKeyboardMenu'
+import { useDropdownKeyboardNav } from '../../../hooks/useDropdownKeyboardNav'
 import { useAutoClose } from '../../../hooks/useAutoClose'
 
 interface Option {
@@ -57,7 +57,13 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
     handleKeyDown,
     handleKeyUp,
     handleOptionClick,
-  } = useKeyboardMenu(isOpen, options, setSelectedOption, setIsOpen, onChange)
+  } = useDropdownKeyboardNav(
+    isOpen,
+    options,
+    setSelectedOption,
+    setIsOpen,
+    onChange
+  )
 
   /* Close dropdown on clicking outside the container or pressing ESC */
 
@@ -113,7 +119,7 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
         </div>
         {isOpen && (
           <div className="option-container border-rounded-sm box-shadow-medium">
-            <OptionsMenu selectedOptionValue={selectedOption?.value}>
+            <OptionsMenu>
               {options.map((option, index) => (
                 <CustomOption
                   ref={(el) => {

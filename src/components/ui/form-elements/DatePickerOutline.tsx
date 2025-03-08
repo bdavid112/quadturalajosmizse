@@ -6,6 +6,8 @@ import InputButton from '../buttons/InputButton'
 import CustomCalendar from './calendar/CustomCalendar'
 import { t } from '../../../utils/translator'
 import { useDatePicker } from '../../../hooks/useDatePicker'
+import { useAutoClose } from '../../../hooks/useAutoClose'
+import { useDatePickerKeyboardNav } from '../../../hooks/useDatePickerKeyboardNav'
 
 interface Props {
   lang?: string
@@ -28,15 +30,40 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
   defaultValue,
   onChange,
 }) => {
+  /* Date picker state manager */
+
   const {
     isOpen,
     setIsOpen,
     selectedDate,
+    activeView,
+    calendarDays,
     containerRef,
-    handleDateSelect,
+    viewTogglers,
     toggleIsOpen,
     closeDatePicker,
-  } = useDatePicker(defaultValue, onChange)
+    onDateSelect,
+  } = useDatePicker(lang, defaultValue, onChange)
+
+  /* Custom hook to close the date picker if the users tabs out */
+
+  useAutoClose(containerRef, isOpen, closeDatePicker)
+
+  /* Keyboard navigation for date picker */
+
+  const {
+    dateIndice,
+    yearIndice,
+    handleKeyDown,
+    handleKeyUp,
+    handleDateSelect,
+  } = useDatePickerKeyboardNav(
+    isOpen,
+    calendarDays,
+    activeView,
+    setIsOpen,
+    onDateSelect
+  )
 
   return (
     <>
@@ -45,9 +72,10 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
           className={`flex align-center min-width-lg relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${error ? 'border-error' : ''}`}
           tabIndex={0}
           onKeyDown={(e) => {
-            if (e.key == 'Enter') {
-              toggleIsOpen()
-            }
+            handleKeyDown(e)
+          }}
+          onKeyUp={(e) => {
+            handleKeyUp(e)
           }}
         >
           <label
@@ -94,7 +122,12 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
           <div className="calendar-container border-rounded-sm box-shadow-medium">
             <CustomCalendar
               lang={lang}
-              onDateSelect={handleDateSelect}
+              activeView={activeView}
+              calendarDays={calendarDays}
+              viewTogglers={viewTogglers}
+              dateIndice={dateIndice}
+              yearIndice={yearIndice}
+              handleDateSelect={handleDateSelect}
               closeDatePicker={closeDatePicker}
             ></CustomCalendar>
           </div>

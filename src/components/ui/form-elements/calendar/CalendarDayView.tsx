@@ -1,15 +1,17 @@
-import * as React from 'react'
-import { isToday } from '../../../../utils/calendarUtils'
-
 import '/src/styles/utilities.scss'
 import './custom-calendar.scss'
+
+import * as React from 'react'
+import { isToday } from '../../../../utils/calendarUtils'
 import { useCalendarDayView } from '../../../../hooks/useCalendarDayView'
 
 interface Props {
   lang?: string
   selectedYear: number
   selectedMonth: number
-  onDateSelect?: (date: Date) => void
+  calendarDays: (number | null)[]
+  dateIndice: number[]
+  handleDateSelect?: (date: Date) => void
   closeDatePicker: () => void
 }
 
@@ -17,22 +19,14 @@ const CalendarDayView: React.FunctionComponent<Props> = ({
   lang = 'hu',
   selectedYear,
   selectedMonth,
-  onDateSelect,
-  closeDatePicker,
+  calendarDays,
+  dateIndice,
+  handleDateSelect,
 }) => {
-  const {
-    dayLabels,
-    setFocusedDateIndex,
-    activeDateIndex,
-    calendarDays,
-    dateRefs,
-    handleKeyDown,
-    handleKeyUp,
-  } = useCalendarDayView(
+  const { dayLabels, focusedDateIndex, activeDateIndex } = useCalendarDayView(
     lang,
-    new Date(selectedYear, selectedMonth),
-    closeDatePicker,
-    onDateSelect
+    calendarDays,
+    dateIndice
   )
 
   return (
@@ -52,18 +46,18 @@ const CalendarDayView: React.FunctionComponent<Props> = ({
         {calendarDays.map((day, index) => (
           <div
             key={index}
-            className={`relative calendar-cell flex align-center justify-center transition-bezier-fast ${day == activeDateIndex ? 'calendar-cell-active' : ''} ${!day ? 'cursor-default' : ''} ${day && isToday(selectedYear, selectedMonth, day) ? 'calendar-today' : ''}`}
-            ref={(el) => {
+            className={`relative calendar-cell flex align-center justify-center transition-bezier-fast ${day == focusedDateIndex ? 'calendar-cell-focus' : ''} ${day == activeDateIndex ? 'calendar-cell-active' : ''} ${!day ? 'cursor-default' : ''} ${day && isToday(selectedYear, selectedMonth, day) ? 'calendar-today' : ''}`}
+            /* ref={(el) => {
               if (day) {
                 dateRefs.current[day] = el
               }
-            }}
+            }} */
             onClick={() => {
-              if (onDateSelect && day) {
-                onDateSelect(new Date(selectedYear, selectedMonth, day))
+              if (handleDateSelect && day) {
+                handleDateSelect(new Date(selectedYear, selectedMonth, day))
               }
             }}
-            onKeyDown={(e) => {
+            /* onKeyDown={(e) => {
               handleKeyDown(e)
             }}
             onKeyUp={(e) => {
@@ -71,9 +65,8 @@ const CalendarDayView: React.FunctionComponent<Props> = ({
             }}
             onFocus={() => {
               day && setFocusedDateIndex(day)
-            }}
+            }} */
             role="button"
-            tabIndex={day ? 0 : -1}
           >
             <p className="z-overlay">{day ? day : ''}</p>
             {day && (

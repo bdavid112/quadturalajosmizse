@@ -10,14 +10,16 @@ interface Props {
   selectedYear: number
   minYear?: number
   maxYear?: number
-  handleOptionClick?: (year: number) => void
+  yearIndice?: number[]
+  handleOptionSelect?: (year: number) => void
 }
 
 const CalendarYearView: React.FunctionComponent<Props> = ({
   selectedYear,
   minYear = 2000,
   maxYear = 2100,
-  handleOptionClick,
+  yearIndice,
+  handleOptionSelect,
 }) => {
   const yearOptions = generateYearOptions(minYear, maxYear)
 
@@ -34,10 +36,10 @@ const CalendarYearView: React.FunctionComponent<Props> = ({
               icon="check"
               option={option}
               isSelected={option.value == selectedYear}
-              /* isFocused={focusedOptionIndex == index}
-              isActive={activeOptionIndex == index} */
+              isFocused={yearIndice && yearIndice[0] == index}
+              isActive={yearIndice && yearIndice[1] == index}
               onClick={() => {
-                handleOptionClick && handleOptionClick(option.value)
+                handleOptionSelect && handleOptionSelect(option.value)
               }}
             ></CustomOption>
           ))}

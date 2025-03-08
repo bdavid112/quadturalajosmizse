@@ -15,8 +15,6 @@ export const useCustomCalendar = (
 
   const [selectedYear, setSelectedYear] = useState(currentDate.getFullYear())
   const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth())
-  const [yearView, setYearView] = useState(false)
-  const [monthView, setMonthView] = useState(false)
 
   /* Increase/decrease the value of selected year and month on left and right arrow button clicks within the bounds  */
 
@@ -42,9 +40,5 @@ export const useCustomCalendar = (
     selectedMonth,
     changeSelectedMonth,
     monthOptions,
-    yearView,
-    setYearView,
-    monthView,
-    setMonthView,
   }
 }

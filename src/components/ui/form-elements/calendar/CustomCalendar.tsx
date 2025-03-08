@@ -1,12 +1,12 @@
+import '/src/styles/utilities.scss'
+import './custom-calendar.scss'
+
 import * as React from 'react'
 import { formatMonthToString } from '../../../../utils/calendarUtils'
 import { useCustomCalendar } from '../../../../hooks/useCustomCalendar'
 import CalendarDayView from './CalendarDayView'
 import CalendarYearView from './CalendarYearView'
 import CalendarMonthView from './CalendarMonthView'
-
-import '/src/styles/utilities.scss'
-import './custom-calendar.scss'
 import ButtonTriad from '../../buttons/ButtonTriad'
 
 interface Props {
@@ -14,7 +14,12 @@ interface Props {
   currentDate?: Date
   minYear?: number
   maxYear?: number
-  onDateSelect?: (date: Date) => void
+  activeView: string
+  calendarDays: (number | null)[]
+  dateIndice: number[]
+  yearIndice: number[]
+  viewTogglers: (() => void)[]
+  handleDateSelect?: (date: Date) => void
   closeDatePicker: () => void
 }
 
@@ -23,20 +28,21 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
   currentDate = new Date(),
   minYear = 2000,
   maxYear = 2100,
-  onDateSelect,
+  activeView,
+  calendarDays,
+  dateIndice,
+  yearIndice,
+  viewTogglers,
+  handleDateSelect,
   closeDatePicker,
 }) => {
-  /* Custom hook to handle logic */
+  /* Calendar state manager */
 
   const {
     selectedYear,
     changeSelectedYear,
     selectedMonth,
     changeSelectedMonth,
-    yearView,
-    setYearView,
-    monthView,
-    setMonthView,
   } = useCustomCalendar(lang, currentDate, minYear, maxYear)
 
   return (
@@ -45,60 +51,57 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
         className={`col-7 flex justify-between ${lang == 'en' ? 'flex-row-reverse' : ''}`}
       >
         <ButtonTriad
-          allVisible={!yearView && !monthView}
+          allVisible={activeView == 'date'}
           small={true}
           label={selectedYear.toString()}
-          isParentOpen={yearView}
+          isParentOpen={activeView == 'year'}
           handleLeftClick={() => {
             changeSelectedYear(selectedYear - 1)
           }}
-          handleMiddleClick={() => {
-            setYearView(!yearView)
-            setMonthView(false)
-          }}
+          handleMiddleClick={viewTogglers[0]}
           handleRightClick={() => {
             changeSelectedYear(selectedYear + 1)
           }}
         ></ButtonTriad>
         <ButtonTriad
-          allVisible={!yearView && !monthView}
+          allVisible={activeView == 'date'}
           small={true}
           label={formatMonthToString(selectedMonth, lang, true)}
-          isParentOpen={monthView}
+          isParentOpen={activeView == 'month'}
           handleLeftClick={() => {
             changeSelectedMonth(selectedMonth - 1)
           }}
-          handleMiddleClick={() => {
-            setYearView(false)
-            setMonthView(!monthView)
-          }}
+          handleMiddleClick={viewTogglers[1]}
           handleRightClick={() => {
             changeSelectedMonth(selectedMonth + 1)
           }}
         ></ButtonTriad>
       </div>
       <div className="view-container">
-        {!yearView && !monthView && (
+        {activeView == 'date' && (
           <div className="calendar-grid">
             <CalendarDayView
+              calendarDays={calendarDays}
               selectedYear={selectedYear}
               selectedMonth={selectedMonth}
-              onDateSelect={onDateSelect}
+              dateIndice={dateIndice}
+              handleDateSelect={handleDateSelect}
               closeDatePicker={closeDatePicker}
             ></CalendarDayView>
           </div>
         )}
-        {yearView && (
+        {activeView == 'year' && (
           <CalendarYearView
             selectedYear={selectedYear}
-            handleOptionClick={changeSelectedYear}
+            yearIndice={yearIndice}
+            handleOptionSelect={changeSelectedYear}
           ></CalendarYearView>
         )}
-        {monthView && (
+        {activeView == 'month' && (
           <CalendarMonthView
             lang={lang}
             selectedMonth={selectedMonth}
-            handleOptionClick={changeSelectedMonth}
+            handleOptionSelect={changeSelectedMonth}
           ></CalendarMonthView>
         )}
       </div>

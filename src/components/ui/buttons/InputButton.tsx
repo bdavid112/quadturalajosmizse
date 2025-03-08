@@ -10,6 +10,7 @@ interface Props {
   rotate?: boolean
   rounded?: string
   small?: boolean
+  tabIndex?: number
 }
 
 const InputButton = React.forwardRef<HTMLButtonElement, Props>(
@@ -22,6 +23,7 @@ const InputButton = React.forwardRef<HTMLButtonElement, Props>(
       rotate = false,
       rounded = false,
       small = false,
+      tabIndex = -1,
     },
     ref
   ) => {
@@ -32,7 +34,7 @@ const InputButton = React.forwardRef<HTMLButtonElement, Props>(
         onClick={() => {
           onClick && onClick()
         }}
-        tabIndex={-1}
+        tabIndex={tabIndex}
       >
         {label && (
           <span className="text-secondary font-size-secondary">{label}</span>

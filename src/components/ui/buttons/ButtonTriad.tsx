@@ -26,6 +26,7 @@ const ButtonTriad: React.FunctionComponent<Props> = ({
     <div className="flex align-center justify-center min-width-xs">
       {allVisible && (
         <InputButton
+          tabIndex={0}
           icon="keyboard_arrow_left"
           rounded="border-rounded-full-left"
           small={small}
@@ -33,6 +34,7 @@ const ButtonTriad: React.FunctionComponent<Props> = ({
         ></InputButton>
       )}
       <InputButton
+        tabIndex={0}
         icon="keyboard_arrow_down"
         label={label}
         small={small}
@@ -42,6 +44,7 @@ const ButtonTriad: React.FunctionComponent<Props> = ({
       ></InputButton>
       {allVisible && (
         <InputButton
+          tabIndex={0}
           icon="keyboard_arrow_right"
           rounded="border-rounded-full-right"
           small={small}

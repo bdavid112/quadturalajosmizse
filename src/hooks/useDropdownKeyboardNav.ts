@@ -5,8 +5,8 @@ interface Option {
   label: string
 }
 
-export const useKeyboardMenu = (
-  isMenuOpen: boolean,
+export const useDropdownKeyboardNav = (
+  isParentOpen: boolean,
   options: Option[],
   setSelectedOption: React.Dispatch<React.SetStateAction<Option | null>>,
   setIsParentOpen?: React.Dispatch<React.SetStateAction<boolean>>,
@@ -50,7 +50,7 @@ export const useKeyboardMenu = (
   /* Handle keyboard navigation */
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (setIsParentOpen && !isMenuOpen && e.key === 'Enter') {
+    if (setIsParentOpen && !isParentOpen && e.key === 'Enter') {
       e.preventDefault()
       setIsParentOpen(true)
       selectedOptionIndex >= 0
@@ -74,13 +74,13 @@ export const useKeyboardMenu = (
       setActiveOptionIndex(focusedOptionIndex)
     }
 
-    if (setIsParentOpen && isMenuOpen && e.key === 'Tab') {
+    if (setIsParentOpen && isParentOpen && e.key === 'Tab') {
       setIsParentOpen(false)
     }
   }
 
   const handleKeyUp = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (!isMenuOpen) return
+    if (!isParentOpen) return
 
     if (e.key === 'Enter' && activeOptionIndex >= 0) {
       e.preventDefault()

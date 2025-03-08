@@ -9,13 +9,13 @@ import CustomOption from '../CustomOption'
 interface Props {
   lang?: string
   selectedMonth: number
-  handleOptionClick?: (month: number) => void
+  handleOptionSelect?: (month: number) => void
 }
 
 const CalendarMonthView: React.FunctionComponent<Props> = ({
   lang = 'hu',
   selectedMonth,
-  handleOptionClick,
+  handleOptionSelect,
 }) => {
   const monthOptions = generateMonthOptions(lang)
 
@@ -35,7 +35,7 @@ const CalendarMonthView: React.FunctionComponent<Props> = ({
               /* isFocused={focusedOptionIndex == index}
               isActive={activeOptionIndex == index} */
               onClick={() => {
-                handleOptionClick && handleOptionClick(option.value)
+                handleOptionSelect && handleOptionSelect(option.value)
               }}
             ></CustomOption>
           ))}

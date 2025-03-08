@@ -1,15 +1,23 @@
 import { useRef, useState } from 'react'
-import { useAutoClose } from './useAutoClose'
+import { generateCalendarDays } from '../utils/calendarUtils'
 
 export const useDatePicker = (
+  lang: string,
   defaultValue?: Date,
   onChange?: (date: Date) => void
 ) => {
+  /* Current date for initializing calendar */
+  const currentDate = new Date()
+
   /* State variables */
 
   const [isOpen, setIsOpen] = useState(true)
+  const [activeView, setActiveView] = useState('date')
   const [selectedDate, setSelectedDate] = useState(
     defaultValue ? defaultValue : null
+  )
+  const [calendarDays, setCalendarDays] = useState(
+    generateCalendarDays(currentDate, lang)
   )
 
   /* Callback function to close the date picker */
@@ -20,13 +28,9 @@ export const useDatePicker = (
 
   const containerRef = useRef<HTMLDivElement>(null)
 
-  /* Custom hook to close the date picker if the users tabs out */
-
-  useAutoClose(containerRef, isOpen, closeDatePicker)
-
   /* Handle selecting an option */
 
-  const handleDateSelect = (date: Date) => {
+  const onDateSelect = (date: Date) => {
     setSelectedDate(date)
     onChange && onChange(date)
     setIsOpen(false)
@@ -38,13 +42,30 @@ export const useDatePicker = (
     setIsOpen(!isOpen)
   }
 
+  /* Helper functions to toggle views */
+
+  const toggleYearView = () => {
+    if (activeView != 'year') setActiveView('year')
+    else setActiveView('date')
+  }
+
+  const toggleMonthView = () => {
+    if (activeView != 'month') setActiveView('month')
+    else setActiveView('date')
+  }
+
+  const viewTogglers = [toggleYearView, toggleMonthView]
+
   return {
     isOpen,
     setIsOpen,
     selectedDate,
+    activeView,
+    calendarDays,
     containerRef,
-    handleDateSelect,
+    viewTogglers,
     toggleIsOpen,
     closeDatePicker,
+    onDateSelect,
   }
 }

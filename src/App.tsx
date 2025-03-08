@@ -12,6 +12,7 @@ import {
   useLocalization,
 } from './context/LocalizationContext'
 import ButtonPrimary from './components/ui/buttons/ButtonPrimary'
+import SegmentedButton from './components/ui/buttons/SegmentedButton'
 
 function TestLocalization() {
   const { lang, setLang } = useLocalization()
@@ -83,6 +84,13 @@ function TestLocalization() {
                 }}
               ></ButtonPrimary>
             </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-3">
+            <SegmentedButton
+              labels={['Button 1', 'Button 2', 'Button 3']}
+            ></SegmentedButton>
           </div>
         </div>
       </section>

@@ -1,0 +1,35 @@
+@import '../../../styles/tokens.scss';
+
+.segmented-button-container {
+  min-height: 2.5rem;
+  border-radius: $radius-sm;
+
+  .segmented-button {
+    border-right: none;
+    min-width: max-content;
+    background-color: $surface-100;
+
+    &:hover {
+      background-color: $gray-100;
+    }
+
+    &:active {
+      background-color: $gray-300 !important;
+    }
+
+    &:first-of-type {
+      border-top-left-radius: $radius-sm;
+      border-bottom-left-radius: $radius-sm;
+    }
+
+    &:last-of-type {
+      border-right: 1px solid $text-muted;
+      border-top-right-radius: $radius-sm;
+      border-bottom-right-radius: $radius-sm;
+    }
+  }
+
+  .selected-button {
+    background: $gray-200 !important;
+  }
+}

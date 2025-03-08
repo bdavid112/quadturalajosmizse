@@ -110,6 +110,16 @@
 .width-full {
   width: 100%;
 }
+.width-half {
+  width: 50%;
+}
+.width-third {
+  width: 33.3%;
+}
+.width-quarter {
+  width: 25%;
+}
+
 .height-full {
   height: 100%;
 }
@@ -130,7 +140,7 @@
   min-width: 15rem;
 }
 .min-width-lg {
-  min-width: 18.5rem;
+  min-width: 19.5rem;
 }
 
 .max-width-xs {
@@ -674,6 +684,10 @@
 
 /* Icons */
 
+span.size-16 {
+  font-size: 1rem;
+  font-variation-settings: 'OPSZ' 16;
+}
 span.size-20 {
   font-size: 1.25rem;
   font-variation-settings: 'OPSZ' 20;

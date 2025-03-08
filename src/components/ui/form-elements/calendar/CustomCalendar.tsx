@@ -7,9 +7,9 @@ import CalendarDayView from './CalendarDayView'
 import CalendarYearView from './CalendarYearView'
 import CalendarMonthView from './CalendarMonthView'
 import ButtonTriad from '../../buttons/ButtonTriad'
+import { useLocalization } from '../../../../context/LocalizationContext'
 
 interface Props {
-  lang?: string
   selectedYear: number
   selectedMonth: number
   activeView: string
@@ -23,7 +23,6 @@ interface Props {
 }
 
 const CustomCalendar: React.FunctionComponent<Props> = ({
-  lang = 'hu',
   selectedYear,
   selectedMonth,
   activeView,
@@ -35,6 +34,8 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
   changeSelectedYear,
   changeSelectedMonth,
 }) => {
+  const { lang } = useLocalization()
+
   return (
     <div className="padding-x-md padding-y-md calendar-container">
       <div
@@ -88,7 +89,6 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
         )}
         {activeView == 'month' && (
           <CalendarMonthView
-            lang={lang}
             selectedMonth={selectedMonth}
             handleOptionSelect={changeSelectedMonth}
           ></CalendarMonthView>

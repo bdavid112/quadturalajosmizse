@@ -5,18 +5,19 @@ import * as React from 'react'
 import OptionsMenu from '../OptionsMenu'
 import { generateMonthOptions } from '../../../../utils/calendarUtils'
 import CustomOption from '../CustomOption'
+import { useLocalization } from '../../../../context/LocalizationContext'
 
 interface Props {
-  lang?: string
   selectedMonth: number
   handleOptionSelect?: (month: number, clicked: boolean) => void
 }
 
 const CalendarMonthView: React.FunctionComponent<Props> = ({
-  lang = 'hu',
   selectedMonth,
   handleOptionSelect,
 }) => {
+  const { lang } = useLocalization()
+
   /* Array of options for month selecting localized */
 
   const monthOptions = generateMonthOptions(lang)

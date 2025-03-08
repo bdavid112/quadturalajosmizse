@@ -1,0 +1,139 @@
+commit 2a93614cef9ed0cac594ae49a821cd3680f3c1ed
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sat Mar 8 17:33:16 2025 +0100
+
+    Date picker done, finally...
+
+commit 1743bd3131d19195bb1ed41c31e89e11aada65c3
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sat Mar 8 12:13:02 2025 +0100
+
+    Work on date picker keyboard navigation
+
+commit 025f94bb2f8ee83e83571adb6c6653836ddb1428
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Fri Mar 7 19:32:42 2025 +0100
+
+    Even more refactoring and modularizing
+
+commit 3a7e46d99005620711cb1dc632cded2b6cf0e7f3
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Fri Mar 7 10:36:28 2025 +0100
+
+    Tweaking UI elements, made the site responsive according to base font size
+
+commit 8d4fc15bed84e83f94374c525a929dc540cf393c
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Thu Mar 6 23:19:09 2025 +0100
+
+    More refactoring
+
+commit 8864d3c5364ddd77a205d0221c54187d404c5364
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Thu Mar 6 16:09:02 2025 +0100
+
+    Refactoring on custom calendar
+
+commit ace0e41d8497db4be286f5ebb5013a953f24705a
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Wed Mar 5 23:02:24 2025 +0100
+
+    Added keyboard navigating to custom calendar
+
+commit 28686685b0b7ca26ef132db447fa1aa72271cb96
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Wed Mar 5 13:46:41 2025 +0100
+
+    Added year select view to custom calendar
+
+commit 84a9b323e777347fa32e4d9c15919803e27d50df
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Wed Mar 5 12:09:17 2025 +0100
+
+    Work on custom date picker, added localization and button logic
+
+commit d3fcfff10d16e2fc269d52c5eb743fa8a26202c2
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Tue Mar 4 23:33:05 2025 +0100
+
+    Started implementing custom date picker
+
+commit e39346848d0f7539df8278b859c6119d010bf022
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Tue Mar 4 17:31:56 2025 +0100
+
+    Added custom dropdown, small fixes
+
+commit adb34831f875b2dc12da3d052716c5ef12019c27
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Tue Mar 4 00:41:13 2025 +0100
+
+    Added dropdown
+
+commit 803bb3f3f73c0f5c3c3588654f52ddfeba19bff9
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sun Mar 2 17:58:25 2025 +0100
+
+    Added textarea
+
+commit a3d6c14b5124448e7a1de02f86d93f154e4ae13e
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sun Mar 2 16:17:48 2025 +0100
+
+    Added number input
+
+commit cd4a69c4d492cfa917c7667645e70f7efabe4d0e
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sun Mar 2 13:26:32 2025 +0100
+
+    Added text input field
+
+commit e1652bfc7a489651640f68d45739be92e8750269
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sun Mar 2 09:32:19 2025 +0100
+
+    Added outline button variants
+
+commit c0a6318218cee70aa3f9754b25edb784d1a1d555
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sun Mar 2 00:04:16 2025 +0100
+
+    Added primary and secondary button
+
+commit 99fc7742e59aa5f401545f4ca8dbf3808631ba75
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sat Mar 1 21:05:08 2025 +0100
+
+    Added localization
+
+commit dd243b9f3ccc53e40d4da5b2c14fa5653681a34f
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sat Mar 1 19:16:57 2025 +0100
+
+    Created HeroLayout.tsx
+
+commit 7f5bbb3b24d66b9e8e53664d20b3259d29f1a72c
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sat Mar 1 17:32:49 2025 +0100
+
+    Variable setup
+
+commit 3799d52bca90cd101c29f7ba6ebede567d9b7301
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sat Mar 1 17:23:08 2025 +0100
+
+    Revert "Variable setup"
+    
+    This reverts commit 45611fbb236f0b7855e366aaf655e3e4e00b1a4f.
+
+commit 45611fbb236f0b7855e366aaf655e3e4e00b1a4f
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sat Mar 1 17:20:09 2025 +0100
+
+    Variable setup
+
+commit 757ed4a0df78d464f33e1e33f0df44a023ffe4bb
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sat Mar 1 12:05:57 2025 +0100
+
+    Initial commit

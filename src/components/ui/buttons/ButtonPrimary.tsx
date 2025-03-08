@@ -4,7 +4,7 @@ import '/src/styles/utilities.scss'
 import './button-primary.scss'
 
 interface Props {
-  text: string
+  label: string
   onClick?: () => void
   isDisabled?: boolean
 }
@@ -20,13 +20,13 @@ const ButtonPrimary: React.FunctionComponent<Props> = (props) => {
           transition={{ type: 'spring', stiffness: 150 }}
           onClick={props.onClick}
         >
-          {props.text}
+          {props.label}
         </motion.button>
       ) : (
         <motion.button
           className={'padding-x-lg box-shadow-light button-primary-disabled'}
         >
-          {props.text}
+          {props.label}
         </motion.button>
       )}
     </>

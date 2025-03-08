@@ -41,6 +41,9 @@
         "5": { "label": "SZ", "weekend": true },
         "6": { "label": "V", "weekend": true }
       }
+    },
+    "dropdown": {
+      "placeholder-text": "Válassz egy lehetőséget"
     }
   },
   "about-us": {

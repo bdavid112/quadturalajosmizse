@@ -8,6 +8,8 @@ import CustomOption from './CustomOption'
 import { useDropdown } from '../../../hooks/useDropdown'
 import { useDropdownKeyboardNav } from '../../../hooks/useDropdownKeyboardNav'
 import { useAutoClose } from '../../../hooks/useAutoClose'
+import { useLocalization } from '../../../context/LocalizationContext'
+import { t } from '../../../utils/translator'
 
 interface Option {
   value: number
@@ -35,6 +37,8 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
   defaultValue,
   onChange,
 }) => {
+  const { lang } = useLocalization()
+
   /* Dropdown state manager */
 
   const {
@@ -86,7 +90,9 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
             {label}
           </label>
           <span className="padding-x-lg width-full absolute user-select-none">
-            {selectedOption ? selectedOption.label : 'Select an option'}
+            {selectedOption
+              ? selectedOption.label
+              : t(`ui.dropdown.placeholder-text`, lang)}
           </span>
           <div className="button-container absolute z-overlay flex">
             <InputButton

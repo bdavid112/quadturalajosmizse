@@ -1,12 +1,13 @@
+import { useLocalization } from '../context/LocalizationContext'
 import { generateDayLabels } from '../utils/calendarUtils'
 
 export const useCalendarDayView = (
-  lang: string,
   calendarDays: (number | null)[],
   dateIndice: number[]
 ) => {
   /* Array of day localized labels */
 
+  const { lang } = useLocalization()
   const dayLabels = generateDayLabels(lang)
 
   /* Indice to keep track of focused and active date */

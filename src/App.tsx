@@ -7,17 +7,18 @@ import NumberInputOutline from './components/ui/form-elements/NumberInputOutline
 import TextAreaOutline from './components/ui/form-elements/TextAreaOutline'
 import DropdownOutline from './components/ui/form-elements/DropdownOutline'
 import DatePickerOutline from './components/ui/form-elements/DatePickerOutline'
+import {
+  LocalizationProvider,
+  useLocalization,
+} from './context/LocalizationContext'
 import ButtonPrimary from './components/ui/buttons/ButtonPrimary'
 
-function App() {
+function TestLocalization() {
+  const { lang, setLang } = useLocalization()
+
   return (
     <>
-      <HeroLayout
-        page="about-us"
-        section="hero"
-        lang="hu"
-        divider={true}
-      ></HeroLayout>
+      <HeroLayout page="about-us" section="hero" divider={true}></HeroLayout>
       <section className="grid padding-y-5xl">
         <div className="row">
           <div className="col-6">
@@ -27,7 +28,7 @@ function App() {
         <div className="row">
           <div className="col-12 width-full">
             <div className="flex flex-gap-lg">
-              {/* <TextInputOutline
+              <TextInputOutline
                 id={useId()}
                 name="name"
                 label="Text input"
@@ -42,7 +43,7 @@ function App() {
                 min={2}
                 max={4}
                 error={false}
-              ></NumberInputOutline> */}
+              ></NumberInputOutline>
               <DropdownOutline
                 id={useId()}
                 name="dropdown"
@@ -54,14 +55,20 @@ function App() {
                   { label: 'Option 2', value: 2 },
                 ]}
               ></DropdownOutline>
-              {/*     <TextAreaOutline
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            <div className="flex flex-gap-lg">
+              <TextAreaOutline
                 id={useId()}
                 name="textarea"
                 label="Text area"
                 helperText="Helper text"
                 maxLength={250}
                 error={false}
-              ></TextAreaOutline> */}
+              ></TextAreaOutline>
               <DatePickerOutline
                 id={useId()}
                 name="calendar"
@@ -69,11 +76,25 @@ function App() {
                 helperText="Helper text"
                 error={false}
               ></DatePickerOutline>
+              <ButtonPrimary
+                label={lang === 'en' ? 'Change to Hungarian' : 'Váltás angolra'}
+                onClick={() => {
+                  setLang(lang === 'en' ? 'hu' : 'en')
+                }}
+              ></ButtonPrimary>
             </div>
           </div>
         </div>
       </section>
     </>
+  )
+}
+
+function App() {
+  return (
+    <LocalizationProvider>
+      <TestLocalization></TestLocalization>
+    </LocalizationProvider>
   )
 }
 

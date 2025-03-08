@@ -5,12 +5,13 @@ import './input-button.scss'
 interface Props {
   icon: string
   label?: string
-  onClick?: () => void
   isParentOpen?: boolean
   rotate?: boolean
   rounded?: string
   small?: boolean
   tabIndex?: number
+  onClick?: () => void
+  closeParent?: () => void
 }
 
 const InputButton = React.forwardRef<HTMLButtonElement, Props>(
@@ -18,12 +19,13 @@ const InputButton = React.forwardRef<HTMLButtonElement, Props>(
     {
       icon,
       label,
-      onClick,
       isParentOpen = false,
       rotate = false,
       rounded = false,
       small = false,
       tabIndex = -1,
+      onClick,
+      closeParent,
     },
     ref
   ) => {
@@ -33,6 +35,11 @@ const InputButton = React.forwardRef<HTMLButtonElement, Props>(
         className={`${!small ? 'input-button' : 'input-button-small'} ${label ? 'padding-left-sm label-input-button' : ''} ${rounded}`}
         onClick={() => {
           onClick && onClick()
+        }}
+        onKeyDown={(e) => {
+          if (e.key == 'Tab') {
+            closeParent && closeParent()
+          }
         }}
         tabIndex={tabIndex}
       >

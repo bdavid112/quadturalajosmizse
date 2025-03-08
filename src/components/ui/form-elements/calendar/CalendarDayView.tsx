@@ -6,7 +6,6 @@ import { isToday } from '../../../../utils/calendarUtils'
 import { useCalendarDayView } from '../../../../hooks/useCalendarDayView'
 
 interface Props {
-  lang?: string
   selectedYear: number
   selectedMonth: number
   calendarDays: (number | null)[]
@@ -16,7 +15,6 @@ interface Props {
 }
 
 const CalendarDayView: React.FunctionComponent<Props> = ({
-  lang = 'hu',
   selectedYear,
   selectedMonth,
   calendarDays,
@@ -24,7 +22,6 @@ const CalendarDayView: React.FunctionComponent<Props> = ({
   handleDateSelect,
 }) => {
   const { dayLabels, focusedDateIndex, activeDateIndex } = useCalendarDayView(
-    lang,
     calendarDays,
     dateIndice
   )
@@ -47,25 +44,11 @@ const CalendarDayView: React.FunctionComponent<Props> = ({
           <div
             key={index}
             className={`relative calendar-cell flex align-center justify-center transition-bezier-fast ${day == focusedDateIndex ? 'calendar-cell-focus' : ''} ${day == activeDateIndex ? 'calendar-cell-active' : ''} ${!day ? 'cursor-default' : ''} ${day && isToday(selectedYear, selectedMonth, day) ? 'calendar-today' : ''}`}
-            /* ref={(el) => {
-              if (day) {
-                dateRefs.current[day] = el
-              }
-            }} */
             onClick={() => {
               if (handleDateSelect && day) {
                 handleDateSelect(new Date(selectedYear, selectedMonth, day))
               }
             }}
-            /* onKeyDown={(e) => {
-              handleKeyDown(e)
-            }}
-            onKeyUp={(e) => {
-              handleKeyUp(e)
-            }}
-            onFocus={() => {
-              day && setFocusedDateIndex(day)
-            }} */
             role="button"
           >
             <p className="z-overlay">{day ? day : ''}</p>

@@ -1,6 +1,7 @@
-import * as React from 'react'
 import '/src/styles/utilities.scss'
 import './text-input-outline.scss'
+
+import * as React from 'react'
 import { useState } from 'react'
 
 interface Props {

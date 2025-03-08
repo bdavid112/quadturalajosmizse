@@ -1,6 +1,7 @@
-import * as React from 'react'
 import '/src/styles/utilities.scss'
 import './number-input-outline.scss'
+
+import * as React from 'react'
 import { useState } from 'react'
 import InputButton from '../buttons/InputButton'
 

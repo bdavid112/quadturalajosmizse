@@ -11,6 +11,7 @@ interface Props {
   handleLeftClick?: () => void
   handleMiddleClick?: () => void
   handleRightClick?: () => void
+  closeParent?: () => void
 }
 
 const ButtonTriad: React.FunctionComponent<Props> = ({
@@ -21,6 +22,7 @@ const ButtonTriad: React.FunctionComponent<Props> = ({
   handleLeftClick,
   handleMiddleClick,
   handleRightClick,
+  closeParent,
 }) => {
   return (
     <div className="flex align-center justify-center min-width-xs">
@@ -48,6 +50,7 @@ const ButtonTriad: React.FunctionComponent<Props> = ({
           rounded="border-rounded-full-right"
           small={small}
           onClick={handleRightClick}
+          closeParent={closeParent}
         ></InputButton>
       )}
     </div>

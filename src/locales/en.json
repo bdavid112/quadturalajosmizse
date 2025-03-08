@@ -41,6 +41,9 @@
         "5": { "label": "F", "weekend": false },
         "6": { "label": "S", "weekend": true }
       }
+    },
+    "dropdown": {
+      "placeholder-text": "Select an option"
     }
   },
   "about-us": {

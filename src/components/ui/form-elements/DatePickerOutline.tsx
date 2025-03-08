@@ -8,9 +8,9 @@ import { t } from '../../../utils/translator'
 import { useDatePicker } from '../../../hooks/useDatePicker'
 import { useAutoClose } from '../../../hooks/useAutoClose'
 import { useDatePickerKeyboardNav } from '../../../hooks/useDatePickerKeyboardNav'
+import { useLocalization } from '../../../context/LocalizationContext'
 
 interface Props {
-  lang?: string
   id: string
   name: string
   label: string
@@ -23,7 +23,6 @@ interface Props {
 }
 
 const DatePickerOutline: React.FunctionComponent<Props> = ({
-  lang = 'hu',
   id,
   name,
   label,
@@ -34,6 +33,8 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
   maxYear = 2100,
   onChange,
 }) => {
+  const { lang } = useLocalization()
+
   /* Date picker state manager */
 
   const {
@@ -126,7 +127,6 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
         {isOpen && (
           <div className="calendar-container border-rounded-sm box-shadow-medium">
             <CustomCalendar
-              lang={lang}
               activeView={activeView}
               calendarDays={calendarDays}
               viewTogglers={viewTogglers}

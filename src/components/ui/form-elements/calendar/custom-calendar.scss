@@ -61,6 +61,8 @@ $view-container-height: 21.5rem;
 }
 
 .calendar-cell-active {
+  color: $text-inverted !important;
+
   .calendar-cell-background {
     background-color: $color-primary-600 !important;
   }

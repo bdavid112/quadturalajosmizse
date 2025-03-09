@@ -1,16 +1,44 @@
 @import '../../../styles/tokens.scss';
 
+.form-group {
+  border: none;
+  padding: 0;
+  margin-bottom: $space-xl;
+
+  legend {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: $space-lg;
+  }
+}
+
+.form-body {
+  padding-block: $space-xl;
+}
+
 @media (max-width: $screen-tablet) {
   .form-container {
     padding-inline: $space-lg !important;
     padding-block: $space-2xl !important;
 
-    .input-group {
+    .form-group {
       flex-direction: column;
+
+      .subgroup {
+        flex-direction: column;
+      }
 
       .width-half {
         width: 100%;
       }
     }
+  }
+
+  .helper-text {
+    display: none;
+  }
+
+  .flex-gap-sm {
+    gap: $space-md !important;
   }
 }

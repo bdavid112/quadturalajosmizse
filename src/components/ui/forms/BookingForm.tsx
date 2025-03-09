@@ -31,39 +31,46 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
   return (
     <div className="width-full box-shadow-medium border-rounded-md padding-x-4xl padding-y-2xl form-container">
       <h3 className="text-center">{t(`ui.forms.booking-form.title`, lang)}</h3>
-      <div className="padding-y-2xl flex flex-col flex-gap-lg">
-        <TextInputOutline
-          id={idName}
-          name="name"
-          label={t(`ui.forms.booking-form.inputs.name.label`, lang)}
-          helperText={t(`ui.forms.booking-form.inputs.name.helper-text`, lang)}
-        ></TextInputOutline>
-        <div className="flex flex-gap-md input-group">
-          <div className="width-half">
-            <TextInputOutline
-              id={idEmail}
-              name="email"
-              label={t(`ui.forms.booking-form.inputs.email.label`, lang)}
-              helperText={t(
-                `ui.forms.booking-form.inputs.email.helper-text`,
-                lang
-              )}
-            ></TextInputOutline>
+      <div className="form-body">
+        <fieldset className="form-group flex flex-col flex-gap-sm">
+          <legend>Kapcsolattartási adatok</legend>
+          <TextInputOutline
+            id={idName}
+            name="name"
+            label={t(`ui.forms.booking-form.inputs.name.label`, lang)}
+            helperText={t(
+              `ui.forms.booking-form.inputs.name.helper-text`,
+              lang
+            )}
+          ></TextInputOutline>
+          <div className="flex flex-gap-sm subgroup">
+            <div className="width-half">
+              <TextInputOutline
+                id={idEmail}
+                name="email"
+                label={t(`ui.forms.booking-form.inputs.email.label`, lang)}
+                helperText={t(
+                  `ui.forms.booking-form.inputs.email.helper-text`,
+                  lang
+                )}
+              ></TextInputOutline>
+            </div>
+            <div className="width-half">
+              <TextInputOutline
+                id={idPhone}
+                name="phone"
+                label={t(`ui.forms.booking-form.inputs.phone.label`, lang)}
+                helperText={t(
+                  `ui.forms.booking-form.inputs.phone.helper-text`,
+                  lang
+                )}
+              ></TextInputOutline>
+            </div>
           </div>
-          <div className="width-half">
-            <TextInputOutline
-              id={idPhone}
-              name="phone"
-              label={t(`ui.forms.booking-form.inputs.phone.label`, lang)}
-              helperText={t(
-                `ui.forms.booking-form.inputs.phone.helper-text`,
-                lang
-              )}
-            ></TextInputOutline>
-          </div>
-        </div>
-        <div className="flex flex-gap-md input-group">
-          <div className="width-half">
+        </fieldset>
+        <fieldset className="form-group flex flex-gap-sm">
+          <legend>Túra részletek</legend>
+          <div className="width-half inline-block">
             <DatePickerOutline
               id={idDate}
               name="date"
@@ -74,7 +81,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
               )}
             ></DatePickerOutline>
           </div>
-          <div className="width-half">
+          <div className="width-half inline-block">
             <DropdownOutline
               id={idTour}
               name="tour"
@@ -89,9 +96,10 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
               ]}
             ></DropdownOutline>
           </div>
-        </div>
-        <div className="flex flex-gap-md input-group">
-          <div className="width-half">
+        </fieldset>
+        <fieldset className="form-group flex flex-gap-sm">
+          <legend>Quadok és utasok száma</legend>
+          <div className="width-half inline-block">
             <NumberInputOutline
               id={idQuad}
               name="quad"
@@ -104,7 +112,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
               )}
             ></NumberInputOutline>
           </div>
-          <div className="width-half">
+          <div className="width-half inline-block">
             <NumberInputOutline
               id={idPassenger}
               name="passenger"
@@ -117,16 +125,19 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
               )}
             ></NumberInputOutline>
           </div>
-        </div>
-        <TextAreaOutline
-          id={idComment}
-          name="comment"
-          label={t(`ui.forms.booking-form.inputs.comment.label`, lang)}
-          helperText={t(
-            `ui.forms.booking-form.inputs.comment.helper-text`,
-            lang
-          )}
-        ></TextAreaOutline>
+        </fieldset>
+        <fieldset className="form-group">
+          <legend>Egyéb megjegyzés</legend>
+          <TextAreaOutline
+            id={idComment}
+            name="comment"
+            label={t(`ui.forms.booking-form.inputs.comment.label`, lang)}
+            helperText={t(
+              `ui.forms.booking-form.inputs.comment.helper-text`,
+              lang
+            )}
+          ></TextAreaOutline>
+        </fieldset>
       </div>
       <div className="flex justify-center width-full">
         <ButtonPrimary

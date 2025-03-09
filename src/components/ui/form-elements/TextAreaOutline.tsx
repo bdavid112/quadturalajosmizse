@@ -78,7 +78,7 @@ const TextAreaOutline: React.FunctionComponent<Props> = ({
       </div>
       <div className="padding-x-lg flex min-height-xs align-center justify-between">
         <span
-          className={`font-size-caption text-secondary ${error ? 'text-error' : ''}`}
+          className={`helper-text font-size-caption text-secondary ${error ? 'text-error' : ''}`}
         >
           {helperText}
         </span>

@@ -117,7 +117,7 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
       {/* Helper text */}
       <div className="padding-x-lg">
         <span
-          className={`font-size-caption text-secondary ${error ? 'text-error' : ''}`}
+          className={`helper-text font-size-caption text-secondary ${error ? 'text-error' : ''}`}
         >
           {helperText}
         </span>

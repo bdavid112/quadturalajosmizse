@@ -37,7 +37,7 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
   const { lang } = useLocalization()
 
   return (
-    <div className="padding-x-md padding-y-md calendar-container">
+    <div className="padding-x-md padding-y-md">
       <div
         className={`col-7 flex justify-between ${lang == 'en' ? 'flex-row-reverse' : ''}`}
       >

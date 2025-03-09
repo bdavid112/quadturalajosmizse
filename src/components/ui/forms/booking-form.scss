@@ -1,0 +1,16 @@
+@import '../../../styles/tokens.scss';
+
+@media (max-width: $screen-tablet) {
+  .form-container {
+    padding-inline: $space-lg !important;
+    padding-block: $space-2xl !important;
+
+    .input-group {
+      flex-direction: column;
+
+      .width-half {
+        width: 100%;
+      }
+    }
+  }
+}

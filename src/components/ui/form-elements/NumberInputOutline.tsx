@@ -35,21 +35,25 @@ const NumberInputOutline: React.FunctionComponent<Props> = ({
   return (
     <div className="width-full">
       <div
-        className={`flex align-center min-width-md relative input-container border ${error ? 'border-error' : ''}`}
+        className={`flex align-center relative input-container min-height-lg border ${error ? 'border-error' : ''}`}
       >
-        <label
-          htmlFor={id}
-          className={`absolute z-overlay input-label padding-x-lg ${value ? 'populated' : ''} ${error ? 'text-error' : ''}`}
+        <div
+          className={`z-overlay label-container absolute ${value ? 'populated' : ''}`}
         >
-          {label}
-        </label>
+          <label
+            htmlFor={id}
+            className={`input-label ${error ? 'text-error' : ''}`}
+          >
+            {label}
+          </label>
+        </div>
         <input
           id={id}
           name={name}
           type="number"
           value={value}
           onChange={(e) => setValueIfInRange(Number(e.target.value))}
-          className="relative z-base min-height-lg width-full font-size-base input-field padding-x-lg"
+          className="relative z-base width-full font-size-base input-field padding-x-lg"
         ></input>
         <div className="button-container absolute z-overlay flex">
           <InputButton

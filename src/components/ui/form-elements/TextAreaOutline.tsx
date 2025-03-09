@@ -57,12 +57,16 @@ const TextAreaOutline: React.FunctionComponent<Props> = ({
       <div
         className={`flex min-width-md relative input-container textarea-container border ${error ? 'border-error' : ''}`}
       >
-        <label
-          htmlFor={id}
-          className={`absolute input-label textarea-label padding-x-lg margin-y-lg ${text ? 'populated' : ''} ${error ? 'text-error' : ''}`}
+        <div
+          className={`label-container absolute padding-x-lg margin-y-lg ${text ? 'populated' : ''}`}
         >
-          {label}
-        </label>
+          <label
+            htmlFor={id}
+            className={`input-label ${error ? 'text-error' : ''}`}
+          >
+            {label}
+          </label>
+        </div>
         <textarea
           id={id}
           name={name}

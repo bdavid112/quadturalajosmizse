@@ -44,6 +44,46 @@
     },
     "dropdown": {
       "placeholder-text": "Válassz egy lehetőséget"
+    },
+    "forms": {
+      "booking-form": {
+        "title": "Online időpontfoglalás",
+        "inputs": {
+          "name": {
+            "label": "Név",
+            "helper-text": "Add meg a teljes neved"
+          },
+          "email": {
+            "label": "Email",
+            "helper-text": "Add meg az email címed"
+          },
+          "phone": {
+            "label": "Telefonszám",
+            "helper-text": "Add meg a telefonszámod"
+          },
+          "date": {
+            "label": "Dátum",
+            "helper-text": "Válaszd ki a tervezett időpontot"
+          },
+          "tour": {
+            "label": "Túra típus",
+            "helper-text": "Válaszd ki a túra típusát"
+          },
+          "quad": {
+            "label": "Quadok száma",
+            "helper-text": "Bérelt quadok száma (min 2 - max 4)"
+          },
+          "passenger": {
+            "label": "Utasok száma",
+            "helper-text": "Utasok száma"
+          },
+          "comment": {
+            "label": "Megjegyzés",
+            "helper-text": "Írj egyéb megjegyzést, ha szeretnél"
+          }
+        },
+        "button-label": "Tovább a fizetéshez"
+      }
     }
   },
   "about-us": {

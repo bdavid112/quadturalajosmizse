@@ -40,7 +40,6 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
   const { lang } = useLocalization()
 
   /* Dropdown state manager */
-
   const {
     isOpen,
     setIsOpen,
@@ -53,7 +52,6 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
   } = useDropdown(defaultValue)
 
   /* Keyboard navigation for dropdown menu */
-
   const {
     focusedOptionIndex,
     activeOptionIndex,
@@ -70,86 +68,88 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
   )
 
   /* Close dropdown on clicking outside the container or pressing ESC */
-
   useAutoClose(componentContainerRef, isOpen, closeDropdown)
 
   return (
-    <>
-      <div ref={componentContainerRef} className="width-full relative">
-        <div
-          tabIndex={0}
-          className={`flex align-center relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${error ? 'border-error' : ''}`}
-          onKeyDown={(e) => handleKeyDown(e)}
-          onKeyUp={(e) => handleKeyUp(e)}
-          ref={inputContainerRef}
-        >
+    <div ref={componentContainerRef} className="width-full relative">
+      <div
+        tabIndex={0}
+        ref={inputContainerRef}
+        className={`flex align-center relative min-height-lg input-container cursor-pointer border background-transparent ${
+          isOpen ? 'input-focused' : ''
+        } ${error ? 'border-error' : ''}`}
+        onKeyDown={handleKeyDown}
+        onKeyUp={handleKeyUp}
+        onClick={() => {
+          toggleIsOpen()
+        }}
+      >
+        <div className="label-container absolute populated">
           <label
             htmlFor={id}
-            className={`absolute z-overlay input-label padding-x-lg populated ${error ? 'text-error' : ''}`}
+            className={`input-label ${error ? 'text-error' : ''}`}
           >
             {label}
           </label>
-          <span className="padding-x-lg width-full absolute user-select-none">
-            {selectedOption
-              ? selectedOption.label
-              : t(`ui.dropdown.placeholder-text`, lang)}
-          </span>
-          <div className="button-container absolute z-overlay flex">
-            <InputButton
-              icon={'keyboard_arrow_down'}
-              onClick={() => {
-                toggleIsOpen()
-              }}
-              isParentOpen={isOpen}
-              rotate={true}
-            ></InputButton>
-          </div>
-          <select
-            id={id}
-            name={name}
-            value={selectedOption ? selectedOption.value : 0}
-            className="relative z-base min-height-lg width-full font-size-base input-field padding-x-lg background-transparent"
-            onClick={() => {
-              toggleIsOpen()
-            }}
-            onChange={() => {}}
-            tabIndex={-1}
-          ></select>
         </div>
-        <div className="padding-x-lg relative">
-          <span
-            className={`font-size-caption text-secondary absolute padding-y-xs ${error ? 'text-error' : ''}`}
-          >
-            {helperText}
-          </span>
+        <span className="padding-x-lg width-full absolute user-select-none">
+          {selectedOption
+            ? selectedOption.label
+            : t(`ui.dropdown.placeholder-text`, lang)}
+        </span>
+        <div className="button-container absolute z-overlay flex">
+          <InputButton
+            icon="keyboard_arrow_down"
+            onClick={toggleIsOpen}
+            isParentOpen={isOpen}
+            rotate
+          />
         </div>
-        <div
-          className={`option-container border-rounded-sm box-shadow-medium absolute width-full z-top transition-bezier-smooth animated-content ${isOpen ? 'open' : ''}`}
-        >
-          <OptionsMenu>
-            {options.map((option, index) => (
-              <CustomOption
-                ref={(el) => {
-                  if (option) {
-                    optionRefs.current[index] = el
-                  }
-                }}
-                key={index}
-                icon="check"
-                option={option}
-                isSelected={option.value == selectedOption?.value}
-                isFocused={focusedOptionIndex == index}
-                isActive={activeOptionIndex == index}
-                onClick={() => {
-                  handleOptionClick && handleOptionClick(option.value)
-                  inputContainerRef.current && inputContainerRef.current.focus()
-                }}
-              ></CustomOption>
-            ))}
-          </OptionsMenu>
-        </div>
+        {/* Hidden input for form submission */}
+        <input
+          type="hidden"
+          id={id}
+          name={name}
+          value={selectedOption?.value ?? ''}
+        />
       </div>
-    </>
+
+      {/* Helper text */}
+      <div className="padding-x-lg">
+        <span
+          className={`font-size-caption text-secondary ${error ? 'text-error' : ''}`}
+        >
+          {helperText}
+        </span>
+      </div>
+
+      {/* Dropdown menu */}
+      <div
+        className={`option-container border-rounded-sm box-shadow-medium absolute width-full z-top transition-bezier-fast animated-content ${isOpen ? 'open' : ''}`}
+      >
+        <OptionsMenu>
+          {options.map((option, index) => (
+            <CustomOption
+              ref={(el) => {
+                if (option) {
+                  optionRefs.current[index] = el
+                }
+              }}
+              key={option.value} // Use value instead of index for better stability
+              icon="check"
+              option={option}
+              isSelected={option.value === selectedOption?.value}
+              isFocused={focusedOptionIndex === index}
+              isActive={activeOptionIndex === index}
+              onClick={() => {
+                handleOptionClick(option.value)
+                inputContainerRef.current?.focus()
+              }}
+            />
+          ))}
+        </OptionsMenu>
+      </div>
+    </div>
   )
 }
 

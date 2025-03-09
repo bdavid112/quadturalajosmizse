@@ -74,7 +74,7 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
   return (
     <div ref={containerRef} className="width-full relative">
       <div
-        className={`flex align-center min-width-lg relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${error ? 'border-error' : ''}`}
+        className={`z-overlay flex cursor-pointer align-center min-height-lg relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${error ? 'border-error' : ''}`}
         tabIndex={0}
         onKeyDown={(e) => {
           handleKeyDown(e)
@@ -82,13 +82,16 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
         onKeyUp={(e) => {
           handleKeyUp(e)
         }}
+        onClick={() => toggleIsOpen()}
       >
-        <label
-          htmlFor={id}
-          className={`absolute z-overlay input-label padding-x-lg populated ${error ? 'text-error' : ''}`}
-        >
-          {label}
-        </label>
+        <div className={`label-container absolute populated`}>
+          <label
+            htmlFor={id}
+            className={`input-label ${error ? 'text-error' : ''}`}
+          >
+            {label}
+          </label>
+        </div>
         <span className="padding-x-lg width-full absolute user-select-none">
           {selectedDate
             ? selectedDate.toLocaleDateString()
@@ -103,42 +106,42 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
             isParentOpen={isOpen}
           ></InputButton>
         </div>
-        <input
-          id={id}
-          name={name}
-          value={selectedDate ? selectedDate.toLocaleString() : ''}
-          type="date"
-          className="cursor-pointer relative z-base min-height-lg width-full font-size-base input-field padding-x-lg background-transparent custom-date-picker"
+        <div
           onClick={() => {
             setIsOpen(!isOpen)
           }}
+        ></div>
+        <input
+          id={id}
+          name={name}
+          value={selectedDate ? selectedDate.toISOString() : ''}
+          type="hidden"
           onChange={() => {}}
-          tabIndex={-1}
         ></input>
       </div>
       <div className="padding-x-lg">
         <span
-          className={`font-size-caption text-secondary ${isOpen ? 'hidden' : ''} ${error ? 'text-error' : ''}`}
+          className={`font-size-caption text-secondary ${error ? 'text-error' : ''}`}
         >
           {helperText}
         </span>
       </div>
-      {isOpen && (
-        <div className="calendar-container border-rounded-sm box-shadow-medium absolute width-full flex justify-center">
-          <CustomCalendar
-            activeView={activeView}
-            calendarDays={calendarDays}
-            viewTogglers={viewTogglers}
-            dateIndice={dateIndice}
-            selectedYear={selectedYear}
-            selectedMonth={selectedMonth}
-            changeSelectedYear={changeSelectedYear}
-            changeSelectedMonth={changeSelectedMonth}
-            handleDateSelect={handleDateSelect}
-            closeDatePicker={closeDatePicker}
-          ></CustomCalendar>
-        </div>
-      )}
+      <div
+        className={`z-top min-width-lg calendar-container border-rounded-sm box-shadow-medium absolute width-full flex justify-center transition-bezier-fast animated-content ${isOpen ? 'open' : ''}`}
+      >
+        <CustomCalendar
+          activeView={activeView}
+          calendarDays={calendarDays}
+          viewTogglers={viewTogglers}
+          dateIndice={dateIndice}
+          selectedYear={selectedYear}
+          selectedMonth={selectedMonth}
+          changeSelectedYear={changeSelectedYear}
+          changeSelectedMonth={changeSelectedMonth}
+          handleDateSelect={handleDateSelect}
+          closeDatePicker={closeDatePicker}
+        ></CustomCalendar>
+      </div>
     </div>
   )
 }

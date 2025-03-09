@@ -2,13 +2,11 @@
 
 $input-container-min-width: 19.5rem;
 
-@mixin label-focused($color: $color-primary-500, $transform: -135%) {
-  font-size: $font-size-sm;
-  padding-inline: $space-sm !important;
-  transform: translateY($transform);
-  left: $space-sm;
+@mixin label-focused($color: $color-primary-500, $transform: -120%) {
+  transform: translateY($transform) scale(87.5%);
   color: $color;
   background-color: $surface-100 !important;
+  margin-inline: $space-sm !important;
 }
 
 @mixin input-focused {
@@ -21,25 +19,30 @@ $input-container-min-width: 19.5rem;
 }
 
 .populated {
+  padding-inline: 0 !important;
   @include label-focused($text-secondary);
+
+  label {
+    margin-inline: $space-sm !important;
+  }
 }
 
 .input-focused {
   @include input-focused();
 }
 
-.input-label {
-  transition:
-    font-size $bezier-fast,
-    transform $bezier-fast;
+.label-container {
+  will-change: transform;
+  transition: transform $bezier-fast;
+  transform-origin: left center;
   background-color: transparent;
   cursor: text;
   user-select: none;
   color: $text-secondary;
+  padding-inline: $space-lg;
 }
 
 .input-container {
-  min-width: $input-container-min-width;
   border-radius: $radius-sm;
 
   &:hover {
@@ -50,7 +53,8 @@ $input-container-min-width: 19.5rem;
     @include input-focused();
   }
 
-  &:focus-within .input-label {
+  &:focus-within .label-container {
+    padding-inline: 0 !important;
     @include label-focused();
   }
 }

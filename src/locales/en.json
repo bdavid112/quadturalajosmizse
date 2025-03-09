@@ -44,6 +44,46 @@
     },
     "dropdown": {
       "placeholder-text": "Select an option"
+    },
+    "forms": {
+      "booking-form": {
+        "title": "Online booking",
+        "inputs": {
+          "name": {
+            "label": "Name",
+            "helper-text": "Enter your full name"
+          },
+          "email": {
+            "label": "Email",
+            "helper-text": "Enter you email address"
+          },
+          "phone": {
+            "label": "Phone number",
+            "helper-text": "Enter you phone number"
+          },
+          "date": {
+            "label": "Date",
+            "helper-text": "Pick your planned date"
+          },
+          "tour": {
+            "label": "Tour type",
+            "helper-text": "Choose the type of the tour"
+          },
+          "quad": {
+            "label": "Number of ATVs",
+            "helper-text": "Number of the rented ATVs (min 2 - max 4)"
+          },
+          "passenger": {
+            "label": "Number of passengers",
+            "helper-text": "Number of passengers (max 1/ATV)"
+          },
+          "comment": {
+            "label": "Comment",
+            "helper-text": "Write other comments if you wish"
+          }
+        },
+        "button-label": "Proceed to checkout"
+      }
     }
   },
   "about-us": {

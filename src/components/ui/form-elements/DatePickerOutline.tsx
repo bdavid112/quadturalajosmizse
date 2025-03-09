@@ -72,76 +72,74 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
     )
 
   return (
-    <>
-      <div ref={containerRef}>
-        <div
-          className={`flex align-center min-width-lg relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${error ? 'border-error' : ''}`}
-          tabIndex={0}
-          onKeyDown={(e) => {
-            handleKeyDown(e)
-          }}
-          onKeyUp={(e) => {
-            handleKeyUp(e)
-          }}
+    <div ref={containerRef} className="width-full relative">
+      <div
+        className={`flex align-center min-width-lg relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${error ? 'border-error' : ''}`}
+        tabIndex={0}
+        onKeyDown={(e) => {
+          handleKeyDown(e)
+        }}
+        onKeyUp={(e) => {
+          handleKeyUp(e)
+        }}
+      >
+        <label
+          htmlFor={id}
+          className={`absolute z-overlay input-label padding-x-lg populated ${error ? 'text-error' : ''}`}
         >
-          <label
-            htmlFor={id}
-            className={`absolute z-overlay input-label padding-x-lg populated ${error ? 'text-error' : ''}`}
-          >
-            {label}
-          </label>
-          <span className="padding-x-lg width-full absolute user-select-none">
-            {selectedDate
-              ? selectedDate.toLocaleDateString()
-              : `${t('ui.calendar.placeholder-text', lang)}`}
-          </span>
-          <div className="button-container absolute z-overlay flex">
-            <InputButton
-              icon={'calendar_month'}
-              onClick={() => {
-                toggleIsOpen()
-              }}
-              isParentOpen={isOpen}
-            ></InputButton>
-          </div>
-          <input
-            id={id}
-            name={name}
-            value={selectedDate ? selectedDate.toLocaleString() : ''}
-            type="date"
-            className="cursor-pointer relative z-base min-height-lg width-full font-size-base input-field padding-x-lg background-transparent custom-date-picker"
+          {label}
+        </label>
+        <span className="padding-x-lg width-full absolute user-select-none">
+          {selectedDate
+            ? selectedDate.toLocaleDateString()
+            : `${t('ui.calendar.placeholder-text', lang)}`}
+        </span>
+        <div className="button-container absolute z-overlay flex">
+          <InputButton
+            icon={'calendar_month'}
             onClick={() => {
-              setIsOpen(!isOpen)
+              toggleIsOpen()
             }}
-            onChange={() => {}}
-            tabIndex={-1}
-          ></input>
+            isParentOpen={isOpen}
+          ></InputButton>
         </div>
-        <div className="padding-x-lg">
-          <span
-            className={`font-size-caption text-secondary ${isOpen ? 'hidden' : ''} ${error ? 'text-error' : ''}`}
-          >
-            {helperText}
-          </span>
-        </div>
-        {isOpen && (
-          <div className="calendar-container border-rounded-sm box-shadow-medium">
-            <CustomCalendar
-              activeView={activeView}
-              calendarDays={calendarDays}
-              viewTogglers={viewTogglers}
-              dateIndice={dateIndice}
-              selectedYear={selectedYear}
-              selectedMonth={selectedMonth}
-              changeSelectedYear={changeSelectedYear}
-              changeSelectedMonth={changeSelectedMonth}
-              handleDateSelect={handleDateSelect}
-              closeDatePicker={closeDatePicker}
-            ></CustomCalendar>
-          </div>
-        )}
+        <input
+          id={id}
+          name={name}
+          value={selectedDate ? selectedDate.toLocaleString() : ''}
+          type="date"
+          className="cursor-pointer relative z-base min-height-lg width-full font-size-base input-field padding-x-lg background-transparent custom-date-picker"
+          onClick={() => {
+            setIsOpen(!isOpen)
+          }}
+          onChange={() => {}}
+          tabIndex={-1}
+        ></input>
       </div>
-    </>
+      <div className="padding-x-lg">
+        <span
+          className={`font-size-caption text-secondary ${isOpen ? 'hidden' : ''} ${error ? 'text-error' : ''}`}
+        >
+          {helperText}
+        </span>
+      </div>
+      {isOpen && (
+        <div className="calendar-container border-rounded-sm box-shadow-medium absolute width-full flex justify-center">
+          <CustomCalendar
+            activeView={activeView}
+            calendarDays={calendarDays}
+            viewTogglers={viewTogglers}
+            dateIndice={dateIndice}
+            selectedYear={selectedYear}
+            selectedMonth={selectedMonth}
+            changeSelectedYear={changeSelectedYear}
+            changeSelectedMonth={changeSelectedMonth}
+            handleDateSelect={handleDateSelect}
+            closeDatePicker={closeDatePicker}
+          ></CustomCalendar>
+        </div>
+      )}
+    </div>
   )
 }
 

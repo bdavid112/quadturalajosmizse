@@ -14,7 +14,9 @@ const ButtonPrimary: React.FunctionComponent<Props> = (props) => {
     <>
       {!props.isDisabled ? (
         <motion.button
-          className={'padding-x-lg box-shadow-light button-primary-enabled'}
+          className={
+            'padding-x-lg box-shadow-light button-primary-enabled width-full'
+          }
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: 'spring', stiffness: 150 }}
@@ -24,7 +26,9 @@ const ButtonPrimary: React.FunctionComponent<Props> = (props) => {
         </motion.button>
       ) : (
         <motion.button
-          className={'padding-x-lg box-shadow-light button-primary-disabled'}
+          className={
+            'padding-x-lg box-shadow-light button-primary-disabled width-full'
+          }
         >
           {props.label}
         </motion.button>

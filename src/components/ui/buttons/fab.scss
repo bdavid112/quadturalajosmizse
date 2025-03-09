@@ -1,0 +1,17 @@
+@import '../../../styles/tokens.scss';
+
+.fab {
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 1rem;
+  border: none;
+  background: $color-primary-400;
+
+  &:hover {
+    background: $color-primary-500;
+  }
+
+  &:active {
+    background: $color-primary-600;
+  }
+}

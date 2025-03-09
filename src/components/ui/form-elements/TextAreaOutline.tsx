@@ -53,40 +53,38 @@ const TextAreaOutline: React.FunctionComponent<Props> = ({
   }
 
   return (
-    <>
-      <div>
-        <div
-          className={`flex min-width-md relative input-container textarea-container border ${error ? 'border-error' : ''}`}
+    <div className="width-full">
+      <div
+        className={`flex min-width-md relative input-container textarea-container border ${error ? 'border-error' : ''}`}
+      >
+        <label
+          htmlFor={id}
+          className={`absolute input-label textarea-label padding-x-lg margin-y-lg ${text ? 'populated' : ''} ${error ? 'text-error' : ''}`}
         >
-          <label
-            htmlFor={id}
-            className={`absolute input-label textarea-label padding-x-lg margin-y-lg ${text ? 'populated' : ''} ${error ? 'text-error' : ''}`}
-          >
-            {label}
-          </label>
-          <textarea
-            id={id}
-            name={name}
-            value={text}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-            className="relative z-base min-height-lg width-full font-size-base input-field padding-x-lg padding-y-lg background-transparent"
-          ></textarea>
-        </div>
-        <div className="padding-x-lg flex min-height-xs align-center justify-between">
-          <span
-            className={`font-size-caption text-secondary ${error ? 'text-error' : ''}`}
-          >
-            {helperText}
-          </span>
-          <span
-            className={`font-size-caption text-secondary ${error ? 'text-error' : ''}`}
-          >
-            {text.length}/{maxLength}
-          </span>
-        </div>
+          {label}
+        </label>
+        <textarea
+          id={id}
+          name={name}
+          value={text}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          className="relative z-base min-height-lg width-full font-size-base input-field padding-x-lg padding-y-lg background-transparent"
+        ></textarea>
       </div>
-    </>
+      <div className="padding-x-lg flex min-height-xs align-center justify-between">
+        <span
+          className={`font-size-caption text-secondary ${error ? 'text-error' : ''}`}
+        >
+          {helperText}
+        </span>
+        <span
+          className={`font-size-caption text-secondary ${error ? 'text-error' : ''}`}
+        >
+          {text.length}/{maxLength}
+        </span>
+      </div>
+    </div>
   )
 }
 

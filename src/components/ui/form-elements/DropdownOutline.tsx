@@ -75,10 +75,10 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
 
   return (
     <>
-      <div ref={componentContainerRef}>
+      <div ref={componentContainerRef} className="width-full relative">
         <div
           tabIndex={0}
-          className={`flex align-center min-width-md relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${error ? 'border-error' : ''}`}
+          className={`flex align-center relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${error ? 'border-error' : ''}`}
           onKeyDown={(e) => handleKeyDown(e)}
           onKeyUp={(e) => handleKeyUp(e)}
           ref={inputContainerRef}
@@ -124,7 +124,7 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
           </span>
         </div>
         {isOpen && (
-          <div className="option-container border-rounded-sm box-shadow-medium">
+          <div className="option-container border-rounded-sm box-shadow-medium absolute width-full z-top">
             <OptionsMenu>
               {options.map((option, index) => (
                 <CustomOption

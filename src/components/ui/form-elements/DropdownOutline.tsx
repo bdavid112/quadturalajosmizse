@@ -116,39 +116,38 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
             tabIndex={-1}
           ></select>
         </div>
-        <div className="padding-x-lg">
+        <div className="padding-x-lg relative">
           <span
-            className={`font-size-caption text-secondary ${isOpen ? 'hidden' : ''} ${error ? 'text-error' : ''}`}
+            className={`font-size-caption text-secondary absolute padding-y-xs ${error ? 'text-error' : ''}`}
           >
             {helperText}
           </span>
         </div>
-        {isOpen && (
-          <div className="option-container border-rounded-sm box-shadow-medium absolute width-full z-top">
-            <OptionsMenu>
-              {options.map((option, index) => (
-                <CustomOption
-                  ref={(el) => {
-                    if (option) {
-                      optionRefs.current[index] = el
-                    }
-                  }}
-                  key={index}
-                  icon="check"
-                  option={option}
-                  isSelected={option.value == selectedOption?.value}
-                  isFocused={focusedOptionIndex == index}
-                  isActive={activeOptionIndex == index}
-                  onClick={() => {
-                    handleOptionClick && handleOptionClick(option.value)
-                    inputContainerRef.current &&
-                      inputContainerRef.current.focus()
-                  }}
-                ></CustomOption>
-              ))}
-            </OptionsMenu>
-          </div>
-        )}
+        <div
+          className={`option-container border-rounded-sm box-shadow-medium absolute width-full z-top transition-bezier-smooth animated-content ${isOpen ? 'open' : ''}`}
+        >
+          <OptionsMenu>
+            {options.map((option, index) => (
+              <CustomOption
+                ref={(el) => {
+                  if (option) {
+                    optionRefs.current[index] = el
+                  }
+                }}
+                key={index}
+                icon="check"
+                option={option}
+                isSelected={option.value == selectedOption?.value}
+                isFocused={focusedOptionIndex == index}
+                isActive={activeOptionIndex == index}
+                onClick={() => {
+                  handleOptionClick && handleOptionClick(option.value)
+                  inputContainerRef.current && inputContainerRef.current.focus()
+                }}
+              ></CustomOption>
+            ))}
+          </OptionsMenu>
+        </div>
       </div>
     </>
   )

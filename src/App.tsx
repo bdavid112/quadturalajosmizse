@@ -15,6 +15,7 @@ import {
 import ButtonPrimary from './components/ui/buttons/ButtonPrimary'
 import SegmentedButton from './components/ui/buttons/SegmentedButton'
 import FAB from './components/ui/buttons/FAB'
+import Accordion from './components/ui/Accordion'
 
 function TestLocalization() {
   /* const { lang, setLang } = useLocalization() */
@@ -93,13 +94,19 @@ function TestLocalization() {
           </div> */}
         </div>
         <div className="row">
-          <div className="col-3">
+          <div className="col-4">
             <SegmentedButton
               labels={['Button 1', 'Button 2', 'Button 3']}
             ></SegmentedButton>
           </div>
-          <div>
+          <div className="col-1">
             <FAB icon="arrow_upward"></FAB>
+          </div>
+          <div className="col-7">
+            <Accordion
+              label="Szükséges jogosítvány a quad vezetéséhez?"
+              text="Igen, a túrákon való részvételhez B kategóriás jogosítványra van szükség, mivel a quadok motorja és teljesítménye ezt megköveteli."
+            ></Accordion>
           </div>
         </div>
       </section>

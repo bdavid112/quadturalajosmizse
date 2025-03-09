@@ -1,0 +1,13 @@
+@import '/src/styles/utilities.scss';
+
+.accordion-container {
+  &:hover {
+    border-color: $gray-500;
+
+    span {
+      &:last-of-type {
+        color: $text-primary !important;
+      }
+    }
+  }
+}

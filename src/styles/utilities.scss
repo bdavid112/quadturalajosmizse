@@ -343,6 +343,9 @@
 .font-medium {
   font-weight: 500;
 }
+.font-semi-bold {
+  font-weight: 600;
+}
 .font-bold {
   font-weight: 700;
 }
@@ -598,6 +601,15 @@
 .transition-bezier-slow {
   transition: all $bezier-slow;
 }
+.animated-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+.animated-content.open {
+  max-height: 10rem; /* Adjust as needed */
+  opacity: 1;
+}
 
 /* ============================================= */
 /* ============= OVERFLOW ====================== */
@@ -669,6 +681,7 @@
 
 @mixin divider($color: $color-primary-500, $height: 2px) {
   width: 100%;
+  left: 0;
   height: $height;
   background: linear-gradient(to right, $surface-100, $color, $surface-100);
 }

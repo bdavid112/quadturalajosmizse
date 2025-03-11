@@ -1,4 +1,3 @@
-import '/src/styles/utilities.scss'
 import './text-input-outline.scss'
 
 import * as React from 'react'

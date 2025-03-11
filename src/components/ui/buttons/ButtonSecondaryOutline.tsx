@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { motion } from 'framer-motion' // Import motion
-import '/src/styles/utilities.scss'
+
 import './button-secondary-outline.scss'
 
 interface Props {

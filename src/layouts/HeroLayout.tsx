@@ -1,5 +1,3 @@
-import '../styles/layout.scss'
-import '../styles/utilities.scss'
 import './hero-layout.scss'
 
 import * as React from 'react'

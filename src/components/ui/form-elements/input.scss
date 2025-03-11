@@ -13,12 +13,11 @@ input {
   color: $color;
   background-color: $surface-100 !important;
   margin-inline: $space-sm !important;
-  z-index: $z-top;
+  z-index: $z-overlay;
 }
 
 @mixin input-focused {
   border-color: $color-primary-500;
-  outline: 1px solid $color-primary-500;
 
   label {
     @include label-focused();
@@ -53,11 +52,12 @@ input {
   border-radius: $radius-sm;
 
   &:hover {
-    border: 1px solid $color-primary-500;
+    border-color: $color-primary-500;
   }
 
   &:focus-within {
     @include input-focused();
+    outline: 1px solid $color-primary-500;
   }
 
   &:focus-within .label-container {
@@ -84,7 +84,7 @@ input {
 
 .outline-error {
   &:focus-within {
-    outline: 1px solid $color-status-error !important;
+    outline: 1px solid $color-status-error;
   }
 }
 

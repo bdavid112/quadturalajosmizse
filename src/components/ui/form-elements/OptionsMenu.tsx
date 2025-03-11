@@ -1,5 +1,5 @@
 import { useAutoScrollMenu } from '../../../hooks/useAutoScrollMenu'
-import '/src/styles/utilities.scss'
+
 import { ReactNode } from 'react'
 
 interface Props {

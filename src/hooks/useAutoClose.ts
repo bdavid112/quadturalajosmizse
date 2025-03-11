@@ -16,7 +16,7 @@ export function useAutoClose(
     }
 
     const handleCloseOnKeyDown = (event: KeyboardEvent) => {
-      if (isOpen && event.key === 'Escape') {
+      if (isOpen && (event.key === 'Escape' || event.key === 'Tab')) {
         setIsOpen(false)
       }
     }

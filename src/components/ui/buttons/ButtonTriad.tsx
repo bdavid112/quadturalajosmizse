@@ -1,8 +1,6 @@
 import * as React from 'react'
 import InputButton from '../buttons/InputButton'
 
-import '/src/styles/utilities.scss'
-
 interface Props {
   allVisible?: boolean
   small?: boolean

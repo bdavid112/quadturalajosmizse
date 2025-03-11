@@ -1,11 +1,17 @@
 import { useState } from 'react'
 
 export function useBookingForm() {
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '' })
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    date: '',
+  })
   const [errors, setErrors] = useState<{
     name?: string
     email?: string
     phone?: string
+    date?: string
   }>({})
 
   const validateField = (name: string, value: string) => {
@@ -28,6 +34,10 @@ export function useBookingForm() {
         )
       )
         error = 'Invalid phone number format'
+    }
+
+    if (name == 'date') {
+      if (!value) error = 'Date is required'
     }
 
     return error

@@ -1,6 +1,5 @@
 import * as React from 'react'
 
-import '/src/styles/utilities.scss'
 import './custom-option.scss'
 
 interface Option {

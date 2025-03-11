@@ -1,5 +1,4 @@
 import './styles/global.scss'
-import './styles/layout.scss'
 
 import HeroLayout from './layouts/HeroLayout'
 import {

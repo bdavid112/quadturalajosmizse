@@ -1,5 +1,5 @@
 import * as React from 'react'
-import '/src/styles/utilities.scss'
+
 import './input-button.scss'
 
 interface Props {

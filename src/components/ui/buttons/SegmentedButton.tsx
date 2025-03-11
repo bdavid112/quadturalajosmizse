@@ -1,4 +1,3 @@
-import '/src/styles/utilities.scss'
 import './segmented-button.scss'
 
 import * as React from 'react'

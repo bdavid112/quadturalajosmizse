@@ -1,4 +1,3 @@
-import '/src/styles/utilities.scss'
 import './number-input-outline.scss'
 
 import * as React from 'react'

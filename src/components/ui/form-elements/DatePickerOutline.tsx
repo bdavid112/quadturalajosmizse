@@ -1,4 +1,3 @@
-import '/src/styles/utilities.scss'
 import './date-picker-outline.scss'
 
 import * as React from 'react'
@@ -14,24 +13,24 @@ interface Props {
   id: string
   name: string
   label: string
-  error?: boolean
+  errorMessage?: string | null
   helperText: string
   defaultValue?: Date
   minYear?: number
   maxYear?: number
-  onChange?: (date: Date) => void
+  handleOnChange?: (name: string, value: string) => void
 }
 
 const DatePickerOutline: React.FunctionComponent<Props> = ({
   id,
   name,
   label,
-  error = false,
+  errorMessage,
   helperText,
   defaultValue,
   minYear = 2000,
   maxYear = 2100,
-  onChange,
+  handleOnChange,
 }) => {
   const { lang } = useLocalization()
 
@@ -40,6 +39,7 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
   const {
     isOpen,
     setIsOpen,
+    touched,
     selectedDate,
     selectedYear,
     selectedMonth,
@@ -52,7 +52,7 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
     onDateSelect,
     changeSelectedYear,
     changeSelectedMonth,
-  } = useDatePicker(lang, minYear, maxYear, defaultValue, onChange)
+  } = useDatePicker(lang, minYear, maxYear, defaultValue, handleOnChange)
 
   /* Custom hook to close the date picker if the users tabs out */
 
@@ -74,7 +74,7 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
   return (
     <div ref={containerRef} className="width-full relative">
       <div
-        className={`z-overlay flex cursor-pointer align-center min-height-lg relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${error ? 'border-error' : ''}`}
+        className={`z-overlay flex cursor-pointer align-center min-height-lg relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${touched && !errorMessage ? 'border-success' : ''} ${errorMessage ? 'border-error outline-error' : ''}`}
         tabIndex={0}
         onKeyDown={(e) => {
           handleKeyDown(e)
@@ -83,11 +83,19 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
           handleKeyUp(e)
         }}
         onClick={() => toggleIsOpen()}
+        onBlur={() => {
+          handleOnChange &&
+            !isOpen &&
+            handleOnChange(
+              'date',
+              selectedDate ? selectedDate.toLocaleDateString() : ''
+            )
+        }}
       >
         <div className={`label-container absolute populated`}>
           <label
             htmlFor={id}
-            className={`input-label ${error ? 'text-error' : ''}`}
+            className={`input-label ${touched && !errorMessage ? 'text-success' : ''} ${errorMessage ? 'text-error' : ''}`}
           >
             {label}
           </label>
@@ -123,9 +131,9 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
       </div>
       <div className="padding-x-lg">
         <span
-          className={`helper-text font-size-caption text-secondary ${error ? 'text-error' : ''}`}
+          className={`helper-text font-size-caption text-secondary ${errorMessage ? 'text-error' : ''}`}
         >
-          {helperText}
+          {errorMessage ? errorMessage : helperText}
         </span>
       </div>
       <div

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import '/src/styles/utilities.scss'
+
 import './accordion.scss'
 
 import * as React from 'react'

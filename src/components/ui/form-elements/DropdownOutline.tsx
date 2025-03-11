@@ -1,4 +1,3 @@
-import '/src/styles/utilities.scss'
 import './dropdown-outline.scss'
 
 import * as React from 'react'

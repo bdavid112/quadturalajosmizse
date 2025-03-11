@@ -1,4 +1,3 @@
-import '/src/styles/utilities.scss'
 import './textarea-outline.scss'
 
 import * as React from 'react'

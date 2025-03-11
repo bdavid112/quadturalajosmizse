@@ -1,4 +1,3 @@
-import '/src/styles/utilities.scss'
 import './custom-calendar.scss'
 
 import * as React from 'react'

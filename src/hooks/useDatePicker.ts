@@ -6,7 +6,7 @@ export const useDatePicker = (
   minYear: number,
   maxYear: number,
   defaultValue?: Date,
-  onChange?: (date: Date) => void
+  handleOnChange?: (name: string, value: string) => void
 ) => {
   /* Current date for initializing calendar */
   const currentDate = new Date()
@@ -14,6 +14,7 @@ export const useDatePicker = (
   /* State variables */
 
   const [isOpen, setIsOpen] = useState(false)
+  const [touched, setTouched] = useState(false)
   const [activeView, setActiveView] = useState('date')
   const [calendarDays, setCalendarDays] = useState(
     generateCalendarDays(currentDate, lang)
@@ -36,8 +37,9 @@ export const useDatePicker = (
 
   const onDateSelect = (date: Date) => {
     setSelectedDate(date)
-    onChange && onChange(date)
+    handleOnChange && handleOnChange('date', date.toLocaleDateString())
     setIsOpen(false)
+    setTouched(true)
   }
 
   /* Increase/decrease the value of selected year and month on left and right arrow button clicks within the bounds  */
@@ -91,6 +93,8 @@ export const useDatePicker = (
   return {
     isOpen,
     setIsOpen,
+    touched,
+    setTouched,
     selectedDate,
     selectedYear,
     setSelectedYear,

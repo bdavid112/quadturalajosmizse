@@ -1,4 +1,3 @@
-import '/src/styles/utilities.scss'
 import './fab.scss'
 
 import * as React from 'react'

@@ -1,4 +1,3 @@
-import '/src/styles/utilities.scss'
 import './booking-form.scss'
 
 import * as React from 'react'
@@ -74,10 +73,12 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
               id="date"
               name="date"
               label={t(`ui.forms.booking-form.inputs.date.label`, lang)}
+              errorMessage={errors.date}
               helperText={t(
                 `ui.forms.booking-form.inputs.date.helper-text`,
                 lang
               )}
+              handleOnChange={updateField}
             ></DatePickerOutline>
           </div>
           <div className="width-half inline-block">

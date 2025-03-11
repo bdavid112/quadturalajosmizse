@@ -9,6 +9,7 @@ export const useDropdown = (defaultValue?: Option) => {
   /* State variables */
 
   const [isOpen, setIsOpen] = useState(false)
+  const [touched, setTouched] = useState(false)
   const [selectedOption, setSelectedOption] = useState(
     defaultValue ? defaultValue : null
   )
@@ -29,6 +30,8 @@ export const useDropdown = (defaultValue?: Option) => {
   return {
     isOpen,
     setIsOpen,
+    touched,
+    setTouched,
     selectedOption,
     componentContainerRef,
     inputContainerRef,

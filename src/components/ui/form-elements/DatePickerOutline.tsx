@@ -52,7 +52,7 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
     onDateSelect,
     changeSelectedYear,
     changeSelectedMonth,
-  } = useDatePicker(lang, minYear, maxYear, defaultValue, handleOnChange)
+  } = useDatePicker(lang, name, minYear, maxYear, defaultValue, handleOnChange)
 
   /* Custom hook to close the date picker if the users tabs out */
 
@@ -87,7 +87,7 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
           handleOnChange &&
             !isOpen &&
             handleOnChange(
-              'date',
+              name,
               selectedDate ? selectedDate.toLocaleDateString() : ''
             )
         }}

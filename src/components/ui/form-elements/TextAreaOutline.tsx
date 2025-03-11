@@ -10,6 +10,7 @@ interface Props {
   error?: boolean
   helperText: string
   maxLength?: number
+  onChange?: (name: string, value: string) => void
 }
 
 const TextAreaOutline: React.FunctionComponent<Props> = ({
@@ -19,6 +20,7 @@ const TextAreaOutline: React.FunctionComponent<Props> = ({
   error = false,
   helperText,
   maxLength = 100,
+  onChange,
 }) => {
   const [text, setText] = useState('')
 
@@ -73,6 +75,7 @@ const TextAreaOutline: React.FunctionComponent<Props> = ({
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           className="relative z-base min-height-lg width-full font-size-base input-field padding-x-lg padding-y-lg background-transparent"
+          onBlur={() => onChange && onChange(name, text)}
         ></textarea>
       </div>
       <div className="padding-x-lg flex min-height-xs align-center justify-between">

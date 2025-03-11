@@ -3,6 +3,7 @@ import { generateCalendarDays } from '../utils/calendarUtils'
 
 export const useDatePicker = (
   lang: string,
+  name: string,
   minYear: number,
   maxYear: number,
   defaultValue?: Date,
@@ -37,7 +38,7 @@ export const useDatePicker = (
 
   const onDateSelect = (date: Date) => {
     setSelectedDate(date)
-    handleOnChange && handleOnChange('date', date.toLocaleDateString())
+    handleOnChange && handleOnChange(name, date.toLocaleDateString())
     setIsOpen(false)
     setTouched(true)
   }

@@ -8,9 +8,11 @@ interface Option {
 export const useDropdownKeyboardNav = (
   isParentOpen: boolean,
   options: Option[],
+  name: string,
+  setTouched: React.Dispatch<React.SetStateAction<boolean>>,
   setSelectedOption: React.Dispatch<React.SetStateAction<Option | null>>,
   setIsParentOpen?: React.Dispatch<React.SetStateAction<boolean>>,
-  onChange?: (option: Option) => void
+  onChange?: (name: string, value: string) => void
 ) => {
   /* State variables */
 
@@ -39,11 +41,12 @@ export const useDropdownKeyboardNav = (
     const option = options.find((o) => o.value == optionValue)
     if (option) {
       setSelectedOption(option)
-      onChange && onChange(option)
+      onChange && onChange(name, option.value.toString())
       setSelectedOptionIndex(options.indexOf(option))
       setFocusedOptionIndex(-1)
       setActiveOptionIndex(-1)
       setIsParentOpen && setIsParentOpen(false)
+      setTouched(true)
     }
   }
 

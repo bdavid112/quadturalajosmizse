@@ -57,23 +57,40 @@
         "inputs": {
           "name": {
             "label": "Név",
-            "helper-text": "Add meg a teljes neved"
+            "helper-text": "Add meg a teljes neved",
+            "errors": {
+              "required": "Név megadása kötelező"
+            }
           },
           "email": {
             "label": "Email",
-            "helper-text": "Add meg az email címed"
+            "helper-text": "Add meg az email címed",
+            "errors": {
+              "required": "Email cím megadása kötelező",
+              "wrong-format": "Nem megfelelő email cím"
+            }
           },
           "phone": {
             "label": "Telefonszám",
-            "helper-text": "Add meg a telefonszámod"
+            "helper-text": "Add meg a telefonszámod",
+            "errors": {
+              "required": "Telefonszám megadása kötelező",
+              "wrong-format": "Nem megfelelő telefonszám"
+            }
           },
           "date": {
             "label": "Dátum",
-            "helper-text": "Válaszd ki a tervezett időpontot"
+            "helper-text": "Válaszd ki a tervezett időpontot",
+            "errors": {
+              "required": "Dátum kiválasztása kötelező"
+            }
           },
           "tour": {
             "label": "Túra típus",
-            "helper-text": "Válaszd ki a túra típusát"
+            "helper-text": "Válaszd ki a túra típusát",
+            "errors": {
+              "required": "Túra típus kiválasztása kötelező"
+            }
           },
           "quad": {
             "label": "Quadok száma",
@@ -81,7 +98,7 @@
           },
           "passenger": {
             "label": "Utasok száma",
-            "helper-text": "Utasok száma"
+            "helper-text": "Utasok száma (max 1/quad)"
           },
           "comment": {
             "label": "Megjegyzés",

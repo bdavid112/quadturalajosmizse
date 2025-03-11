@@ -19,22 +19,22 @@ interface Props {
   id: string
   name: string
   label: string
-  error?: boolean
+  errorMessage?: string
   helperText: string
   options: Option[]
   defaultValue?: Option
-  onChange?: (option: Option) => void
+  handleOnChange?: (name: string, value: string) => void
 }
 
 const DropdownOutline: React.FunctionComponent<Props> = ({
   id,
   name,
   label,
-  error = false,
+  errorMessage = false,
   helperText,
   options,
   defaultValue,
-  onChange,
+  handleOnChange,
 }) => {
   const { lang } = useLocalization()
 
@@ -42,6 +42,8 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
   const {
     isOpen,
     setIsOpen,
+    touched,
+    setTouched,
     selectedOption,
     componentContainerRef,
     inputContainerRef,
@@ -61,9 +63,11 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
   } = useDropdownKeyboardNav(
     isOpen,
     options,
+    name,
+    setTouched,
     setSelectedOption,
     setIsOpen,
-    onChange
+    handleOnChange
   )
 
   /* Close dropdown on clicking outside the container or pressing ESC */
@@ -76,17 +80,25 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
         ref={inputContainerRef}
         className={`flex align-center relative min-height-lg input-container cursor-pointer border background-transparent ${
           isOpen ? 'input-focused' : ''
-        } ${error ? 'border-error' : ''}`}
+        } ${touched && !errorMessage ? 'border-success' : ''} ${errorMessage ? 'border-error outline-error' : ''}`}
         onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}
         onClick={() => {
           toggleIsOpen()
         }}
+        onBlur={() =>
+          !isOpen &&
+          handleOnChange &&
+          handleOnChange(
+            name,
+            selectedOption ? selectedOption.value.toString() : ''
+          )
+        }
       >
         <div className="label-container absolute populated">
           <label
             htmlFor={id}
-            className={`input-label ${error ? 'text-error' : ''}`}
+            className={`input-label ${touched && !errorMessage ? 'text-success' : ''} ${errorMessage ? 'text-error' : ''}`}
           >
             {label}
           </label>
@@ -117,9 +129,9 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
       {/* Helper text */}
       <div className="padding-x-lg">
         <span
-          className={`helper-text font-size-caption text-secondary ${error ? 'text-error' : ''}`}
+          className={`helper-text font-size-caption text-secondary ${errorMessage ? 'text-error' : ''}`}
         >
-          {helperText}
+          {errorMessage ? errorMessage : helperText}
         </span>
       </div>
 
@@ -144,6 +156,7 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
               onClick={() => {
                 handleOptionClick(option.value)
                 inputContainerRef.current?.focus()
+                setTouched(true)
               }}
             />
           ))}

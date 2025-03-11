@@ -1,43 +1,52 @@
 import { useState } from 'react'
+import { t } from '../utils/translator'
 
-export function useBookingForm() {
+export function useBookingForm(lang: string) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     date: '',
+    tour: '',
+    quad: '2',
+    passenger: '0',
+    comment: '',
   })
   const [errors, setErrors] = useState<{
     name?: string
     email?: string
     phone?: string
     date?: string
+    tour?: string
+    quad?: string
+    passenger?: string
+    comment?: string
   }>({})
 
   const validateField = (name: string, value: string) => {
+    if (!value) {
+      return t(`ui.forms.booking-form.inputs.${name}.errors.required`, lang)
+    }
+
     let error = ''
 
-    if (name == 'name') {
-      if (!value) error = 'Name is required'
-    }
-
-    if (name == 'email') {
-      if (!value) error = 'Email is required'
-      else if (!/^\S+@\S+\.\S+$/.test(value)) error = 'Invalid email format'
-    }
-
-    if (name == 'phone') {
-      if (!value) error = 'Phone number is required'
-      else if (
-        !/^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/.test(
-          value
-        )
+    if (name == 'email' && !/^\S+@\S+\.\S+$/.test(value)) {
+      error = t(
+        `ui.forms.booking-form.inputs.${name}.errors.wrong-format`,
+        lang
       )
-        error = 'Invalid phone number format'
     }
 
-    if (name == 'date') {
-      if (!value) error = 'Date is required'
+    if (
+      name == 'phone' &&
+      !/^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/.test(
+        value
+      )
+    ) {
+      error = t(
+        `ui.forms.booking-form.inputs.${name}.errors.wrong-format`,
+        lang
+      )
     }
 
     return error
@@ -46,10 +55,15 @@ export function useBookingForm() {
   const updateField = (name: string, value: string) => {
     /* Update form state */
     setFormData((prev) => ({ ...prev, [name]: value }))
-
     /* Validate & set error state */
     setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }))
   }
 
-  return { formData, errors, updateField }
+  const submitForm = () => {
+    Object.entries(formData).forEach(([key, value]) => {
+      setErrors((prev) => ({ ...prev, [key]: validateField(key, value) }))
+    })
+  }
+
+  return { formData, errors, updateField, submitForm }
 }

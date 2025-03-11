@@ -57,23 +57,40 @@
         "inputs": {
           "name": {
             "label": "Name",
-            "helper-text": "Enter your full name"
+            "helper-text": "Enter your full name",
+            "errors": {
+              "required": "Name is required"
+            }
           },
           "email": {
             "label": "Email",
-            "helper-text": "Enter you email address"
+            "helper-text": "Enter you email address",
+            "errors": {
+              "required": "Email is required",
+              "wrong-format": "Invalid email format"
+            }
           },
           "phone": {
             "label": "Phone number",
-            "helper-text": "Enter you phone number"
+            "helper-text": "Enter you phone number",
+            "errors": {
+              "required": "Phone number is required",
+              "wrong-format": "Invalid phone number format"
+            }
           },
           "date": {
             "label": "Date",
-            "helper-text": "Pick your planned date"
+            "helper-text": "Pick your planned date",
+            "errors": {
+              "required": "Date selection is required"
+            }
           },
           "tour": {
             "label": "Tour type",
-            "helper-text": "Choose the type of the tour"
+            "helper-text": "Choose the type of the tour",
+            "errors": {
+              "required": "Tour selection is required"
+            }
           },
           "quad": {
             "label": "Number of ATVs",

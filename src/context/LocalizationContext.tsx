@@ -23,7 +23,7 @@ const LocalizationContext = createContext<LocalizationContextType | undefined>(
 /* Provider component */
 
 export const LocalizationProvider = ({ children }: { children: ReactNode }) => {
-  const [lang, setLang] = useState<keyof typeof languages>('hu')
+  const [lang, setLang] = useState<keyof typeof languages>('en')
 
   return (
     <LocalizationContext.Provider value={{ lang, setLang }}>

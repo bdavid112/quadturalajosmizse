@@ -15,8 +15,7 @@ interface Props {}
 
 const BookingForm: React.FunctionComponent<Props> = ({}) => {
   const { lang } = useLocalization()
-
-  const { errors, updateField } = useBookingForm()
+  const { formData, errors, updateField, submitForm } = useBookingForm(lang)
 
   return (
     <div className="width-full box-shadow-medium border-rounded-md padding-x-4xl padding-y-2xl form-container">
@@ -86,6 +85,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
               id="tour"
               name="tour"
               label={t(`ui.forms.booking-form.inputs.tour.label`, lang)}
+              errorMessage={errors.tour}
               helperText={t(
                 `ui.forms.booking-form.inputs.tour.helper-text`,
                 lang
@@ -94,6 +94,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
                 { label: '40km-es túra', value: 0 },
                 { label: '80km-es túra', value: 1 },
               ]}
+              handleOnChange={updateField}
             ></DropdownOutline>
           </div>
         </fieldset>
@@ -110,6 +111,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
                 `ui.forms.booking-form.inputs.quad.helper-text`,
                 lang
               )}
+              onChange={updateField}
             ></NumberInputOutline>
           </div>
           <div className="width-half inline-block">
@@ -117,8 +119,8 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
               id="passenger"
               name="passenger"
               label={t(`ui.forms.booking-form.inputs.passenger.label`, lang)}
-              min={2}
-              max={4}
+              min={0}
+              max={Number(formData.quad)}
               helperText={t(
                 `ui.forms.booking-form.inputs.passenger.helper-text`,
                 lang
@@ -145,6 +147,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
         <ButtonPrimary
           fullWidth={false}
           label={t('ui.forms.booking-form.button-label')}
+          onClick={() => submitForm()}
         ></ButtonPrimary>
       </div>
     </div>

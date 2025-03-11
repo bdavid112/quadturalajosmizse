@@ -1,7 +1,7 @@
 import './number-input-outline.scss'
 
 import * as React from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import InputButton from '../buttons/InputButton'
 
 interface Props {
@@ -12,6 +12,7 @@ interface Props {
   max: number
   error?: boolean
   helperText: string
+  onChange?: (name: string, value: string) => void
 }
 
 const NumberInputOutline: React.FunctionComponent<Props> = ({
@@ -22,6 +23,7 @@ const NumberInputOutline: React.FunctionComponent<Props> = ({
   max,
   error = false,
   helperText,
+  onChange,
 }) => {
   const [value, setValue] = useState(min)
 
@@ -31,14 +33,21 @@ const NumberInputOutline: React.FunctionComponent<Props> = ({
     }
   }
 
+  useEffect(() => {
+    onChange && onChange(name, value.toString())
+  }, [value])
+
+  useEffect(() => {
+    if (value < min) setValue(min)
+    if (value > max) setValue(max)
+  }, [min, max])
+
   return (
     <div className="width-full">
       <div
         className={`flex align-center relative input-container min-height-lg border ${error ? 'border-error' : ''}`}
       >
-        <div
-          className={`z-overlay label-container absolute ${value ? 'populated' : ''}`}
-        >
+        <div className={`z-overlay label-container absolute populated`}>
           <label
             htmlFor={id}
             className={`input-label ${error ? 'text-error' : ''}`}
@@ -57,12 +66,16 @@ const NumberInputOutline: React.FunctionComponent<Props> = ({
         <div className="button-container absolute z-overlay flex">
           <InputButton
             icon="remove"
-            onClick={() => setValueIfInRange(value - 1)}
+            onClick={() => {
+              setValueIfInRange(value - 1)
+            }}
           ></InputButton>
           <div className="button-divider"></div>
           <InputButton
             icon="add"
-            onClick={() => setValueIfInRange(value + 1)}
+            onClick={() => {
+              setValueIfInRange(value + 1)
+            }}
           ></InputButton>
         </div>
       </div>

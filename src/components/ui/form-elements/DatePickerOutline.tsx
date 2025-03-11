@@ -115,8 +115,10 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
           id={id}
           name={name}
           value={selectedDate ? selectedDate.toISOString() : ''}
-          type="hidden"
+          type="date"
           onChange={() => {}}
+          disabled={true}
+          className="hidden"
         ></input>
       </div>
       <div className="padding-x-lg">

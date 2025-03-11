@@ -106,11 +106,12 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
           />
         </div>
         {/* Hidden input for form submission */}
-        <input
-          type="hidden"
+        <select
           id={id}
           name={name}
           value={selectedOption?.value ?? ''}
+          disabled={true}
+          className="hidden"
         />
       </div>
 

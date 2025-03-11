@@ -48,6 +48,12 @@
     "forms": {
       "booking-form": {
         "title": "Online időpontfoglalás",
+        "group-titles": {
+          "contact": "Kapcsolattartási adatok",
+          "tour": "Túra részletek",
+          "quad": "Quadok és utasok száma",
+          "comment": "Egyéb megjegyzés"
+        },
         "inputs": {
           "name": {
             "label": "Név",

@@ -48,6 +48,12 @@
     "forms": {
       "booking-form": {
         "title": "Online booking",
+        "group-titles": {
+          "contact": "Contact information",
+          "tour": "Tour details",
+          "quad": "Number of ATVs and passengers",
+          "comment": "Other comments"
+        },
         "inputs": {
           "name": {
             "label": "Name",

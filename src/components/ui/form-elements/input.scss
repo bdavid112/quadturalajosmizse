@@ -2,6 +2,10 @@
 
 input {
   min-height: calc(3.5rem - 2px);
+
+  &:is(:-webkit-autofill, :autofill) {
+    -webkit-box-shadow: 0 0 0px 1000px $surface-100 inset;
+  }
 }
 
 @mixin label-focused($color: $color-primary-500, $transform: -1.75rem) {
@@ -9,6 +13,7 @@ input {
   color: $color;
   background-color: $surface-100 !important;
   margin-inline: $space-sm !important;
+  z-index: $z-top;
 }
 
 @mixin input-focused {
@@ -75,4 +80,14 @@ input {
     border-top-right-radius: $radius-sm;
     border-bottom-right-radius: $radius-sm;
   }
+}
+
+.outline-error {
+  &:focus-within {
+    outline: 1px solid $color-status-error !important;
+  }
+}
+
+.status-icon {
+  right: $space-lg;
 }

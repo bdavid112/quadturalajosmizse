@@ -2,7 +2,6 @@ import '/src/styles/utilities.scss'
 import './booking-form.scss'
 
 import * as React from 'react'
-import { useId, useState } from 'react'
 import { useLocalization } from '../../../context/LocalizationContext'
 import { t } from '../../../utils/translator'
 import TextInputOutline from '../form-elements/TextInputOutline'
@@ -11,68 +10,68 @@ import DropdownOutline from '../form-elements/DropdownOutline'
 import NumberInputOutline from '../form-elements/NumberInputOutline'
 import TextAreaOutline from '../form-elements/TextAreaOutline'
 import ButtonPrimary from '../buttons/ButtonPrimary'
+import { useBookingForm } from '../../../hooks/useBookingForm'
 
 interface Props {}
 
 const BookingForm: React.FunctionComponent<Props> = ({}) => {
   const { lang } = useLocalization()
 
-  /* Generate IDs for inputs */
-
-  const idName = useId()
-  const idEmail = useId()
-  const idPhone = useId()
-  const idDate = useId()
-  const idTour = useId()
-  const idQuad = useId()
-  const idPassenger = useId()
-  const idComment = useId()
+  const { errors, updateField } = useBookingForm()
 
   return (
     <div className="width-full box-shadow-medium border-rounded-md padding-x-4xl padding-y-2xl form-container">
       <h3 className="text-center">{t(`ui.forms.booking-form.title`, lang)}</h3>
       <div className="form-body">
         <fieldset className="form-group flex flex-col flex-gap-sm">
-          <legend>Kapcsolattartási adatok</legend>
+          <legend>
+            {t(`ui.forms.booking-form.group-titles.contact`, lang)}
+          </legend>
           <TextInputOutline
-            id={idName}
+            id="name"
             name="name"
             label={t(`ui.forms.booking-form.inputs.name.label`, lang)}
+            errorMessage={errors.name}
             helperText={t(
               `ui.forms.booking-form.inputs.name.helper-text`,
               lang
             )}
+            handleOnChange={updateField}
           ></TextInputOutline>
           <div className="flex flex-gap-sm subgroup">
             <div className="width-half">
               <TextInputOutline
-                id={idEmail}
+                id="email"
                 name="email"
                 label={t(`ui.forms.booking-form.inputs.email.label`, lang)}
+                errorMessage={errors.email}
                 helperText={t(
                   `ui.forms.booking-form.inputs.email.helper-text`,
                   lang
                 )}
+                handleOnChange={updateField}
               ></TextInputOutline>
             </div>
             <div className="width-half">
               <TextInputOutline
-                id={idPhone}
+                id="phone"
                 name="phone"
                 label={t(`ui.forms.booking-form.inputs.phone.label`, lang)}
+                errorMessage={errors.phone}
                 helperText={t(
                   `ui.forms.booking-form.inputs.phone.helper-text`,
                   lang
                 )}
+                handleOnChange={updateField}
               ></TextInputOutline>
             </div>
           </div>
         </fieldset>
         <fieldset className="form-group flex flex-gap-sm">
-          <legend>Túra részletek</legend>
+          <legend>{t(`ui.forms.booking-form.group-titles.tour`, lang)}</legend>
           <div className="width-half inline-block">
             <DatePickerOutline
-              id={idDate}
+              id="date"
               name="date"
               label={t(`ui.forms.booking-form.inputs.date.label`, lang)}
               helperText={t(
@@ -83,7 +82,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
           </div>
           <div className="width-half inline-block">
             <DropdownOutline
-              id={idTour}
+              id="tour"
               name="tour"
               label={t(`ui.forms.booking-form.inputs.tour.label`, lang)}
               helperText={t(
@@ -98,10 +97,10 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
           </div>
         </fieldset>
         <fieldset className="form-group flex flex-gap-sm">
-          <legend>Quadok és utasok száma</legend>
+          <legend>{t(`ui.forms.booking-form.group-titles.quad`, lang)}</legend>
           <div className="width-half inline-block">
             <NumberInputOutline
-              id={idQuad}
+              id="quad"
               name="quad"
               label={t(`ui.forms.booking-form.inputs.quad.label`, lang)}
               min={2}
@@ -114,7 +113,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
           </div>
           <div className="width-half inline-block">
             <NumberInputOutline
-              id={idPassenger}
+              id="passenger"
               name="passenger"
               label={t(`ui.forms.booking-form.inputs.passenger.label`, lang)}
               min={2}
@@ -127,9 +126,11 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
           </div>
         </fieldset>
         <fieldset className="form-group">
-          <legend>Egyéb megjegyzés</legend>
+          <legend>
+            {t(`ui.forms.booking-form.group-titles.comment`, lang)}
+          </legend>
           <TextAreaOutline
-            id={idComment}
+            id="comment"
             name="comment"
             label={t(`ui.forms.booking-form.inputs.comment.label`, lang)}
             helperText={t(
@@ -141,7 +142,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
       </div>
       <div className="flex justify-center width-full">
         <ButtonPrimary
-          fullWidth={true}
+          fullWidth={false}
           label={t('ui.forms.booking-form.button-label')}
         ></ButtonPrimary>
       </div>

@@ -1,0 +1,66 @@
+@import '../../../styles/tokens.scss';
+
+.top-navbar {
+  top: 0;
+  height: 4.5rem;
+  background-color: $surface-100;
+}
+
+.logo {
+  width: 4rem;
+  height: 4rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.nav-links {
+  li {
+    list-style: none;
+  }
+}
+
+.nav-link {
+  text-decoration: none;
+  color: $text-secondary;
+  position: relative;
+  transition: color $bezier-fast;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -25%;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: $color-primary-500;
+    transition:
+      width $bezier-smooth,
+      left $bezier-smooth;
+    border-radius: $radius-full;
+  }
+
+  &:hover {
+    color: $text-primary;
+
+    &::before {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  &.active {
+    font-weight: 500;
+    color: $text-primary;
+
+    &::before {
+      left: -25%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 4px;
+    }
+  }
+}

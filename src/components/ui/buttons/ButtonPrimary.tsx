@@ -6,21 +6,23 @@ import './button-primary.scss'
 interface Props {
   label: string
   fullWidth?: boolean
-  onClick?: () => void
   isDisabled?: boolean
+  className?: string
+  onClick?: () => void
 }
 
 const ButtonPrimary: React.FunctionComponent<Props> = ({
   label,
   fullWidth = false,
-  onClick,
   isDisabled,
+  className,
+  onClick,
 }) => {
   return (
     <>
       {!isDisabled ? (
         <motion.button
-          className={`padding-x-lg box-shadow-light button-primary-enabled ${fullWidth ? 'width-full' : ''}`}
+          className={`${className} padding-x-lg box-shadow-light button-primary-enabled ${fullWidth ? 'width-full' : ''}`}
           whileHover={{ scale: 1.015 }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: 'spring', stiffness: 75 }}

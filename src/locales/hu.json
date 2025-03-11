@@ -1,5 +1,15 @@
 {
   "ui": {
+    "navbar": {
+      "labels": {
+        "home": "Főoldal",
+        "about-us": "Magunkról",
+        "tours": "Túrák",
+        "quads": "Quadok",
+        "gallery": "Galléria",
+        "faq": "GYIK"
+      }
+    },
     "calendar": {
       "placeholder-text": "Válassz egy dátumot",
       "months": {

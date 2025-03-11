@@ -1,5 +1,15 @@
 {
   "ui": {
+    "navbar": {
+      "labels": {
+        "home": "Home",
+        "about-us": "About us",
+        "tours": "Tours",
+        "quads": "ATVs",
+        "gallery": "Gallery",
+        "faq": "FAQ"
+      }
+    },
     "calendar": {
       "placeholder-text": "Pick a date",
       "months": {

@@ -1,12 +1,33 @@
-export const useNavbar = () => {
+import { useEffect, useState } from 'react'
+import { t } from '../utils/translator'
+
+export const useNavbar = (lang: string) => {
   const links = [
-    { label: 'Home', path: '/' },
-    { label: 'About us', path: '/about-us' },
-    { label: 'Tours', path: '/tours' },
-    { label: 'ATVs', path: '/atvs' },
-    { label: 'Gallery', path: '/gallery' },
-    { label: 'FAQ', path: '/faq' },
+    { label: t('ui.navbar.labels.home', lang), path: '/' },
+    { label: t('ui.navbar.labels.about-us', lang), path: '/about-us' },
+    { label: t('ui.navbar.labels.tours', lang), path: '/tours' },
+    { label: t('ui.navbar.labels.quads', lang), path: '/atvs' },
+    { label: t('ui.navbar.labels.gallery', lang), path: '/gallery' },
+    { label: t('ui.navbar.labels.faq', lang), path: '/faq' },
   ]
 
-  return { links }
+  const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden' // Disable scrolling
+    } else {
+      document.body.style.overflow = '' // Re-enable scrolling
+    }
+
+    return () => {
+      document.body.style.overflow = '' // Cleanup on unmount
+    }
+  }, [isOpen])
+
+  const toggleIsOpen = () => {
+    setIsOpen(!isOpen)
+  }
+
+  return { isOpen, toggleIsOpen, links }
 }

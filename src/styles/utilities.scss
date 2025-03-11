@@ -605,10 +605,21 @@
   max-height: 0;
   opacity: 0;
   overflow: hidden;
+
+  &.open {
+    max-height: 999rem; /* Adjust as needed */
+    opacity: 1;
+  }
 }
-.animated-content.open {
-  max-height: 999rem; /* Adjust as needed */
-  opacity: 1;
+.slide-content {
+  opacity: 0.4;
+  transform: translateX(-100%);
+  transform-origin: right center;
+  overflow: hidden;
+  &.open {
+    transform: translateX(0%);
+    opacity: 1;
+  }
 }
 
 /* ============================================= */

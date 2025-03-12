@@ -1,5 +1,4 @@
 import './top-navbar.scss'
-import logo from '../../../assets/logo_placeholder.png'
 
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
@@ -14,58 +13,79 @@ const TopNavbar: React.FunctionComponent<Props> = ({}) => {
   const { isOpen, toggleIsOpen, links } = useNavbar(lang)
 
   return (
-    <nav className="top-navbar width-full sticky z-top box-shadow-medium padding-x-lg flex align-center justify-between">
-      <NavLink className="logo" to="/">
-        <img src={logo} alt="Company logo" />
-      </NavLink>
-      <ul className="nav-links flex flex-gap-2xl">
-        {links.map((link) => (
-          <li>
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? 'nav-link active' : 'nav-link'
-              }
-              to={link.path}
-            >
-              {link.label}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-      <ButtonPrimary
-        label={lang == 'hu' ? 'Váltás angolra' : 'Change to Hungarian'}
-        onClick={() => setLang(lang == 'hu' ? 'en' : 'hu')}
-        className="navbar-cta-button"
-      ></ButtonPrimary>
-      <ul
-        className={`mobile-nav-links transition-bezier-smooth slide-content ${isOpen ? 'open' : ''} flex-col`}
+    <header className="sticky z-top">
+      <nav
+        aria-label="Main Navigation"
+        className="top-navbar width-full box-shadow-medium padding-x-lg flex align-center justify-between"
       >
-        {links.map((link) => (
-          <li className="width-full flex flex-col justify-center align-center relative">
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? 'nav-link active' : 'nav-link'
-              }
-              to={link.path}
-            >
-              {link.label}
-            </NavLink>
-            <div className="divider-gray absolute"></div>
-          </li>
-        ))}
-      </ul>
-      <span className="mobile-menu-title">QTL</span>
-      <button
-        onClick={() => toggleIsOpen()}
-        className="menu-button cursor-pointer"
-      >
-        <span
-          className={`material-symbols-rounded size-40 text-primary transition-bezier-smooth ${isOpen ? 'rotate-90' : ''}`}
+        <NavLink className="logo flex align-center" to="/">
+          <svg
+            className="logo-icon transition-bezier-smooth"
+            width="70"
+            height="40"
+            viewBox="0 0 70 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M37.2551 1.61586C38.1803 0.653384 39.4368 0.112671 40.7452 0.112671C46.6318 0.112671 52.1793 0.112674 57.6424 0.112685C68.6302 0.112708 74.1324 13.9329 66.3629 22.0156L49.4389 39.6217C48.662 40.43 47.3335 39.8575 47.3335 38.7144V23.2076L49.2893 21.1729C50.8432 19.5564 49.7427 16.7923 47.5451 16.7923H22.6667L37.2551 1.61586Z"
+              fill="#fff"
+            ></path>
+            <path
+              d="M32.7449 38.3842C31.8198 39.3467 30.5633 39.8874 29.2549 39.8874C23.3683 39.8874 17.8208 39.8874 12.3577 39.8874C1.36983 39.8873 -4.13236 26.0672 3.63721 17.9844L20.5612 0.378369C21.3381 -0.429908 22.6666 0.142547 22.6666 1.28562L22.6667 16.7923L20.7108 18.8271C19.1569 20.4437 20.2574 23.2077 22.455 23.2077L47.3335 23.2076L32.7449 38.3842Z"
+              fill="#fff"
+            ></path>
+          </svg>
+        </NavLink>
+        <ul className="nav-links flex flex-gap-2xl">
+          {links.map((link) => (
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? 'nav-link active' : 'nav-link'
+                }
+                to={link.path}
+              >
+                {link.label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+        <ButtonPrimary
+          label={lang == 'hu' ? 'Váltás angolra' : 'Change to Hungarian'}
+          onClick={() => setLang(lang == 'hu' ? 'en' : 'hu')}
+          className="navbar-cta-button"
+        ></ButtonPrimary>
+        <ul
+          className={`mobile-nav-links transition-bezier-smooth slide-content ${isOpen ? 'open' : ''} flex-col`}
         >
-          menu
-        </span>
-      </button>
-    </nav>
+          {links.map((link) => (
+            <li className="width-full flex flex-col justify-center align-center relative">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? 'nav-link active' : 'nav-link'
+                }
+                to={link.path}
+              >
+                {link.label}
+              </NavLink>
+              <div className="divider-gray absolute"></div>
+            </li>
+          ))}
+        </ul>
+        <span className="mobile-menu-title">QTL</span>
+        <button
+          onClick={() => toggleIsOpen()}
+          className="menu-button cursor-pointer"
+        >
+          <span
+            className={`material-symbols-rounded size-40 text-primary transition-bezier-smooth ${isOpen ? 'rotate-90' : ''}`}
+          >
+            menu
+          </span>
+        </button>
+      </nav>
+    </header>
   )
 }
 export default TopNavbar

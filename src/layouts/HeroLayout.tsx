@@ -7,15 +7,10 @@ import { useLocalization } from '../context/LocalizationContext'
 
 interface Props {
   page: string
-  section: string
   divider?: boolean
 }
 
-const HeroLayout: React.FunctionComponent<Props> = ({
-  page,
-  section,
-  divider,
-}) => {
+const HeroLayout: React.FunctionComponent<Props> = ({ page, divider }) => {
   const { lang } = useLocalization()
 
   return (
@@ -23,11 +18,11 @@ const HeroLayout: React.FunctionComponent<Props> = ({
       <div className="container">
         <div className="text-center padding-y-5xl">
           <h1 className="hero-text text-shadow-light">
-            {t(`${page}.${section}.title`, lang)}
+            {t(`${page}.hero.title`, lang)}
           </h1>
           <div className="subtext-wrapper">
-            <h2>{t(`${page}.${section}.subtitle`, lang)}</h2>
-            <p>{f(t(`${page}.${section}.body`, lang))}</p>
+            <h2>{t(`${page}.hero.subtitle`, lang)}</h2>
+            <p>{f(t(`${page}.hero.body`, lang))}</p>
           </div>
         </div>
       </div>

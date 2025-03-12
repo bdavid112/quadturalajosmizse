@@ -1,0 +1,61 @@
+@import '../../../styles/tokens.scss';
+
+.footer {
+  min-height: 18rem;
+  background: $neutral-900;
+
+  nav {
+    min-width: min(90rem, 90%);
+    max-width: 90%;
+    flex-direction: inherit;
+  }
+}
+
+.footer-logo {
+  height: 2rem;
+
+  path {
+    fill: $text-inverted;
+  }
+
+  &:hover {
+    fill: #fff;
+  }
+}
+
+.footer-title {
+  font-family: 'Jaro', sans-serif;
+  color: $color-primary-300;
+  font-size: 2rem;
+}
+
+.group-title {
+  color: $color-primary-300;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+@media (max-width: $screen-laptop) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+
+    /*  * {
+      align-items: center;
+    } */
+
+    nav {
+      justify-content: center;
+      gap: $space-2xl;
+    }
+
+    ul {
+      width: 100%;
+
+      li {
+        width: 100%;
+        /* text-align: center; */
+      }
+    }
+  }
+}

@@ -8,6 +8,7 @@ import {
 import BookingForm from './components/ui/forms/BookingForm'
 import TopNavbar from './components/ui/navigation/TopNavbar'
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
+import Footer from './components/ui/navigation/Footer'
 
 function TestLocalization() {
   /* const { lang, setLang } = useLocalization() */
@@ -15,7 +16,7 @@ function TestLocalization() {
   return (
     <>
       <TopNavbar></TopNavbar>
-      <HeroLayout page="about-us" section="hero" divider={true}></HeroLayout>
+      <HeroLayout page="about-us" divider={true}></HeroLayout>
       <section className="grid padding-y-5xl">
         <div className="row">
           <div className="col-6">
@@ -23,6 +24,7 @@ function TestLocalization() {
           </div>
         </div>
       </section>
+      <Footer></Footer>
     </>
   )
 }

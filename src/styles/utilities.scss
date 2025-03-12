@@ -454,7 +454,7 @@
   border-radius: $radius-lg;
 }
 .border-rounded-full {
-  border-radius: $radius-full;
+  border-radius: $radius-full !important;
 }
 .border-rounded-full-left {
   border-top-left-radius: $radius-full;

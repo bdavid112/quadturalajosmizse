@@ -5,15 +5,16 @@ import * as React from 'react'
 interface Props {
   icon: string
   isDisabled?: boolean
+  className?: string
   onClick?: () => void
 }
 
-const FAB: React.FunctionComponent<Props> = ({ icon, onClick: onChange }) => {
+const FAB: React.FunctionComponent<Props> = ({ icon, className, onClick }) => {
   return (
     <button
-      className={`fab transition-bezier-fast flex-gap-xs flex align-center justify-center cursor-pointer box-shadow-light`}
+      className={`${className} fab transition-bezier-fast flex-gap-xs flex align-center justify-center cursor-pointer box-shadow-light`}
       onClick={() => {
-        onChange && onChange()
+        onClick && onClick()
       }}
     >
       <span className="material-symbols-rounded size-24 text-primary">

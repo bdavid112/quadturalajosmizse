@@ -4,11 +4,27 @@ import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 import TextInputOutline from '../form-elements/TextInputOutline'
 import ButtonPrimary from '../buttons/ButtonPrimary'
+import FAB from '../buttons/FAB'
 
 interface Props {}
 
 const Footer: React.FunctionComponent<Props> = ({}) => {
   /* const { lang, setLang } = useLocalization() */
+
+  const contacts = [
+    {
+      icon: 'location_on',
+      label: '2347 Bugyi, Mező utca 7.',
+    },
+    {
+      icon: 'mail',
+      label: 'quadturalajosmizse@gmail.com',
+    },
+    {
+      icon: 'phone',
+      label: '+36 70 668 8771',
+    },
+  ]
 
   const groups = [
     {
@@ -38,7 +54,7 @@ const Footer: React.FunctionComponent<Props> = ({}) => {
   ]
 
   return (
-    <footer className="width-full z-top footer flex justify-center padding-y-3xl">
+    <footer className="width-full z-top footer flex justify-center padding-y-3xl relative">
       <nav className="flex justify-between" aria-label="Footer Navigation">
         <div className="flex flex-col flex-gap-lg">
           <div className="flex flex-gap-sm">
@@ -62,25 +78,16 @@ const Footer: React.FunctionComponent<Props> = ({}) => {
               </svg>
             </NavLink>
             <span className="footer-title">QuadTúraLajosmizse</span>
+            <span className="mobile-footer-title">QTLajosmizse</span>
           </div>
-          <div className="flex flex-gap-md">
-            <span className="material-symbols-rounded size-24 text-inverted">
-              location_on
-            </span>
-            <span className="text-inverted">2347 Bugyi, Mező utca 7.</span>
-          </div>
-          <div className="flex flex-gap-md">
-            <span className="material-symbols-rounded size-24 text-inverted">
-              mail
-            </span>
-            <span className="text-inverted">quadturalajosmizse@gmail.com</span>
-          </div>
-          <div className="flex flex-gap-md">
-            <span className="material-symbols-rounded size-24 text-inverted">
-              call
-            </span>
-            <span className="text-inverted">+36 70 668 8771</span>
-          </div>
+          {contacts.map((contact, index) => (
+            <div key={index} className="flex flex-gap-md">
+              <span className="material-symbols-rounded size-24 text-inverted">
+                {contact.icon}
+              </span>
+              <span className="text-inverted">{contact.label}</span>
+            </div>
+          ))}
         </div>
         {groups.map((group, index) => (
           <ul key={index} className="flex flex-col flex-gap-md">
@@ -93,6 +100,13 @@ const Footer: React.FunctionComponent<Props> = ({}) => {
           </ul>
         ))}
       </nav>
+      <FAB
+        className="absolute footer-fab"
+        icon="arrow_upward"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }}
+      ></FAB>
     </footer>
   )
 }

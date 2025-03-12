@@ -60,17 +60,17 @@ const TopNavbar: React.FunctionComponent<Props> = ({}) => {
           className={`mobile-nav-links transition-bezier-smooth slide-content ${isOpen ? 'open' : ''} flex-col`}
         >
           {links.map((link) => (
-            <li className="width-full flex flex-col justify-center align-center relative">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? 'nav-link active' : 'nav-link'
-                }
-                to={link.path}
-              >
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? 'nav-link active' : 'nav-link'
+              }
+              to={link.path}
+            >
+              <li className="width-full flex flex-col justify-center align-center relative">
                 {link.label}
-              </NavLink>
+              </li>
               <div className="divider-gray absolute"></div>
-            </li>
+            </NavLink>
           ))}
         </ul>
         <span className="mobile-menu-title">QTL</span>

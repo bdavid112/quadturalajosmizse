@@ -113,14 +113,18 @@ li {
     position: fixed;
     display: flex;
 
+    .nav-link::before {
+      bottom: 0;
+    }
+
     li {
       min-height: $navbar-height;
       box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.1);
+    }
 
-      .divider-gray {
-        bottom: 0;
-        background: $text-muted;
-      }
+    .divider-gray {
+      bottom: 0;
+      background: $text-muted;
     }
   }
 }

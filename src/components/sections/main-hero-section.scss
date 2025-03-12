@@ -4,24 +4,18 @@
   width: 100%;
   min-height: 80vh;
 
-  .grid {
+  .container {
     padding-block: 10rem;
     gap: $space-2xl;
   }
+}
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('../../assets/main-hero-background.png') no-repeat center
-      center/cover;
-    filter: brightness(0.6);
-    background-attachment: fixed;
-    z-index: -1;
-  }
+.hero-image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  z-index: -1;
 }
 
 .main-hero-title {
@@ -44,12 +38,23 @@ strong {
   bottom: 5%;
 }
 
-@media (max-width: $screen-tablet) {
-  .grid {
-    padding-block: 5rem !important;
-    gap: $space-xl !important;
+@media (max-width: $screen-laptop) {
+  .main-hero-title,
+  .main-hero-subtext {
+    width: 100%;
   }
 
+  .main-hero-content {
+    padding-block: 5rem !important;
+  }
+
+  .button-group {
+    padding-block: 5rem !important;
+    gap: $space-sm !important;
+  }
+}
+
+@media (max-width: $screen-tablet) {
   .main-hero-title {
     font-size: 2.75rem;
     margin-bottom: 1rem !important;

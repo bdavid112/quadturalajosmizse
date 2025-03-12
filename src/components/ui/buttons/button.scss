@@ -5,6 +5,7 @@
 }
 
 @mixin button {
+  min-width: 10rem;
   font-size: $font-size-base;
   min-height: 3.5rem;
   max-height: fit-content;
@@ -14,6 +15,7 @@
 }
 
 @mixin button-outline {
+  min-width: 10rem;
   font-size: $font-size-base;
   min-height: 3.5rem;
   max-height: fit-content;

@@ -209,6 +209,31 @@
   margin-block: $space-xl;
 }
 
+.margin-bottom-xs {
+  margin-bottom: $space-xs;
+}
+.margin-bottom-sm {
+  margin-bottom: $space-sm;
+}
+.margin-bottom-md {
+  margin-bottom: $space-md;
+}
+.margin-bottom-lg {
+  margin-bottom: $space-lg;
+}
+.margin-bottom-xl {
+  margin-bottom: $space-xl;
+}
+.margin-bottom-2xl {
+  margin-bottom: $space-2xl;
+}
+.margin-bottom-3xl {
+  margin-bottom: $space-3xl;
+}
+.margin-bottom-4xl {
+  margin-bottom: $space-4xl;
+}
+
 .margin-x-xs {
   margin-inline: $space-xs;
 }
@@ -701,9 +726,12 @@
 }
 .divider-gray {
   @include divider($gray-300, 1px);
-}
-.divider-gray.solid {
-  background: $gray-300;
+  &.solid {
+    background: $gray-300;
+  }
+  &.thick {
+    height: 2px;
+  }
 }
 
 /* Icons */

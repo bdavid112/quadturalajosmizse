@@ -7,8 +7,6 @@
   margin: 0 auto;
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* 12-col grid */
@@ -67,7 +65,7 @@
 
 @media (max-width: $screen-laptop) {
   .container {
-    padding: 0 $space-lg;
+    /* padding: 0 $space-lg; */
   }
 
   .grid {

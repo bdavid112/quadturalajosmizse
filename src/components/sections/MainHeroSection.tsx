@@ -1,8 +1,10 @@
+import './main-hero-section.scss'
+import heroImageAvif from '../../assets/main-hero-background.avif'
+import heroImageWebp from '../../assets/main-hero-background.webp'
+
 import ButtonPrimary from '../ui/buttons/ButtonPrimary'
 import ButtonSecondaryOutline from '../ui/buttons/ButtonSecondaryOutline'
 import FAB from '../ui/buttons/FAB'
-import './main-hero-section.scss'
-
 import * as React from 'react'
 
 interface Props {}
@@ -12,27 +14,29 @@ const MainHeroSection: React.FunctionComponent<Props> = ({}) => {
 
   return (
     <section className="main-hero relative">
-      <div className="grid">
-        <div className="row">
-          <h1 className="col-6 text-inverted main-hero-title">
-            <strong>Quad túrák</strong> az ország földrajzi középpontjához
-          </h1>
-          <div className="col-6"></div>
-        </div>
-        <div className="row">
-          <p className="col-6 text-inverted main-hero-subtext">
-            Fedezd fel a lenyűgöző tájakat, tapasztald meg<br></br> az
-            adrenalin-löketet és éld át a természet szabadságát<br></br> egy
-            felejthetetlen quad túrán a barátokkal!
-          </p>
-          <div className="col-6"></div>
-        </div>
-        <div className="row">
-          <div className="col-6 flex flex-gap-lg button-group">
-            <ButtonPrimary label="Foglalj túraidőpontot online"></ButtonPrimary>
-            <ButtonSecondaryOutline text="Részletek a túráinkról"></ButtonSecondaryOutline>
-          </div>
-          <div className="col-6"></div>
+      <picture>
+        <source srcSet={heroImageAvif} type="image/avif"></source>
+        <source srcSet={heroImageWebp} type="image/webp"></source>
+        <img
+          src="../../assets/main-hero-background.jpg"
+          alt="Hero Background"
+          className="hero-image"
+          loading="eager"
+          fetchPriority="high"
+        ></img>
+      </picture>
+      <div className="container main-hero-content flex-col">
+        <h1 className="text-inverted main-hero-title width-half">
+          <strong>Quad túrák</strong> az ország földrajzi középpontjához
+        </h1>
+        <p className="text-inverted main-hero-subtext width-half">
+          Fedezd fel a lenyűgöző tájakat, tapasztald meg az adrenalin-löketet és
+          éld át a természet szabadságát egy felejthetetlen quad túrán a
+          barátokkal!
+        </p>
+        <div className="flex flex-gap-lg button-group">
+          <ButtonPrimary label="Foglalj túraidőpontot online"></ButtonPrimary>
+          <ButtonSecondaryOutline text="Részletek a túráinkról"></ButtonSecondaryOutline>
         </div>
       </div>
       <FAB

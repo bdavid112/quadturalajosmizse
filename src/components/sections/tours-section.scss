@@ -1,0 +1,33 @@
+@import '../../styles/tokens.scss';
+
+.info-list {
+  ul {
+    padding-left: 1rem;
+  }
+
+  li {
+    list-style: disc;
+  }
+}
+
+.tours-illustration {
+  max-width: 50%;
+  bottom: 0;
+  right: 0;
+}
+
+@media (max-width: $screen-laptop) {
+  .info-list {
+    width: 100%;
+  }
+
+  .tours-illustration {
+    position: static;
+  }
+}
+
+@media (max-width: $screen-tablet) {
+  .tours-illustration {
+    max-width: 100%;
+  }
+}

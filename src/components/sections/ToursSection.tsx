@@ -1,71 +1,21 @@
 import './tours-section.scss'
 
-import overviewImg1 from '../../assets/tour-overview-1.avif'
-import overviewImg2 from '../../assets/tour-overview-2.avif'
+import nature from '../../assets/tours-nature.svg'
 
 import TourOverview from '../TourOverview'
 import * as React from 'react'
+import { useToursSection } from '../../hooks/useToursSection'
+import { useLocalization } from '../../context/LocalizationContext'
 
 interface Props {}
 
 const ToursSection: React.FunctionComponent<Props> = ({}) => {
-  const overviews = [
-    {
-      title: '40 km-es túra – Pusztavacs,\nMagyarország földrajzi középpontja',
-      description:
-        'Ez a rövidebb útvonal ideális választás, ha először próbálnád ki a quad túrázást vagy kevesebb időd van, de mégis egy felejthetetlen élményre vágysz.',
-      attributes: [
-        {
-          strong: 'Útvonal:',
-          regular: ' Lajosmizse – Táborfalva – Örkény – Pusztavacs  – vissza',
-        },
-        {
-          strong: '80% földút',
-          regular: '',
-        },
-        {
-          strong: 'Időtartam:',
-          regular: ' ~ 1,5 óra',
-        },
-        {
-          strong: 'Ár:',
-          regular: ' 25 000 Ft / quad + 5 000 Ft / utas',
-        },
-      ],
-      img: overviewImg1,
-    },
-    {
-      title: '80 km-es túra – A lőtéren át a földrajzi középpontig',
-      description:
-        'Tapasztaltabb túrázóknak ajánljuk, akik egy hosszabb, változatos terepviszonyokkal tarkított útvonalat szeretnének bejárni.',
-      attributes: [
-        {
-          strong: 'Útvonal:',
-          regular:
-            ' Lajosmizse – Táborfalva – Tatárszentgyörgy – Dabas – Újhartyán – Pusztavacs – vissza',
-        },
-        {
-          strong: '70% földút',
-          regular: '',
-        },
-        {
-          strong: 'Időtartam:',
-          regular: ' ~ 2,5 óra',
-        },
-        {
-          strong: 'Ár:',
-          regular: ' 35 000 Ft / quad + 7 000 Ft / utas',
-        },
-      ],
-      img: overviewImg2,
-    },
-  ]
-
-  /* const { lang, setLang } = useLocalization() */
+  const { lang } = useLocalization()
+  const { overviews, info } = useToursSection(lang)
 
   return (
-    <section className="tours-section">
-      <div className="container flex-col padding-y-4xl flex-gap-xl">
+    <section className="tours-section relative">
+      <div className="container flex-col padding-y-4xl flex-gap-xl relative">
         <div className="margin-bottom-2xl">
           <h1>Válassz két izgalmas quad túra közül!</h1>
           <p>
@@ -83,6 +33,24 @@ const ToursSection: React.FunctionComponent<Props> = ({}) => {
             img={overview.img}
           ></TourOverview>
         ))}
+        <div className="info-list width-half padding-y-2xl">
+          <h3 className="margin-bottom-xl">Fontos tudnivalók</h3>
+          <ul>
+            {info.map((i) => (
+              <li>
+                <strong className="text-primary">{i.strong}</strong>
+                {i.regular}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="width-full flex justify-end">
+          <img
+            className="absolute tours-illustration"
+            src={nature}
+            alt="Nature illustration"
+          />
+        </div>
       </div>
     </section>
   )

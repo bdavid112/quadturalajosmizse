@@ -1,37 +1,18 @@
 import './why-choose-us-section.scss'
 
 import heroBackground from '../../assets/why-choose-us-header-background.avif'
-import profile1 from '../../assets/profile1.jpg'
-import profile2 from '../../assets/profile2.jpg'
-import profile3 from '../../assets/profile3.webp'
 
 import * as React from 'react'
 import ImageHeader from '../ImageHeader'
 import ProfileBioShort from '../ProfileBioShort'
+import StatCard from '../ui/StatCard'
+import { useWhyChooseUsSection } from '../../hooks/useWhyChooseUsSection'
+import WaveBackground from '../ui/WaveBackground'
 
 interface Props {}
 
 const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
-  const profiles = [
-    {
-      name: 'Hau Péter',
-      role: 'tulajdonos',
-      bio: '"Több száz levezetett túra és több ezer elégedett vendég tapasztalatával a hátam mögött célom, hogy minden quadozni vágyónak felejthetetlen élményt nyújtsak – akár kezdőként, akár tapasztalt motorosként érkezel. Ismerd meg Magyarország földrajzi középpontjának lenyűgöző tájait egy professzionálisan vezetett túrán!"',
-      img: profile1,
-    },
-    {
-      name: 'Sós Krisztina',
-      role: 'értékesítő',
-      bio: '"Segítek abban, hogy megtaláld a számodra tökéletes quad túrát. Legyen szó első kalandról vagy visszatérő élményről, örömmel válaszolok minden kérdésedre, segítek a foglalásban, és gondoskodom róla, hogy a túrád gördülékeny és felejthetetlen legyen. Ha bármi kérdésed van, fordulj hozzám bizalommal!"',
-      img: profile2,
-    },
-    {
-      name: 'Orosz Mátyás',
-      role: 'túravezető',
-      bio: '"Mindig is szerettem a természetet, a terepjárást és a szabadság érzését, amit egy quad nyergében lehet igazán megélni. Több éve foglalkozom off-road túravezetéssel, és az a célom, hogy biztonságos, de kihívásokkal teli kalandokat nyújtsak minden résztvevőnek."',
-      img: profile3,
-    },
-  ]
+  const { profiles, stats } = useWhyChooseUsSection()
 
   return (
     <section className="why-choose-us-section">
@@ -52,6 +33,20 @@ const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
             img={profile.img}
           ></ProfileBioShort>
         ))}
+      </div>
+      <div className="relative">
+        <div className="grid margin-bottom-4xl justify-center align-center relative stat-cards">
+          {stats.map((stat, index) => (
+            <div key={index} className="flex justify-center">
+              <StatCard
+                title={stat.title}
+                subtext={stat.subtext}
+                icon={stat.icon}
+              ></StatCard>
+            </div>
+          ))}
+        </div>
+        <WaveBackground numberOfWaves={stats.length * 6}></WaveBackground>
       </div>
     </section>
   )

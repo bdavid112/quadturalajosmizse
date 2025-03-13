@@ -1,7 +1,46 @@
 @import '../../styles/tokens.scss';
 
+.stat-cards-background {
+  height: 310px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: url('../../assets/stat-cards-background.svg') no-repeat center
+    center;
+  background-size: contain; // Ensures the SVG keeps its original aspect ratio
+}
+
+.stat-cards {
+  max-width: 1200px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-lg;
+}
+
+@media (max-width: $screen-desktop) {
+  .stat-cards-background {
+    height: 600px;
+
+    background: url('../../assets/stat-cards-background-tablet.svg') no-repeat
+      center center;
+  }
+
+  .stat-cards {
+    max-width: min(800px, 80%);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: $screen-laptop) {
   .why-choose-us-title {
     width: 100%;
+  }
+}
+
+@media (max-width: $screen-tablet) {
+  .stat-cards {
+    grid-template-columns: repeat(1, 1fr);
+    margin: auto;
   }
 }

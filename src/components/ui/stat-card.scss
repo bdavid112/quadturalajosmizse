@@ -1,0 +1,8 @@
+@import '../../styles/tokens.scss';
+
+.stat-card {
+  max-height: 270px;
+  max-width: 442px;
+  aspect-ratio: 1.5/1;
+  background: $surface-100;
+}

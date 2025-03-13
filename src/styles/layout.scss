@@ -14,7 +14,7 @@
 .grid {
   width: 100%;
   max-width: min(90rem, 90%); // Adjust based on your design
-  margin: 0 auto;
+  margin-inline: auto;
   display: grid;
   grid-template-columns: repeat(12, 1fr); // 12 equal columns
   gap: $space-xl; // Adjust spacing

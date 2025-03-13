@@ -1,3 +1,123 @@
+commit 01741dac8dc45d78521d3c7c534029fa409cc890
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Thu Mar 13 21:59:15 2025 +0100
+
+    Added testimonial section
+
+commit f8e97ebb0ebc29181492dad25221dae8e997ee70
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Thu Mar 13 19:03:44 2025 +0100
+
+    Added booking section
+
+commit 578ff6e737dba40455ae2a42d9d1537dd0ccb013
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Thu Mar 13 16:45:03 2025 +0100
+
+    Added wave background generator
+
+commit 86fbd7c5c9a1e14b0d08058bd7e164a07bcff3a9
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Thu Mar 13 12:15:25 2025 +0100
+
+    Started implementing Why choose us section
+
+commit 6765e3ae958ec8ca04af8225e5f4b4147df42271
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Thu Mar 13 10:39:04 2025 +0100
+
+    Added illustration to tours section
+
+commit 059e89b39a350003d07c648d6a349a3e037ed8d0
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Wed Mar 12 23:18:43 2025 +0100
+
+    Fixed main hero background, added tours section
+
+commit 420ed74df8e41a1072b8b9c213e58411c139b93f
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Wed Mar 12 18:14:08 2025 +0100
+
+    Added main layout and main hero section
+
+commit 60dd7dcd0fca4537fe8f5d2e64824119470391e9
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Wed Mar 12 16:34:42 2025 +0100
+
+    Small tweaking on footer
+
+commit 8a7c6663b015cd611fbffe5f08da609cde2b7589
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Wed Mar 12 13:33:31 2025 +0100
+
+    Added responsive footer
+
+commit 6bc0994e20104bc2a6211b9f501b1915e2693244
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Wed Mar 12 00:05:53 2025 +0100
+
+    Made the navbar responsive
+
+commit dc72913e1a52594926884500a6229939d76095e9
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Tue Mar 11 20:57:54 2025 +0100
+
+    Added top navbar
+
+commit 7a76040d9a04e73cec5eb2bac8d1f9791540cbcf
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Tue Mar 11 19:17:28 2025 +0100
+
+    Booking form validation done, added localization for error messages
+
+commit bfc9ed3239a402a548e0467ee7403fb2739a54ae
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Tue Mar 11 17:18:02 2025 +0100
+
+    Work on booking form validation, removed unnecessary style imports
+
+commit 1c3d526bf0680a9b4c8c7b07a384dc0220efe569
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Tue Mar 11 13:39:10 2025 +0100
+
+    Work on booking form validation
+
+commit f42860ddc551af07f7b40990b392ede80afecee7
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sun Mar 9 21:10:04 2025 +0100
+
+    Work on booking form responsiveness
+
+commit 53345c8e82a79eee7b29f83430e4ff442008c587
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sun Mar 9 19:25:16 2025 +0100
+
+    Fixes/improvements on UI elements
+
+commit 1a565a27f51fe0334c697ef5a20f050875acd8c6
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sun Mar 9 12:16:53 2025 +0100
+
+    Added accordion component
+
+commit 4b5f8a1ee1061bc4fe7b856ed5de81fdb6fad5f3
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sun Mar 9 10:48:59 2025 +0100
+
+    Added FAB
+
+commit 4e87926a29960dabdd1a3a48ca1a4eb700e1de94
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sat Mar 8 23:02:46 2025 +0100
+
+    Added segmented button
+
+commit 545ce98efb81200d5f2716dc09f2b8db3e8632ca
+Author: bdavid112 <dawid8688@gmail.com>
+Date:   Sat Mar 8 20:51:14 2025 +0100
+
+    Added localization context
+
 commit 2a93614cef9ed0cac594ae49a821cd3680f3c1ed
 Author: bdavid112 <dawid8688@gmail.com>
 Date:   Sat Mar 8 17:33:16 2025 +0100

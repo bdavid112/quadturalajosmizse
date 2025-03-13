@@ -1,0 +1,8 @@
+@import '../../styles/tokens.scss';
+
+@media (max-width: $screen-tablet) {
+  .faq-footer {
+    flex-direction: column;
+    gap: $space-4xl;
+  }
+}

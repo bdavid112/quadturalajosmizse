@@ -1,10 +1,18 @@
 @import '../../styles/tokens.scss';
 
+.testimonials-section {
+  padding-bottom: $space-4xl;
+}
+
 .review-cards-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: $space-lg;
   max-width: 1400px;
+}
+
+.review-form-wrapper {
+  min-width: min(100%, 720px);
 }
 
 @media (max-width: $screen-desktop) {

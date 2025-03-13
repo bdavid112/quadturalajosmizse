@@ -82,7 +82,7 @@ const TestimonialsSection: React.FunctionComponent<Props> = ({}) => {
       </div>
       <div ref={formContainerRef} className="relative">
         <div className="container justify-center">
-          <div className="width-half">
+          <div className="width-half review-form-wrapper">
             <ReviewForm></ReviewForm>
           </div>
         </div>

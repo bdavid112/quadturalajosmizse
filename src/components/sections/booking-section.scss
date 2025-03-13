@@ -1,0 +1,58 @@
+@import '../../styles/tokens.scss';
+
+.content-wrapper {
+  width: 100%;
+  background: $neutral-900;
+}
+
+.grunge-divider {
+  width: 100%;
+  object-fit: cover;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+}
+
+.list {
+  padding-left: 1rem;
+  li {
+    list-style-type: disc;
+  }
+}
+
+@media (max-width: $screen-desktop) {
+  .booking-section-content {
+    flex-direction: column;
+
+    .width-half {
+      width: 100%;
+    }
+  }
+
+  .text-content-wrapper {
+    display: flex;
+    gap: $space-4xl;
+  }
+
+  .text-content {
+    width: 50%;
+  }
+}
+
+@media (max-width: $screen-laptop) {
+  .booking-section-content {
+    flex-direction: column;
+
+    .width-half {
+      width: 100%;
+    }
+  }
+
+  .text-content-wrapper {
+    display: block;
+  }
+
+  .text-content {
+    width: 100%;
+  }
+}

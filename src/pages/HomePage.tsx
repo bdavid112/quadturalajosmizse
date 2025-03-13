@@ -1,3 +1,4 @@
+import BookingSection from '../components/sections/BookingSection'
 import MainHeroSection from '../components/sections/MainHeroSection'
 import ToursSection from '../components/sections/ToursSection'
 import WhyChooseUsSection from '../components/sections/WhyChooseUsSection'
@@ -13,6 +14,7 @@ const HomePage: React.FunctionComponent<Props> = ({}) => {
       <MainHeroSection></MainHeroSection>
       <ToursSection></ToursSection>
       <WhyChooseUsSection></WhyChooseUsSection>
+      <BookingSection></BookingSection>
     </MainLayout>
   )
 }

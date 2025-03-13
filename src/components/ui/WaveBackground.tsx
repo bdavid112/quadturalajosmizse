@@ -5,20 +5,21 @@ import * as React from 'react'
 
 interface Props {
   numberOfWaves: number
+  containerRef: React.RefObject<HTMLDivElement | null>
 }
 
-const WaveBackground: React.FunctionComponent<Props> = ({ numberOfWaves }) => {
-  const [rows, setRows] = useState(getRows(window.innerWidth))
-
-  // Function to determine rows based on screen width
-  function getRows(width: number) {
-    if (width > 1440) return 1 // Desktop
-    if (width > 768) return 2 // Tablet
-    return 4 // Mobile
-  }
+const WaveBackground: React.FunctionComponent<Props> = ({
+  numberOfWaves,
+  containerRef,
+}) => {
+  const [viewBoxHeight, setViewBoxHeight] = useState(240)
 
   useEffect(() => {
-    const handleResize = () => setRows(getRows(window.innerWidth))
+    const handleResize = () => {
+      if (containerRef.current) {
+        setViewBoxHeight(containerRef.current.clientHeight)
+      }
+    }
 
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
@@ -33,8 +34,8 @@ const WaveBackground: React.FunctionComponent<Props> = ({ numberOfWaves }) => {
   return (
     <svg
       width="100%"
-      height={270 * rows}
-      viewBox={`0 -10 1440 ${270 * rows}`}
+      height={viewBoxHeight}
+      viewBox={`0 -10 1440 ${viewBoxHeight}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="none"

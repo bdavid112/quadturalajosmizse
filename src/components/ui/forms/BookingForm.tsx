@@ -18,7 +18,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
   const { formData, errors, updateField, submitForm } = useBookingForm(lang)
 
   return (
-    <div className="width-full box-shadow-medium border-rounded-md padding-x-4xl padding-y-2xl form-container">
+    <div className="width-full booking-form box-shadow-medium border-rounded-md padding-x-4xl padding-y-2xl form-container">
       <h3 className="text-center">{t(`ui.forms.booking-form.title`, lang)}</h3>
       <div className="form-body">
         <fieldset className="form-group flex flex-col flex-gap-sm">

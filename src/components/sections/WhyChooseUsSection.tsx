@@ -8,11 +8,13 @@ import ProfileBioShort from '../ProfileBioShort'
 import StatCard from '../ui/StatCard'
 import { useWhyChooseUsSection } from '../../hooks/useWhyChooseUsSection'
 import WaveBackground from '../ui/WaveBackground'
+import { useRef } from 'react'
 
 interface Props {}
 
 const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
   const { profiles, stats } = useWhyChooseUsSection()
+  const statCardsContainerRef = useRef(null)
 
   return (
     <section className="why-choose-us-section">
@@ -34,7 +36,7 @@ const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
           ></ProfileBioShort>
         ))}
       </div>
-      <div className="relative">
+      <div ref={statCardsContainerRef} className="relative">
         <div className="grid margin-bottom-4xl justify-center align-center relative stat-cards">
           {stats.map((stat, index) => (
             <div key={index} className="flex justify-center">
@@ -46,8 +48,15 @@ const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
             </div>
           ))}
         </div>
-        <WaveBackground numberOfWaves={stats.length * 6}></WaveBackground>
+        <WaveBackground
+          containerRef={statCardsContainerRef}
+          numberOfWaves={stats.length * 6}
+        ></WaveBackground>
       </div>
+      <h3 className="text-center padding-y-xl">
+        Készen állsz egy <strong>kalandra?</strong>
+        <br></br> Életre szóló <strong>élménnyel távozol!</strong>
+      </h3>
     </section>
   )
 }

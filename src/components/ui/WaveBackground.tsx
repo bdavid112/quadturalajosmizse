@@ -12,13 +12,17 @@ const WaveBackground: React.FunctionComponent<Props> = ({
   numberOfWaves,
   containerRef,
 }) => {
-  const [viewBoxHeight, setViewBoxHeight] = useState(240)
+  const [viewBoxHeight, setViewBoxHeight] = useState(0)
 
   useEffect(() => {
     const handleResize = () => {
       if (containerRef.current) {
         setViewBoxHeight(containerRef.current.clientHeight)
       }
+    }
+
+    if (viewBoxHeight == 0) {
+      handleResize()
     }
 
     window.addEventListener('resize', handleResize)

@@ -37,7 +37,7 @@ const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
         ))}
       </div>
       <div ref={statCardsContainerRef} className="relative">
-        <div className="grid margin-bottom-4xl justify-center align-center relative stat-cards">
+        <div className="grid margin-bottom-4xl relative stat-cards">
           {stats.map((stat, index) => (
             <div key={index} className="flex justify-center">
               <StatCard

@@ -394,6 +394,9 @@
 .font-size-base {
   font-size: $font-size-base;
 }
+.font-size-hero {
+  font-size: $font-size-3xl;
+}
 
 .text-primary {
   color: $text-primary !important;
@@ -559,6 +562,11 @@
 
 .absolute {
   position: absolute;
+  &.centered {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 .relative {
   position: relative;

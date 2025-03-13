@@ -6,6 +6,7 @@ import TourOverview from '../TourOverview'
 import * as React from 'react'
 import { useToursSection } from '../../hooks/useToursSection'
 import { useLocalization } from '../../context/LocalizationContext'
+import { insertStrongTags } from '../../utils/formatText'
 
 interface Props {}
 
@@ -37,10 +38,7 @@ const ToursSection: React.FunctionComponent<Props> = ({}) => {
           <h3 className="margin-bottom-xl">Fontos tudnivalók</h3>
           <ul>
             {info.map((i) => (
-              <li>
-                <strong className="text-primary">{i.strong}</strong>
-                {i.regular}
-              </li>
+              <li>{insertStrongTags(i, 'text-primary')}</li>
             ))}
           </ul>
         </div>

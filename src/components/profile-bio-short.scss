@@ -1,0 +1,17 @@
+@import '../styles/tokens.scss';
+
+.bio-short-image {
+  height: 8rem;
+  width: 8rem;
+  object-fit: cover;
+}
+
+.bio-short-text {
+  max-width: 50rem;
+}
+
+@media (max-width: $screen-tablet) {
+  .profile-bio-short {
+    flex-direction: column;
+  }
+}

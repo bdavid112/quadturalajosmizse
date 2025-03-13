@@ -3,12 +3,12 @@ import './tour-overview.scss'
 import * as React from 'react'
 import ButtonPrimary from './ui/buttons/ButtonPrimary'
 import ButtonSecondaryOutline from './ui/buttons/ButtonSecondaryOutline'
-import { formatTextWithBreaks } from '../utils/formatText'
+import { formatTextWithBreaks, insertStrongTags } from '../utils/formatText'
 
 interface Props {
   title: string
   description: string
-  attributes: { strong: string; regular: string }[]
+  attributes: string[]
   img: string
 }
 
@@ -29,8 +29,7 @@ const TourOverview: React.FunctionComponent<Props> = ({
           <ul>
             {attributes.map((attribute, index) => (
               <li key={index} className="overview-attrib">
-                <strong className="text-primary">{attribute.strong}</strong>
-                {attribute.regular}
+                {insertStrongTags(attribute, 'text-primary')}
               </li>
             ))}
           </ul>

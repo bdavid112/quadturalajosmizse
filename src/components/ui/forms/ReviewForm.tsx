@@ -6,6 +6,7 @@ import TextInputOutline from '../form-elements/TextInputOutline'
 import TextAreaOutline from '../form-elements/TextAreaOutline'
 import { useId } from 'react'
 import ButtonPrimary from '../buttons/ButtonPrimary'
+import { t } from '../../../utils/translator'
 
 interface Props {}
 
@@ -22,29 +23,34 @@ const ReviewForm: React.FunctionComponent<Props> = ({}) => {
   }
 
   return (
-    <div className="width-full review-form box-shadow-medium border-rounded-md padding-x-4xl padding-y-2xl form-container">
-      <h3 className="text-center">Oszd meg velünk élményeid</h3>
+    <form className="width-full review-form box-shadow-medium border-rounded-md padding-x-4xl padding-y-2xl form-container">
+      <h3 className="text-center">{t('ui.forms.review-form.title', lang)}</h3>
       <div className="form-body flex flex-col flex-gap-sm">
         <TextInputOutline
           id={useId()}
-          name={'name'}
-          label={'Név'}
-          helperText={'Add meg a teljes neved'}
+          name="name"
+          label={t('ui.forms.review-form.inputs.name.label', lang)}
+          helperText={t('ui.forms.review-form.inputs.name.helper-text', lang)}
         ></TextInputOutline>
         <TextAreaOutline
           id={useId()}
           name={'review'}
-          label={'Vélemény'}
-          helperText={'Írd le a véleményed'}
+          label={t('ui.forms.review-form.inputs.comment.label', lang)}
+          helperText={t(
+            'ui.forms.review-form.inputs.comment.helper-text',
+            lang
+          )}
         ></TextAreaOutline>
         <div className="flex width-full justify-center">
           {stars.map((star) => star)}
         </div>
       </div>
       <div className="flex justify-center">
-        <ButtonPrimary label={'Vélemény elküldése'}></ButtonPrimary>
+        <ButtonPrimary
+          label={t('ui.forms.review-form.button-label', lang)}
+        ></ButtonPrimary>
       </div>
-    </div>
+    </form>
   )
 }
 export default ReviewForm

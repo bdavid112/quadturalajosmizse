@@ -116,7 +116,168 @@
           }
         },
         "button-label": "Tovább a fizetéshez"
+      },
+      "review-form": {
+        "title": "Oszd meg velünk élményeid",
+        "inputs": {
+          "name": {
+            "label": "Név",
+            "helper-text": "Add meg a teljes neved",
+            "errors": {
+              "required": "Név megadása kötelező"
+            }
+          },
+          "comment": {
+            "label": "Vélemény",
+            "helper-text": "Írd le a véleményed",
+            "errors": {
+              "required": "A vélemény mező kitöltése kötelező"
+            }
+          }
+        },
+        "button-label": "Vélemény elküldése"
       }
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "<strong>Quad túrák</strong> az ország földrajzi középpontjához",
+      "subtext": "Fedezd fel a lenyűgöző tájakat, tapasztald meg az adrenalin-löketet és éld át a természet szabadságát egy felejthetetlen quad túrán a barátokkal!",
+      "buttons": {
+        "primary": "Foglalj túraidőpontot online",
+        "secondary": "Részletek a túráinkról"
+      }
+    },
+    "tours": {
+      "title": "Válassz két izgalmas quad túra közül!",
+      "subtitle": "Fedezd fel a természet szépségeit és élvezd a szabadságot quadjainkkal!\n Két különböző túrát kínálunk, így mindenki megtalálhatja a számára megfelelő kihívást.",
+      "tours": [
+        {
+          "title": "40 km-es túra – Pusztavacs, Magyarország földrajzi közepe",
+          "desc": "Ez a rövidebb útvonal ideális választás, ha először próbálnád ki a quad túrázást vagy kevesebb időd van, de mégis egy felejthetetlen élményre vágysz.",
+          "attribs": [
+            "<strong>Útvonal:</strong> Lajosmizse – Táborfalva – Örkény – Pusztavacs  – vissza",
+            "<strong>80% földút</strong>",
+            "<strong>Időtartam:</strong> ~ 1,5 óra",
+            "<strong>Ár:</strong> 25 000 Ft / quad + 5 000 Ft / utas"
+          ],
+          "buttons": {
+            "primary": "Érdekel",
+            "secondary": "További részletek"
+          }
+        },
+        {
+          "title": "80 km-es túra – A lőtéren át a földrajzi középpontig",
+          "desc": "Tapasztaltabb túrázóknak ajánljuk, akik egy hosszabb, változatos terepviszonyokkal tarkított útvonalat szeretnének bejárni.",
+          "attribs": [
+            "<strong>Útvonal:</strong> Lajosmizse – Táborfalva – Tatárszentgyörgy – Dabas – Újhartyán – Pusztavacs – vissza",
+            "<strong>70% földút</strong>",
+            "<strong>Időtartam:</strong> ~ 2,5 óra",
+            "<strong>Ár:</strong> 35 000 Ft / quad + 7 000 Ft / utas"
+          ],
+          "buttons": {
+            "primary": "Érdekel",
+            "secondary": "További részletek"
+          }
+        }
+      ],
+      "info": {
+        "title": "Fontos tudnivalók",
+        "info": [
+          "<strong>B kategóriás jogosítvány szükséges</strong> a quadozáshoz",
+          "<strong>Bukósisak kötelező,</strong> saját sisak használható vagy bérelhető (1 000 Ft)",
+          "<strong>Utas szállítása lehetséges</strong> (min. 160 cm testmagasság szükséges)",
+          "<strong>Min. 2, max. 4 quad</strong> bérelhető túránként (+utasok)",
+          "<strong>Időjárásfüggő program:</strong> extrém körülmények esetén időpontmódosítás lehetséges"
+        ]
+      }
+    },
+    "why-choose-us": {
+      "title": "Miért válassz <strong>minket</strong>?",
+      "subtitle": "Több éves tapasztalattal biztosítjuk a legjobb élményt, legyen szó kezdőkről vagy tapasztalt motorosokról!",
+      "bios": [
+        {
+          "name": "Hau Péter",
+          "role": "tulajdonos",
+          "bio": "Több száz levezetett túra és több ezer elégedett vendég tapasztalatával a hátam mögött célom, hogy minden quadozni vágyónak felejthetetlen élményt nyújtsak – akár kezdőként, akár tapasztalt motorosként érkezel. Ismerd meg Magyarország földrajzi középpontjának lenyűgöző tájait egy professzionálisan vezetett túrán!"
+        },
+        {
+          "name": "Sós Krisztina",
+          "role": "értékesítő",
+          "bio": "Segítek abban, hogy megtaláld a számodra tökéletes quad túrát. Legyen szó első kalandról vagy visszatérő élményről, örömmel válaszolok minden kérdésedre, segítek a foglalásban, és gondoskodom róla, hogy a túrád gördülékeny és felejthetetlen legyen. Ha bármi kérdésed van, fordulj hozzám bizalommal!"
+        },
+        {
+          "name": "Orosz Mátyás",
+          "role": "túravezető",
+          "bio": "Mindig is szerettem a természetet, a terepjárást és a szabadság érzését, amit egy quad nyergében lehet igazán megélni. Több éve foglalkozom off-road túravezetéssel, és az a célom, hogy biztonságos, de kihívásokkal teli kalandokat nyújtsak minden résztvevőnek."
+        }
+      ],
+      "stats": [
+        {
+          "title": "3+ év tapasztalat",
+          "subtext": "Több éves túravezetői tapasztalat"
+        },
+        { "title": "300+ túra", "subtext": "Több száz levezetett túra" },
+        { "title": "1000+ vendég", "subtext": "Több ezer elégedett vendég" },
+        {
+          "title": "Biztonság",
+          "subtext": "Minden adott a biztonságos túrához"
+        }
+      ],
+      "cta-text": "Készen állsz egy <strong>kalandra?</strong>\nÉletre szóló <strong>élménnyel távozol!</strong>"
+    },
+    "booking": {
+      "title": "Foglalj időpontot most!",
+      "instructions": {
+        "title": "Hogyan működik?",
+        "items": [
+          "<strong>Válaszd ki a dátumot –</strong> A naptár automatikusan mutatja a szabad és foglalt időpontokat. A szürke napok már nem elérhetők.",
+          "<strong>Válaszd ki a túratípust –</strong> Döntsd el, hogy melyik túrán szeretnél részt venni. Ha bizonytalan vagy, nézd meg a Túrák menüpontot.",
+          "<strong>Add meg a quadok és utasok számát –</strong> Legalább 2 quadot kell bérelni, de maximum 4 foglalható egyszerre. Az utasok száma külön szabályozható.",
+          "<strong>Adj meg egyéb információkat –</strong> Ha bármilyen speciális kérésed vagy megjegyzésed van, írd be az utolsó mezőbe."
+        ]
+      },
+      "info": {
+        "title": "Egyéb foglalási tudnivalók:",
+        "items": [
+          "Foglalásod véglegesítéséhez a fizetés szükséges.",
+          "Fizetés után a véglegesítésről pár percen belül egy visszaigazoló emailt küldünk a megadott címre.",
+          "Amennyiben a lefoglalt időpontban nem tudsz/tudtok megjelenni, és ezt legalább egy héttel előtte nem jelzitek, a befizetett összeget nem áll módunkban visszatéríteni.",
+          "Kérjük, érkezz időben a megadott helyszínre, hogy minden gördülékenyen menjen!"
+        ]
+      }
+    },
+    "testimonials": {
+      "title": "Vendégeink véleménye",
+      "subtitle": "Ismerd meg, mit mondanak rólunk azok, akik már átéltek egy felejthetetlen quad túrát!",
+      "cta-text": "Te is részt vettél egy túránkon?\nOszd meg velünk véleményedet!"
+    },
+    "faq": {
+      "title": "Gyakran Ismételt Kérdések (GYIK)",
+      "accordions": [
+        {
+          "question": "Hogyan történik a foglalás és fizetés?",
+          "answer": "A foglalás online vagy telefonon történik. A túra díját előre szükséges rendezni, de ha változtatni kell az időponton, rugalmasan kezeljük a módosításokat."
+        },
+        {
+          "question": "Szükséges jogosítvány a quad vezetéséhez?",
+          "answer": "Igen, a túrákon való részvételhez B kategóriás jogosítványra van szükség, mivel a quadok motorja és teljesítménye ezt megköveteli."
+        },
+        {
+          "question": "Hány éves kortól lehet részt venni a túrán?",
+          "answer": "A quad vezetéséhez minimum 18 éves életkor és érvényes jogosítvány szükséges. Utasként 160 cm feletti magasság ajánlott."
+        },
+        {
+          "question": "Hány főtől indulnak a túrák?",
+          "answer": "A túrák minimum 2 fővel indulnak, de nagyobb csoportokat is szívesen fogadunk. Foglaláskor érdemes előre jelezni a létszámot."
+        },
+        {
+          "question": "Van lehetőség utast vinni a quadon?",
+          "answer": "Igen, de fontos, hogy az utas maximális testsúlya és magassága ne befolyásolja a vezetési élményt és biztonságot. A kétszemélyes quadozás plusz díjat vonhat maga után."
+        }
+      ],
+      "subtitle": "Nem találtad meg a választ a kérdésedre?",
+      "cta-text": "Lépj velünk kapcsolatba az elérhetőségeinken, és szívesen segítünk!"
     }
   },
   "about-us": {

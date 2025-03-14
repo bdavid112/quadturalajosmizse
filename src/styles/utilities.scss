@@ -52,6 +52,11 @@
 .justify-center {
   justify-content: center;
 }
+.sm-justify-center {
+  @media (max-width: $screen-tablet) {
+    justify-content: center;
+  }
+}
 .justify-between {
   justify-content: space-between;
 }

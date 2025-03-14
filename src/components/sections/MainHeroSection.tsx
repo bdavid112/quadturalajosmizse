@@ -6,11 +6,14 @@ import ButtonPrimary from '../ui/buttons/ButtonPrimary'
 import ButtonSecondaryOutline from '../ui/buttons/ButtonSecondaryOutline'
 import FAB from '../ui/buttons/FAB'
 import * as React from 'react'
+import { useLocalization } from '../../context/LocalizationContext'
+import { t } from '../../utils/translator'
+import { insertStrongTags } from '../../utils/formatText'
 
 interface Props {}
 
 const MainHeroSection: React.FunctionComponent<Props> = ({}) => {
-  /* const { lang, setLang } = useLocalization() */
+  const { lang } = useLocalization()
 
   return (
     <section className="main-hero relative">
@@ -27,16 +30,18 @@ const MainHeroSection: React.FunctionComponent<Props> = ({}) => {
       </picture>
       <div className="container main-hero-content flex-col">
         <h1 className="text-inverted main-hero-title width-half">
-          <strong>Quad túrák</strong> az ország földrajzi középpontjához
+          {insertStrongTags(t('home.hero.title', lang))}
         </h1>
         <p className="text-inverted main-hero-subtext width-half">
-          Fedezd fel a lenyűgöző tájakat, tapasztald meg az adrenalin-löketet és
-          éld át a természet szabadságát egy felejthetetlen quad túrán a
-          barátokkal!
+          {t('home.hero.subtext', lang)}
         </p>
         <div className="flex flex-gap-lg button-group">
-          <ButtonPrimary label="Foglalj túraidőpontot online"></ButtonPrimary>
-          <ButtonSecondaryOutline text="Részletek a túráinkról"></ButtonSecondaryOutline>
+          <ButtonPrimary
+            label={t('home.hero.buttons.primary', lang)}
+          ></ButtonPrimary>
+          <ButtonSecondaryOutline
+            text={t('home.hero.buttons.secondary', lang)}
+          ></ButtonSecondaryOutline>
         </div>
       </div>
       <FAB

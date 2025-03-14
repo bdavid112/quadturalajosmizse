@@ -5,25 +5,16 @@ import divider from '../../assets/grunge-divider.svg'
 import * as React from 'react'
 import BookingForm from '../ui/forms/BookingForm'
 import { insertStrongTags } from '../../utils/formatText'
+import { t } from '../../utils/translator'
+import { useLocalization } from '../../context/LocalizationContext'
 
 interface Props {}
 
 const BookingSection: React.FunctionComponent<Props> = ({}) => {
-  /* const { lang, setLang } = useLocalization() */
+  const { lang } = useLocalization()
 
-  const instructions = [
-    '<strong>Válaszd ki a dátumot –</strong> A naptár automatikusan mutatja a szabad és foglalt időpontokat. A szürke napok már nem elérhetők.',
-    '<strong>Válaszd ki a túratípust –</strong> Döntsd el, hogy melyik túrán szeretnél részt venni. Ha bizonytalan vagy, nézd meg a "Túrák" menüpontot.',
-    '<strong>Add meg a quadok és utasok számát –</strong> Legalább 2 quadot kell bérelni, de maximum 4 foglalható egyszerre. Az utasok száma külön szabályozható.',
-    '<strong>Adj meg egyéb információkat –</strong> Ha bármilyen speciális kérésed vagy megjegyzésed van, írd be az utolsó mezőbe.',
-  ]
-
-  const info = [
-    'Foglalásod véglegesítéséhez a fizetés szükséges.',
-    'Fizetés után a véglegesítésről pár percen belül egy visszaigazoló emailt küldünk a megadott címre.',
-    'Amennyiben a lefoglalt időpontban nem tudsz/tudtok megjelenni, és ezt legalább egy héttel előtte nem jelzitek, a befizetett összeget nem áll módunkban visszatéríteni.',
-    'Kérjük, érkezz időben a megadott helyszínre, hogy minden gördülékenyen menjen!',
-  ]
+  const instructions: string[] = t('home.booking.instructions.items', lang)
+  const info: string[] = t('home.booking.info.items', lang)
 
   return (
     <section className="booking-section relative">
@@ -35,7 +26,7 @@ const BookingSection: React.FunctionComponent<Props> = ({}) => {
       <div className="flex content-wrapper">
         <div className="container flex-col padding-y-4xl">
           <h1 className="text-inverted margin-bottom-4xl">
-            Foglalj időpontot most!
+            {t('home.booking.title', lang)}
           </h1>
           <div className="flex booking-section-content flex-gap-4xl width-full">
             <div className="flex justify-center">
@@ -45,7 +36,7 @@ const BookingSection: React.FunctionComponent<Props> = ({}) => {
               <div className="text-content-wrapper">
                 <div className="text-content">
                   <h2 className="text-inverted margin-bottom-2xl">
-                    Hogyan működik?
+                    {t('home.booking.instructions.title', lang)}
                   </h2>
                   <ul className="flex flex-col flex-gap-sm list margin-bottom-4xl">
                     {instructions.map((inst, index) => (
@@ -57,7 +48,7 @@ const BookingSection: React.FunctionComponent<Props> = ({}) => {
                 </div>
                 <div className="text-content">
                   <h3 className="text-inverted margin-bottom-2xl">
-                    Egyéb foglalási tudnivalók:
+                    {t('home.booking.info.title', lang)}
                   </h3>
                   <ul className="flex flex-col flex-gap-sm list">
                     {info.map((i, index) => (

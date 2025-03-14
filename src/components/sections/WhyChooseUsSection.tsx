@@ -1,39 +1,59 @@
 import './why-choose-us-section.scss'
 
 import heroBackground from '../../assets/why-choose-us-header-background.avif'
+import profile1 from '../../assets/profile1.jpg'
+import profile2 from '../../assets/profile2.jpg'
+import profile3 from '../../assets/profile3.webp'
 
 import * as React from 'react'
+import { useRef } from 'react'
+import { useLocalization } from '../../context/LocalizationContext'
+import { t } from '../../utils/translator'
+import { formatTextWithBreaksAndStrongTags } from '../../utils/formatText'
+
 import ImageHeader from '../ImageHeader'
 import ProfileBioShort from '../ProfileBioShort'
 import StatCard from '../ui/StatCard'
-import { useWhyChooseUsSection } from '../../hooks/useWhyChooseUsSection'
 import WaveBackground from '../ui/WaveBackground'
-import { useRef } from 'react'
 import CardCarousel from '../ui/CardCarousel'
 
 interface Props {}
 
 const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
-  const { profiles, stats } = useWhyChooseUsSection()
+  const { lang } = useLocalization()
   const statCardsContainerRef = useRef<HTMLDivElement | null>(null)
+
+  /* Profile bios */
+  const images = [profile1, profile2, profile3]
+  const profiles: { name: string; role: string; bio: string }[] = t(
+    'home.why-choose-us.bios',
+    lang
+  )
+
+  /* Stat cards */
+  const icons = ['trophy', 'map', 'sentiment_satisfied', 'sports_motorsports']
+  const stats: { title: string; subtext: string }[] = t(
+    'home.why-choose-us.stats',
+    lang
+  )
 
   return (
     <section className="why-choose-us-section">
       <ImageHeader
         img={heroBackground}
-        title="Miért válassz <strong>minket?</strong>"
+        title={t('home.why-choose-us.title', lang)}
       ></ImageHeader>
       <div className="container flex-col padding-y-4xl">
-        <h2 className="width-half why-choose-us-title margin-bottom-3xl sm-text-center">
-          Több éves tapasztalattal biztosítjuk a legjobb élményt, legyen szó
-          kezdőkről vagy tapasztalt motorosokról!
+        <h2 className="why-choose-us-title margin-bottom-3xl sm-text-center">
+          {t('home.why-choose-us.subtitle', lang)}
         </h2>
-        {profiles.map((profile) => (
+        {profiles.map((profile, index) => (
           <ProfileBioShort
+            key={index}
             name={profile.name}
             role={profile.role}
             bio={profile.bio}
-            img={profile.img}
+            img={images[index]}
           ></ProfileBioShort>
         ))}
       </div>
@@ -45,7 +65,7 @@ const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
                 key={index}
                 title={stat.title}
                 subtext={stat.subtext}
-                icon={stat.icon}
+                icon={icons[index]}
               ></StatCard>
             ))}
           </CardCarousel>
@@ -56,8 +76,9 @@ const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
         ></WaveBackground>
       </div>
       <h3 className="text-center padding-y-4xl">
-        Készen állsz egy <strong>kalandra?</strong>
-        <br></br> Életre szóló <strong>élménnyel távozol!</strong>
+        {formatTextWithBreaksAndStrongTags(
+          t('home.why-choose-us.cta-text', lang)
+        )}
       </h3>
     </section>
   )

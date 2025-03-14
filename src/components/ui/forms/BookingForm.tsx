@@ -146,7 +146,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
       <div className="flex justify-center width-full">
         <ButtonPrimary
           fullWidth={false}
-          label={t('ui.forms.booking-form.button-label')}
+          label={t('ui.forms.booking-form.button-label', lang)}
           onClick={() => submitForm()}
         ></ButtonPrimary>
       </div>

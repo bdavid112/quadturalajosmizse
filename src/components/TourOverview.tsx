@@ -10,6 +10,7 @@ interface Props {
   description: string
   attributes: string[]
   img: string
+  buttonLabels: { primary: string; secondary: string }
 }
 
 const TourOverview: React.FunctionComponent<Props> = ({
@@ -17,6 +18,7 @@ const TourOverview: React.FunctionComponent<Props> = ({
   description,
   attributes,
   img,
+  buttonLabels,
 }) => {
   /* const { lang, setLang } = useLocalization() */
 
@@ -34,8 +36,10 @@ const TourOverview: React.FunctionComponent<Props> = ({
             ))}
           </ul>
           <div className="flex flex-gap-xs overview-button-group">
-            <ButtonPrimary label="Érdekel"></ButtonPrimary>
-            <ButtonSecondaryOutline text="További részletek"></ButtonSecondaryOutline>
+            <ButtonPrimary label={buttonLabels.primary}></ButtonPrimary>
+            <ButtonSecondaryOutline
+              text={buttonLabels.secondary}
+            ></ButtonSecondaryOutline>
           </div>
         </div>
         <picture>

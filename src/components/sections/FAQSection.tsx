@@ -3,63 +3,38 @@ import './faq-section.scss'
 
 import * as React from 'react'
 import Accordion from '../ui/Accordion'
+import { t } from '../../utils/translator'
+import { useLocalization } from '../../context/LocalizationContext'
 
 interface Props {}
 
 const FAQSection: React.FunctionComponent<Props> = ({}) => {
-  /* const { lang, setLang } = useLocalization() */
-
-  const reviews = [
-    {
-      question: 'Hogyan történik a foglalás és fizetés?',
-      answer:
-        'A foglalás online vagy telefonon történik. A túra díját előre szükséges rendezni, de ha változtatni kell az időponton, rugalmasan kezeljük a módosításokat.',
-    },
-    {
-      question: 'Szükséges jogosítvány a quad vezetéséhez?',
-      answer:
-        'Igen, a túrákon való részvételhez B kategóriás jogosítványra van szükség, mivel a quadok motorja és teljesítménye ezt megköveteli.',
-    },
-    {
-      question: 'Hány éves kortól lehet részt venni a túrán?',
-      answer:
-        'A quad vezetéséhez minimum 18 éves életkor és érvényes jogosítvány szükséges. Utasként 160 cm feletti magasság ajánlott.',
-    },
-    {
-      question: 'Hány főtől indulnak a túrák?',
-      answer:
-        'A túrák minimum 2 fővel indulnak, de nagyobb csoportokat is szívesen fogadunk. Foglaláskor érdemes előre jelezni a létszámot.',
-    },
-    {
-      question: 'Van lehetőség utast vinni a quadon?',
-      answer:
-        'Igen, de fontos, hogy az utas maximális testsúlya és magassága ne befolyásolja a vezetési élményt és biztonságot. A kétszemélyes quadozás plusz díjat vonhat maga után.',
-    },
-  ]
+  const { lang } = useLocalization()
+  const accordions: { question: string; answer: string }[] = t(
+    'home.faq.accordions',
+    lang
+  )
 
   return (
     <section className="faq-section padding-y-4xl">
       <div className="container flex-col">
-        <h1>Gyakran Ismételt Kérdések (GYIK)</h1>
+        <h1>{t('home.faq.title', lang)}</h1>
         <div className="padding-y-xl flex flex-col flex-gap-md">
-          {reviews.map((review, index) => (
+          {accordions.map((accordion, index) => (
             <Accordion
               key={index}
-              label={review.question}
-              text={review.answer}
+              label={accordion.question}
+              text={accordion.answer}
             ></Accordion>
           ))}
         </div>
         <div className="flex justify-between faq-footer">
           <div>
-            <h2 className="margin-y-xl">
-              Nem találtad meg a választ a kérdésedre?
-            </h2>
-            <p className="margin-bottom-lg">
-              Lépj velünk kapcsolatba az elérhetőségeinken, és szívesen
-              segítünk!
+            <h2 className="margin-y-xl">{t('home.faq.subtitle', lang)}</h2>
+            <p className="margin-bottom-lg sm-text-center text-balance">
+              {t('home.faq.cta-text', lang)}
             </p>
-            <div className="flex align-center flex-gap-sm">
+            <div className="flex align-center flex-gap-sm sm-justify-center">
               <span className="material-symbols-rounded size-24 text-brand">
                 mail
               </span>
@@ -67,7 +42,7 @@ const FAQSection: React.FunctionComponent<Props> = ({}) => {
                 quadturalajosmizse@gmail.com
               </span>
             </div>
-            <div className="flex align-center flex-gap-sm">
+            <div className="flex align-center flex-gap-sm sm-justify-center">
               <span className="material-symbols-rounded size-24 text-brand">
                 phone
               </span>

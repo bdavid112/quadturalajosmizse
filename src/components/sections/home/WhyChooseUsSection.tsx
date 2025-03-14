@@ -1,6 +1,5 @@
 import './why-choose-us-section.scss'
 
-import heroBackground from '@assets/why-choose-us-header-background.avif'
 import profile1 from '@assets/profile1.jpg'
 import profile2 from '@assets/profile2.jpg'
 import profile3 from '@assets/profile3.webp'
@@ -40,7 +39,7 @@ const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
   return (
     <section className="why-choose-us-section">
       <ImageHeader
-        img={heroBackground}
+        img="why-choose-us-hero"
         title={t('home.why-choose-us.title', lang)}
       ></ImageHeader>
       <div className="container flex-col padding-y-4xl">

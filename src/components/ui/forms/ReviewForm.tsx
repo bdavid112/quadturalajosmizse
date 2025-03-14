@@ -16,7 +16,10 @@ const ReviewForm: React.FunctionComponent<Props> = ({}) => {
   const stars = []
   for (let i = 0; i < 5; i++) {
     stars.push(
-      <span className="material-symbols-rounded size-40 text-warning star margin-bottom-2xl">
+      <span
+        key={i}
+        className="material-symbols-rounded size-40 text-warning star margin-bottom-2xl"
+      >
         star
       </span>
     )

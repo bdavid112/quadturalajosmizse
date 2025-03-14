@@ -115,6 +115,9 @@
 .width-full {
   width: 100%;
 }
+.width-three-quarter {
+  width: 75%;
+}
 .width-half {
   width: 50%;
 }
@@ -441,6 +444,9 @@
 }
 .font-size-lg {
   font-size: $font-size-lg;
+}
+.font-size-2xl {
+  font-size: $font-size-2xl;
 }
 .font-size-hero {
   font-size: $font-size-3xl;
@@ -782,7 +788,7 @@
   width: 100%;
   left: 0;
   height: $height;
-  background: linear-gradient(to right, $surface-100, $color, $surface-100);
+  background: linear-gradient(to right, transparent, $color, transparent);
 }
 .divider-green {
   @include divider;

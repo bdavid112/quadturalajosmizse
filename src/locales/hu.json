@@ -284,7 +284,32 @@
     "hero": {
       "title": "Rólunk",
       "subtitle": "Tapasztalat és szenvedély a vezetett túrákban – ismerj meg minket!",
-      "body": "Fedezd fel, hogyan indult vállalkozásunk, milyen szolgáltatásokat kínálunk, és ismerd meg csapatunkat!\nLegyen szó baráti kikapcsolódásról, csapatépítésről, egy izgalmas hétvégi kalandról, nálunk garantált a szabadság és az adrenalin!"
+      "body": "Fedezd fel, hogyan indult vállalkozásunk, milyen szolgáltatásokat kínálunk, és ismerd meg csapatunkat!\nLegyen szó baráti kikapcsolódásról, csapatépítésről, egy izgalmas hétvégi kalandról, nálunk garantált a szabadság és az adrenalin!",
+      "cta-title": "Fedezd fel a <strong>természetet</strong> négy keréken!"
+    },
+    "what-we-do": {
+      "title": "Mit kínálunk?",
+      "items": [
+        {
+          "title": "Professzionálisan vezetett túrák",
+          "text": "Vezetett quad túrákat biztosítunk, amelyek izgalmas tereputakon vezetnek keresztül, egészen Magyarország földrajzi középpontjáig. Akár kezdőként szeretnéd kipróbálni ezt az egyedülálló élményt, akár tapasztalt motorosként keresel egy adrenalindús kihívást, túráinkat úgy alakítottuk ki, hogy biztonságosak, élvezetesek és felejthetetlenek legyenek.\n\nMinden túrát gondosan megtervezünk, hogy a szórakozás és a felfedezés tökéletes egyensúlyát nyújtsák. Tapasztalt túravezetőink segítenek abban, hogy magabiztosan és kényelmesen irányítsd a quadot. Karbantartott járműveink, lenyűgöző útvonalaink és a terepezés iránti szenvedélyünk garantálja, hogy ez az off-road élmény valóban páratlan lesz!"
+        },
+        {
+          "title": "Biztonság és szakértelem első helyen",
+          "text": "A túráinkat tapasztalt túravezetők irányítják, akik ismerik a terepet és minden szükséges biztonsági előírást betartanak. A résztvevők számára részletes eligazítást tartunk a quadok kezeléséről, és szükség esetén védőfelszerelést is biztosítunk. Célunk, hogy a kaland élvezetes és teljesen biztonságos legyen minden résztvevő számára."
+        },
+        {
+          "title": "Különleges útvonalak, lenyűgöző tájak",
+          "text": "A túrák során változatos terepeken haladunk keresztül, amelyek garantálják a kihívást és az élményt mind kezdők, mind tapasztalt quadozók számára. Erdők, mezők, homokos szakaszok és földutak – nálunk mindenki megtalálja a saját tempójának megfelelő kihívást."
+        },
+        {
+          "title": "Maximális figyelem, személyre szabott élmény",
+          "text": "Nálunk nem futószalagon zajlanak a túrák! Fontos számunkra, hogy minden résztvevő a lehető legjobb élményt kapja, ezért kis csoportokban indulunk útnak, és mindig igazodunk a résztvevők igényeihez és vezetési tapasztalatához. Ha kérdésed van, segítségre van szükséged, vagy csak egy kis extra időre, itt nem kell sietned!"
+        }
+      ]
+    },
+    "team": {
+      "title": "Ismerd meg csapatunkat!"
     }
   }
 }

@@ -29,7 +29,7 @@ const BookingSection: React.FunctionComponent<Props> = ({}) => {
             {t('home.booking.title', lang)}
           </h1>
           <div className="flex booking-section-content flex-gap-4xl width-full">
-            <div className="flex justify-center">
+            <div className="flex justify-center width-half">
               <BookingForm></BookingForm>
             </div>
             <div className="width-half">

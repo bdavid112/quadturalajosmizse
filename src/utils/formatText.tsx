@@ -71,3 +71,13 @@ export const formatTextWithBreaksAndStrongTags = (
     )
   })
 }
+
+/**
+ * Splits text at a given separator and wraps each part in a <p> element.
+ * @param text The text containing separators.
+ * @param separator The string where the text should split (default: '\n\n').
+ * @returns JSX containing multiple <p> elements.
+ */
+export const formatTextWithParagraphs = (text: string, separator = '\n\n') => {
+  return text.split(separator).map((part, index) => <p key={index}>{part}</p>)
+}

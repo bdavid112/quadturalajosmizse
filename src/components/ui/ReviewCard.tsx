@@ -20,7 +20,10 @@ const ReviewCard: React.FunctionComponent<Props> = ({
   const stars = []
   for (let i = 0; i < 5; i++) {
     stars.push(
-      <span className="material-symbols-rounded size-24 text-warning star">
+      <span
+        key={i}
+        className="material-symbols-rounded size-24 text-warning star"
+      >
         star
       </span>
     )

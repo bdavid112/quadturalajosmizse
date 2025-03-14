@@ -52,8 +52,8 @@ const ToursSection: React.FunctionComponent<Props> = ({}) => {
             {t('home.tours.info.title', lang)}
           </h3>
           <ul>
-            {info.map((i) => (
-              <li>{insertStrongTags(i, 'text-primary')}</li>
+            {info.map((i, index) => (
+              <li key={index}>{insertStrongTags(i, 'text-primary')}</li>
             ))}
           </ul>
         </div>

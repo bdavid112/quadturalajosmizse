@@ -38,8 +38,8 @@ const TopNavbar: React.FunctionComponent<Props> = ({}) => {
           </svg>
         </NavLink>
         <ul className="nav-links flex flex-gap-2xl">
-          {links.map((link) => (
-            <li>
+          {links.map((link, index) => (
+            <li key={index}>
               <NavLink
                 className={({ isActive }) =>
                   isActive ? 'nav-link active' : 'nav-link'
@@ -59,8 +59,9 @@ const TopNavbar: React.FunctionComponent<Props> = ({}) => {
         <ul
           className={`mobile-nav-links transition-bezier-smooth slide-content ${isOpen ? 'open' : ''} flex-col`}
         >
-          {links.map((link) => (
+          {links.map((link, index) => (
             <NavLink
+              key={index}
               className={({ isActive }) =>
                 isActive ? 'nav-link active' : 'nav-link'
               }

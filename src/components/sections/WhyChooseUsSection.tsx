@@ -9,12 +9,13 @@ import StatCard from '../ui/StatCard'
 import { useWhyChooseUsSection } from '../../hooks/useWhyChooseUsSection'
 import WaveBackground from '../ui/WaveBackground'
 import { useRef } from 'react'
+import CardCarousel from '../ui/CardCarousel'
 
 interface Props {}
 
 const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
   const { profiles, stats } = useWhyChooseUsSection()
-  const statCardsContainerRef = useRef(null)
+  const statCardsContainerRef = useRef<HTMLDivElement | null>(null)
 
   return (
     <section className="why-choose-us-section">
@@ -36,21 +37,22 @@ const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
           ></ProfileBioShort>
         ))}
       </div>
-      <div ref={statCardsContainerRef} className="relative">
-        <div className="grid margin-bottom-4xl relative stat-cards">
-          {stats.map((stat, index) => (
-            <div key={index} className="flex justify-center">
+      <div className="relative">
+        <div ref={statCardsContainerRef}>
+          <CardCarousel itemsLength={stats.length} className="stat-cards">
+            {stats.map((stat, index) => (
               <StatCard
+                key={index}
                 title={stat.title}
                 subtext={stat.subtext}
                 icon={stat.icon}
               ></StatCard>
-            </div>
-          ))}
+            ))}
+          </CardCarousel>
         </div>
         <WaveBackground
           containerRef={statCardsContainerRef}
-          numberOfWaves={stats.length * 6}
+          numberOfWaves={stats.length * 5 - 2}
         ></WaveBackground>
       </div>
       <h3 className="text-center padding-y-xl">

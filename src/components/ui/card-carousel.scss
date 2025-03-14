@@ -1,30 +1,20 @@
 @import '../../styles/tokens.scss';
 
-.why-choose-us-title {
-  @media (max-width: $screen-laptop) {
-    width: 100%;
-  }
-}
-
-.stat-cards {
+.card-carousel {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: $space-lg;
   max-width: 1400px;
-  margin-inline: auto;
-  width: fit-content;
+  margin: 0 auto;
 
   @media (max-width: $screen-desktop) {
-    max-width: min(800px, 80%);
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   @media (max-width: $screen-laptop) {
     display: flex;
     overflow-x: auto;
     gap: 0;
-    margin-inline: 0;
-    max-width: 100% !important;
     padding-inline: calc(5% + 1rem);
     scroll-behavior: smooth;
     cursor: grab; // Show grab cursor when interacting

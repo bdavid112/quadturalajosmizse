@@ -15,11 +15,11 @@ const Accordion: React.FunctionComponent<Props> = ({ label, text }) => {
 
   return (
     <div
-      className="width-full border border-rounded-sm padding-x-lg accordion-container transition-bezier-fast box-shadow-light relative"
+      className="width-full border border-rounded-sm accordion-container transition-bezier-fast box-shadow-light relative"
       tabIndex={0}
     >
       <div
-        className="flex align-center min-height-lg justify-between width-full height-full cursor-pointer"
+        className="flex align-center min-height-lg justify-between padding-x-lg padding-y-sm width-full height-full cursor-pointer"
         onClick={() => {
           setIsOpen(!isOpen)
         }}
@@ -30,7 +30,7 @@ const Accordion: React.FunctionComponent<Props> = ({ label, text }) => {
           {label}
         </span>
         <span
-          className={`material-symbols-rounded size-20 text-secondary transition-bezier-fast user-select-none ${isOpen ? 'rotate-180' : ''}`}
+          className={`material-symbols-rounded size-20 text-secondary transition-bezier-smooth user-select-none ${isOpen ? 'rotate-180' : ''}`}
         >
           keyboard_arrow_down
         </span>
@@ -39,7 +39,7 @@ const Accordion: React.FunctionComponent<Props> = ({ label, text }) => {
         className={`animated-content transition-bezier-smooth ${isOpen ? 'open' : ''}`}
       >
         <div className="divider-gray absolute"></div>
-        <div className="padding-y-lg">
+        <div className="padding-y-lg padding-x-lg">
           <p className="text-primary">{text}</p>
         </div>
       </div>

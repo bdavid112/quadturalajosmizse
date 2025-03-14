@@ -15,7 +15,7 @@ const HeroLayout: React.FunctionComponent<Props> = ({ page, divider }) => {
 
   return (
     <section>
-      <div className="container">
+      <div className="container justify-center">
         <div className="text-center padding-y-5xl">
           <h1 className="hero-text text-shadow-light">
             {t(`${page}.hero.title`, lang)}

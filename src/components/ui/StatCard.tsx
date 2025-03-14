@@ -10,7 +10,7 @@ interface Props {
 
 const StatCard: React.FunctionComponent<Props> = ({ title, subtext, icon }) => {
   return (
-    <div className="stat-card width-full flex flex-col align-center justify-center border-rounded-md box-shadow-medium">
+    <div className="transition-bezier-smooth stat-card width-full flex flex-col align-center justify-center border-rounded-md box-shadow-medium">
       <span className="material-symbols-rounded size-40 margin-bottom-xl">
         {icon}
       </span>

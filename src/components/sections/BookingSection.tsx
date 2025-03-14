@@ -38,7 +38,7 @@ const BookingSection: React.FunctionComponent<Props> = ({}) => {
             Foglalj időpontot most!
           </h1>
           <div className="flex booking-section-content flex-gap-4xl width-full">
-            <div className="width-half">
+            <div className="flex justify-center">
               <BookingForm></BookingForm>
             </div>
             <div className="width-half">

@@ -1,8 +1,26 @@
 @import '../../styles/tokens.scss';
 
 .stat-card {
-  max-height: 270px;
-  max-width: 442px;
+  max-width: 320px;
+  max-height: 320px;
+  min-width: min(90dvw, 320px);
   aspect-ratio: 1.5/1;
+  user-select: none;
   background: $surface-100;
+
+  &:hover {
+    transform: translateY(-0.375rem) scale(1.04);
+  }
+
+  @media (max-width: $screen-laptop) {
+    margin-right: 1rem;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    &:hover {
+      transform: none;
+    }
+  }
 }

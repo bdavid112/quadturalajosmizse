@@ -1,17 +1,18 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import ReviewForm from '../ui/forms/ReviewForm'
 import ReviewCard from '../ui/ReviewCard'
 import './testimonials-section.scss'
 
 import * as React from 'react'
 import WaveBackground from '../ui/WaveBackground'
+import CardCarousel from '../ui/CardCarousel'
 
 interface Props {}
 
 const TestimonialsSection: React.FunctionComponent<Props> = ({}) => {
   /* const { lang, setLang } = useLocalization() */
 
-  const formContainerRef = useRef(null)
+  const formContainerRef = useRef<HTMLDivElement | null>(null)
 
   const reviews = [
     {
@@ -62,24 +63,23 @@ const TestimonialsSection: React.FunctionComponent<Props> = ({}) => {
             felejthetetlen quad túrát!
           </h4>
         </div>
-        <div className="flex justify-center">
-          <div className="review-cards-container padding-y-2xl">
-            {reviews.map((review, index) => (
-              <ReviewCard
-                key={index}
-                title={review.title}
-                subtext={review.text}
-                name={review.name}
-                date={review.date}
-              ></ReviewCard>
-            ))}
-          </div>
-        </div>
-        <h2 className="text-center padding-y-4xl">
-          Te is részt vettél egy túránkon?<br></br> Oszd meg velünk
-          véleményedet!
-        </h2>
       </div>
+      <div className="flex justify-center carousel-container">
+        <CardCarousel itemsLength={reviews.length}>
+          {reviews.map((review, index) => (
+            <ReviewCard
+              key={index}
+              title={review.title}
+              subtext={review.text}
+              name={review.name}
+              date={review.date}
+            ></ReviewCard>
+          ))}
+        </CardCarousel>
+      </div>
+      <h2 className="text-center padding-y-4xl">
+        Te is részt vettél egy túránkon?<br></br> Oszd meg velünk véleményedet!
+      </h2>
       <div ref={formContainerRef} className="relative">
         <div className="container justify-center">
           <div className="width-half review-form-wrapper">

@@ -1,6 +1,19 @@
+@import '../../styles/tokens.scss';
+
 .review-card {
+  max-width: 320px;
   max-height: 320px;
+  min-width: min(90dvw, 320px);
   aspect-ratio: 1/1;
+  user-select: none;
+
+  @media (max-width: $screen-laptop) {
+    margin-right: 1rem;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
 }
 
 .review-image {

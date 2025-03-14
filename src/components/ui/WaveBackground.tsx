@@ -16,9 +16,16 @@ const WaveBackground: React.FunctionComponent<Props> = ({
 
   useEffect(() => {
     const handleResize = () => {
-      if (containerRef.current) {
-        setViewBoxHeight(containerRef.current.clientHeight)
-      }
+      if (!containerRef.current) return
+
+      setViewBoxHeight(() => {
+        let newValue = containerRef.current!.clientHeight
+
+        // 🔥 Ensures the height is always a multiple of 50
+        newValue = Math.ceil(newValue / 50) * 50
+
+        return newValue
+      })
     }
 
     if (viewBoxHeight == 0) {

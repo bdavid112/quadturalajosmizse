@@ -19,7 +19,7 @@ const ToursSection: React.FunctionComponent<Props> = ({}) => {
       <div className="container flex-col padding-y-4xl flex-gap-xl relative">
         <div className="margin-bottom-2xl">
           <h1>Válassz két izgalmas quad túra közül!</h1>
-          <p>
+          <p className="text-balance sm-text-center">
             Fedezd fel a természet szépségeit és élvezd a szabadságot
             quadjainkkal!<br></br> Két különböző túrát kínálunk, így mindenki
             megtalálhatja a számára megfelelő kihívást.

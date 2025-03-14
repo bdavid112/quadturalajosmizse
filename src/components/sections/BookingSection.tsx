@@ -33,7 +33,7 @@ const BookingSection: React.FunctionComponent<Props> = ({}) => {
         alt="Divider top"
       />
       <div className="flex content-wrapper">
-        <div className="container flex-col padding-y-xl">
+        <div className="container flex-col padding-y-4xl">
           <h1 className="text-inverted margin-bottom-4xl">
             Foglalj időpontot most!
           </h1>

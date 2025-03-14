@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import ReviewForm from '../ui/forms/ReviewForm'
 import ReviewCard from '../ui/ReviewCard'
 import './testimonials-section.scss'
@@ -54,7 +54,7 @@ const TestimonialsSection: React.FunctionComponent<Props> = ({}) => {
   ]
 
   return (
-    <section className="testimonials-section">
+    <section className="testimonials-section padding-y-4xl">
       <div className="container flex-col">
         <div>
           <h1>Vendégeink véleménye</h1>

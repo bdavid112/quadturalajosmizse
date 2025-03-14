@@ -7,6 +7,10 @@
   max-width: 1400px;
   margin: 0 auto;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   @media (max-width: $screen-desktop) {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -19,5 +23,9 @@
     scroll-behavior: smooth;
     cursor: grab; // Show grab cursor when interacting
     -webkit-overflow-scrolling: touch; // Improves performance on iOS
+
+    &:active {
+      cursor: grabbing;
+    }
   }
 }

@@ -380,6 +380,11 @@
 .text-right {
   text-align: right;
 }
+.sm-text-center {
+  @media (max-width: $screen-tablet) {
+    text-align: center;
+  }
+}
 
 .text-uppercase {
   text-transform: uppercase;
@@ -462,6 +467,10 @@
 }
 .text-info {
   color: $text-info !important;
+}
+
+.text-balance {
+  text-wrap: balance;
 }
 
 /* ============================================= */

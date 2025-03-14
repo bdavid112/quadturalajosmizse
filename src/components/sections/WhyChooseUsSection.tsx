@@ -24,7 +24,7 @@ const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
         title="Miért válassz <strong>minket?</strong>"
       ></ImageHeader>
       <div className="container flex-col padding-y-4xl">
-        <h2 className="width-half why-choose-us-title margin-bottom-3xl">
+        <h2 className="width-half why-choose-us-title margin-bottom-3xl sm-text-center">
           Több éves tapasztalattal biztosítjuk a legjobb élményt, legyen szó
           kezdőkről vagy tapasztalt motorosokról!
         </h2>
@@ -55,7 +55,7 @@ const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
           numberOfWaves={stats.length * 5 - 2}
         ></WaveBackground>
       </div>
-      <h3 className="text-center padding-y-xl">
+      <h3 className="text-center padding-y-4xl">
         Készen állsz egy <strong>kalandra?</strong>
         <br></br> Életre szóló <strong>élménnyel távozol!</strong>
       </h3>

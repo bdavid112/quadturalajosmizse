@@ -3,7 +3,7 @@ import './tour-overview.scss'
 import * as React from 'react'
 import ButtonPrimary from './ui/buttons/ButtonPrimary'
 import ButtonSecondaryOutline from './ui/buttons/ButtonSecondaryOutline'
-import { formatTextWithBreaks, insertStrongTags } from '../utils/formatText'
+import { formatTextWithBreaks, insertStrongTags } from '@utils/formatText'
 
 interface Props {
   title: string

@@ -1,10 +1,10 @@
-import BookingSection from '../components/sections/BookingSection'
-import FAQSection from '../components/sections/FAQSection'
-import MainHeroSection from '../components/sections/MainHeroSection'
-import TestimonialsSection from '../components/sections/TestimonialsSection'
-import ToursSection from '../components/sections/ToursSection'
-import WhyChooseUsSection from '../components/sections/WhyChooseUsSection'
-import MainLayout from '../layouts/MainLayout'
+import BookingSection from '@components/sections/home/BookingSection'
+import FAQSection from '@components/sections/home/FAQSection'
+import MainHeroSection from '@components/sections/home/MainHeroSection'
+import TestimonialsSection from '@components/sections/home/TestimonialsSection'
+import ToursSection from '@components/sections/home/ToursSection'
+import WhyChooseUsSection from '@components/sections/home/WhyChooseUsSection'
+import MainLayout from '@layouts/MainLayout'
 
 import * as React from 'react'
 

@@ -1,15 +1,19 @@
-import { useRef } from 'react'
-import ReviewForm from '../ui/forms/ReviewForm'
-import ReviewCard from '../ui/ReviewCard'
 import './testimonials-section.scss'
 
 import * as React from 'react'
-import WaveBackground from '../ui/WaveBackground'
-import CardCarousel from '../ui/CardCarousel'
-import { useTestimonialsSection } from '../../hooks/useTestimonialsSection'
-import { t } from '../../utils/translator'
-import { useLocalization } from '../../context/LocalizationContext'
-import { formatTextWithBreaks } from '../../utils/formatText'
+import { useRef } from 'react'
+
+import { useLocalization } from '@context/LocalizationContext'
+
+import { t } from '@utils/translator'
+import { formatTextWithBreaks } from '@utils/formatText'
+
+import { useTestimonialsSection } from '@hooks/useTestimonialsSection'
+
+import ReviewForm from '@components/ui/forms/ReviewForm'
+import ReviewCard from '@components/ui/ReviewCard'
+import WaveBackground from '@components/ui/WaveBackground'
+import CardCarousel from '@components/ui/CardCarousel'
 
 interface Props {}
 

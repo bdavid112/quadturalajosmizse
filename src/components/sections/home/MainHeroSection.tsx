@@ -1,14 +1,17 @@
 import './main-hero-section.scss'
-import heroImageAvif from '../../assets/main-hero-background.avif'
-import heroImageWebp from '../../assets/main-hero-background.webp'
+import heroImageAvif from '@assets/main-hero-background.avif'
+import heroImageWebp from '@assets/main-hero-background.webp'
 
-import ButtonPrimary from '../ui/buttons/ButtonPrimary'
-import ButtonSecondaryOutline from '../ui/buttons/ButtonSecondaryOutline'
-import FAB from '../ui/buttons/FAB'
 import * as React from 'react'
-import { useLocalization } from '../../context/LocalizationContext'
-import { t } from '../../utils/translator'
-import { insertStrongTags } from '../../utils/formatText'
+
+import { useLocalization } from '@context/LocalizationContext'
+
+import { t } from '@utils/translator'
+import { insertStrongTags } from '@utils/formatText'
+
+import ButtonPrimary from '@components/ui/buttons/ButtonPrimary'
+import ButtonSecondaryOutline from '@components/ui/buttons/ButtonSecondaryOutline'
+import FAB from '@components/ui/buttons/FAB'
 
 interface Props {}
 

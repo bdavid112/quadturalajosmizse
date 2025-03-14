@@ -1,5 +1,5 @@
-import HeroLayout from '../layouts/HeroLayout'
-import MainLayout from '../layouts/MainLayout'
+import HeroLayout from '@layouts/HeroLayout'
+import MainLayout from '@layouts/MainLayout'
 
 import * as React from 'react'
 

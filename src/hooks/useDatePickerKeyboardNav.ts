@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { jumpDay, jumpWeek } from '../utils/calendarUtils'
+import { jumpDay, jumpWeek } from '@utils/calendarUtils'
 
 export const useDatePickerKeyboardNav = (
   isParentOpen: boolean,

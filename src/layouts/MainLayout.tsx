@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { ReactNode } from 'react'
-import TopNavbar from '../components/ui/navigation/TopNavbar'
-import Footer from '../components/ui/navigation/Footer'
+import TopNavbar from '@components/ui/navigation/TopNavbar'
+import Footer from '@components/ui/navigation/Footer'
 
 interface Props {
   children: ReactNode

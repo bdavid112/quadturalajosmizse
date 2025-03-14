@@ -1,5 +1,5 @@
-import { useLocalization } from '../context/LocalizationContext'
-import { generateDayLabels } from '../utils/calendarUtils'
+import { useLocalization } from '@context/LocalizationContext'
+import { generateDayLabels } from '@utils/calendarUtils'
 
 export const useCalendarDayView = (
   calendarDays: (number | null)[],

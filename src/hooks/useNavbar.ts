@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { t } from '../utils/translator'
+import { t } from '@utils/translator'
 
 export const useNavbar = (lang: string) => {
   const links = [

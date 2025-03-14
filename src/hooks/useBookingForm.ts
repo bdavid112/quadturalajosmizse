@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { t } from '../utils/translator'
+import { t } from '@utils/translator'
 
 export function useBookingForm(lang: string) {
   const [formData, setFormData] = useState({

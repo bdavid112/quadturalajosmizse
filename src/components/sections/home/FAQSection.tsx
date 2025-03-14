@@ -1,10 +1,11 @@
-import image from '../../assets/contact-us.svg'
 import './faq-section.scss'
 
+import image from '@assets/contact-us.svg'
+
 import * as React from 'react'
-import Accordion from '../ui/Accordion'
-import { t } from '../../utils/translator'
-import { useLocalization } from '../../context/LocalizationContext'
+import Accordion from '@components/ui/Accordion'
+import { t } from '@utils/translator'
+import { useLocalization } from '@context/LocalizationContext'
 
 interface Props {}
 

@@ -1,7 +1,7 @@
-@import '../../styles/tokens.scss';
+@import '@styles/tokens.scss';
 
 .why-choose-us-title {
-  max-width: 700px;
+  max-width: 900px;
   @media (max-width: $screen-laptop) {
     max-width: 100%;
   }

@@ -1,12 +1,12 @@
 import './booking-section.scss'
 
-import divider from '../../assets/grunge-divider.svg'
+import divider from '@assets/grunge-divider.svg'
 
 import * as React from 'react'
-import BookingForm from '../ui/forms/BookingForm'
-import { insertStrongTags } from '../../utils/formatText'
-import { t } from '../../utils/translator'
-import { useLocalization } from '../../context/LocalizationContext'
+import BookingForm from '@components/ui/forms/BookingForm'
+import { insertStrongTags } from '@utils/formatText'
+import { t } from '@utils/translator'
+import { useLocalization } from '@context/LocalizationContext'
 
 interface Props {}
 

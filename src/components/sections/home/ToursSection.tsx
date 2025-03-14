@@ -1,14 +1,17 @@
 import './tours-section.scss'
 
-import nature from '../../assets/tours-nature.svg'
-import overviewImg1 from '../../assets/tour-overview-1.avif'
-import overviewImg2 from '../../assets/tour-overview-2.avif'
+import nature from '@assets/tours-nature.svg'
+import overviewImg1 from '@assets/tour-overview-1.avif'
+import overviewImg2 from '@assets/tour-overview-2.avif'
 
-import TourOverview from '../TourOverview'
 import * as React from 'react'
-import { useLocalization } from '../../context/LocalizationContext'
-import { formatTextWithBreaks, insertStrongTags } from '../../utils/formatText'
-import { t } from '../../utils/translator'
+
+import { useLocalization } from '@context/LocalizationContext'
+
+import { formatTextWithBreaks, insertStrongTags } from '@utils/formatText'
+import { t } from '@utils/translator'
+
+import TourOverview from '@components/TourOverview'
 
 interface Props {}
 

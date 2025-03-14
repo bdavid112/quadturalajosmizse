@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { generateCalendarDays } from '../utils/calendarUtils'
+import { generateCalendarDays } from '@utils/calendarUtils'
 
 export const useDatePicker = (
   lang: string,

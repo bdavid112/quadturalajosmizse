@@ -1,15 +1,15 @@
 import './booking-form.scss'
 
 import * as React from 'react'
-import { useLocalization } from '../../../context/LocalizationContext'
-import { t } from '../../../utils/translator'
+import { useLocalization } from '@context/LocalizationContext'
+import { t } from '@utils/translator'
 import TextInputOutline from '../form-elements/TextInputOutline'
 import DatePickerOutline from '../form-elements/DatePickerOutline'
 import DropdownOutline from '../form-elements/DropdownOutline'
 import NumberInputOutline from '../form-elements/NumberInputOutline'
 import TextAreaOutline from '../form-elements/TextAreaOutline'
 import ButtonPrimary from '../buttons/ButtonPrimary'
-import { useBookingForm } from '../../../hooks/useBookingForm'
+import { useBookingForm } from '@hooks/useBookingForm'
 
 interface Props {}
 

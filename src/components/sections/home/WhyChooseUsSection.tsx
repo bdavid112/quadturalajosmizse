@@ -1,21 +1,21 @@
 import './why-choose-us-section.scss'
 
-import heroBackground from '../../assets/why-choose-us-header-background.avif'
-import profile1 from '../../assets/profile1.jpg'
-import profile2 from '../../assets/profile2.jpg'
-import profile3 from '../../assets/profile3.webp'
+import heroBackground from '@assets/why-choose-us-header-background.avif'
+import profile1 from '@assets/profile1.jpg'
+import profile2 from '@assets/profile2.jpg'
+import profile3 from '@assets/profile3.webp'
 
 import * as React from 'react'
 import { useRef } from 'react'
-import { useLocalization } from '../../context/LocalizationContext'
-import { t } from '../../utils/translator'
-import { formatTextWithBreaksAndStrongTags } from '../../utils/formatText'
+import { useLocalization } from '@context/LocalizationContext'
+import { t } from '@utils/translator'
+import { formatTextWithBreaksAndStrongTags } from '@utils/formatText'
 
-import ImageHeader from '../ImageHeader'
-import ProfileBioShort from '../ProfileBioShort'
-import StatCard from '../ui/StatCard'
-import WaveBackground from '../ui/WaveBackground'
-import CardCarousel from '../ui/CardCarousel'
+import ImageHeader from '@components/ImageHeader'
+import ProfileBioShort from '@components/ProfileBioShort'
+import StatCard from '@components/ui/StatCard'
+import WaveBackground from '@components/ui/WaveBackground'
+import CardCarousel from '@components/ui/CardCarousel'
 
 interface Props {}
 

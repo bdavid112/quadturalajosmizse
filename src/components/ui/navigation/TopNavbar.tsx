@@ -2,9 +2,9 @@ import './top-navbar.scss'
 
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
-import { useLocalization } from '../../../context/LocalizationContext'
+import { useLocalization } from '@context/LocalizationContext'
 import ButtonPrimary from '../buttons/ButtonPrimary'
-import { useNavbar } from '../../../hooks/useNavbar'
+import { useNavbar } from '@hooks/useNavbar'
 
 interface Props {}
 

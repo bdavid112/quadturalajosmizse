@@ -1,9 +1,9 @@
-import './styles/global.scss'
+import '@styles/global.scss'
 
-import { LocalizationProvider } from './context/LocalizationContext'
+import { LocalizationProvider } from '@context/LocalizationContext'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import AboutUsPage from './pages/AboutUsPage'
+import HomePage from '@pages/HomePage'
+import AboutUsPage from '@pages/AboutUsPage'
 
 function App() {
   return (

@@ -1,9 +1,9 @@
 import './hero-layout.scss'
 
 import * as React from 'react'
-import { t } from '../utils/translator'
-import { formatTextWithBreaks as f } from '../utils/formatText'
-import { useLocalization } from '../context/LocalizationContext'
+import { t } from '@utils/translator'
+import { formatTextWithBreaks as f } from '@utils/formatText'
+import { useLocalization } from '@context/LocalizationContext'
 
 interface Props {
   page: string

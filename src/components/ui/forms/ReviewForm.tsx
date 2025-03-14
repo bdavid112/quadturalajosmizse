@@ -1,12 +1,12 @@
 import './review-form.scss'
 
 import * as React from 'react'
-import { useLocalization } from '../../../context/LocalizationContext'
+import { useLocalization } from '@context/LocalizationContext'
 import TextInputOutline from '../form-elements/TextInputOutline'
 import TextAreaOutline from '../form-elements/TextAreaOutline'
 import { useId } from 'react'
 import ButtonPrimary from '../buttons/ButtonPrimary'
-import { t } from '../../../utils/translator'
+import { t } from '@utils/translator'
 
 interface Props {}
 

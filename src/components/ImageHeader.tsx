@@ -1,4 +1,4 @@
-import { insertStrongTags } from '../utils/formatText'
+import { insertStrongTags } from '@utils/formatText'
 import './image-header.scss'
 
 import * as React from 'react'

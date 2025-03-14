@@ -309,7 +309,24 @@
       ]
     },
     "team": {
-      "title": "Ismerd meg csapatunkat!"
+      "title": "Ismerd meg csapatunkat!",
+      "profiles": [
+        {
+          "name": "Hau Péter",
+          "role": "tulajdonos",
+          "bio": "Hau Péternek hívnak. Gyerekkorom óta szenvedélyem a motorsport, különösen a motocross és a quadok világa. Fiatalként rengeteg időt töltöttem Lajosmizse környékén, felfedezve a természetet és a legizgalmasabb terepeket két- és négykeréken egyaránt. Az elmúlt években Ausztriában dolgoztam hivatásos quad túravezetőként, ahol lehetőségem volt több száz túrát levezényelni és több ezer embernek megmutatni a terepjárás élményét.\n\nEzek az évek rengeteget tanítottak: hogyan biztosítsak biztonságos, mégis izgalmas túrákat, hogyan alkalmazkodjak különböző ügyfelek igényeihez, és miként tegyem minden egyes túrát egyedülálló élménnyé. Most pedig hazahoztam ezt a tudást, hogy Magyarország szívében, a gyönyörű Pusztavacs környékén hozzak létre egy olyan quad túra szolgáltatást, amely kezdőknek és tapasztalt vezetőknek egyaránt felejthetetlen kalandokat kínál.\n\nHa valaha is szeretted volna kipróbálni a quadozást, vagy csak egy különleges élményre vágysz, akkor a legjobb helyen jársz. A célom, hogy minden vendégem számára magabiztosságot és élvezetet nyújtsak a terepen – akár először ül quadon, akár már rutinos vezető. Várlak egy adrenalinban gazdag, felejthetetlen túrára!"
+        },
+        {
+          "name": "Sós Krisztina",
+          "role": "értékesítő",
+          "bio": "Számomra az ügyfélkapcsolatok mindig is személyes ügyet jelentettek. Hiszek abban, hogy egy jó szolgáltatás nemcsak az élményről szól, hanem az egész folyamatról, kezdve az első érdeklődő üzenettől egészen a túra utáni visszajelzésekig.\n\nAz én feladatom, hogy minden érdeklődő a lehető leggyorsabban és legpontosabban megkapja a szükséges információkat, segítsek a foglalásokban, és gondoskodjak arról, hogy a túra előtt minden részlet tisztázott legyen. Tudom, hogy sokaknak ez az első alkalom egy quad nyergében, ezért türelemmel és lelkesedéssel segítek abban, hogy mindenki magabiztosan érkezzen a túrára.\n\nHa kérdésed van a foglalással, az időpontokkal vagy a túrák részleteivel kapcsolatban, ne habozz keresni! Célom, hogy már a túra előtt is egy pozitív élménnyel gazdagodj!"
+        },
+        {
+          "name": "Orosz Mátyás",
+          "role": "túravezető",
+          "bio": "Mindig is szerettem a természetet, a terepjárást és a szabadság érzését, amit egy quad nyergében lehet igazán megélni. Több éve foglalkozom off-road túravezetéssel, és az a célom, hogy biztonságos, de kihívásokkal teli kalandokat nyújtsak minden résztvevőnek.\n\nA túrák során nemcsak az útvonalakat és a technikai tudnivalókat ismerem tökéletesen, hanem azt is, hogyan segítsek a kezdőknek abban, hogy pillanatok alatt magabiztossá váljanak a quadon. Fontos számomra, hogy minden túrázó komfortosan és élvezettel vágjon neki az útnak, ezért ha bármi kérdésed vagy bizonytalanságod van, nyugodtan kérdezz – én itt vagyok, hogy segítsek!\n\nA terepen mindig figyelek rátok, és segítek abban, hogy mindenki a saját tempójában haladhasson. Legyen szó egy könnyed gurulásról vagy egy adrenalin-dús túráról, biztos lehetsz benne, hogy egy felejthetetlen élménnyel térsz haza!"
+        }
+      ]
     }
   }
 }

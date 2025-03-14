@@ -1,6 +1,7 @@
 import ImageHeader from '@components/ImageHeader'
 import TeamSection from '@components/sections/about-us/TeamSection'
 import WhatWeDoSection from '@components/sections/about-us/WhatWeDoSection'
+import CTASection from '@components/sections/CTASection'
 import { useLocalization } from '@context/LocalizationContext'
 import HeroLayout from '@layouts/HeroLayout'
 import MainLayout from '@layouts/MainLayout'
@@ -22,6 +23,16 @@ const AboutUsPage: React.FunctionComponent<Props> = ({}) => {
       ></ImageHeader>
       <WhatWeDoSection></WhatWeDoSection>
       <TeamSection></TeamSection>
+      <CTASection
+        title={'Készen állsz egy felejthetetlen kalandra?'}
+        subtext={
+          'Ne maradj le erről az élményről!\nCsatlakozz hozzánk egy izgalmas túrára, és tapasztald meg a terep motorozás szabadságát!'
+        }
+        buttonLabels={{
+          primary: 'Időpontfoglalás',
+          secondary: 'Lépj velünk kapcsolatba',
+        }}
+      ></CTASection>
     </MainLayout>
   )
 }

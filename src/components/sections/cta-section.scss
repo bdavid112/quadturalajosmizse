@@ -1,0 +1,25 @@
+@import '@styles/tokens';
+
+.cta-button-group {
+  width: fit-content;
+  margin: auto;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.cta-background {
+  background: linear-gradient($color-secondary-900, $neutral-900);
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2); /* Darkens background */
+    z-index: -1;
+  }
+}
+
+.cta-content {
+  padding-block: 8rem;
+}

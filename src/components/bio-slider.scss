@@ -1,0 +1,12 @@
+.bio-slider {
+  overflow-x: auto;
+  white-space: nowrap;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.bio {
+  min-width: 1440px;
+}

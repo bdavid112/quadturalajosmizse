@@ -28,13 +28,19 @@ const ImageHeader: React.FunctionComponent<Props> = ({ title, img }) => {
 
   return (
     <div className="relative">
-      <img
-        src={`/images/${img}.avif`}
-        alt="Tour overview"
-        className="header-image box-shadow-medium"
-        loading="eager"
-        fetchPriority="high"
-      ></img>
+      <div className="image-wrapper">
+        <picture>
+          <source srcSet={`images/${img}.avif`} type="image/avif"></source>
+          <source srcSet={`images/${img}.webp`} type="image/webp"></source>
+          <img
+            src={`images/${img}.jpg`}
+            alt="Hero Background"
+            className="header-image"
+            loading="eager"
+            fetchPriority="high"
+          ></img>
+        </picture>
+      </div>
       <h1 className="absolute font-size-2xl centered text-center text-inverted">
         {insertStrongTags(title)}
       </h1>

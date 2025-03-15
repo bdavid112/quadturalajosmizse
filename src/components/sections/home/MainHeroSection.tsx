@@ -1,6 +1,4 @@
 import './main-hero-section.scss'
-import heroImageAvif from '@assets/main-hero-background.avif'
-import heroImageWebp from '@assets/main-hero-background.webp'
 
 import * as React from 'react'
 
@@ -12,19 +10,36 @@ import { insertStrongTags } from '@utils/formatText'
 import ButtonPrimary from '@components/ui/buttons/ButtonPrimary'
 import ButtonSecondaryOutline from '@components/ui/buttons/ButtonSecondaryOutline'
 import FAB from '@components/ui/buttons/FAB'
+import { useEffect } from 'react'
 
 interface Props {}
 
 const MainHeroSection: React.FunctionComponent<Props> = ({}) => {
   const { lang } = useLocalization()
 
+  /* Preload hero background image */
+  useEffect(() => {
+    const link = document.createElement('link')
+    link.rel = 'preload'
+    link.as = 'image'
+    link.href = `/images/main-hero.avif`
+    link.type = 'image/avif'
+    link.fetchPriority = 'high'
+
+    document.head.appendChild(link)
+
+    return () => {
+      document.head.removeChild(link) // Cleanup on unmount
+    }
+  }, [])
+
   return (
     <section className="main-hero relative">
       <picture>
-        <source srcSet={heroImageAvif} type="image/avif"></source>
-        <source srcSet={heroImageWebp} type="image/webp"></source>
+        <source srcSet="images/main-hero.avif" type="image/avif"></source>
+        <source srcSet="images/main-hero.webp" type="image/webp"></source>
         <img
-          src="../../assets/main-hero-background.jpg"
+          src="images/main-hero.jpg"
           alt="Hero Background"
           className="hero-image"
           loading="eager"

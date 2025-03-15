@@ -1,6 +1,10 @@
+/// <reference types="vite-plugin-svgr/client" />
+
 import './faq-section.scss'
 
 import image from '@assets/contact-us.svg'
+import MailIcon from '@assets/icons/mail.svg?react'
+import CallIcon from '@assets/icons/call.svg?react'
 
 import * as React from 'react'
 import Accordion from '@components/ui/Accordion'
@@ -34,17 +38,13 @@ const FAQSection: React.FunctionComponent<Props> = ({ accordions }) => {
               {t('home.faq.cta-text', lang)}
             </p>
             <div className="flex align-center flex-gap-sm sm-justify-center">
-              <span className="material-symbols-rounded size-24 text-brand">
-                mail
-              </span>
+              <MailIcon />
               <span className="font-size-secondary font-bold">
                 quadturalajosmizse@gmail.com
               </span>
             </div>
             <div className="flex align-center flex-gap-sm sm-justify-center">
-              <span className="material-symbols-rounded size-24 text-brand">
-                phone
-              </span>
+              <CallIcon />
               <span className="font-size-secondary font-bold">
                 +36 70 668 8771
               </span>

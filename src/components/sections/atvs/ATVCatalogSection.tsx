@@ -32,7 +32,7 @@ const ATVCatalogSection: React.FunctionComponent<Props> = ({}) => {
       <div className="container flex-col padding-y-4xl">
         <div>
           <h1>{t('atvs.catalog.title', lang)}</h1>
-          <h4>{formatTextWithBreaks(t('atvs.catalog.subtext', lang))}</h4>
+          <p>{formatTextWithBreaks(t('atvs.catalog.subtext', lang))}</p>
         </div>
         <div className="padding-y-4xl flex flex-col flex-gap-4xl">
           {atvs.map((atv, index) => (

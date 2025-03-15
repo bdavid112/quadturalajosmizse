@@ -1,6 +1,34 @@
+@import '@styles/tokens.scss';
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 35rem;
+  transition: height $bezier-slow;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  @media (max-width: $screen-large) {
+    height: 30rem;
+  }
+
+  @media (max-width: $screen-desktop) {
+    height: 20rem;
+  }
+}
+
 .header-image {
   width: 100%;
-  height: 20rem;
+  height: 100%;
   object-fit: cover;
-  z-index: -1;
+  object-position: top;
+  z-index: 1;
 }

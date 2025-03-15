@@ -6,6 +6,7 @@ import HomePage from '@pages/HomePage'
 import AboutUsPage from '@pages/AboutUsPage'
 import ToursPage from '@pages/ToursPage'
 import ATVsPage from '@pages/ATVsPage'
+import GalleryPage from '@pages/GalleryPage'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/about-us" element={<AboutUsPage></AboutUsPage>}></Route>
           <Route path="/tours" element={<ToursPage></ToursPage>}></Route>
           <Route path="/atvs" element={<ATVsPage></ATVsPage>}></Route>
+          <Route path="/gallery" element={<GalleryPage></GalleryPage>}></Route>
         </Routes>
       </BrowserRouter>
     </LocalizationProvider>

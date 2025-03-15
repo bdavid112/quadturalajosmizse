@@ -446,5 +446,25 @@
         "secondary": "Lépj velünk kapcsolatba"
       }
     }
+  },
+  "gallery": {
+    "hero": {
+      "title": "Galéria",
+      "subtitle": "Nézd meg a túráink legjobb pillanatait!",
+      "body": "Terepakciók, lenyűgöző tájak és quadok – minden, ami az igazi off-road élményhez kell!"
+    },
+    "gallery": {
+      "title": "Képeink az eddigi közös élményekről",
+      "sections": [
+        {
+          "title": "Terepen akcióban",
+          "subtext": "Quadok és túrázók akcióban"
+        },
+        {
+          "title": "Látnivalóink",
+          "subtext": "Erdők, mezők, homokos szakaszok – a természet szépsége"
+        }
+      ]
+    }
   }
 }

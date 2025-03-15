@@ -59,7 +59,9 @@ const BookingSection: React.FunctionComponent<Props> = ({ plain = false }) => {
                   </ul>
                 </div>
                 <div className="text-content">
-                  <h3 className="${!plain ? 'text-inverted' : ''} margin-bottom-2xl">
+                  <h3
+                    className={`${!plain ? 'text-inverted' : ''} margin-bottom-2xl`}
+                  >
                     {t('home.booking.info.title', lang)}
                   </h3>
                   <ul className="flex flex-col flex-gap-sm list">

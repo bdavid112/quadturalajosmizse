@@ -1,12 +1,28 @@
+@import '@styles/tokens.scss';
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
+  margin: auto;
+  width: fit-content;
+
+  @media (max-width: $screen-desktop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: $screen-laptop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $screen-tablet) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .image-placeholder {
   background: gray;
-  width: 100%;
+  width: 354px;
   height: 300px;
   border-radius: 4px;
   position: relative;

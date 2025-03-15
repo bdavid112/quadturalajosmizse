@@ -22,7 +22,7 @@ const ImageContainer: React.FunctionComponent<Props> = ({
         <div className="gallery-grid padding-y-xl">
           {images?.map((image, index) => (
             <div key={index} className="image-placeholder">
-              <span>Image Placeholder</span>
+              <span>Image Placeholder{image}</span>
             </div>
           ))}
         </div>

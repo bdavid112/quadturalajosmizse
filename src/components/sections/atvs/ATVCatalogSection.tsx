@@ -1,9 +1,11 @@
 import image1 from '@assets/atv1.avif'
 import image2 from '@assets/atv2.avif'
 import image3 from '@assets/atv3.avif'
+import waves from '@assets/waves-brown.svg'
 
 import ATVDetails from '@components/ATVDetails'
 import { useLocalization } from '@context/LocalizationContext'
+import { formatTextWithBreaks } from '@utils/formatText'
 import { t } from '@utils/translator'
 
 import * as React from 'react'
@@ -29,12 +31,8 @@ const ATVCatalogSection: React.FunctionComponent<Props> = ({}) => {
     <section>
       <div className="container flex-col padding-y-4xl">
         <div>
-          <h1>Jelenlegi gépeink</h1>
-          <h4>
-            Ezen az oldalon láthatod a jelenleg kipróbálható quadjainkat.
-            <br></br>A jövőben ezek számát igyekszünk bővíteni, hogy mindenki
-            megtalálhassa a neki valót.
-          </h4>
+          <h1>{t('atvs.catalog.title', lang)}</h1>
+          <h4>{formatTextWithBreaks(t('atvs.catalog.subtext', lang))}</h4>
         </div>
         <div className="padding-y-4xl flex flex-col flex-gap-4xl">
           {atvs.map((atv, index) => (
@@ -49,6 +47,7 @@ const ATVCatalogSection: React.FunctionComponent<Props> = ({}) => {
           ))}
         </div>
       </div>
+      <img src={waves} alt="Waves" className="width-full waves-divider" />
     </section>
   )
 }

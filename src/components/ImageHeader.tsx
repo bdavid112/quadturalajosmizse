@@ -31,7 +31,7 @@ const ImageHeader: React.FunctionComponent<Props> = ({ title, img }) => {
       <img
         src={`/images/${img}.avif`}
         alt="Tour overview"
-        className="header-image"
+        className="header-image box-shadow-medium"
         loading="eager"
         fetchPriority="high"
       ></img>

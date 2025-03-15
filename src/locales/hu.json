@@ -382,9 +382,12 @@
     "hero": {
       "title": "Quadok",
       "subtitle": "Engedd meg, hogy bemutassuk neked gépparkunkat!",
-      "body": "Jelenleg három különböző gyártmányú quad várja, hogy meghódítsd velük a természetet.\nA túra előtt ismerd meg a nagyteljesítményű ATV-ket, amik a legjobb barátaid lesznek az úton!"
+      "body": "Jelenleg három különböző gyártmányú quad várja, hogy meghódítsd velük a természetet.\nA túra előtt ismerd meg a nagyteljesítményű ATV-ket, amik a legjobb barátaid lesznek az úton!",
+      "cta-title": "Ismerd meg <strong>útitársaid</strong>!"
     },
     "catalog": {
+      "title": "Jelenlegi gépeink",
+      "subtext": "Ezen az oldalon láthatod a jelenleg kipróbálható quadjainkat.\nA jövőben ezek számát igyekszünk bővíteni, hogy mindenki megtalálhassa a neki valót.",
       "desc": "Leírás",
       "specs": "Tulajdonságok",
       "atvs": [
@@ -434,6 +437,14 @@
           ]
         }
       ]
+    },
+    "cta": {
+      "title": "Készen állsz, hogy kipróbáld a szörnyeket?",
+      "subtext": "Ne maradj le erről az élményről!\nCsatlakozz hozzánk egy izgalmas túrára, és tapasztald meg a terep motorozás szabadságát!",
+      "buttons": {
+        "primary": "Időpontfoglalás",
+        "secondary": "Lépj velünk kapcsolatba"
+      }
     }
   }
 }

@@ -6,6 +6,7 @@ import { useLocalization } from '@context/LocalizationContext'
 import SegmentedButton from './ui/buttons/SegmentedButton'
 import { insertStrongTags } from '@utils/formatText'
 import { useState } from 'react'
+import { t } from '@utils/translator'
 
 interface Props {
   manufacturer: string
@@ -44,13 +45,13 @@ const ATVDetails: React.FunctionComponent<Props> = ({
               onClick={() => setSelectedTab(0)}
               className={`font-size-md atv-detail-button ${selectedTab == 0 ? 'active' : ''}`}
             >
-              Leírás
+              {t('atvs.catalog.desc', lang)}
             </button>
             <button
               onClick={() => setSelectedTab(1)}
               className={`font-size-md atv-detail-button ${selectedTab == 1 ? 'active' : ''}`}
             >
-              Tulajdonságok
+              {t('atvs.catalog.specs', lang)}
             </button>
             <SegmentedButton
               className="mobile-atv-detail-button"
@@ -59,12 +60,12 @@ const ATVDetails: React.FunctionComponent<Props> = ({
             ></SegmentedButton>
           </div>
           <p
-            className={`text-balance animated-content ${selectedTab == 0 ? 'open' : ''}`}
+            className={`text-balance tab animated-content ${selectedTab == 0 ? 'open' : ''}`}
           >
             {description}
           </p>
           <ul
-            className={`list-disc specs animated-content ${selectedTab == 1 ? 'open' : ''}`}
+            className={`list-disc specs tab animated-content ${selectedTab == 1 ? 'open' : ''}`}
           >
             {specs.map((spec, index) => (
               <li key={index}>{insertStrongTags(spec, 'text-primary')}</li>

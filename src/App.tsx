@@ -4,6 +4,7 @@ import { LocalizationProvider } from '@context/LocalizationContext'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import HomePage from '@pages/HomePage'
 import AboutUsPage from '@pages/AboutUsPage'
+import ToursPage from '@pages/ToursPage'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage></HomePage>}></Route>
           <Route path="/about-us" element={<AboutUsPage></AboutUsPage>}></Route>
+          <Route path="/tours" element={<ToursPage></ToursPage>}></Route>
         </Routes>
       </BrowserRouter>
     </LocalizationProvider>

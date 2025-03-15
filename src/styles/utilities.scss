@@ -831,3 +831,12 @@ span.size-48 {
 .background-transparent {
   background-color: transparent;
 }
+
+/* List styles */
+
+.list-disc {
+  padding-left: 1rem;
+  li {
+    list-style-type: disc;
+  }
+}

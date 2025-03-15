@@ -327,6 +327,55 @@
           "bio": "Mindig is szerettem a természetet, a terepjárást és a szabadság érzését, amit egy quad nyergében lehet igazán megélni. Több éve foglalkozom off-road túravezetéssel, és az a célom, hogy biztonságos, de kihívásokkal teli kalandokat nyújtsak minden résztvevőnek.\n\nA túrák során nemcsak az útvonalakat és a technikai tudnivalókat ismerem tökéletesen, hanem azt is, hogyan segítsek a kezdőknek abban, hogy pillanatok alatt magabiztossá váljanak a quadon. Fontos számomra, hogy minden túrázó komfortosan és élvezettel vágjon neki az útnak, ezért ha bármi kérdésed vagy bizonytalanságod van, nyugodtan kérdezz – én itt vagyok, hogy segítsek!\n\nA terepen mindig figyelek rátok, és segítek abban, hogy mindenki a saját tempójában haladhasson. Legyen szó egy könnyed gurulásról vagy egy adrenalin-dús túráról, biztos lehetsz benne, hogy egy felejthetetlen élménnyel térsz haza!"
         }
       ]
+    },
+    "cta": {
+      "title": "Készen állsz egy felejthetetlen kalandra?",
+      "subtext": "Ne maradj le erről az élményről!\nCsatlakozz hozzánk egy izgalmas túrára, és tapasztald meg a terep motorozás szabadságát!",
+      "buttons": {
+        "primary": "Időpontfoglalás",
+        "secondary": "Lépj velünk kapcsolatba"
+      }
+    }
+  },
+  "tours": {
+    "hero": {
+      "title": "Túrák",
+      "subtitle": "Válaszd ki a tökéletes túrát, és fedezd fel a természetet négy keréken!",
+      "body": "Két izgalmas túra közül választhatsz – kezdőknek és tapasztalt terepmotorosoknak egyaránt.\nNézd meg az útvonalakat, a részleteket, és foglalj időpontot most!"
+    },
+    "tour-details": {
+      "desc": "Leírás",
+      "attribs": "Részletek",
+      "prices": "Ár",
+      "button-label": "Foglalás most",
+      "tours": [
+        {
+          "desc": "Ha még nem voltál quad túrán, vagy csak egy könnyed, élvezetes terepkalandra vágysz, akkor ez a tökéletes választás! Ezen az útvonalon változatos, de könnyen teljesíthető terepen haladunk, ahol élvezheted a természet szépségeit és a quad vezetésének élményét. A túra során tapasztalt túravezető kísér, és gondoskodik róla, hogy mindenki biztonságban és jó tempóban haladhasson.",
+          "attribs": [
+            "<strong>Időtartam:</strong> ~1,5 - 2 óra",
+            "<strong>Terep:</strong> Erdei és mezei ösvények, kisebb emelkedők",
+            "<strong>Nehézség:</strong> Könnyű – Közepes",
+            "<strong>Ajánlott kezdőknek és családoknak</strong>"
+          ],
+          "prices": [
+            "<strong>25 000 Ft</strong> / quad",
+            "<strong>5000 Ft</strong> / utas"
+          ]
+        },
+        {
+          "desc": "Ha szereted a kihívásokat, és igazi terepkalandra vágysz, akkor ezt a túrát neked találtuk ki! A hosszabb útvonal során változatos terepviszonyokkal találkozol: dimbes-dombos erdei ösvényeken, homokos mezőkön és esetenként saras szakaszokon haladunk. Ez a túra nagyobb tempót és magabiztosabb vezetési készségeket igényel, de garantáltan egy adrenalinban gazdag kalandban lesz részed!",
+          "attribs": [
+            "<strong>Időtartam:</strong> ~3,5 - 4 óra",
+            "<strong>Terep:</strong> Dombos-völgyes utak, homokos és sáros szakaszok",
+            "<strong>Nehézség:</strong> Közepes",
+            "<strong>Ajánlott tapasztalt quad motorosoknak</strong>"
+          ],
+          "prices": [
+            "<strong>35 000 Ft</strong> / quad",
+            "<strong>7000 Ft</strong> / utas"
+          ]
+        }
+      ]
     }
   }
 }

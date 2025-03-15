@@ -283,8 +283,65 @@
   "about-us": {
     "hero": {
       "title": "About Us",
-      "subtitle": "Experience and passion in guided tours - get to know us!",
-      "body": "Discover how we started, what services we offer and meet our team!\nWhether it's a getaway with friends, team building, an exciting weekend adventure, we guarantee freedom and adrenaline!"
+      "subtitle": "Experience and passion in guided tours – get to know us!",
+      "body": "Discover how our business started, what services we offer, and meet our team!\nWhether it's a fun getaway with friends, a team-building event, or an exciting weekend adventure, we guarantee freedom and adrenaline!",
+      "cta-title": "Explore <strong>nature</strong> on four wheels!"
+    },
+    "what-we-do": {
+      "title": "What We Offer",
+      "items": [
+        {
+          "title": "Professionally Guided Tours",
+          "text": "We offer guided quad tours that take you through exciting off-road terrains, all the way to the geographical center of Hungary. Whether you are a beginner looking to try this unique experience for the first time or an experienced rider searching for an adrenaline-filled challenge, our tours are designed to be safe, enjoyable, and unforgettable.\n\nEvery tour is carefully planned to provide the perfect balance of adventure and exploration. Our experienced guides ensure that you can confidently and comfortably control the quad. With well-maintained vehicles, breathtaking routes, and our passion for off-road riding, we guarantee that this experience will be truly one of a kind!"
+        },
+        {
+          "title": "Safety and Expertise First",
+          "text": "Our tours are led by experienced guides who know the terrain inside out and strictly follow all necessary safety regulations. Participants receive a detailed briefing on how to handle the quads, and protective gear is provided when needed. Our goal is to ensure that every adventure is both thrilling and completely safe for all participants."
+        },
+        {
+          "title": "Unique Routes, Stunning Landscapes",
+          "text": "During our tours, we traverse a variety of terrains that guarantee both excitement and challenges for beginners and experienced riders alike. Forest trails, open fields, sandy paths, and dirt roads—everyone can find the perfect challenge that suits their pace."
+        },
+        {
+          "title": "Personalized Experience with Full Attention",
+          "text": "Our tours are not rushed, conveyor-belt experiences! We prioritize providing the best possible experience for each participant, which is why we operate in small groups and always adapt to the skill level and preferences of our riders. If you have questions, need assistance, or just want a little extra time to enjoy the ride, you’ll never feel pressured here!"
+        }
+      ]
+    },
+    "team": {
+      "title": "Meet Our Team!",
+      "profiles": [
+        {
+          "name": "Péter Hau",
+          "role": "owner",
+          "bio": "My name is Péter Hau. Since childhood, I have been passionate about motorsports, especially motocross and quads. As a young rider, I spent countless hours exploring nature and the most exciting terrains around Lajosmizse on two and four wheels. In recent years, I worked in Austria as a professional quad tour guide, where I had the opportunity to lead hundreds of tours and introduce thousands of people to the thrill of off-road riding.\n\nThese years have taught me a lot—how to ensure safe yet exciting tours, how to adapt to different clients' needs, and how to make every tour a unique experience. Now, I have brought this knowledge home to create a quad tour service in the heart of Hungary, around the beautiful Pusztavacs area, offering unforgettable adventures for both beginners and experienced riders alike.\n\nIf you've ever wanted to try quad biking or are looking for a unique experience, you're in the right place. My goal is to provide confidence and enjoyment to all my guests on the terrain—whether they’re sitting on a quad for the first time or are already seasoned riders. I look forward to welcoming you on an adrenaline-filled, unforgettable tour!"
+        },
+        {
+          "name": "Krisztina Sós",
+          "role": "sales representative",
+          "bio": "For me, customer relationships have always been a personal matter. I believe that a great service is not just about the experience itself, but the entire process—from the very first inquiry to the post-tour feedback.\n\nMy job is to ensure that every potential customer receives the necessary information quickly and accurately, assist with bookings, and make sure all details are clear before the tour. I know that for many, this is their first time on a quad, so I provide patience and enthusiasm to help everyone feel confident before their adventure.\n\nIf you have any questions regarding bookings, available dates, or tour details, don’t hesitate to reach out! My goal is to make sure that even before your tour begins, you already have a positive experience!"
+        },
+        {
+          "name": "Mátyás Orosz",
+          "role": "tour guide",
+          "bio": "I have always loved nature, off-road riding, and the sense of freedom that a quad provides. I have been an off-road tour guide for several years, and my goal is to offer a safe yet challenging adventure for every participant.\n\nDuring the tours, I not only have a deep knowledge of the routes and technical aspects but also know how to help beginners quickly gain confidence on the quad. It's important to me that every rider feels comfortable and excited about the journey. So, if you have any questions or uncertainties, feel free to ask—I’m here to help!\n\nOn the terrain, I always look out for you and ensure that everyone moves at their own pace. Whether you prefer a relaxed ride or an adrenaline-filled adventure, you can be sure that you’ll go home with an unforgettable experience!"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Are you ready for an unforgettable adventure?",
+      "subtext": "Don't miss out on this experience!\nJoin us for an exciting tour and feel the freedom of off-road riding!",
+      "buttons": {
+        "primary": "Book a Tour",
+        "secondary": "Get in Touch"
+      }
+    }
+  },
+  "tours": {
+    "hero": {
+      "title": "Tours",
+      "subtitle": "Choose the perfect tour and explore nature on four wheels!",
+      "body": "You can choose between two exciting tours – perfect for both beginners and experienced off-road riders.\nCheck out the routes, details, and book your tour now!"
     }
   }
 }

@@ -24,13 +24,11 @@ const AboutUsPage: React.FunctionComponent<Props> = ({}) => {
       <WhatWeDoSection></WhatWeDoSection>
       <TeamSection></TeamSection>
       <CTASection
-        title={'Készen állsz egy felejthetetlen kalandra?'}
-        subtext={
-          'Ne maradj le erről az élményről!\nCsatlakozz hozzánk egy izgalmas túrára, és tapasztald meg a terep motorozás szabadságát!'
-        }
+        title={t('about-us.cta.title', lang)}
+        subtext={t('about-us.cta.subtext', lang)}
         buttonLabels={{
-          primary: 'Időpontfoglalás',
-          secondary: 'Lépj velünk kapcsolatba',
+          primary: t('about-us.cta.buttons.primary', lang),
+          secondary: t('about-us.cta.buttons.secondary', lang),
         }}
       ></CTASection>
     </MainLayout>

@@ -22,7 +22,7 @@ const ButtonPrimary: React.FunctionComponent<Props> = ({
     <>
       {!isDisabled ? (
         <motion.button
-          className={`${className} padding-x-lg box-shadow-light button-primary-enabled ${fullWidth ? 'width-full' : ''}`}
+          className={`${className} padding-x-lg font-bold box-shadow-light button-primary-enabled ${fullWidth ? 'width-full' : ''}`}
           whileHover={{ scale: 1.015 }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: 'spring', stiffness: 75 }}

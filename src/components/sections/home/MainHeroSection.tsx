@@ -38,7 +38,7 @@ const MainHeroSection: React.FunctionComponent<Props> = ({}) => {
         <p className="text-inverted main-hero-subtext width-half">
           {t('home.hero.subtext', lang)}
         </p>
-        <div className="flex flex-gap-lg button-group">
+        <div className="flex flex-gap-xs button-group">
           <ButtonPrimary
             label={t('home.hero.buttons.primary', lang)}
           ></ButtonPrimary>

@@ -3,31 +3,45 @@ import * as React from 'react'
 import './bio-slider.scss'
 
 import { formatTextWithParagraphs } from '@utils/formatText'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 interface Props {
   profiles: { name: string; role: string; bio: string }[]
   images: string[]
+  selectedBioIndex: number
+  onChange: (index: number) => void
 }
 
-const BioSlider: React.FunctionComponent<Props> = ({ profiles, images }) => {
-  const [selectedBioIndex, setSelectedBioIndex] = useState(0)
+const BioSlider: React.FunctionComponent<Props> = ({
+  profiles,
+  images,
+  selectedBioIndex = 0,
+  onChange,
+}) => {
   const sliderRef = useRef<HTMLDivElement>(null)
+  const bioRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!sliderRef.current) return
+    if (!sliderRef.current || !bioRef.current) return
     sliderRef.current.scrollTo({
-      left: selectedBioIndex * 1440,
+      left: selectedBioIndex * bioRef.current.clientWidth,
       behavior: 'smooth',
     })
   }, [selectedBioIndex])
 
   return (
-    <>
+    <div className="flex flex-col bio-slide-container">
       <div className="divider-gray thick"></div>
-      <div ref={sliderRef} className="padding-y-4xl flex width-full bio-slider">
+      <div
+        ref={sliderRef}
+        className="padding-y-4xl flex width-full bio-slider relative"
+      >
         {profiles.map((profile, index) => (
-          <div key={index} className="flex width-full bio">
+          <div
+            key={index}
+            ref={bioRef}
+            className={`flex width-full transition-bezier-smooth bio ${index == selectedBioIndex ? 'active' : ''}`}
+          >
             <div className="width-quarter flex flex-col align-center flex-gap-sm">
               <img
                 className="profile-image"
@@ -43,20 +57,20 @@ const BioSlider: React.FunctionComponent<Props> = ({ profiles, images }) => {
                 </span>
               </div>
             </div>
-            <div className="width-three-quarter text-inverted flex flex-col flex-gap-2xl text-balance padding-x-2xl">
+            <div className="width-three-quarter bio-text text-inverted flex flex-col flex-gap-2xl text-balance padding-x-2xl">
               {formatTextWithParagraphs(profile.bio)}
             </div>
           </div>
         ))}
       </div>
       <div className="divider-gray margin-bottom-md"></div>
-      <div className="flex justify-center flex-gap-2xl">
+      <div className="flex justify-center flex-gap-2xl bio-button-container">
         {profiles.map((profile, index) => (
           <div
             key={index}
-            className="flex flex-col text-center cursor-pointer"
+            className="flex flex-col text-center cursor-pointer bio-button"
             onClick={() => {
-              setSelectedBioIndex(index)
+              onChange && onChange(index)
             }}
           >
             <span
@@ -72,7 +86,7 @@ const BioSlider: React.FunctionComponent<Props> = ({ profiles, images }) => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   )
 }
 export default BioSlider

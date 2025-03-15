@@ -9,15 +9,22 @@ interface Props {
   onClick?: () => void
 }
 
-const FAB: React.FunctionComponent<Props> = ({ icon, className, onClick }) => {
+const FAB: React.FunctionComponent<Props> = ({
+  icon,
+  isDisabled,
+  className,
+  onClick,
+}) => {
   return (
     <button
-      className={`${className} fab transition-bezier-fast flex-gap-xs flex align-center justify-center cursor-pointer box-shadow-light`}
+      className={`${className} fab ${isDisabled ? 'disabled cursor-not-allowed' : ''} transition-bezier-fast flex-gap-xs flex align-center justify-center cursor-pointer box-shadow-light`}
       onClick={() => {
         onClick && onClick()
       }}
     >
-      <span className="material-symbols-rounded size-24 text-primary">
+      <span
+        className={`material-symbols-rounded size-24 text-primary ${isDisabled ? 'text-secondary' : ''}`}
+      >
         {icon}
       </span>
     </button>

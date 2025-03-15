@@ -1,12 +1,69 @@
+@import '@styles/tokens.scss';
+
+.bio-slide-container {
+  @media (max-width: $screen-laptop) {
+    flex-direction: column-reverse;
+  }
+}
+
 .bio-slider {
-  overflow-x: auto;
+  overflow-x: hidden;
   white-space: nowrap;
 
   &::-webkit-scrollbar {
     display: none;
   }
+
+  @media (max-width: $screen-tablet) {
+    padding-block: $space-lg;
+  }
 }
 
 .bio {
-  min-width: 1440px;
+  min-width: 100%;
+  opacity: 0;
+
+  &.active {
+    opacity: 1;
+  }
+
+  @media (max-width: $screen-desktop) {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: $space-4xl;
+    justify-content: flex-end;
+  }
+}
+
+.bio-text {
+  @media (max-width: $screen-desktop) {
+    width: 100%;
+  }
+
+  @media (max-width: $screen-tablet) {
+    padding-inline: 0;
+  }
+}
+
+.profile-image {
+  width: 300px;
+  height: 360px;
+  object-fit: cover;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-medium;
+}
+
+.bio-button-container {
+  @media (max-width: $screen-laptop) {
+    gap: 0;
+    justify-content: space-between;
+    padding-inline: 1rem;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(0, 0, 0, 0.1),
+      transparent
+    );
+    padding-block: 0.5rem;
+  }
 }

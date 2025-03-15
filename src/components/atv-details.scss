@@ -1,0 +1,61 @@
+@import '@styles/tokens.scss';
+
+.atv-image-container {
+  @media (max-width: $screen-laptop) {
+    width: 100%;
+    align-items: center;
+  }
+}
+
+.atv-image {
+  width: 350px;
+  height: auto;
+}
+
+.atv-detail-button {
+  transform: scale(0.8);
+  transform-origin: center bottom;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: $text-secondary;
+  transition: transform $bezier-smooth;
+
+  &:hover {
+    color: $text-primary !important;
+  }
+
+  &.active {
+    transform: scale(1);
+    font-weight: bold;
+    transition: transform $bezier-smooth;
+    color: $text-primary;
+  }
+
+  @media (max-width: $screen-tablet) {
+    display: none;
+  }
+}
+
+.mobile-atv-detail-button {
+  display: none;
+  @media (max-width: $screen-tablet) {
+    display: flex;
+  }
+}
+
+.atv-details {
+  @media (max-width: $screen-laptop) {
+    flex-direction: column;
+  }
+}
+
+.tab {
+  transition: opacity ease 400ms;
+}
+
+.specs {
+  @media (max-width: $screen-tablet) {
+    padding-left: 1.5rem;
+  }
+}

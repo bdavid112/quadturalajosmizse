@@ -23,15 +23,17 @@ const TourDetailsSection: React.FunctionComponent<Props> = ({}) => {
 
   return (
     <section className="tour-details-section">
-      {tours.map((tour, index) => (
-        <TourDetails
-          key={index}
-          description={tour.desc}
-          attributes={tour.attribs}
-          img={images[index]}
-          prices={tour.prices}
-        ></TourDetails>
-      ))}
+      <div className="container flex-col">
+        {tours.map((tour, index) => (
+          <TourDetails
+            key={index}
+            description={tour.desc}
+            attributes={tour.attribs}
+            img={images[index]}
+            prices={tour.prices}
+          ></TourDetails>
+        ))}
+      </div>
     </section>
   )
 }

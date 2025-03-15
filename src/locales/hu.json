@@ -6,7 +6,7 @@
         "about-us": "Magunkról",
         "tours": "Túrák",
         "quads": "Quadok",
-        "gallery": "Galléria",
+        "gallery": "Galéria",
         "faq": "GYIK"
       }
     },
@@ -373,6 +373,64 @@
           "prices": [
             "<strong>35 000 Ft</strong> / quad",
             "<strong>7000 Ft</strong> / utas"
+          ]
+        }
+      ]
+    }
+  },
+  "atvs": {
+    "hero": {
+      "title": "Quadok",
+      "subtitle": "Engedd meg, hogy bemutassuk neked gépparkunkat!",
+      "body": "Jelenleg három különböző gyártmányú quad várja, hogy meghódítsd velük a természetet.\nA túra előtt ismerd meg a nagyteljesítményű ATV-ket, amik a legjobb barátaid lesznek az úton!"
+    },
+    "catalog": {
+      "desc": "Leírás",
+      "specs": "Tulajdonságok",
+      "atvs": [
+        {
+          "manufacturer": "Can-Am",
+          "model": "Outlander 800R XM R",
+          "desc": "A 2012-es Can-Am Outlander 800R X MR egy rendkívül erős és megbízható ATV, amelyet kifejezetten a kemikusan nehéz terepekre, például sárba és nehezen járható utakon történő használatra terveztek. Az 800 cm³-es Rotax V-twin motor és a 4x4-es hajtás biztosítja a megfelelő teljesítményt és tapadást bármilyen körülmények között. A speciálisan kialakított felfüggesztés és a prémium sárgumiabroncsok maximális komfortot és irányíthatóságot biztosítanak a legkeményebb túrákon is. Ez az ATV tökéletes választás azok számára, akik igazi off-road kalandot keresnek, miközben kényelmesen élvezhetik a vezetést a legszélsőségesebb körülmények között is.",
+          "specs": [
+            "<strong>Motor:</strong> 800cm³ Rotax V-Twin",
+            "<strong>Teljesítmény:</strong> 91 LE",
+            "<strong>Váltó:</strong> Automata CVT váltó, Kapcsolható 2WD / 4WD",
+            "<strong>Gumik:</strong> 26'-27' méretű terepgumik",
+            "<strong>Fékek:</strong> 214 mm-es tárcsafékek",
+            "<strong>Hossz:</strong> 218 cm",
+            "<strong>Szélesség:</strong> 122 cm",
+            "<strong>Tömeg:</strong> 385 kg"
+          ]
+        },
+        {
+          "manufacturer": "Honda",
+          "model": "TRX 500 Foreman 4x4",
+          "desc": "A Honda TRX 500 Foreman 4x4 egy erős és megbízható ATV, amelyet kifejezetten nehéz terepen történő munkavégzéshez és túrázáshoz terveztek. A 475 cm³-es motor és a 4x4-es hajtás biztosítja a stabilitást és a nagyobb terhelhetőséget. Kényelmes felfüggesztésével és könnyen kezelhető vezérlésével ideális választás mind a kezdő, mind a tapasztalt sofőrök számára.",
+          "specs": [
+            "<strong>Motor:</strong> 686cm³ SOHC, 4 ütemű",
+            "<strong>Teljesítmény:</strong> 48 LE",
+            "<strong>Váltó:</strong> Ultramatic CVT váltó, Kapcsolható 2WD / 4WD / Differenciálzár",
+            "<strong>Gumik:</strong> 26' Maxxis terepgumik",
+            "<strong>Fékek:</strong> Hidraulikus tárcsafékek elöl, Zárt többtárcsás fék hátul",
+            "<strong>Hossz:</strong> 207 cm",
+            "<strong>Szélesség:</strong> 123 cm",
+            "<strong>Tömeg:</strong> 317 kg"
+          ]
+        },
+        {
+          "manufacturer": "Yamaha",
+          "model": "Grizzly 700 EPS",
+          "desc": "A Yamaha Grizzly 700 EPS egy rendkívül erős és dinamikus ATV, amely prémium kormányzási rendszert (EPS) kínál, így könnyedén irányítható akár a legnehezebb terepeken is. A 686 cm³-es motor és a nagy teherbírású 4x4-es hajtás tökéletes választássá teszi hosszú távú túrákhoz, valamint sárban és hegyvidéki utakon való közlekedéshez. A Grizzly kényelmes, stabil és erőteljes minden körülmények között.",
+          "specs": [
+            "<strong>Motor:</strong> 518cm³ egyhengeres, 4 ütemű",
+            "<strong>Teljesítmény:</strong> 30 LE",
+            "<strong>Váltó:</strong> 5 fokozatú félautomata, Kapcsolható 2WD / 4WD",
+            "<strong>Gumik:</strong> 25' méretű terepgumik",
+            "<strong>Fékek:</strong> Hidraulikus tárcsafék elöl, Zárt dobfék hátul",
+            "<strong>Hossz:</strong> 209 cm",
+            "<strong>Szélesség:</strong> 120 cm",
+            "<strong>Tömeg:</strong> 295 kg"
           ]
         }
       ]

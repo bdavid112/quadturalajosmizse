@@ -6,20 +6,28 @@ import { useState } from 'react'
 interface Props {
   labels: [string, string] | [string, string, string]
   isDisabled?: boolean
-  onChange?: () => void
+  className?: string
+  onChange?: (index: number) => void
 }
 
-const SegmentedButton: React.FunctionComponent<Props> = ({ labels }) => {
+const SegmentedButton: React.FunctionComponent<Props> = ({
+  labels,
+  className,
+  onChange,
+}) => {
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   return (
-    <div className="segmented-button-container min-width-lg width-full flex box-shadow-light">
+    <div
+      className={`${className} segmented-button-container min-width-lg width-full flex box-shadow-light`}
+    >
       {labels.map((label, index) => (
         <button
           key={index}
           className={`segmented-button transition-bezier-fast width-half flex-gap-xs flex align-center justify-center border cursor-pointer padding-x-md ${selectedIndex == index ? 'selected-button box-shadow-inset' : ''}`}
           onClick={() => {
             setSelectedIndex(index)
+            onChange && onChange(index)
           }}
           onKeyDown={(e) => {
             if (e.key == 'Enter') {
@@ -27,10 +35,7 @@ const SegmentedButton: React.FunctionComponent<Props> = ({ labels }) => {
             }
           }}
         >
-          {/* {selectedIndex == index && (
-            <span className="material-symbols-rounded size-16">check</span>
-          )} */}
-          <span className="font-size-secondary">{label}</span>
+          <span className="font-size-secondary text-primary">{label}</span>
         </button>
       ))}
     </div>

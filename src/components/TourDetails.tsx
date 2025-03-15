@@ -22,7 +22,7 @@ const TourDetails: React.FunctionComponent<Props> = ({
   const { lang } = useLocalization()
 
   return (
-    <div className="container flex-col">
+    <div className="flex-col">
       <div className="flex flex-gap-4xl tour-detail">
         <img className="" src={img.url} alt={img.alt} />
         <div className="width-half padding-y-4xl tour-detail-text">
@@ -55,7 +55,7 @@ const TourDetails: React.FunctionComponent<Props> = ({
           <div className="tour-detail-button-container">
             <ButtonPrimary
               fullWidth={true}
-              label={'Foglalás most'}
+              label={t('tours.tour-details.button-label', lang)}
             ></ButtonPrimary>
           </div>
         </div>

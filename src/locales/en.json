@@ -342,6 +342,40 @@
       "title": "Tours",
       "subtitle": "Choose the perfect tour and explore nature on four wheels!",
       "body": "You can choose between two exciting tours – perfect for both beginners and experienced off-road riders.\nCheck out the routes, details, and book your tour now!"
+    },
+    "tour-details": {
+      "desc": "Description",
+      "attribs": "Details",
+      "prices": "Price",
+      "button-label": "Book now",
+      "tours": [
+        {
+          "desc": "If you have never been on a quad tour before, or just want a light and enjoyable off-road adventure, this is the perfect choice! This route takes you through varied but easily navigable terrain, allowing you to enjoy the beauty of nature and the thrill of riding a quad. A professional tour guide will accompany you to ensure safety and a smooth pace for everyone.",
+          "attribs": [
+            "<strong>Duration:</strong> ~1.5 - 2 hours",
+            "<strong>Terrain:</strong> Forest and meadow trails, small inclines",
+            "<strong>Difficulty:</strong> Easy – Medium",
+            "<strong>Recommended for beginners and families</strong>"
+          ],
+          "prices": [
+            "<strong>25,000 HUF</strong> / quad",
+            "<strong>5,000 HUF</strong> / passenger"
+          ]
+        },
+        {
+          "desc": "If you love challenges and crave a real off-road adventure, this tour is for you! The longer route features diverse terrain: hilly forest trails, sandy fields, and occasional muddy sections. This tour requires higher speeds and more confident riding skills, but guarantees an adrenaline-filled experience!",
+          "attribs": [
+            "<strong>Duration:</strong> ~3.5 - 4 hours",
+            "<strong>Terrain:</strong> Hilly valleys, sandy and muddy sections",
+            "<strong>Difficulty:</strong> Medium",
+            "<strong>Recommended for experienced quad riders</strong>"
+          ],
+          "prices": [
+            "<strong>35,000 HUF</strong> / quad",
+            "<strong>7,000 HUF</strong> / passenger"
+          ]
+        }
+      ]
     }
   }
 }

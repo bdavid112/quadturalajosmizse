@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import HomePage from '@pages/HomePage'
 import AboutUsPage from '@pages/AboutUsPage'
 import ToursPage from '@pages/ToursPage'
+import ATVsPage from '@pages/ATVsPage'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<HomePage></HomePage>}></Route>
           <Route path="/about-us" element={<AboutUsPage></AboutUsPage>}></Route>
           <Route path="/tours" element={<ToursPage></ToursPage>}></Route>
+          <Route path="/atvs" element={<ATVsPage></ATVsPage>}></Route>
         </Routes>
       </BrowserRouter>
     </LocalizationProvider>

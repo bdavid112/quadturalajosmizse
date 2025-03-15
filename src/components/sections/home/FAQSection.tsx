@@ -7,14 +7,12 @@ import Accordion from '@components/ui/Accordion'
 import { t } from '@utils/translator'
 import { useLocalization } from '@context/LocalizationContext'
 
-interface Props {}
+interface Props {
+  accordions: { question: string; answer: string }[]
+}
 
-const FAQSection: React.FunctionComponent<Props> = ({}) => {
+const FAQSection: React.FunctionComponent<Props> = ({ accordions }) => {
   const { lang } = useLocalization()
-  const accordions: { question: string; answer: string }[] = t(
-    'home.faq.accordions',
-    lang
-  )
 
   return (
     <section className="faq-section padding-y-4xl">

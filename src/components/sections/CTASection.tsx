@@ -10,22 +10,28 @@ interface Props {
   title: string
   subtext: string
   buttonLabels: { primary: string; secondary: string }
+  plain?: boolean
 }
 
 const CTASection: React.FunctionComponent<Props> = ({
   title,
   subtext,
   buttonLabels,
+  plain = false,
 }) => {
   return (
     <section className="cta-section">
-      <div className="cta-background relative">
+      <div className={`${!plain ? 'cta-background' : ''} relative`}>
         <div className="container cta-content">
           <div className="width-full">
-            <h2 className="text-center margin-bottom-2xl text-inverted">
+            <h2
+              className={`text-center margin-bottom-2xl ${!plain ? 'text-inverted' : ''}`}
+            >
               {title}
             </h2>
-            <h4 className="text-center margin-bottom-4xl text-inverted">
+            <h4
+              className={`text-center margin-bottom-4xl ${!plain ? 'text-inverted' : ''}`}
+            >
               {formatTextWithBreaks(subtext)}
             </h4>
             <div className="cta-button-group">

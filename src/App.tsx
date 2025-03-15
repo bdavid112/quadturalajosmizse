@@ -7,6 +7,7 @@ import AboutUsPage from '@pages/AboutUsPage'
 import ToursPage from '@pages/ToursPage'
 import ATVsPage from '@pages/ATVsPage'
 import GalleryPage from '@pages/GalleryPage'
+import FAQPage from '@pages/FAQPage'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/tours" element={<ToursPage></ToursPage>}></Route>
           <Route path="/atvs" element={<ATVsPage></ATVsPage>}></Route>
           <Route path="/gallery" element={<GalleryPage></GalleryPage>}></Route>
+          <Route path="/faq" element={<FAQPage></FAQPage>}></Route>
         </Routes>
       </BrowserRouter>
     </LocalizationProvider>

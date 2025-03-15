@@ -465,6 +465,59 @@
           "subtext": "Erdők, mezők, homokos szakaszok – a természet szépsége"
         }
       ]
+    },
+    "cta": {
+      "title": "Szeretnéd saját élményeidet is megörökíteni?",
+      "subtext": "Ne maradj le erről az élményről!\nCsatlakozz hozzánk egy izgalmas túrára, és tapasztald meg a terep motorozás szabadságát!",
+      "buttons": {
+        "primary": "Időpontfoglalás",
+        "secondary": "Lépj velünk kapcsolatba"
+      }
     }
+  },
+  "faq": {
+    "hero": {
+      "title": "Gyakran Ismételt Kérdések (GYIK)",
+      "subtitle": "Minden fontos tudnivaló egy helyen",
+      "body": "Mielőtt belevágsz a kalandba, nézd át a leggyakoribb kérdéseket és válaszokat!\nHa további információra van szükséged, keress minket bizalommal!"
+    },
+    "accordions": [
+      {
+        "question": "Hogyan történik a foglalás és fizetés?",
+        "answer": "A foglalás online vagy telefonon történik. A túra díját előre szükséges rendezni, de ha változtatni kell az időponton, rugalmasan kezeljük a módosításokat."
+      },
+      {
+        "question": "Szükséges jogosítvány a quad vezetéséhez?",
+        "answer": "Igen, a túrákon való részvételhez B kategóriás jogosítványra van szükség, mivel a quadok motorja és teljesítménye ezt megköveteli."
+      },
+      {
+        "question": "Hány éves kortól lehet részt venni a túrán?",
+        "answer": "A quad vezetéséhez minimum 18 éves életkor és érvényes jogosítvány szükséges. Utasként 160 cm feletti magasság ajánlott."
+      },
+      {
+        "question": "Hány főtől indulnak a túrák?",
+        "answer": "A túrák minimum 2 fővel indulnak, de nagyobb csoportokat is szívesen fogadunk. Foglaláskor érdemes előre jelezni a létszámot."
+      },
+      {
+        "question": "Van lehetőség utast vinni a quadon?",
+        "answer": "Igen, de fontos, hogy az utas maximális testsúlya és magassága ne befolyásolja a vezetési élményt és biztonságot. A kétszemélyes quadozás plusz díjat vonhat maga után."
+      },
+      {
+        "question": "Esős időben is megtartják a túrát?",
+        "answer": "A quad túrák időjárásfüggők, kisebb eső esetén megtarthatók, de extrém időjárási körülmények között (pl. vihar, nagy sár) elhalasztjuk vagy új időpontot egyeztetünk."
+      },
+      {
+        "question": "Van helyszíni oktatás a túra előtt?",
+        "answer": "Természetesen! Minden résztvevő rövid oktatáson vesz részt, ahol bemutatjuk a quadok kezelését, a terepviszonyokat és a biztonsági szabályokat."
+      },
+      {
+        "question": "Milyen terepen zajlanak a túrák?",
+        "answer": "Túráink változatos terepen zajlanak: erdős ösvényeken, homokos és dombos szakaszokon, hogy mindenki megtalálja a saját tempójának megfelelő kihívást."
+      },
+      {
+        "question": "Lehet egyedi túrát kérni?",
+        "answer": "Igen! Ha különleges útvonalat, hosszabb túrát vagy céges/csoportos eseményt szeretnél szervezni, lépj kapcsolatba velünk, és egyedi ajánlatot készítünk neked."
+      }
+    ]
   }
 }

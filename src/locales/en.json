@@ -446,5 +446,78 @@
         "secondary": "Contact Us"
       }
     }
+  },
+  "gallery": {
+    "hero": {
+      "title": "Gallery",
+      "subtitle": "Check out the best moments from our tours!",
+      "body": "Off-road action, stunning landscapes, and quads – everything you need for the ultimate off-road experience!"
+    },
+    "gallery": {
+      "title": "Photos from our past adventures",
+      "sections": [
+        {
+          "title": "Action on the terrain",
+          "subtext": "Quads and riders in action"
+        },
+        {
+          "title": "Our sights",
+          "subtext": "Forests, fields, sandy trails – the beauty of nature"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Want to capture your own adventure?",
+      "subtext": "Don't miss out on this experience!\nJoin us for an exciting tour and feel the freedom of off-road riding!",
+      "buttons": {
+        "primary": "Book a tour",
+        "secondary": "Get in touch"
+      }
+    }
+  },
+  "faq": {
+    "hero": {
+      "title": "Frequently Asked Questions (FAQ)",
+      "subtitle": "All essential information in one place",
+      "body": "Before embarking on your adventure, check out the most common questions and answers!\nIf you need more information, feel free to contact us!"
+    },
+    "accordions": [
+      {
+        "question": "How does booking and payment work?",
+        "answer": "Bookings can be made online or by phone. The tour fee must be paid in advance, but if you need to change the date, we handle modifications flexibly."
+      },
+      {
+        "question": "Is a driver's license required to ride a quad?",
+        "answer": "Yes, a category B driver's license is required to participate in the tours, as the quad engines and performance demand it."
+      },
+      {
+        "question": "What is the minimum age for participation?",
+        "answer": "To drive a quad, you must be at least 18 years old and have a valid driver's license. For passengers, a minimum height of 160 cm is recommended."
+      },
+      {
+        "question": "What is the minimum group size for a tour?",
+        "answer": "Tours start with a minimum of 2 participants, but we are happy to accommodate larger groups. It's recommended to indicate the group size when booking."
+      },
+      {
+        "question": "Can I take a passenger on the quad?",
+        "answer": "Yes, but the passenger's weight and height must not affect the riding experience and safety. Riding with a passenger may incur an additional fee."
+      },
+      {
+        "question": "Are tours held in rainy weather?",
+        "answer": "Quad tours depend on the weather. Light rain is usually not an issue, but in extreme conditions (e.g., storms, excessive mud), we will reschedule or offer a new date."
+      },
+      {
+        "question": "Is there on-site training before the tour?",
+        "answer": "Of course! Every participant receives a short training session where we introduce quad handling, terrain conditions, and safety rules."
+      },
+      {
+        "question": "What kind of terrain do the tours cover?",
+        "answer": "Our tours take place on diverse terrains: forest trails, sandy paths, and hilly sections, ensuring a challenge suitable for all experience levels."
+      },
+      {
+        "question": "Can I request a custom tour?",
+        "answer": "Yes! If you want a special route, a longer tour, or a corporate/group event, contact us, and we will create a custom offer for you."
+      }
+    ]
   }
 }

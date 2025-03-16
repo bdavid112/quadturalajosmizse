@@ -1,9 +1,5 @@
 import './why-choose-us-section.scss'
 
-import profile1 from '@assets/profile1.jpg'
-import profile2 from '@assets/profile2.jpg'
-import profile3 from '@assets/profile3.webp'
-
 import * as React from 'react'
 import { useRef } from 'react'
 import { useLocalization } from '@context/LocalizationContext'
@@ -23,7 +19,11 @@ const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
   const statCardsContainerRef = useRef<HTMLDivElement | null>(null)
 
   /* Profile bios */
-  const images = [profile1, profile2, profile3]
+  const images = [
+    '/images/profile1.avif',
+    '/images/profile2.avif',
+    '/images/profile3.avif',
+  ]
   const profiles: { name: string; role: string; bio: string }[] = t(
     'home.why-choose-us.bios',
     lang

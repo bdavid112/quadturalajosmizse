@@ -1,8 +1,6 @@
 import './tours-section.scss'
 
 import nature from '@assets/tours-nature.svg'
-import overviewImg1 from '@assets/tour-overview-1.avif'
-import overviewImg2 from '@assets/tour-overview-2.avif'
 
 import * as React from 'react'
 
@@ -18,7 +16,10 @@ interface Props {}
 const ToursSection: React.FunctionComponent<Props> = ({}) => {
   const { lang } = useLocalization()
 
-  const images = [overviewImg1, overviewImg2]
+  const images = [
+    { url: 'tour-overview-1', alt: 'Pusztavacs, földrajzi középpont' },
+    { url: 'tour-overview-2', alt: 'Pusztavacs, templomrom' },
+  ]
   const overviews: {
     title: string
     desc: string
@@ -45,9 +46,10 @@ const ToursSection: React.FunctionComponent<Props> = ({}) => {
             attributes={overview.attribs}
             img={images[index]}
             buttonLabels={overview.buttons}
+            objectPos={`${index == 0 ? 'obj-right' : 'obj-left'}`}
           ></TourOverview>
         ))}
-        <div className="info-list width-half padding-y-2xl">
+        <div className="info-list width-three-quarter padding-y-2xl">
           <h3 className="margin-bottom-xl">
             {t('home.tours.info.title', lang)}
           </h3>

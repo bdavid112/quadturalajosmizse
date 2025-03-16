@@ -11,16 +11,21 @@
 }
 
 .tours-illustration {
-  max-width: 50%;
+  height: 300px;
   bottom: 0;
   right: 0;
 }
 
-@media (max-width: $screen-laptop) {
-  .info-list {
+.info-list {
+  @media (max-width: $screen-large) {
+    width: 50%;
+  }
+  @media (max-width: $screen-laptop) {
     width: 100%;
   }
+}
 
+@media (max-width: $screen-laptop) {
   .tours-illustration {
     position: static;
   }

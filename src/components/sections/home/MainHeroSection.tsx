@@ -17,8 +17,6 @@ interface Props {}
 const MainHeroSection: React.FunctionComponent<Props> = ({}) => {
   const { lang } = useLocalization()
 
-  /* Preload hero background image */
-
   return (
     <section className="main-hero relative">
       <ResponsiveImage

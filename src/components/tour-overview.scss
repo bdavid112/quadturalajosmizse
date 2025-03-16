@@ -2,7 +2,9 @@
 
 .overview-image {
   width: 500px;
+  height: 500px;
   right: 0;
+  object-fit: cover;
 }
 
 .overview-attrib {
@@ -10,7 +12,7 @@
   margin-left: 1rem;
 }
 
-@media (max-width: $screen-laptop) {
+@media (max-width: $screen-desktop) {
   .overview-image {
     width: 100%;
     position: initial;
@@ -34,4 +36,12 @@
   .overview-button-group {
     flex-direction: column;
   }
+}
+
+.obj-left {
+  object-position: left;
+}
+
+.obj-right {
+  object-position: right;
 }

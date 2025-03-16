@@ -1,6 +1,6 @@
 import './review-card.scss'
 
-import image from '@assets/review-image.jpg'
+import image from '@assets/review-image.avif'
 
 import * as React from 'react'
 import Icon from './IconComponent'

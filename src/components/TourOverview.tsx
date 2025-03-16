@@ -4,13 +4,15 @@ import * as React from 'react'
 import ButtonPrimary from './ui/buttons/ButtonPrimary'
 import ButtonSecondaryOutline from './ui/buttons/ButtonSecondaryOutline'
 import { formatTextWithBreaks, insertStrongTags } from '@utils/formatText'
+import ResponsiveImage from './ResponsiveImage'
 
 interface Props {
   title: string
   description: string
   attributes: string[]
-  img: string
+  img: { url: string; alt: string }
   buttonLabels: { primary: string; secondary: string }
+  objectPos?: string
 }
 
 const TourOverview: React.FunctionComponent<Props> = ({
@@ -19,12 +21,13 @@ const TourOverview: React.FunctionComponent<Props> = ({
   attributes,
   img,
   buttonLabels,
+  objectPos,
 }) => {
   /* const { lang, setLang } = useLocalization() */
 
   return (
     <>
-      <div className="tour-overview flex justify-between align-center padding-y-xl">
+      <div className="tour-overview flex justify-between padding-y-xl">
         <div className="flex flex-col overview-content width-half flex-gap-2xl">
           <h2 className="overview-title">{formatTextWithBreaks(title)}</h2>
           <p>{description}</p>
@@ -42,16 +45,7 @@ const TourOverview: React.FunctionComponent<Props> = ({
             ></ButtonSecondaryOutline>
           </div>
         </div>
-        <picture>
-          <source srcSet={img} type="image/avif"></source>
-          <img
-            src={`../../assets/${img}.jpg`}
-            alt="Tour overview"
-            className="overview-image"
-            loading="eager"
-            fetchPriority="high"
-          ></img>
-        </picture>
+        <ResponsiveImage img={img} className={`overview-image ${objectPos}`} />
       </div>
       <div className="divider-gray thick"></div>
     </>

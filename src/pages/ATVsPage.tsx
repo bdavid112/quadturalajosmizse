@@ -18,7 +18,7 @@ const ATVsPage: React.FunctionComponent<Props> = ({}) => {
       <HeroLayout page={'atvs'}></HeroLayout>
       <ImageHeader
         title={t('atvs.hero.cta-title', lang)}
-        img={'atvs-hero'}
+        img={{ url: 'atvs-hero', alt: 'ATVs hero image' }}
       ></ImageHeader>
       <ATVCatalogSection></ATVCatalogSection>
       <CTASection

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { motion } from 'framer-motion' // Import motion
 
 import './button-primary.scss'
 
@@ -19,25 +18,14 @@ const ButtonPrimary: React.FunctionComponent<Props> = ({
   onClick,
 }) => {
   return (
-    <>
-      {!isDisabled ? (
-        <motion.button
-          className={`${className} padding-x-lg font-bold box-shadow-light button-primary-enabled ${fullWidth ? 'width-full' : ''}`}
-          whileHover={{ scale: 1.015 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ type: 'spring', stiffness: 75 }}
-          onClick={onClick}
-        >
-          {label}
-        </motion.button>
-      ) : (
-        <motion.button
-          className={`padding-x-lg button-primary-disabled ${fullWidth ? 'width-full' : ''}`}
-        >
-          {label}
-        </motion.button>
-      )}
-    </>
+    <button
+      className={`${className} padding-x-lg font-bold box-shadow-light ${!isDisabled ? 'button-primary-enabled' : 'button-primary-disabled'} ${fullWidth ? 'width-full' : ''}`}
+      onClick={() => {
+        !isDisabled && onClick && onClick()
+      }}
+    >
+      {label}
+    </button>
   )
 }
 

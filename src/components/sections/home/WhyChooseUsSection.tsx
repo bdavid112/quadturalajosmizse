@@ -39,7 +39,7 @@ const WhyChooseUsSection: React.FunctionComponent<Props> = ({}) => {
   return (
     <section className="why-choose-us-section">
       <ImageHeader
-        img="why-choose-us-hero"
+        img={{ url: 'why-choose-us-hero', alt: 'Why Choose Us hero image' }}
         title={t('home.why-choose-us.title', lang)}
       ></ImageHeader>
       <div className="container flex-col padding-y-4xl">

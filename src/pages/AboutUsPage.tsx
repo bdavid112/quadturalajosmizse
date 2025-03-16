@@ -19,7 +19,7 @@ const AboutUsPage: React.FunctionComponent<Props> = ({}) => {
       <HeroLayout page={'about-us'}></HeroLayout>
       <ImageHeader
         title={t('about-us.hero.cta-title', lang)}
-        img={'about-us-hero'}
+        img={{ url: 'about-us-hero', alt: 'About Us hero image' }}
       ></ImageHeader>
       <WhatWeDoSection></WhatWeDoSection>
       <TeamSection></TeamSection>

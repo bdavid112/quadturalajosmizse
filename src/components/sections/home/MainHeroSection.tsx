@@ -10,6 +10,7 @@ import { insertStrongTags } from '@utils/formatText'
 import ButtonPrimary from '@components/ui/buttons/ButtonPrimary'
 import ButtonSecondaryOutline from '@components/ui/buttons/ButtonSecondaryOutline'
 import FAB from '@components/ui/buttons/FAB'
+import ResponsiveImage from '@components/ResponsiveImage'
 
 interface Props {}
 
@@ -20,17 +21,13 @@ const MainHeroSection: React.FunctionComponent<Props> = ({}) => {
 
   return (
     <section className="main-hero relative">
-      <picture>
-        <source srcSet="images/main-hero.avif" type="image/avif"></source>
-        <source srcSet="images/main-hero.webp" type="image/webp"></source>
-        <img
-          src="images/main-hero.jpg"
-          alt="Hero Background"
-          className="hero-image"
-          loading="eager"
-          fetchPriority="high"
-        ></img>
-      </picture>
+      <ResponsiveImage
+        img={{
+          url: 'main-hero',
+          alt: 'Main hero image',
+        }}
+        className="hero-image"
+      />
       <div className="container main-hero-content flex-col">
         <h1 className="text-inverted main-hero-title width-half">
           {insertStrongTags(t('home.hero.title', lang))}
@@ -43,7 +40,7 @@ const MainHeroSection: React.FunctionComponent<Props> = ({}) => {
             label={t('home.hero.buttons.primary', lang)}
           ></ButtonPrimary>
           <ButtonSecondaryOutline
-            text={t('home.hero.buttons.secondary', lang)}
+            label={t('home.hero.buttons.secondary', lang)}
           ></ButtonSecondaryOutline>
         </div>
       </div>

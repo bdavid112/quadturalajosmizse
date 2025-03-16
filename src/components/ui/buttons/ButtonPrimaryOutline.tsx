@@ -1,35 +1,31 @@
 import * as React from 'react'
-import { motion } from 'framer-motion' // Import motion
 
 import './button-primary-outline.scss'
 
 interface Props {
-  text: string
-  onClick?: () => void
+  label: string
+  fullWidth?: boolean
   isDisabled?: boolean
+  className?: string
+  onClick?: () => void
 }
 
-const ButtonPrimaryOutline: React.FunctionComponent<Props> = (props) => {
+const ButtonPrimaryOutline: React.FunctionComponent<Props> = ({
+  label,
+  fullWidth = false,
+  isDisabled,
+  className,
+  onClick,
+}) => {
   return (
-    <>
-      {!props.isDisabled ? (
-        <motion.button
-          className={'padding-x-lg button-primary-outline-enabled'}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ type: 'spring', stiffness: 150 }}
-          onClick={props.onClick}
-        >
-          {props.text}
-        </motion.button>
-      ) : (
-        <motion.button
-          className={'padding-x-lg button-primary-outline-disabled'}
-        >
-          {props.text}
-        </motion.button>
-      )}
-    </>
+    <button
+      className={`${className} padding-x-lg font-bold box-shadow-light ${!isDisabled ? 'button-primary-outline-enabled' : 'button-primary-disabled'} ${fullWidth ? 'width-full' : ''}`}
+      onClick={() => {
+        !isDisabled && onClick && onClick()
+      }}
+    >
+      {label}
+    </button>
   )
 }
 

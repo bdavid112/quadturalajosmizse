@@ -1,9 +1,6 @@
 import './team-section.scss'
 
 import waves from '@assets/waves-green.svg'
-import image1 from '@assets/profile1.jpg'
-import image2 from '@assets/profile2.jpg'
-import image3 from '@assets/profile3.webp'
 
 import * as React from 'react'
 
@@ -19,7 +16,11 @@ const TeamSection: React.FunctionComponent<Props> = ({}) => {
   const { lang } = useLocalization()
   const [selectedBioIndex, setSelectedBioIndex] = useState(0)
 
-  const images = [image1, image2, image3]
+  const images = [
+    '/images/profile1.avif',
+    '/images/profile2.avif',
+    '/images/profile3.avif',
+  ]
   const profiles: { name: string; role: string; bio: string }[] = t(
     'about-us.team.profiles',
     lang

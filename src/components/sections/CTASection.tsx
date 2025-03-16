@@ -37,7 +37,7 @@ const CTASection: React.FunctionComponent<Props> = ({
             <div className="cta-button-group">
               <ButtonPrimary label={buttonLabels.primary}></ButtonPrimary>
               <ButtonSecondaryOutline
-                text={buttonLabels.secondary}
+                label={buttonLabels.secondary}
               ></ButtonSecondaryOutline>
             </div>
           </div>

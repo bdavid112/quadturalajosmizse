@@ -15,7 +15,7 @@
   margin-inline: auto;
   width: fit-content;
 
-  @media (max-width: $screen-desktop) {
+  @media (max-width: 1440px) {
     max-width: min(800px, 80%);
     grid-template-columns: repeat(2, 1fr);
   }

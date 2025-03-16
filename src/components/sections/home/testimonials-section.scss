@@ -1,29 +1,5 @@
 @import '@styles/tokens.scss';
 
-.review-cards-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: $space-lg;
-  max-width: 1400px;
-}
-
 .review-form-wrapper {
   min-width: min(100%, 720px);
-}
-
-@media (max-width: $screen-desktop) {
-  .review-cards-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: $screen-laptop) {
-  .review-cards-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 0;
-    scroll-behavior: smooth;
-    cursor: grab; // Show grab cursor when interacting
-    -webkit-overflow-scrolling: touch; // Improves performance on iOS
-  }
 }

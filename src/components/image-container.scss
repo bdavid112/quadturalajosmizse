@@ -7,11 +7,11 @@
   margin: auto;
   width: fit-content;
 
-  @media (max-width: $screen-desktop) {
+  @media (max-width: $screen-large) {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (max-width: $screen-laptop) {
+  @media (max-width: $screen-desktop) {
     grid-template-columns: repeat(2, 1fr);
   }
 

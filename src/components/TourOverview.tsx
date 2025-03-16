@@ -38,7 +38,7 @@ const TourOverview: React.FunctionComponent<Props> = ({
           <div className="flex flex-gap-xs overview-button-group">
             <ButtonPrimary label={buttonLabels.primary}></ButtonPrimary>
             <ButtonSecondaryOutline
-              text={buttonLabels.secondary}
+              label={buttonLabels.secondary}
             ></ButtonSecondaryOutline>
           </div>
         </div>

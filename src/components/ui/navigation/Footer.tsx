@@ -22,7 +22,7 @@ const Footer: React.FunctionComponent<Props> = ({}) => {
       label: 'quadturalajosmizse@gmail.com',
     },
     {
-      icon: 'phone',
+      icon: 'call',
       label: '+36 70 668 8771',
     },
   ]

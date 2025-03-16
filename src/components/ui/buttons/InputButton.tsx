@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import './input-button.scss'
+import Icon from '../IconComponent'
 
 interface Props {
   icon: string
@@ -46,13 +47,12 @@ const InputButton = React.forwardRef<HTMLButtonElement, Props>(
         {label && (
           <span className="text-secondary font-size-secondary">{label}</span>
         )}
-        <span
-          className={`material-symbols-rounded size-20 transition-bezier-fast ${
+        <Icon
+          name={icon}
+          className={`transition-bezier-fast input-button-icon size-20 muted ${
             rotate && isParentOpen ? 'rotate-180' : ''
           }`}
-        >
-          {icon}
-        </span>
+        />
       </button>
     )
   }

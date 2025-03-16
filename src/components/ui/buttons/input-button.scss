@@ -21,18 +21,13 @@
   &:active {
     @include active();
   }
-
-  span {
-    color: $text-muted;
-    transition: all $bezier-fast;
-  }
 }
 
 @mixin active {
   background-color: $gray-200 !important;
 
-  span {
-    color: $text-primary !important;
+  .input-button-icon {
+    fill: $text-primary !important;
   }
 }
 

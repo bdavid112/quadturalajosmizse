@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { useLocalization } from '@context/LocalizationContext'
 import ButtonPrimary from '../buttons/ButtonPrimary'
 import { useNavbar } from '@hooks/useNavbar'
+import Icon from '../IconComponent'
 
 interface Props {}
 
@@ -79,11 +80,10 @@ const TopNavbar: React.FunctionComponent<Props> = ({}) => {
           onClick={() => toggleIsOpen()}
           className="menu-button cursor-pointer"
         >
-          <span
-            className={`material-symbols-rounded size-40 text-primary transition-bezier-smooth ${isOpen ? 'rotate-90' : ''}`}
-          >
-            menu
-          </span>
+          <Icon
+            name="menu"
+            className={`size-40 primary transition-bezier-smooth ${isOpen ? 'rotate-90' : ''}`}
+          />
         </button>
       </nav>
     </header>

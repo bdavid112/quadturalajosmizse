@@ -1,8 +1,8 @@
-import { useState } from 'react'
-
 import './accordion.scss'
 
 import * as React from 'react'
+import { useState } from 'react'
+import Icon from './IconComponent'
 
 interface Props {
   label: string
@@ -29,11 +29,10 @@ const Accordion: React.FunctionComponent<Props> = ({ label, text }) => {
         >
           {label}
         </span>
-        <span
-          className={`material-symbols-rounded size-20 text-secondary transition-bezier-smooth user-select-none ${isOpen ? 'rotate-180' : ''}`}
-        >
-          keyboard_arrow_down
-        </span>
+        <Icon
+          name="keyboard_arrow_down"
+          className={`secondary transition-bezier-smooth user-select-none ${isOpen ? 'rotate-180' : ''}`}
+        />
       </div>
       <div
         className={`animated-content transition-bezier-smooth ${isOpen ? 'open' : ''}`}

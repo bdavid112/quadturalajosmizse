@@ -7,6 +7,7 @@ import TextAreaOutline from '../form-elements/TextAreaOutline'
 import { useId } from 'react'
 import ButtonPrimary from '../buttons/ButtonPrimary'
 import { t } from '@utils/translator'
+import Icon from '../IconComponent'
 
 interface Props {}
 
@@ -16,12 +17,7 @@ const ReviewForm: React.FunctionComponent<Props> = ({}) => {
   const stars = []
   for (let i = 0; i < 5; i++) {
     stars.push(
-      <span
-        key={i}
-        className="material-symbols-rounded size-40 text-warning star margin-bottom-2xl"
-      >
-        star
-      </span>
+      <Icon name="star" className="warning size-40 margin-bottom-2xl" />
     )
   }
 

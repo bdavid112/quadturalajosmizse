@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import './custom-option.scss'
+import Icon from '../IconComponent'
 
 interface Option {
   value: number
@@ -59,11 +60,10 @@ const CustomOption = React.forwardRef<HTMLDivElement, Props>(
           {option.label}
         </span>
         {icon && isSelected && (
-          <span
-            className={`material-symbols-rounded size-20 transition-bezier-fast`}
-          >
-            {icon}
-          </span>
+          <Icon
+            name={icon}
+            className="primary transition-bezier-fast size-20"
+          />
         )}
       </div>
     )

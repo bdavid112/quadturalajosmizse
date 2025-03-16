@@ -3,6 +3,7 @@ import './review-card.scss'
 import image from '@assets/review-image.jpg'
 
 import * as React from 'react'
+import Icon from './IconComponent'
 
 interface Props {
   title: string
@@ -19,14 +20,7 @@ const ReviewCard: React.FunctionComponent<Props> = ({
 }) => {
   const stars = []
   for (let i = 0; i < 5; i++) {
-    stars.push(
-      <span
-        key={i}
-        className="material-symbols-rounded size-24 text-warning star"
-      >
-        star
-      </span>
-    )
+    stars.push(<Icon name="star" className="warning" />)
   }
 
   return (

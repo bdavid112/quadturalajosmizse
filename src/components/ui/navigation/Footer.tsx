@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import TextInputOutline from '../form-elements/TextInputOutline'
 import ButtonPrimary from '../buttons/ButtonPrimary'
 import FAB from '../buttons/FAB'
+import Icon from '../IconComponent'
 
 interface Props {}
 
@@ -82,9 +83,7 @@ const Footer: React.FunctionComponent<Props> = ({}) => {
           </div>
           {contacts.map((contact, index) => (
             <div key={index} className="flex flex-gap-md">
-              <span className="material-symbols-rounded size-24 text-inverted">
-                {contact.icon}
-              </span>
+              <Icon name={contact.icon} className="size-24 inverted" />
               <span className="text-inverted">{contact.label}</span>
             </div>
           ))}

@@ -2,6 +2,7 @@ import './text-input-outline.scss'
 
 import * as React from 'react'
 import { useState } from 'react'
+import Icon from '../IconComponent'
 
 interface Props {
   id: string
@@ -51,16 +52,12 @@ const TextInputOutline: React.FunctionComponent<Props> = ({
           autoComplete={name}
           className="height-full z-base width-full font-size-base input-field padding-x-lg background-transparent"
         ></input>
-        <span
-          className={`material-symbols-rounded size-20 absolute status-icon 
-        ${errorMessage ? 'text-error' : 'text-success'}`}
-        >
-          {touched && !errorMessage
-            ? 'check_circle'
-            : errorMessage
-              ? 'error'
-              : ''}
-        </span>
+        {touched && (
+          <Icon
+            name={!errorMessage ? 'check_circle' : 'error'}
+            className={`size-20 absolute status-icon ${errorMessage ? 'error' : 'success'}`}
+          />
+        )}
       </div>
       <div className="padding-x-lg">
         <span

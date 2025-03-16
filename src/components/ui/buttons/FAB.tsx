@@ -1,3 +1,4 @@
+import Icon from '../IconComponent'
 import './fab.scss'
 
 import * as React from 'react'
@@ -22,11 +23,7 @@ const FAB: React.FunctionComponent<Props> = ({
         onClick && onClick()
       }}
     >
-      <span
-        className={`material-symbols-rounded size-24 text-primary ${isDisabled ? 'text-secondary' : ''}`}
-      >
-        {icon}
-      </span>
+      <Icon name={icon} className={`${isDisabled ? 'secondary' : 'primary'}`} />
     </button>
   )
 }

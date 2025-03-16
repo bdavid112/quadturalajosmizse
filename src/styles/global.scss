@@ -1,84 +1,13 @@
 @import './tokens.scss';
 @import './utilities.scss';
 @import './layout.scss';
+@import './fonts.scss';
 @import '@components/ui/form-elements/input.scss';
-
-/* Local fonts */
-@font-face {
-  font-family: 'Instrument Sans';
-  src:
-    url('/fonts/InstrumentSans-Regular.woff2'),
-    url('/fonts/InstrumentSans-Regular.woff');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Instrument Sans';
-  src:
-    url('/fonts/InstrumentSans-Medium.woff2'),
-    url('/fonts/InstrumentSans-Medium.woff');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Instrument Sans';
-  src:
-    url('/fonts/InstrumentSans-SemiBold.woff2'),
-    url('/fonts/InstrumentSans-SemiBold.woff');
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Instrument Sans';
-  src:
-    url('/fonts/InstrumentSans-Bold.woff2'),
-    url('/fonts/InstrumentSans-Bold.woff');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Oswald';
-  src: url('/fonts/Oswald-Regular.woff2'), url('/fonts/Oswald-Regular.woff');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Oswald';
-  src: url('/fonts/Oswald-Medium.woff2'), url('/fonts/Oswald-Medium.woff');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Oswald';
-  src: url('/fonts/Oswald-SemiBold.woff2'), url('/fonts/Oswald-SemiBold.woff');
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Oswald';
-  src: url('/fonts/Oswald-Bold.woff2'), url('/fonts/Oswald-Bold.woff');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Jaro';
-  src: url('/fonts/Jaro-Regular.woff2'), url('/fonts/Jaro-Regular.woff');
-  font-weight: 400;
-  font-style: normal;
-}
 
 /* CSS reset */
 
 :root {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: 'Instrument Sans', Arial, sans-serif;
   font-size: $font-size-base;
   line-height: 1.5;
   font-weight: 400;
@@ -164,7 +93,7 @@ html {
 /* Typography */
 
 .hero-text {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', Arial, sans-serif;
   font-size: $font-size-3xl;
   font-weight: 700;
   line-height: 1;
@@ -208,7 +137,7 @@ h4 {
 
 @media only screen and (max-width: $screen-tablet) {
   .hero-text {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Oswald', Arial, sans-serif;
     font-size: $font-size-3xl-mobile;
     font-weight: 700;
     line-height: 1;

@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 import svgr from 'vite-plugin-svgr'
 import compression from 'vite-plugin-compression'
-import { visualizer } from 'rollup-plugin-visualizer'
 import purgecss from 'vite-plugin-purgecss'
 
 // https://vite.dev/config/
@@ -12,7 +11,6 @@ export default defineConfig({
     react(),
     svgr(),
     compression({ algorithm: 'brotliCompress' }),
-    visualizer({ open: true }),
     purgecss({
       content: ['./index.html', './src/**/*.tsx'],
       /* safelist: ['keep-this-class', /^bg-/, /^text-/], */ // Keep these classes
@@ -35,6 +33,13 @@ export default defineConfig({
     minify: 'esbuild',
     rollupOptions: {
       treeshake: true,
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'vendor'
+          }
+        },
+      },
     },
     ssr: false,
   },

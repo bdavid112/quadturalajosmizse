@@ -1,6 +1,11 @@
 @import '@styles/tokens.scss';
 
-@media (max-width: $screen-tablet) {
+.contact-us-image {
+  height: 200px;
+  aspect-ratio: 16/9;
+}
+
+@media (max-width: $screen-laptop) {
   .faq-footer {
     flex-direction: column;
     gap: $space-4xl;

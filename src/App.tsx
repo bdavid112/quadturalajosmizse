@@ -2,14 +2,17 @@ import '@styles/global.scss'
 
 import { LocalizationProvider } from '@context/LocalizationContext'
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import { lazy, useEffect } from 'react'
 import HomePage from '@pages/HomePage'
-import AboutUsPage from '@pages/AboutUsPage'
-import ToursPage from '@pages/ToursPage'
-import ATVsPage from '@pages/ATVsPage'
-import GalleryPage from '@pages/GalleryPage'
-import FAQPage from '@pages/FAQPage'
-import { useEffect } from 'react'
 
+/* Lazy-load pages */
+const AboutUsPage = lazy(() => import('@pages/AboutUsPage'))
+const ToursPage = lazy(() => import('@pages/ToursPage'))
+const ATVsPage = lazy(() => import('@pages/ATVsPage'))
+const GalleryPage = lazy(() => import('@pages/GalleryPage'))
+const FAQPage = lazy(() => import('@pages/FAQPage'))
+
+/* Always scroll to top on navigation */
 function ScrollToTop() {
   const { pathname } = useLocation()
 

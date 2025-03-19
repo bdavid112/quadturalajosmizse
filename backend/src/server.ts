@@ -1,10 +1,16 @@
+import AdminJS from "adminjs";
+import AdminJSExpress from "@adminjs/express";
+import * as AdminJSMongoose from "@adminjs/mongoose";
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import path from "path";
+import bcrypt from "bcrypt";
+import session from "express-session";
 
 import bookingRoutes from "./routes/bookings.js";
+import AdminUser from "./models/AdminUser.js";
 
 /* Load environment variables */
 dotenv.config();
@@ -24,6 +30,42 @@ mongoose
 
 /* Register routes */
 app.use("/api/bookings", bookingRoutes);
+
+/* Register AdminJS with Mongoose */
+AdminJS.registerAdapter(AdminJSMongoose);
+
+const admin = new AdminJS({
+  databases: [mongoose],
+  rootPath: "/admin",
+});
+
+const adminRouter = AdminJSExpress.buildAuthenticatedRouter(
+  admin,
+  {
+    authenticate: async (email, password) => {
+      const user = await AdminUser.findOne({ email });
+      if (user && (await bcrypt.compare(password, user.password))) {
+        return { email: user.email };
+      }
+      return null;
+    },
+    cookiePassword: process.env.SESSION_SECRET || "supersecret",
+  },
+  null, // ✅ Keep this as null to let AdminJS create an Express router
+  {
+    secret: process.env.SESSION_SECRET || "supersecret",
+    resave: false, // ✅ Explicitly define resave
+    saveUninitialized: false, // ✅ Explicitly define saveUninitialized
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+      sameSite: "strict",
+    },
+  }
+);
+
+/* ✅ Wrap the AdminJS Router with sessionMiddleware */
+app.use(admin.options.rootPath, adminRouter);
 
 /* Serve frontend */
 const __dirname = path.resolve();

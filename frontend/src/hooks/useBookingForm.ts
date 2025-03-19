@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { t } from '@utils/translator'
+/* import axios from 'axios' */
 
 export function useBookingForm(lang: string) {
   const [formData, setFormData] = useState({
@@ -8,29 +9,38 @@ export function useBookingForm(lang: string) {
     phone: '',
     date: '',
     tour: '',
-    quad: '2',
-    passenger: '0',
+    atvs: '2',
+    passengers: '0',
     comment: '',
   })
+
   const [errors, setErrors] = useState<{
     name?: string
     email?: string
     phone?: string
     date?: string
     tour?: string
-    quad?: string
-    passenger?: string
+    atvs?: string
+    passengers?: string
     comment?: string
   }>({})
 
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [isModelOpen, setIsModalOpen] = useState(false)
+  const [serverError, setServerError] = useState<string | null>(null)
+
+  /* ✅ Field Validation */
   const validateField = (name: string, value: string) => {
+    if (name == 'comment') return ''
+
     if (!value) {
       return t(`ui.forms.booking-form.inputs.${name}.errors.required`, lang)
     }
 
     let error = ''
 
-    if (name == 'email' && !/^\S+@\S+\.\S+$/.test(value)) {
+    if (name === 'email' && !/^\S+@\S+\.\S+$/.test(value)) {
       error = t(
         `ui.forms.booking-form.inputs.${name}.errors.wrong-format`,
         lang
@@ -38,8 +48,8 @@ export function useBookingForm(lang: string) {
     }
 
     if (
-      name == 'phone' &&
-      !/^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/.test(
+      name === 'phone' &&
+      !/^\+?\d{1,3}?[-.\s]?\(?\d{1,4}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
         value
       )
     ) {
@@ -52,6 +62,7 @@ export function useBookingForm(lang: string) {
     return error
   }
 
+  /* ✅ Update Field */
   const updateField = (name: string, value: string) => {
     /* Update form state */
     setFormData((prev) => ({ ...prev, [name]: value }))
@@ -59,11 +70,59 @@ export function useBookingForm(lang: string) {
     setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }))
   }
 
-  const submitForm = () => {
+  /* ✅ Form Submission */
+  const submitForm = async () => {
+    setLoading(true)
+    setServerError(null)
+    setSuccess(false)
+
+    /* Validate all fields */
+    let hasErrors = false
     Object.entries(formData).forEach(([key, value]) => {
-      setErrors((prev) => ({ ...prev, [key]: validateField(key, value) }))
+      const error = validateField(key, value)
+      if (error !== '') hasErrors = true
+      setErrors((prev) => ({ ...prev, [key]: error }))
     })
+
+    /* Stop submission if there are errors */
+    if (hasErrors) {
+      setLoading(false)
+      return
+    }
+
+    setIsModalOpen(true)
+
+    /* try {
+      await axios.post('/api/bookings', formData)
+      setSuccess(true)
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        date: '',
+        tour: '',
+        atvs: '2',
+        passengers: '0',
+        comment: '',
+      })
+    } catch (err: any) {
+      setServerError(
+        err.response?.data?.error || 'An error occurred. Please try again.'
+      )
+    } finally {
+      setLoading(false)
+    } */
   }
 
-  return { formData, errors, updateField, submitForm }
+  return {
+    formData,
+    errors,
+    loading,
+    success,
+    serverError,
+    isModelOpen,
+    setIsModalOpen,
+    updateField,
+    submitForm,
+  }
 }

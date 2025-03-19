@@ -7,6 +7,7 @@ interface Props {
   fullWidth?: boolean
   isDisabled?: boolean
   className?: string
+  type?: 'submit' | 'reset' | 'button'
   onClick?: () => void
 }
 
@@ -15,12 +16,15 @@ const ButtonPrimary: React.FunctionComponent<Props> = ({
   fullWidth = false,
   isDisabled,
   className,
+  type,
   onClick,
 }) => {
   return (
     <button
+      type={type}
       className={`${className} padding-x-lg font-bold box-shadow-light ${!isDisabled ? 'button-primary-enabled' : 'button-primary-disabled'} ${fullWidth ? 'width-full' : ''}`}
-      onClick={() => {
+      onClick={(e) => {
+        e.preventDefault()
         !isDisabled && onClick && onClick()
       }}
     >

@@ -3,6 +3,3 @@
 !.vscode/extensions.json
 .idea
 .DS_Store
-
-node_modules
-dist

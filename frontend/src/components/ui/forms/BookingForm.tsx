@@ -28,7 +28,12 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
 
   return (
     <>
-      <form className="width-full booking-form box-shadow-medium border-rounded-md padding-x-4xl padding-y-2xl form-container">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault()
+        }}
+        className="width-full booking-form box-shadow-medium border-rounded-md padding-x-4xl padding-y-2xl form-container"
+      >
         <h3 className="text-center">
           {t(`ui.forms.booking-form.title`, lang)}
         </h3>
@@ -141,6 +146,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
                   `ui.forms.booking-form.inputs.passenger.helper-text`,
                   lang
                 )}
+                onChange={updateField}
               ></NumberInputOutline>
             </div>
           </fieldset>
@@ -173,7 +179,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
           setIsModalOpen(false)
         }}
       >
-        <Checkout amount={5000}></Checkout>
+        <Checkout amount={5000} bookingDetails={formData}></Checkout>
       </Modal>
     </>
   )

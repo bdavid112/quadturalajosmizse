@@ -151,36 +151,6 @@
     "tours": {
       "title": "Choose Between Two Exciting Quad Tours!",
       "subtitle": "Discover the beauty of nature and enjoy the freedom of our quads!\nWe offer two different tours, ensuring that everyone finds the perfect adventure for themselves.",
-      "tours": [
-        {
-          "title": "40 km Tour – Pusztavacs, the Geographical Center of Hungary",
-          "desc": "This shorter route is ideal if you are trying quad tours for the first time or have limited time but still want an unforgettable experience.",
-          "attribs": [
-            "<strong>Route:</strong> Lajosmizse – Táborfalva – Örkény – Pusztavacs – return",
-            "<strong>80% dirt road</strong>",
-            "<strong>Duration:</strong> ~1.5 hours",
-            "<strong>Price:</strong> 25,000 HUF / quad + 5,000 HUF / passenger"
-          ],
-          "buttons": {
-            "primary": "I'm Interested",
-            "secondary": "More Details"
-          }
-        },
-        {
-          "title": "80 km Tour – Across the Shooting Range to the Geographical Center",
-          "desc": "Recommended for experienced riders who want a longer route with varied terrain conditions.",
-          "attribs": [
-            "<strong>Route:</strong> Lajosmizse – Táborfalva – Tatárszentgyörgy – Dabas – Újhartyán – Pusztavacs – return",
-            "<strong>70% dirt road</strong>",
-            "<strong>Duration:</strong> ~2.5 hours",
-            "<strong>Price:</strong> 35,000 HUF / quad + 7,000 HUF / passenger"
-          ],
-          "buttons": {
-            "primary": "I'm Interested",
-            "secondary": "More Details"
-          }
-        }
-      ],
       "info": {
         "title": "Important Information",
         "info": [

@@ -23,8 +23,7 @@ const ButtonPrimary: React.FunctionComponent<Props> = ({
     <button
       type={type}
       className={`${className} padding-x-lg font-bold box-shadow-light ${!isDisabled ? 'button-primary-enabled' : 'button-primary-disabled'} ${fullWidth ? 'width-full' : ''}`}
-      onClick={(e) => {
-        e.preventDefault()
+      onClick={() => {
         !isDisabled && onClick && onClick()
       }}
     >

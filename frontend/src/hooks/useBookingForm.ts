@@ -26,7 +26,6 @@ export function useBookingForm(lang: string) {
   }>({})
 
   const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(false)
   const [isModelOpen, setIsModalOpen] = useState(false)
   const [serverError, setServerError] = useState<string | null>(null)
 
@@ -74,7 +73,6 @@ export function useBookingForm(lang: string) {
   const submitForm = async () => {
     setLoading(true)
     setServerError(null)
-    setSuccess(false)
 
     /* Validate all fields */
     let hasErrors = false
@@ -91,34 +89,12 @@ export function useBookingForm(lang: string) {
     }
 
     setIsModalOpen(true)
-
-    /* try {
-      await axios.post('/api/bookings', formData)
-      setSuccess(true)
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        date: '',
-        tour: '',
-        atvs: '2',
-        passengers: '0',
-        comment: '',
-      })
-    } catch (err: any) {
-      setServerError(
-        err.response?.data?.error || 'An error occurred. Please try again.'
-      )
-    } finally {
-      setLoading(false)
-    } */
   }
 
   return {
     formData,
     errors,
     loading,
-    success,
     serverError,
     isModelOpen,
     setIsModalOpen,

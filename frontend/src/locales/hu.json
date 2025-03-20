@@ -151,36 +151,6 @@
     "tours": {
       "title": "Válassz két izgalmas quad túra közül!",
       "subtitle": "Fedezd fel a természet szépségeit és élvezd a szabadságot quadjainkkal!\n Két különböző túrát kínálunk, így mindenki megtalálhatja a számára megfelelő kihívást.",
-      "tours": [
-        {
-          "title": "40 km-es túra – Pusztavacs, Magyarország földrajzi közepe",
-          "desc": "Ez a rövidebb útvonal ideális választás, ha először próbálnád ki a quad túrázást vagy kevesebb időd van, de mégis egy felejthetetlen élményre vágysz.",
-          "attribs": [
-            "<strong>Útvonal:</strong> Lajosmizse – Táborfalva – Örkény – Pusztavacs  – vissza",
-            "<strong>80% földút</strong>",
-            "<strong>Időtartam:</strong> ~ 1,5 óra",
-            "<strong>Ár:</strong> 25 000 Ft / quad + 5 000 Ft / utas"
-          ],
-          "buttons": {
-            "primary": "Érdekel",
-            "secondary": "További részletek"
-          }
-        },
-        {
-          "title": "80 km-es túra – A lőtéren át a földrajzi középpontig",
-          "desc": "Tapasztaltabb túrázóknak ajánljuk, akik egy hosszabb, változatos terepviszonyokkal tarkított útvonalat szeretnének bejárni.",
-          "attribs": [
-            "<strong>Útvonal:</strong> Lajosmizse – Táborfalva – Tatárszentgyörgy – Dabas – Újhartyán – Pusztavacs – vissza",
-            "<strong>70% földút</strong>",
-            "<strong>Időtartam:</strong> ~ 2,5 óra",
-            "<strong>Ár:</strong> 35 000 Ft / quad + 7 000 Ft / utas"
-          ],
-          "buttons": {
-            "primary": "Érdekel",
-            "secondary": "További részletek"
-          }
-        }
-      ],
       "info": {
         "title": "Fontos tudnivalók",
         "info": [

@@ -2,10 +2,15 @@ import AdminJS, { ComponentLoader } from "adminjs";
 import AdminJSExpress from "@adminjs/express";
 import * as AdminJSMongoose from "@adminjs/mongoose";
 import bcrypt from "bcrypt";
-import mongoose from "mongoose";
 
 import AdminUser from "../models/AdminUser.js";
 import { SESSION_SECRET } from "../config/env.js";
+import { locale } from "./locales/hu.js";
+
+import Booking from "../models/Booking.js";
+import bookingResourceOptions from "./bookingResourceOptions.js";
+import Tour from "../models/Tour.js";
+import tourResourceOptions from "./tourResourceOptions.js";
 
 // Load Dashboard Component
 const componentLoader = new ComponentLoader();
@@ -17,10 +22,20 @@ const Components = {
 AdminJS.registerAdapter(AdminJSMongoose);
 
 const admin = new AdminJS({
-  databases: [mongoose],
+  resources: [
+    {
+      resource: Booking,
+      options: bookingResourceOptions,
+    },
+    {
+      resource: Tour,
+      options: tourResourceOptions,
+    },
+  ],
   rootPath: "/admin",
   dashboard: { component: Components.Dashboard },
   componentLoader,
+  locale,
 });
 
 // Secure Admin Panel

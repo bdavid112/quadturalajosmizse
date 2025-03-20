@@ -9,29 +9,25 @@ export interface ITour extends Document {
     en: string;
     hu: string;
   };
-  description: {
-    short: {
-      en: string;
-      hu: string;
-    };
-    long: {
-      en: string;
-      hu: string;
-    };
+  descriptionShort: {
+    en: string;
+    hu: string;
+  };
+  descriptionLong: {
+    en: string;
+    hu: string;
   };
   attributes: {
     en: string[];
     hu: string[];
   };
-  buttons: {
-    en: {
-      primary: string;
-      secondary: string;
-    };
-    hu: {
-      primary: string;
-      secondary: string;
-    };
+  buttonPrimary: {
+    en: string;
+    hu: string;
+  };
+  buttonSecondary: {
+    en: string;
+    hu: string;
   };
   prices: {
     atvPrice: number;
@@ -54,22 +50,17 @@ const TourSchema: Schema = new Schema({
     }),
     required: true,
   },
-  description: {
+  descriptionShort: {
     type: new Schema({
-      en: {
-        type: new Schema({
-          short: { type: String, required: true },
-          long: { type: String, required: true },
-        }),
-        required: true,
-      },
-      hu: {
-        type: new Schema({
-          short: { type: String, required: true },
-          long: { type: String, required: true },
-        }),
-        required: true,
-      },
+      en: { type: String, required: true },
+      hu: { type: String, required: true },
+    }),
+    required: true,
+  },
+  descriptionLong: {
+    type: new Schema({
+      en: { type: String, required: true },
+      hu: { type: String, required: true },
     }),
     required: true,
   },
@@ -80,24 +71,17 @@ const TourSchema: Schema = new Schema({
     }),
     required: true,
   },
-  buttons: {
+  buttonPrimary: {
     type: new Schema({
-      en: {
-        type: new Schema({
-          primary: { type: String, required: true },
-          secondary: { type: String, required: true },
-        }),
-        required: true,
-      },
-      hu: {
-        type: new Schema({
-          primary: { type: String, required: true },
-          secondary: { type: String, required: true },
-        }),
-        required: true,
-      },
+      en: { type: String, required: true },
+      hu: { type: String, required: true },
     }),
-    required: true,
+  },
+  buttonSecondary: {
+    type: new Schema({
+      en: { type: String, required: true },
+      hu: { type: String, required: true },
+    }),
   },
   prices: {
     type: new Schema({

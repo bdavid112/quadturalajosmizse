@@ -81,3 +81,7 @@ export const formatTextWithBreaksAndStrongTags = (
 export const formatTextWithParagraphs = (text: string, separator = '\n\n') => {
   return text.split(separator).map((part, index) => <p key={index}>{part}</p>)
 }
+
+export const formatDateForInput = (isoString: string) => {
+  return isoString.split('T')[0] // Extract only the date part
+}

@@ -55,7 +55,7 @@ const Footer: React.FunctionComponent<Props> = ({}) => {
   ]
 
   return (
-    <footer className="width-full z-top footer flex justify-center padding-y-3xl relative">
+    <footer className="width-full z-overlay footer flex justify-center padding-y-3xl relative">
       <nav className="flex justify-between" aria-label="Footer Navigation">
         <div className="flex flex-col flex-gap-lg">
           <div className="flex flex-gap-sm">

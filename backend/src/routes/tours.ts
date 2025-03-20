@@ -38,16 +38,37 @@ router.get("/:id", async (req: Request, res: Response): Promise<any> => {
 /* Create a new Tour */
 router.post("/", async (req: Request, res: Response): Promise<any> => {
   try {
-    const { name, description, attributes, buttons, prices } = req.body;
-    if (!name || !description || !attributes || !buttons || !prices) {
+    const {
+      name,
+      title,
+      descriptionShort,
+      descriptionLong,
+      attributes,
+      buttonPrimary,
+      buttonSecondary,
+      prices,
+    } = req.body;
+    if (
+      !name ||
+      !title ||
+      !descriptionShort ||
+      !descriptionLong ||
+      !attributes ||
+      !buttonPrimary ||
+      !buttonSecondary ||
+      !prices
+    ) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
     const newTour: ITour = new Tour({
       name,
-      description,
+      title,
+      descriptionShort,
+      descriptionLong,
       attributes,
-      buttons,
+      buttonPrimary,
+      buttonSecondary,
       prices,
     });
 

@@ -8,6 +8,7 @@ import { useDatePicker } from '../../../hooks/useDatePicker'
 import { useAutoClose } from '../../../hooks/useAutoClose'
 import { useDatePickerKeyboardNav } from '../../../hooks/useDatePickerKeyboardNav'
 import { useLocalization } from '../../../context/LocalizationContext'
+import { formatDateForInput } from '@utils/formatText'
 
 interface Props {
   id: string
@@ -122,7 +123,9 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
         <input
           id={id}
           name={name}
-          value={selectedDate ? selectedDate.toISOString() : ''}
+          value={
+            selectedDate ? formatDateForInput(selectedDate.toISOString()) : ''
+          }
           type="date"
           onChange={() => {}}
           disabled={true}

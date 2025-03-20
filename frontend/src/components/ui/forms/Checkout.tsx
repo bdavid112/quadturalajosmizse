@@ -47,16 +47,18 @@ const Checkout: React.FC<Props> = ({ bookingDetails }) => {
   }, [bookingDetails])
 
   useEffect(() => {
-    axios
-      .post('/api/payment-intent', { amount: amount * 100, currency: 'huf' })
-      .then((res) => {
-        setClientSecret(res.data.clientSecret)
-        setLoading(false)
-      })
-      .catch((err) => {
-        console.error('Error fetching clientSecret:', err)
-        setLoading(false)
-      })
+    if (amount > 0) {
+      axios
+        .post('/api/payment-intent', { amount: amount * 100, currency: 'huf' })
+        .then((res) => {
+          setClientSecret(res.data.clientSecret)
+          setLoading(false)
+        })
+        .catch((err) => {
+          console.error('Error fetching clientSecret:', err)
+          setLoading(false)
+        })
+    }
   }, [amount])
 
   return loading ? (

@@ -1,7 +1,7 @@
 import { useRef, useState, useCallback } from 'react'
 
 interface Option {
-  value: number
+  value: string
   label: string
 }
 
@@ -37,8 +37,8 @@ export const useDropdownKeyboardNav = (
 
   /* Handle selecting an option */
 
-  const handleOptionClick = (optionValue: number) => {
-    const option = options.find((o) => o.value == optionValue)
+  const handleOptionClick = (optionValue: string) => {
+    const option = options.find((o) => o.value === optionValue)
     if (option) {
       setSelectedOption(option)
       onChange && onChange(name, option.value.toString())

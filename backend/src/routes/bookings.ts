@@ -19,9 +19,18 @@ router.get("/", async (_req: Request, res: Response): Promise<any> => {
 /* Create a new Booking */
 router.post("/", async (req: Request, res: Response): Promise<any> => {
   try {
-    const { name, email, phone, date, tour, atvs, passengers, comment } =
-      req.body;
-    if (!name || !email || !phone || !date || !tour || !atvs) {
+    const {
+      name,
+      email,
+      phone,
+      date,
+      tour,
+      atvs,
+      passengers,
+      comment,
+      revenue,
+    } = req.body;
+    if (!name || !email || !phone || !date || !tour || !atvs || !revenue) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
@@ -34,6 +43,7 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
       atvs,
       passengers,
       comment,
+      revenue,
     });
 
     await newBooking.save();

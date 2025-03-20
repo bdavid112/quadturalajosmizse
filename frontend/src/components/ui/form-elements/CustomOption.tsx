@@ -4,7 +4,7 @@ import './custom-option.scss'
 import Icon from '../IconComponent'
 
 interface Option {
-  value: number
+  value: string
   label: string
 }
 

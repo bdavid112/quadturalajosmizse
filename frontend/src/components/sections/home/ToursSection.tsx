@@ -19,7 +19,7 @@ const ToursSection: React.FunctionComponent<Props> = ({}) => {
   const [overviews, setOverviews] = useState<
     {
       title: string
-      description: string
+      desc: string
       attribs: string[]
       buttons: { primary: string; secondary: string }
     }[]
@@ -32,8 +32,8 @@ const ToursSection: React.FunctionComponent<Props> = ({}) => {
       .get('/api/tours')
       .then((res) => {
         const tours = res.data.map((tour: any) => ({
-          title: tour.name[lang],
-          description: tour.description[lang].short,
+          title: tour.title[lang],
+          desc: tour.description[lang].short,
           attribs: tour.attributes[lang],
           buttons: {
             primary: tour.buttons[lang].primary,
@@ -65,7 +65,7 @@ const ToursSection: React.FunctionComponent<Props> = ({}) => {
             <TourOverview
               key={index}
               title={overview.title}
-              description={overview.description}
+              description={overview.desc}
               attributes={overview.attribs}
               img={images[index]}
               buttonLabels={overview.buttons}

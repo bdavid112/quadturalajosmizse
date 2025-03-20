@@ -7,7 +7,6 @@ import PaymentForm from './PaymentForm'
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY!)
 
 interface Props {
-  amount: number
   bookingDetails: {
     name: string
     email: string
@@ -17,16 +16,39 @@ interface Props {
     atvs: string
     passengers?: string
     comment: string
+    revenue?: number
   }
 }
 
-const Checkout: React.FC<Props> = ({ amount, bookingDetails }) => {
+const Checkout: React.FC<Props> = ({ bookingDetails }) => {
   const [clientSecret, setClientSecret] = useState('')
   const [loading, setLoading] = useState(true)
+  const [amount, setAmount] = useState(0)
+
+  useEffect(() => {
+    if (!bookingDetails.tour) return
+
+    axios
+      .get(`/api/tours/${bookingDetails.tour}`)
+      .then((res) => {
+        console.log(bookingDetails)
+        let totalPrice
+        totalPrice = res.data.prices.atvPrice * Number(bookingDetails.atvs)
+        totalPrice =
+          totalPrice +
+          res.data.prices.passengerPrice * Number(bookingDetails.passengers)
+        setAmount(totalPrice)
+        bookingDetails.revenue = totalPrice
+      })
+      .catch((err) => {
+        console.error('Error fetching tour:', err)
+        setLoading(false)
+      })
+  }, [bookingDetails])
 
   useEffect(() => {
     axios
-      .post('/api/payment-intent', { amount: amount * 100, currency: 'usd' }) // Convert amount to cents
+      .post('/api/payment-intent', { amount: amount * 100, currency: 'huf' })
       .then((res) => {
         setClientSecret(res.data.clientSecret)
         setLoading(false)

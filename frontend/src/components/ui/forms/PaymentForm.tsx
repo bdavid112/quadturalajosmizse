@@ -55,8 +55,7 @@ const PaymentForm: React.FC<Props> = ({ amount, bookingDetails }) => {
     <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: 'auto' }}>
       <h2 className="margin-bottom-lg">Checkout</h2>
       <p>
-        Amount to Pay:{' '}
-        <strong className="text-primary">${amount.toFixed(2)}</strong>
+        Amount to Pay: <strong className="text-primary">{amount} HUF</strong>
       </p>
       <PaymentElement />
       <ButtonPrimary

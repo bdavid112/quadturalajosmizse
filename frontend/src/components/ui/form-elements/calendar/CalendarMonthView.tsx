@@ -33,9 +33,10 @@ const CalendarMonthView: React.FunctionComponent<Props> = ({
               key={index}
               icon="check"
               option={option}
-              isSelected={option.value == selectedMonth}
+              isSelected={Number(option.value) == selectedMonth}
               onClick={() => {
-                handleOptionSelect && handleOptionSelect(option.value, true)
+                handleOptionSelect &&
+                  handleOptionSelect(Number(option.value), true)
               }}
             ></CustomOption>
           ))}

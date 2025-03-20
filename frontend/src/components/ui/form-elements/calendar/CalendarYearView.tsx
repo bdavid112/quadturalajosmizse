@@ -30,9 +30,10 @@ const CalendarYearView: React.FunctionComponent<Props> = ({
               key={index}
               icon="check"
               option={option}
-              isSelected={option.value == selectedYear}
+              isSelected={Number(option.value) == selectedYear}
               onClick={() => {
-                handleOptionSelect && handleOptionSelect(option.value, true)
+                handleOptionSelect &&
+                  handleOptionSelect(Number(option.value), true)
               }}
             ></CustomOption>
           ))}

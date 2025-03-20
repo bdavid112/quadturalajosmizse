@@ -12,11 +12,36 @@ import ButtonPrimary from '../buttons/ButtonPrimary'
 import { useBookingForm } from '@hooks/useBookingForm'
 import Modal from '../Modal'
 import Checkout from './Checkout'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 interface Props {}
 
 const BookingForm: React.FunctionComponent<Props> = ({}) => {
+  const [tourOptions, setTourOptions] = useState<
+    {
+      label: string
+      value: string
+    }[]
+  >([])
+
   const { lang } = useLocalization()
+
+  useEffect(() => {
+    axios
+      .get('/api/tours')
+      .then((res) => {
+        const options = res.data.map((tour: any) => ({
+          label: tour.name[lang],
+          value: tour._id,
+        }))
+        setTourOptions(options)
+      })
+      .catch((err) => {
+        console.error('Error fetching tours:', err)
+      })
+  })
+
   const {
     formData,
     errors,
@@ -109,10 +134,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
                   `ui.forms.booking-form.inputs.tour.helper-text`,
                   lang
                 )}
-                options={[
-                  { label: '40km-es túra', value: 0 },
-                  { label: '80km-es túra', value: 1 },
-                ]}
+                options={tourOptions}
                 handleOnChange={updateField}
               ></DropdownOutline>
             </div>
@@ -123,8 +145,8 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
             </legend>
             <div className="width-half inline-block">
               <NumberInputOutline
-                id="quad"
-                name="quad"
+                id="atvs"
+                name="atvs"
                 label={t(`ui.forms.booking-form.inputs.quad.label`, lang)}
                 min={2}
                 max={4}
@@ -137,8 +159,8 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
             </div>
             <div className="width-half inline-block">
               <NumberInputOutline
-                id="passenger"
-                name="passenger"
+                id="passengers"
+                name="passengers"
                 label={t(`ui.forms.booking-form.inputs.passenger.label`, lang)}
                 min={0}
                 max={Number(formData.atvs)}
@@ -179,7 +201,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
           setIsModalOpen(false)
         }}
       >
-        <Checkout amount={5000} bookingDetails={formData}></Checkout>
+        {isModelOpen && <Checkout bookingDetails={formData}></Checkout>}
       </Modal>
     </>
   )

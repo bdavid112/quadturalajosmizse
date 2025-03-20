@@ -16,6 +16,25 @@ router.get("/", async (_req: Request, res: Response): Promise<any> => {
   }
 });
 
+/* Gett Tour by ID */
+router.get("/:id", async (req: Request, res: Response): Promise<any> => {
+  try {
+    const { id } = req.params;
+    const tour = await Tour.findById(id);
+
+    if (!tour) {
+      return res.status(404).json({ error: "Tour not found" });
+    }
+
+    return res.json(tour);
+  } catch (error) {
+    return res.status(500).json({
+      error: "Failed to fetch tour",
+      details: (error as Error).message,
+    });
+  }
+});
+
 /* Create a new Tour */
 router.post("/", async (req: Request, res: Response): Promise<any> => {
   try {

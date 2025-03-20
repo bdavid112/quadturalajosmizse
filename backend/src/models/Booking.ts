@@ -9,6 +9,7 @@ export interface IBooking extends Document {
   atvs: number;
   passengers?: number;
   comment: string;
+  revenue: number;
 }
 
 const BookingSchema: Schema = new Schema({
@@ -18,8 +19,9 @@ const BookingSchema: Schema = new Schema({
   date: { type: String, required: true },
   tour: { type: String, required: true },
   atvs: { type: Number, required: true },
-  passengers: { type: Number },
+  passengers: { type: Number, required: true },
   comment: { type: String },
+  revenue: { type: Number, required: true },
 });
 
 export default mongoose.model<IBooking>("Booking", BookingSchema);

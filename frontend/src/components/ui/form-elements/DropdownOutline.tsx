@@ -11,8 +11,8 @@ import { useLocalization } from '../../../context/LocalizationContext'
 import { t } from '../../../utils/translator'
 
 interface Option {
-  value: number
   label: string
+  value: string
 }
 
 interface Props {

@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 
 interface Option {
-  value: number
+  value: string
   label: string
 }
 

@@ -5,6 +5,10 @@ export interface ITour extends Document {
     en: string;
     hu: string;
   };
+  title: {
+    en: string;
+    hu: string;
+  };
   description: {
     short: {
       en: string;
@@ -37,6 +41,13 @@ export interface ITour extends Document {
 
 const TourSchema: Schema = new Schema({
   name: {
+    type: new Schema({
+      en: { type: String, required: true },
+      hu: { type: String, required: true },
+    }),
+    required: true,
+  },
+  title: {
     type: new Schema({
       en: { type: String, required: true },
       hu: { type: String, required: true },

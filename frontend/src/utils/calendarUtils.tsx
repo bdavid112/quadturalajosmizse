@@ -53,7 +53,7 @@ export const isToday = (year: number, month: number, day: number) => {
 export const generateYearOptions = (minYear: number, maxYear: number) => {
   const yearOptions = []
   for (let i = minYear; i <= maxYear; i++) {
-    yearOptions.push({ label: i.toString(), value: i })
+    yearOptions.push({ label: i.toString(), value: i.toString() })
   }
   return yearOptions
 }
@@ -64,7 +64,7 @@ export const generateMonthOptions = (lang: string) => {
   const monthOptions = []
   for (let i = 0; i < 12; i++) {
     const month = t(`ui.calendar.months.long.${i}`, lang)
-    monthOptions.push({ label: month, value: i })
+    monthOptions.push({ label: month.toString(), value: i.toString() })
   }
   return monthOptions
 }

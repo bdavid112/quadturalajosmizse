@@ -3,7 +3,6 @@ import AdminJSExpress from "@adminjs/express";
 import * as AdminJSMongoose from "@adminjs/mongoose";
 import bcrypt from "bcrypt";
 
-import AdminUser from "../models/AdminUser.js";
 import { SESSION_SECRET } from "../config/env.js";
 import { locale } from "./locales/hu.js";
 
@@ -11,6 +10,8 @@ import Booking from "../models/Booking.js";
 import bookingResourceOptions from "./bookingResourceOptions.js";
 import Tour from "../models/Tour.js";
 import tourResourceOptions from "./tourResourceOptions.js";
+import AdminUser from "../models/AdminUser.js";
+import adminUserResourceOptions from "./adminUserResourceOptions.js";
 
 // Load Dashboard Component
 const componentLoader = new ComponentLoader();
@@ -31,10 +32,14 @@ const admin = new AdminJS({
       resource: Tour,
       options: tourResourceOptions,
     },
+    {
+      resource: AdminUser,
+      options: adminUserResourceOptions,
+    },
   ],
   rootPath: "/admin",
-  dashboard: { component: Components.Dashboard },
-  componentLoader,
+  /* dashboard: { component: Components.Dashboard },
+  componentLoader, */
   locale,
 });
 
@@ -45,7 +50,7 @@ const adminRouter = AdminJSExpress.buildAuthenticatedRouter(
     authenticate: async (email, password) => {
       const user = await AdminUser.findOne({ email });
       if (user && (await bcrypt.compare(password, user.password))) {
-        return { email: user.email };
+        return { _id: user._id, email: user.email, role: user.role };
       }
       return null;
     },

@@ -3,13 +3,27 @@ export const locale = {
   availableLanguages: ["hu"],
   translations: {
     hu: {
+      components: {
+        Login: {
+          welcomeHeader: "Üdvözöljük az Admin Felületen!",
+          welcomeMessage:
+            "Kezeld egyszerűen és hatékonyan a foglalásokat és túrákat ezen a biztonságos adminisztrációs panelen keresztül",
+          properties: {
+            email: "Email",
+            password: "Jelszó",
+          },
+          loginButton: "Bejelentkezés",
+        },
+      },
       labels: {
         navigation: "Navigáció",
         dashboard: "Vezérlőpult",
         filters: "Szűrők",
         selectedRecords: "Kijelölt elemek",
+        loginWelcome: "Bejelentkezés az adminisztrációs rendszerbe",
         Booking: "Foglalások",
         Tour: "Túrák",
+        AdminUser: "Felhasználók",
       },
       properties: {
         name: "Név",
@@ -27,6 +41,7 @@ export const locale = {
         prices: "Árak",
         buttonPrimary: "Elsődleges gomb",
         buttonSecondary: "Másodlagos gomb",
+        password: "Jelszó",
       },
       buttons: {
         save: "Mentés",
@@ -37,6 +52,7 @@ export const locale = {
         confirmRemovalMany: "Kijelöltek törlése",
         confirmRemovalMany_plural: "Kijelöltek törlése",
         logout: "Kijelentkezés",
+        createFirstRecord: "Első rekord létrehozása",
       },
       actions: {
         list: "Lista",
@@ -56,6 +72,7 @@ export const locale = {
         successfullyCreated: "Sikeresen létrehozva!",
         successfullyUpdated: "Sikeresen frissítve!",
         theseRecordsWillBeRemoved_plural: "Ezek az elemek törölve lesznek",
+        invalidCredentials: "Helytelen e-mail cím vagy jelszó",
       },
       resources: {
         Booking: {

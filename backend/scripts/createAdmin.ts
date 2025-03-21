@@ -8,6 +8,7 @@ dotenv.config();
 const args = process.argv.slice(2);
 const email = args[0];
 const password = args[1];
+const role = args[2] || "admin";
 
 if (!email || !password) {
   console.error(
@@ -31,6 +32,7 @@ const createAdmin = async () => {
     const newAdmin = new AdminUser({
       email,
       password,
+      role,
     });
 
     await newAdmin.save();

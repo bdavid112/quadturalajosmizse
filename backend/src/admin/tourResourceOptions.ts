@@ -20,7 +20,42 @@ const tourResourceOptions: ResourceOptions = {
     "buttonPrimary",
     "buttonSecondary",
   ],
-  filterProperties: [], // ✅ Fields available in the filter panel
+  filterProperties: [],
+  actions: {
+    new: {
+      isAccessible: ({ currentAdmin }) => {
+        if (!currentAdmin) return false;
+        return (
+          currentAdmin.role === "superuser" || currentAdmin.role === "owner"
+        );
+      },
+    },
+    edit: {
+      isAccessible: ({ currentAdmin }) => {
+        if (!currentAdmin) return false;
+        return (
+          currentAdmin.role === "superuser" || currentAdmin.role === "owner"
+        );
+      },
+    },
+    delete: {
+      isAccessible: ({ currentAdmin, record }) => {
+        if (!currentAdmin) return false;
+        return (
+          currentAdmin.role === "superuser" || currentAdmin.role === "owner"
+        );
+      },
+    },
+    bulkDelete: {
+      isAccessible: ({ currentAdmin, record }) => {
+        if (!currentAdmin || !record) return false;
+        if (!currentAdmin) return false;
+        return (
+          currentAdmin.role === "superuser" || currentAdmin.role === "owner"
+        );
+      },
+    },
+  },
 };
 
 export default tourResourceOptions;

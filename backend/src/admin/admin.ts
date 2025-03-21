@@ -19,54 +19,48 @@ const Components = {
   Dashboard: componentLoader.add("Dashboard", "./dashboard"),
 };
 
-// Configure AdminJS
-AdminJS.registerAdapter(AdminJSMongoose);
+export async function buildAdminPanel() {
+  // Configure AdminJS
+  AdminJS.registerAdapter(AdminJSMongoose);
 
-const admin = new AdminJS({
-  resources: [
-    {
-      resource: Booking,
-      options: bookingResourceOptions,
+  const admin = new AdminJS({
+    resources: [
+      { resource: Booking, options: bookingResourceOptions },
+      { resource: Tour, options: tourResourceOptions },
+      { resource: AdminUser, options: adminUserResourceOptions },
+    ],
+    rootPath: "/admin",
+    locale,
+    dashboard: {
+      component: Components.Dashboard,
     },
-    {
-      resource: Tour,
-      options: tourResourceOptions,
-    },
-    {
-      resource: AdminUser,
-      options: adminUserResourceOptions,
-    },
-  ],
-  rootPath: "/admin",
-  /* dashboard: { component: Components.Dashboard },
-  componentLoader, */
-  locale,
-});
+    componentLoader,
+  });
 
-// Secure Admin Panel
-const adminRouter = AdminJSExpress.buildAuthenticatedRouter(
-  admin,
-  {
-    authenticate: async (email, password) => {
-      const user = await AdminUser.findOne({ email });
-      if (user && (await bcrypt.compare(password, user.password))) {
-        return { _id: user._id, email: user.email, role: user.role };
-      }
-      return null;
+  const adminRouter = AdminJSExpress.buildAuthenticatedRouter(
+    admin,
+    {
+      authenticate: async (email, password) => {
+        const user = await AdminUser.findOne({ email });
+        if (user && (await bcrypt.compare(password, user.password))) {
+          return { _id: user._id, email: user.email, role: user.role };
+        }
+        return null;
+      },
+      cookiePassword: SESSION_SECRET,
     },
-    cookiePassword: SESSION_SECRET,
-  },
-  null,
-  {
-    secret: SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      secure: process.env.NODE_ENV === "production",
-      httpOnly: true,
-      sameSite: "strict",
-    },
-  }
-);
+    null,
+    {
+      secret: SESSION_SECRET,
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        secure: process.env.NODE_ENV === "production",
+        httpOnly: true,
+        sameSite: "strict",
+      },
+    }
+  );
 
-export { admin, adminRouter };
+  return { admin, adminRouter };
+}

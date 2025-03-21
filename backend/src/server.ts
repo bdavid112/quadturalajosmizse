@@ -8,8 +8,8 @@ import connectDB from "./config/db.js";
 import bookingRoutes from "./routes/bookings.js";
 import tourRoutes from "./routes/tours.js";
 import paymentIntent from "./routes/paymentIntent.js";
-
-import { admin, adminRouter } from "./admin/admin.js";
+import analyticsRoutes from "./routes/adminAnalytics.js";
+import { buildAdminPanel } from "./admin/admin.js";
 
 /* Initialize Server */
 const app = express();
@@ -19,14 +19,16 @@ app.use(cors());
 app.use(express.json());
 
 /* Connect to MongoDB */
-connectDB();
+await connectDB();
 
 /* Register Routes */
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/tours", tourRoutes);
 app.use("/api/payment-intent", paymentIntent);
+app.use("/api/admin", analyticsRoutes);
 
 /* Register AdminJS */
+const { admin, adminRouter } = await buildAdminPanel();
 app.use(admin.options.rootPath, adminRouter);
 
 /* Serve Frontend */

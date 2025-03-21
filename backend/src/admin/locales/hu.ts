@@ -29,7 +29,7 @@ export const locale = {
         name: "Név",
         email: "E-mail",
         date: "Dátum",
-        tour: "Túra",
+        tourId: "Túra",
         atvs: "Quadok",
         passengers: "Utasok",
         comment: "Megjegyzés",

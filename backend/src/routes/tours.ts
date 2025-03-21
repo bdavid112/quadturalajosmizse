@@ -62,6 +62,7 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
     }
 
     const newTour: ITour = new Tour({
+      localizedTitle: name.hu,
       name,
       title,
       descriptionShort,

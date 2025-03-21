@@ -1,6 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface ITour extends Document {
+  localizedTitle: string;
   name: {
     en: string;
     hu: string;
@@ -36,6 +37,9 @@ export interface ITour extends Document {
 }
 
 const TourSchema: Schema = new Schema({
+  localizedTitle: {
+    type: String,
+  },
   name: {
     type: new Schema({
       en: { type: String, required: true },

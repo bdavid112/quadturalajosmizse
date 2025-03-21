@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import Booking, { IBooking } from "../models/Booking.js";
+import Tour from "../models/Tour.js";
 
 const router = express.Router();
 
@@ -19,27 +20,27 @@ router.get("/", async (_req: Request, res: Response): Promise<any> => {
 /* Create a new Booking */
 router.post("/", async (req: Request, res: Response): Promise<any> => {
   try {
-    const {
-      name,
-      email,
-      phone,
-      date,
-      tour,
-      atvs,
-      passengers,
-      comment,
-      revenue,
-    } = req.body;
-    if (!name || !email || !phone || !date || !tour || !atvs || !revenue) {
+    const { name, email, phone, date, tourId, atvs, passengers, comment } =
+      req.body;
+    if (!name || !email || !phone || !date || !tourId || !atvs) {
       return res.status(400).json({ error: "Missing required fields" });
     }
+
+    const tour = await Tour.findById(tourId);
+    if (!tour) {
+      throw new Error("Tour not found");
+    }
+
+    const tourPrices = tour.prices;
+    const revenue =
+      atvs * tourPrices.atvPrice + passengers * tourPrices.passengerPrice;
 
     const newBooking: IBooking = new Booking({
       name,
       email,
       phone,
-      date,
-      tour,
+      date: new Date(date),
+      tourId,
       atvs,
       passengers,
       comment,
@@ -54,6 +55,18 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
     return res
       .status(500)
       .json({ error: "Booking failed", details: (error as Error).message });
+  }
+});
+
+/* Create many new Bookings */
+router.post("/bulk", async (req, res) => {
+  try {
+    const bookings = req.body;
+    const inserted = await Booking.insertMany(bookings);
+    res.status(201).json(inserted);
+  } catch (err) {
+    console.error("Bulk insert failed:", err);
+    res.status(500).json({ error: "Failed to insert bookings" });
   }
 });
 

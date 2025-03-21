@@ -1,6 +1,7 @@
 import { ResourceOptions } from "adminjs";
 
 const tourResourceOptions: ResourceOptions = {
+  titleProperty: "localizedTitle",
   listProperties: ["name.hu", "prices.atvPrice", "prices.passengerPrice"], // ✅ Columns visible in table view
   showProperties: [
     "name",
@@ -39,7 +40,7 @@ const tourResourceOptions: ResourceOptions = {
       },
     },
     delete: {
-      isAccessible: ({ currentAdmin, record }) => {
+      isAccessible: ({ currentAdmin }) => {
         if (!currentAdmin) return false;
         return (
           currentAdmin.role === "superuser" || currentAdmin.role === "owner"

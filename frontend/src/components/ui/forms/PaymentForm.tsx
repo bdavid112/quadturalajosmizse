@@ -10,18 +10,28 @@ interface Props {
     email: string
     phone: string
     date: string
-    tour: string
+    tourId: string
     atvs: string
     passengers?: string
     comment: string
+    paidAt?: Date
+    isPaid?: boolean
   }
+  onSuccess?: () => void
 }
 
-const PaymentForm: React.FC<Props> = ({ amount, bookingDetails }) => {
+const PaymentForm: React.FC<Props> = ({
+  amount,
+  bookingDetails,
+  onSuccess,
+}) => {
   const stripe = useStripe()
   const elements = useElements()
+
   const [message, setMessage] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [countdown, setCountdown] = useState<number | null>(null)
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
@@ -42,6 +52,20 @@ const PaymentForm: React.FC<Props> = ({ amount, bookingDetails }) => {
       try {
         await axios.post('/api/bookings', bookingDetails)
         setMessage('Payment & booking successful! 🎉')
+        setSuccess(true)
+        setCountdown(5)
+
+        // Count down from 5 after payment success
+        const interval = setInterval(() => {
+          setCountdown((prev) => {
+            if (prev === 1) {
+              clearInterval(interval)
+              onSuccess && onSuccess()
+              return null
+            }
+            return prev! - 1
+          })
+        }, 1000)
       } catch (err) {
         setMessage('Payment successful, but booking failed! ❌')
         console.error('Booking error:', err)
@@ -59,18 +83,23 @@ const PaymentForm: React.FC<Props> = ({ amount, bookingDetails }) => {
       </p>
       <PaymentElement />
       <ButtonPrimary
-        label={loading ? 'Processing...' : 'Pay Now'}
+        label={
+          loading ? 'Processing...' : success ? 'Payment success' : 'Pay Now'
+        }
         type="submit"
-        isDisabled={!stripe || loading}
+        isDisabled={!stripe || loading || success}
         fullWidth={true}
         className="margin-top-lg"
       ></ButtonPrimary>
       {message && (
-        <p
-          className={`margin-top-sm ${message.includes('failed') ? 'text-error' : 'text-success'}`}
-        >
-          {message}
-        </p>
+        <div className="flex width-full justify-between margin-top-lg">
+          <p
+            className={`${message.includes('failed') ? 'text-error' : 'text-success'}`}
+          >
+            {message}
+          </p>
+          <span>{countdown}...</span>
+        </div>
       )}
     </form>
   )

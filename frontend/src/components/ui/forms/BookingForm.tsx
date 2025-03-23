@@ -43,10 +43,12 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
   })
 
   const {
+    formKey,
     formData,
     errors,
     isModelOpen,
     setIsModalOpen,
+    setSuccess,
     updateField,
     submitForm,
   } = useBookingForm(lang)
@@ -54,6 +56,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
   return (
     <>
       <form
+        key={formKey}
         onSubmit={(e) => {
           e.preventDefault()
         }}
@@ -126,12 +129,12 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
             </div>
             <div className="width-half inline-block">
               <DropdownOutline
-                id="tour"
-                name="tour"
-                label={t(`ui.forms.booking-form.inputs.tour.label`, lang)}
-                errorMessage={errors.tour}
+                id="tourId"
+                name="tourId"
+                label={t(`ui.forms.booking-form.inputs.tourId.label`, lang)}
+                errorMessage={errors.tourId}
                 helperText={t(
-                  `ui.forms.booking-form.inputs.tour.helper-text`,
+                  `ui.forms.booking-form.inputs.tourId.helper-text`,
                   lang
                 )}
                 options={tourOptions}
@@ -201,7 +204,15 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
           setIsModalOpen(false)
         }}
       >
-        {isModelOpen && <Checkout bookingDetails={formData}></Checkout>}
+        {isModelOpen && (
+          <Checkout
+            bookingDetails={formData}
+            onSuccess={() => {
+              setIsModalOpen(false)
+              setSuccess(true)
+            }}
+          ></Checkout>
+        )}
       </Modal>
     </>
   )

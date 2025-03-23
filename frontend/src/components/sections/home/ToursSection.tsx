@@ -33,11 +33,11 @@ const ToursSection: React.FunctionComponent<Props> = ({}) => {
       .then((res) => {
         const tours = res.data.map((tour: any) => ({
           title: tour.title[lang],
-          desc: tour.description[lang].short,
+          desc: tour.descriptionShort[lang],
           attribs: tour.attributes[lang],
           buttons: {
-            primary: tour.buttons[lang].primary,
-            secondary: tour.buttons[lang].secondary,
+            primary: tour.buttonPrimary[lang],
+            secondary: tour.buttonSecondary[lang],
           },
         }))
         setOverviews(tours)

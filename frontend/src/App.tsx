@@ -4,6 +4,7 @@ import { LocalizationProvider } from '@context/LocalizationContext'
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import { lazy, useEffect } from 'react'
 import HomePage from '@pages/HomePage'
+import { Toaster } from 'react-hot-toast'
 
 /* Lazy-load pages */
 const AboutUsPage = lazy(() => import('@pages/AboutUsPage'))
@@ -28,19 +29,22 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <LocalizationProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<HomePage />}></Route>
-          <Route path="/about-us" element={<AboutUsPage />}></Route>
-          <Route path="/tours" element={<ToursPage />}></Route>
-          <Route path="/atvs" element={<ATVsPage />}></Route>
-          <Route path="/gallery" element={<GalleryPage />}></Route>
-          <Route path="/faq" element={<FAQPage />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </LocalizationProvider>
+    <>
+      <Toaster position="top-center" />
+      <LocalizationProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<HomePage />}></Route>
+            <Route path="/about-us" element={<AboutUsPage />}></Route>
+            <Route path="/tours" element={<ToursPage />}></Route>
+            <Route path="/atvs" element={<ATVsPage />}></Route>
+            <Route path="/gallery" element={<GalleryPage />}></Route>
+            <Route path="/faq" element={<FAQPage />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </LocalizationProvider>
+    </>
   )
 }
 

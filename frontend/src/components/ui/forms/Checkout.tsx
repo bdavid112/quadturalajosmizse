@@ -12,33 +12,35 @@ interface Props {
     email: string
     phone: string
     date: string
-    tour: string
+    tourId: string
     atvs: string
     passengers?: string
     comment: string
-    revenue?: number
+    paidAt?: Date
+    isPaid?: boolean
   }
+  onSuccess?: () => void
 }
 
-const Checkout: React.FC<Props> = ({ bookingDetails }) => {
+const Checkout: React.FC<Props> = ({ bookingDetails, onSuccess }) => {
   const [clientSecret, setClientSecret] = useState('')
   const [loading, setLoading] = useState(true)
   const [amount, setAmount] = useState(0)
 
   useEffect(() => {
-    if (!bookingDetails.tour) return
+    if (!bookingDetails.tourId) return
 
     axios
-      .get(`/api/tours/${bookingDetails.tour}`)
+      .get(`/api/tours/${bookingDetails.tourId}`)
       .then((res) => {
-        console.log(bookingDetails)
         let totalPrice
         totalPrice = res.data.prices.atvPrice * Number(bookingDetails.atvs)
         totalPrice =
           totalPrice +
           res.data.prices.passengerPrice * Number(bookingDetails.passengers)
         setAmount(totalPrice)
-        bookingDetails.revenue = totalPrice
+        bookingDetails.paidAt = new Date()
+        bookingDetails.isPaid = true
       })
       .catch((err) => {
         console.error('Error fetching tour:', err)
@@ -65,7 +67,11 @@ const Checkout: React.FC<Props> = ({ bookingDetails }) => {
     <p>Loading payment options...</p>
   ) : clientSecret ? (
     <Elements stripe={stripePromise} options={{ clientSecret }}>
-      <PaymentForm amount={amount} bookingDetails={bookingDetails} />
+      <PaymentForm
+        amount={amount}
+        bookingDetails={bookingDetails}
+        onSuccess={onSuccess}
+      />
     </Elements>
   ) : (
     <p>Failed to load payment options.</p>

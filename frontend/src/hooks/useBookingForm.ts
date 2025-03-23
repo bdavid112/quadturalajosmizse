@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { t } from '@utils/translator'
+import toast from 'react-hot-toast'
 /* import axios from 'axios' */
 
 export function useBookingForm(lang: string) {
@@ -8,7 +9,7 @@ export function useBookingForm(lang: string) {
     email: '',
     phone: '',
     date: '',
-    tour: '',
+    tourId: '',
     atvs: '2',
     passengers: '0',
     comment: '',
@@ -19,15 +20,38 @@ export function useBookingForm(lang: string) {
     email?: string
     phone?: string
     date?: string
-    tour?: string
+    tourId?: string
     atvs?: string
     passengers?: string
     comment?: string
   }>({})
-
+  const [formKey, setFormKey] = useState(0)
   const [loading, setLoading] = useState(false)
   const [isModelOpen, setIsModalOpen] = useState(false)
   const [serverError, setServerError] = useState<string | null>(null)
+  const [success, setSuccess] = useState(false)
+
+  useEffect(() => {
+    if (success) {
+      setFormKey((prev) => prev + 1)
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        date: '',
+        tourId: '',
+        atvs: '2',
+        passengers: '0',
+        comment: '',
+      })
+      toast.success(
+        'Sikeres foglalás! A megadott címre egy visszaigazoló e-mailt küldtünk.',
+        {
+          duration: 10000,
+        }
+      )
+    }
+  }, [success])
 
   /* ✅ Field Validation */
   const validateField = (name: string, value: string) => {
@@ -92,12 +116,15 @@ export function useBookingForm(lang: string) {
   }
 
   return {
+    formKey,
     formData,
     errors,
     loading,
     serverError,
     isModelOpen,
     setIsModalOpen,
+    success,
+    setSuccess,
     updateField,
     submitForm,
   }

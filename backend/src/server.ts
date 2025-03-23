@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import path from "path";
 
-import { PORT } from "./config/env.js";
+import { HOST, PORT } from "./config/env.js";
 import connectDB from "./config/db.js";
 
 import bookingRoutes from "./routes/bookings.js";
@@ -35,9 +35,9 @@ app.use(admin.options.rootPath, adminRouter);
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "../frontend", "dist")));
 
-app.get("*", (req, res) => {
+app.get("*", (_req, res) => {
   res.sendFile(path.resolve(__dirname, "../frontend", "dist", "index.html"));
 });
 
 /* Start Server */
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, HOST, () => console.log(`🚀 Server running on port ${PORT}`));

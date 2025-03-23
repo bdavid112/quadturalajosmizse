@@ -95,7 +95,7 @@
               "required": "Dátum kiválasztása kötelező"
             }
           },
-          "tour": {
+          "tourId": {
             "label": "Túra típus",
             "helper-text": "Válaszd ki a túra típusát",
             "errors": {

@@ -20,8 +20,18 @@ router.get("/", async (_req: Request, res: Response): Promise<any> => {
 /* Create a new Booking */
 router.post("/", async (req: Request, res: Response): Promise<any> => {
   try {
-    const { name, email, phone, date, tourId, atvs, passengers, comment } =
-      req.body;
+    const {
+      name,
+      email,
+      phone,
+      date,
+      tourId,
+      atvs,
+      passengers,
+      comment,
+      paidAt,
+      isPaid,
+    } = req.body;
     if (!name || !email || !phone || !date || !tourId || !atvs) {
       return res.status(400).json({ error: "Missing required fields" });
     }
@@ -45,6 +55,8 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
       passengers,
       comment,
       revenue,
+      paidAt,
+      isPaid,
     });
 
     await newBooking.save();

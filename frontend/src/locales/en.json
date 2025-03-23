@@ -95,7 +95,7 @@
               "required": "Date selection is required"
             }
           },
-          "tour": {
+          "tourId": {
             "label": "Tour type",
             "helper-text": "Choose the type of the tour",
             "errors": {

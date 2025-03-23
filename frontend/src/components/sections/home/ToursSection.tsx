@@ -11,13 +11,15 @@ import { formatTextWithBreaks, insertStrongTags } from '@utils/formatText'
 import { t } from '@utils/translator'
 
 import TourOverview from '@components/TourOverview'
-import { useEffect, useState } from 'react'
+import { Ref, useEffect, useState } from 'react'
 
 interface Props {
+  ref?: Ref<HTMLDivElement>
   onPrimaryButtonClick?: () => void
 }
 
 const ToursSection: React.FunctionComponent<Props> = ({
+  ref,
   onPrimaryButtonClick,
 }) => {
   const [overviews, setOverviews] = useState<
@@ -56,7 +58,7 @@ const ToursSection: React.FunctionComponent<Props> = ({
   const info: string[] = t('home.tours.info.info', lang)
 
   return (
-    <section className="tours-section relative">
+    <section ref={ref} className="tours-section relative">
       <div className="container flex-col padding-y-4xl flex-gap-xl relative">
         <div className="margin-bottom-2xl">
           <h1>{t('home.tours.title', lang)}</h1>

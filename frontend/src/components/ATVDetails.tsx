@@ -55,7 +55,10 @@ const ATVDetails: React.FunctionComponent<Props> = ({
             </button>
             <SegmentedButton
               className="mobile-atv-detail-button"
-              labels={['Leírás', 'Tulajdonságok']}
+              labels={[
+                t('atvs.catalog.desc', lang),
+                t('atvs.catalog.specs', lang),
+              ]}
               onChange={setSelectedTab}
             ></SegmentedButton>
           </div>

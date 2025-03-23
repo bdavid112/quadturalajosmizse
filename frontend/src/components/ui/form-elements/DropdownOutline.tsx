@@ -78,7 +78,7 @@ const DropdownOutline: React.FunctionComponent<Props> = ({
       <div
         tabIndex={0}
         ref={inputContainerRef}
-        className={`flex align-center relative min-height-lg input-container cursor-pointer border background-transparent ${
+        className={`flex align-center relative min-height-md input-container cursor-pointer border background-transparent ${
           isOpen ? 'input-focused' : ''
         } ${touched && !errorMessage ? 'border-success' : ''} ${errorMessage ? 'border-error outline-error' : ''}`}
         onKeyDown={handleKeyDown}

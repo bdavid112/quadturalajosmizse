@@ -15,10 +15,12 @@ import { NavLink } from 'react-router-dom'
 
 interface Props {
   onPrimaryButtonClick?: () => void
+  onFABClick?: () => void
 }
 
 const MainHeroSection: React.FunctionComponent<Props> = ({
   onPrimaryButtonClick,
+  onFABClick,
 }) => {
   const { lang } = useLocalization()
 
@@ -53,6 +55,7 @@ const MainHeroSection: React.FunctionComponent<Props> = ({
       <FAB
         className="absolute main-hero-fab border-rounded-full"
         icon="arrow_downward"
+        onClick={onFABClick}
       ></FAB>
     </section>
   )

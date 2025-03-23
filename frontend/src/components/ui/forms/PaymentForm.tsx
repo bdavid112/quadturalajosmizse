@@ -77,11 +77,20 @@ const PaymentForm: React.FC<Props> = ({
 
   return (
     <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: 'auto' }}>
-      <h2 className="margin-bottom-lg">Checkout</h2>
+      {/* <h2 className="margin-bottom-lg">Checkout</h2> */}
       <p>
-        Amount to Pay: <strong className="text-primary">{amount} HUF</strong>
+        Amount to Pay:{' '}
+        <strong className="text-primary margin-bottom-md">{amount} HUF</strong>
       </p>
-      <PaymentElement />
+      <PaymentElement
+        options={{
+          defaultValues: {
+            billingDetails: {
+              email: bookingDetails.email || 'guest@example.com',
+            },
+          },
+        }}
+      />
       <ButtonPrimary
         label={
           loading ? 'Processing...' : success ? 'Payment success' : 'Pay Now'

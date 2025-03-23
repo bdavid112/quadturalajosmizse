@@ -7,9 +7,13 @@ import { t } from '@utils/translator'
 
 import * as React from 'react'
 
-interface Props {}
+interface Props {
+  onButtonClick?: () => void
+}
 
-const TourDetailsSection: React.FunctionComponent<Props> = ({}) => {
+const TourDetailsSection: React.FunctionComponent<Props> = ({
+  onButtonClick,
+}) => {
   const { lang } = useLocalization()
 
   const images = [
@@ -31,6 +35,7 @@ const TourDetailsSection: React.FunctionComponent<Props> = ({}) => {
             attributes={tour.attribs}
             img={images[index]}
             prices={tour.prices}
+            onButtonClick={onButtonClick}
           ></TourDetails>
         ))}
       </div>

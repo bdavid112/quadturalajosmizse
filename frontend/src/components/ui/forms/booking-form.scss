@@ -28,9 +28,11 @@
 
     .form-group {
       flex-direction: column;
+      gap: 1rem !important;
 
       .subgroup {
         flex-direction: column;
+        gap: 1rem !important;
       }
 
       .width-half {

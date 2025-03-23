@@ -1,6 +1,3 @@
-import image1 from '@assets/atv1.avif'
-import image2 from '@assets/atv2.avif'
-import image3 from '@assets/atv3.avif'
 import waves from '@assets/waves-brown.svg'
 
 import ATVDetails from '@components/ATVDetails'
@@ -16,9 +13,9 @@ const ATVCatalogSection: React.FunctionComponent<Props> = ({}) => {
   const { lang } = useLocalization()
 
   const images = [
-    { url: image1, alt: 'Can-Am Outlander 800R XM R' },
-    { url: image2, alt: 'Honda TRX 500 Foreman 4x4' },
-    { url: image3, alt: 'Yamaha Grizzly 700 EPS' },
+    { url: '/images/goes-terrox-400l.avif', alt: 'Can-Am Outlander 800R XM R' },
+    { url: '/images/goes-terrox-400s.avif', alt: 'Honda TRX 500 Foreman 4x4' },
+    { url: '/images/cfmoto-450s.avif', alt: 'Yamaha Grizzly 700 EPS' },
   ]
   const atvs: {
     manufacturer: string
@@ -47,7 +44,7 @@ const ATVCatalogSection: React.FunctionComponent<Props> = ({}) => {
           ))}
         </div>
       </div>
-      <img src={waves} alt="Waves" className="width-full waves-divider" />
+      <img src={waves} alt="Waves" className="width-full waves-divider block" />
     </section>
   )
 }

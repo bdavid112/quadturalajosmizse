@@ -1,4 +1,5 @@
 import './top-navbar.scss'
+import Cookies from 'js-cookie'
 
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
@@ -54,7 +55,11 @@ const TopNavbar: React.FunctionComponent<Props> = ({}) => {
         </ul>
         <ButtonPrimary
           label={lang == 'hu' ? 'Váltás angolra' : 'Change to Hungarian'}
-          onClick={() => setLang(lang == 'hu' ? 'en' : 'hu')}
+          onClick={() => {
+            const newLang = lang === 'hu' ? 'en' : 'hu'
+            Cookies.set('lang', newLang, { expires: 365 }) // store for 1 year
+            setLang(newLang)
+          }}
           className="navbar-cta-button"
         ></ButtonPrimary>
         <ul

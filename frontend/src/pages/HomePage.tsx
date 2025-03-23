@@ -15,11 +15,13 @@ interface Props {}
 
 const HomePage: React.FunctionComponent<Props> = ({}) => {
   const bookingSectionRef = useRef<HTMLDivElement>(null)
+  const toursSectionRef = useRef<HTMLDivElement>(null)
 
   const scrollToBookingSection = () => {
     if (bookingSectionRef.current) {
       bookingSectionRef.current.scrollIntoView({
         behavior: 'smooth',
+        block: 'start',
       })
     }
   }
@@ -35,8 +37,17 @@ const HomePage: React.FunctionComponent<Props> = ({}) => {
     <MainLayout>
       <MainHeroSection
         onPrimaryButtonClick={() => scrollToBookingSection()}
+        onFABClick={() => {
+          if (toursSectionRef.current) {
+            toursSectionRef.current.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            })
+          }
+        }}
       ></MainHeroSection>
       <ToursSection
+        ref={toursSectionRef}
         onPrimaryButtonClick={() => scrollToBookingSection()}
       ></ToursSection>
       <WhyChooseUsSection></WhyChooseUsSection>

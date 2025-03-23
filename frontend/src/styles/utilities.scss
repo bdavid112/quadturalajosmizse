@@ -410,6 +410,11 @@
 /* ============== TYPOGRAPHY HELPERS ========== */
 /* ============================================= */
 
+.break-words {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
 .text-left {
   text-align: left;
 }
@@ -850,6 +855,9 @@
   }
   &.size-24 {
     width: 1.5rem;
+  }
+  &.size-32 {
+    width: 2rem;
   }
   &.size-40 {
     width: 2.5rem;

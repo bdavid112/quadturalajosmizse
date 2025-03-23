@@ -1,5 +1,6 @@
 /* Available languages */
 
+import Cookies from 'js-cookie'
 import { createContext, ReactNode, useContext, useState } from 'react'
 
 const languages = {
@@ -23,7 +24,10 @@ const LocalizationContext = createContext<LocalizationContextType | undefined>(
 /* Provider component */
 
 export const LocalizationProvider = ({ children }: { children: ReactNode }) => {
-  const [lang, setLang] = useState<keyof typeof languages>('hu')
+  const [lang, setLang] = useState<keyof typeof languages>(() => {
+    const cookieLang = Cookies.get('lang')
+    return cookieLang === 'en' || cookieLang === 'hu' ? cookieLang : 'hu'
+  })
 
   return (
     <LocalizationContext.Provider value={{ lang, setLang }}>

@@ -45,7 +45,7 @@ const NumberInputOutline: React.FunctionComponent<Props> = ({
   return (
     <div className="width-full">
       <div
-        className={`flex align-center relative input-container min-height-lg border ${error ? 'border-error' : ''}`}
+        className={`flex align-center relative input-container min-height-md border ${error ? 'border-error' : ''}`}
       >
         <div className={`z-overlay label-container absolute populated`}>
           <label

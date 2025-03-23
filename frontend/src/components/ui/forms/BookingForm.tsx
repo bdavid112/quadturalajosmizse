@@ -40,7 +40,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
       .catch((err) => {
         console.error('Error fetching tours:', err)
       })
-  })
+  }, [lang])
 
   const {
     formKey,
@@ -60,7 +60,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
         onSubmit={(e) => {
           e.preventDefault()
         }}
-        className="width-full booking-form box-shadow-medium border-rounded-md padding-x-4xl padding-y-2xl form-container"
+        className="width-full booking-form box-shadow-medium border-rounded-md padding-x-2xl padding-y-2xl form-container"
       >
         <h3 className="text-center">
           {t(`ui.forms.booking-form.title`, lang)}
@@ -187,6 +187,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
                 `ui.forms.booking-form.inputs.comment.helper-text`,
                 lang
               )}
+              maxLength={200}
             ></TextAreaOutline>
           </fieldset>
         </div>

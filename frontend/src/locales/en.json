@@ -112,7 +112,10 @@
           },
           "comment": {
             "label": "Comment",
-            "helper-text": "Write other comments if you wish"
+            "helper-text": "Write other comments if you wish",
+            "errors": {
+              "required": "Comment is required"
+            }
           }
         },
         "button-label": "Proceed to checkout"
@@ -362,48 +365,48 @@
       "specs": "Specifications",
       "atvs": [
         {
-          "manufacturer": "Can-Am",
-          "model": "Outlander 800R XM R",
-          "desc": "The 2012 Can-Am Outlander 800R X MR is a powerful and reliable ATV designed specifically for extreme terrains such as mud and difficult off-road paths. The 800 cm³ Rotax V-twin engine and 4x4 drive ensure optimal performance and traction in all conditions. Its specially designed suspension and premium off-road tires provide maximum comfort and control on even the toughest trails. This ATV is the perfect choice for those seeking a true off-road adventure while enjoying a smooth ride even in the most challenging environments.",
+          "manufacturer": "Goes",
+          "model": "Terrox 400L",
+          "desc": "The Goes Terrox 400L is a versatile and durable ATV built for both work and adventure. Featuring a 393 cm³ single-cylinder 4-stroke engine, it delivers a balanced mix of performance and reliability for light to medium-duty off-road tasks. The long-wheelbase version (L) provides added stability and comfort for two riders, making it a great choice for touring and recreational use as well.",
           "specs": [
-            "<strong>Engine:</strong> 800cm³ Rotax V-Twin",
-            "<strong>Power:</strong> 91 HP",
+            "<strong>Engine:</strong> 393cm³ Single-cylinder, 4-stroke",
+            "<strong>Power:</strong> ~26 HP",
             "<strong>Transmission:</strong> Automatic CVT, Switchable 2WD / 4WD",
-            "<strong>Tires:</strong> 26'-27' off-road tires",
-            "<strong>Brakes:</strong> 214 mm disc brakes",
-            "<strong>Length:</strong> 218 cm",
-            "<strong>Width:</strong> 122 cm",
-            "<strong>Weight:</strong> 385 kg"
-          ]
-        },
-        {
-          "manufacturer": "Honda",
-          "model": "TRX 500 Foreman 4x4",
-          "desc": "The Honda TRX 500 Foreman 4x4 is a robust and reliable ATV designed for heavy-duty work and off-road touring. Its 475 cm³ engine and 4x4 drive provide stability and high load capacity. With its comfortable suspension and easy handling, it's an ideal choice for both beginners and experienced riders.",
-          "specs": [
-            "<strong>Engine:</strong> 686cm³ SOHC, 4-stroke",
-            "<strong>Power:</strong> 48 HP",
-            "<strong>Transmission:</strong> Ultramatic CVT, Switchable 2WD / 4WD / Differential Lock",
-            "<strong>Tires:</strong> 26' Maxxis off-road tires",
-            "<strong>Brakes:</strong> Hydraulic disc brakes in the front, Sealed multi-disc brake in the rear",
-            "<strong>Length:</strong> 207 cm",
-            "<strong>Width:</strong> 123 cm",
-            "<strong>Weight:</strong> 317 kg"
-          ]
-        },
-        {
-          "manufacturer": "Yamaha",
-          "model": "Grizzly 700 EPS",
-          "desc": "The Yamaha Grizzly 700 EPS is a highly powerful and dynamic ATV featuring a premium electronic power steering system (EPS), making it effortlessly maneuverable even on the toughest terrains. Its 686 cm³ engine and high-load 4x4 drivetrain make it the perfect choice for long-distance tours and riding through muddy or mountainous trails. The Grizzly is comfortable, stable, and powerful in all conditions.",
-          "specs": [
-            "<strong>Engine:</strong> 518cm³ single-cylinder, 4-stroke",
-            "<strong>Power:</strong> 30 HP",
-            "<strong>Transmission:</strong> 5-speed semi-automatic, Switchable 2WD / 4WD",
             "<strong>Tires:</strong> 25' off-road tires",
-            "<strong>Brakes:</strong> Hydraulic disc brake in the front, Sealed drum brake in the rear",
-            "<strong>Length:</strong> 209 cm",
-            "<strong>Width:</strong> 120 cm",
-            "<strong>Weight:</strong> 295 kg"
+            "<strong>Brakes:</strong> Hydraulic disc brakes front and rear",
+            "<strong>Length:</strong> 215 cm",
+            "<strong>Width:</strong> 118 cm",
+            "<strong>Weight:</strong> 345 kg"
+          ]
+        },
+        {
+          "manufacturer": "Goes",
+          "model": "Terrox 400S",
+          "desc": "Compact yet capable, the Goes Terrox 400S is a short-wheelbase version of the Terrox lineup, optimized for agility and tight terrain. Its robust 393 cm³ engine and selectable 2WD/4WD drivetrain offer excellent control and handling on technical trails. A solid choice for solo riders looking for a lightweight, maneuverable ATV.",
+          "specs": [
+            "<strong>Engine:</strong> 393cm³ Single-cylinder, 4-stroke",
+            "<strong>Power:</strong> ~26 HP",
+            "<strong>Transmission:</strong> Automatic CVT, Switchable 2WD / 4WD",
+            "<strong>Tires:</strong> 25' off-road tires",
+            "<strong>Brakes:</strong> Hydraulic disc brakes front and rear",
+            "<strong>Length:</strong> 206 cm",
+            "<strong>Width:</strong> 118 cm",
+            "<strong>Weight:</strong> 330 kg"
+          ]
+        },
+        {
+          "manufacturer": "CFMoto",
+          "model": "450S",
+          "desc": "The CFMoto 450S is a modern mid-sized ATV offering an exceptional balance of power, agility, and rugged performance. Its 400+ cm³ single-cylinder engine delivers responsive acceleration, while the independent suspension and advanced braking system ensure confident handling on varied terrain. Built with the reliability CFMoto is known for, the 450S is ideal for both recreation and utility.",
+          "specs": [
+            "<strong>Engine:</strong> 400cm³ Single-cylinder, 4-stroke, liquid-cooled",
+            "<strong>Power:</strong> ~33 HP",
+            "<strong>Transmission:</strong> Automatic CVT, Switchable 2WD / 4WD",
+            "<strong>Tires:</strong> 25' all-terrain tires",
+            "<strong>Brakes:</strong> Hydraulic disc brakes",
+            "<strong>Length:</strong> 210 cm",
+            "<strong>Width:</strong> 113 cm",
+            "<strong>Weight:</strong> 365 kg"
           ]
         }
       ]

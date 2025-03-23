@@ -11,6 +11,7 @@ interface Props {
   attributes: string[]
   img: { url: string; alt: string }
   prices: string[]
+  onButtonClick?: () => void
 }
 
 const TourDetails: React.FunctionComponent<Props> = ({
@@ -18,6 +19,7 @@ const TourDetails: React.FunctionComponent<Props> = ({
   attributes,
   img,
   prices,
+  onButtonClick,
 }) => {
   const { lang } = useLocalization()
 
@@ -56,6 +58,7 @@ const TourDetails: React.FunctionComponent<Props> = ({
             <ButtonPrimary
               fullWidth={true}
               label={t('tours.tour-details.button-label', lang)}
+              onClick={onButtonClick}
             ></ButtonPrimary>
           </div>
         </div>

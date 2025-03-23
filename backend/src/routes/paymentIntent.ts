@@ -29,7 +29,6 @@ router.post("/", async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount, // Amount in cents
       currency,
-      automatic_payment_methods: { enabled: true },
     });
 
     res.status(200).json({ clientSecret: paymentIntent.client_secret });

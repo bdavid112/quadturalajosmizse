@@ -75,7 +75,7 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
   return (
     <div ref={containerRef} className="width-full relative">
       <div
-        className={`z-overlay flex cursor-pointer align-center min-height-lg relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${touched && !errorMessage ? 'border-success' : ''} ${errorMessage ? 'border-error outline-error' : ''}`}
+        className={`z-overlay flex cursor-pointer align-center min-height-md relative input-container border background-transparent ${isOpen ? 'input-focused' : ''} ${touched && !errorMessage ? 'border-success' : ''} ${errorMessage ? 'border-error outline-error' : ''}`}
         tabIndex={0}
         onKeyDown={(e) => {
           handleKeyDown(e)

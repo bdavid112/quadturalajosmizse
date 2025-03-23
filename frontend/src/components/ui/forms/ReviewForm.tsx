@@ -32,9 +32,9 @@ const ReviewForm: React.FunctionComponent<Props> = ({}) => {
           }}
         >
           {i <= parseInt(formData.rating) - 1 ? (
-            <Icon name="star_fill" className="warning size-40" />
+            <Icon name="star_fill" className="warning size-32" />
           ) : (
-            <Icon name="star" className="warning size-40" />
+            <Icon name="star" className="warning size-32" />
           )}
         </button>
       )
@@ -71,6 +71,7 @@ const ReviewForm: React.FunctionComponent<Props> = ({}) => {
           )}
           onChange={updateField}
           errorMessage={errors.comment}
+          maxLength={200}
         ></TextAreaOutline>
         <div className="flex width-full justify-center">
           {stars.map((star) => star)}

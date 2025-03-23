@@ -45,7 +45,11 @@ const TestimonialsSection: React.FunctionComponent<Props> = ({}) => {
       <div className="container flex-col">
         <div>
           <h1>{t('home.testimonials.title', lang)}</h1>
-          <h4>{t('home.testimonials.subtitle', lang)}</h4>
+          <h4>
+            {reviews.length > 0
+              ? t('home.testimonials.subtitle', lang)
+              : 'Úgy tűnik, még nincsenek vélemények. Oszd meg velünk élményeid és légy Te az első!'}
+          </h4>
         </div>
       </div>
       <div className="flex justify-center carousel-container">

@@ -7,7 +7,7 @@
 @mixin button {
   min-width: 10rem;
   font-size: $font-size-base;
-  min-height: 3.5rem;
+  min-height: 3rem;
   max-height: fit-content;
   border: none;
   border-radius: $radius-sm;
@@ -17,7 +17,7 @@
 @mixin button-outline {
   min-width: 10rem;
   font-size: $font-size-base;
-  min-height: 3.5rem;
+  min-height: 3rem;
   max-height: fit-content;
   border-radius: $radius-sm;
   background-color: transparent;

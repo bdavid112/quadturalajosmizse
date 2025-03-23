@@ -112,7 +112,10 @@
           },
           "comment": {
             "label": "Megjegyzés",
-            "helper-text": "Írj egyéb megjegyzést, ha szeretnél"
+            "helper-text": "Írj egyéb megjegyzést, ha szeretnél",
+            "errors": {
+              "required": "Vélemény megadása kötelező"
+            }
           }
         },
         "button-label": "Tovább a fizetéshez"
@@ -362,48 +365,48 @@
       "specs": "Tulajdonságok",
       "atvs": [
         {
-          "manufacturer": "Can-Am",
-          "model": "Outlander 800R XM R",
-          "desc": "A 2012-es Can-Am Outlander 800R X MR egy rendkívül erős és megbízható ATV, amelyet kifejezetten a kemikusan nehéz terepekre, például sárba és nehezen járható utakon történő használatra terveztek. Az 800 cm³-es Rotax V-twin motor és a 4x4-es hajtás biztosítja a megfelelő teljesítményt és tapadást bármilyen körülmények között. A speciálisan kialakított felfüggesztés és a prémium sárgumiabroncsok maximális komfortot és irányíthatóságot biztosítanak a legkeményebb túrákon is. Ez az ATV tökéletes választás azok számára, akik igazi off-road kalandot keresnek, miközben kényelmesen élvezhetik a vezetést a legszélsőségesebb körülmények között is.",
+          "manufacturer": "Goes",
+          "model": "Terrox 400L",
+          "desc": "A Goes Terrox 400L egy sokoldalú és strapabíró quad, amely tökéletes választás munkára és túrázásra egyaránt. A 393 cm³-es egyhengeres, négyütemű motor megbízható teljesítményt nyújt közepes terepen is. A hosszított (L) változat nagyobb stabilitást és kényelmet kínál két fő számára, így ideális választás páros túrákhoz is.",
           "specs": [
-            "<strong>Motor:</strong> 800cm³ Rotax V-Twin",
-            "<strong>Teljesítmény:</strong> 91 LE",
-            "<strong>Váltó:</strong> Automata CVT váltó, Kapcsolható 2WD / 4WD",
-            "<strong>Gumik:</strong> 26'-27' méretű terepgumik",
-            "<strong>Fékek:</strong> 214 mm-es tárcsafékek",
-            "<strong>Hossz:</strong> 218 cm",
-            "<strong>Szélesség:</strong> 122 cm",
-            "<strong>Tömeg:</strong> 385 kg"
+            "<strong>Motor:</strong> 393cm³ egyhengeres, 4 ütemű",
+            "<strong>Teljesítmény:</strong> ~26 LE",
+            "<strong>Váltó:</strong> Automata CVT, váltható 2WD / 4WD",
+            "<strong>Gumik:</strong> 25' terepgumik",
+            "<strong>Fékek:</strong> Hidraulikus tárcsafék elöl és hátul",
+            "<strong>Hossz:</strong> 215 cm",
+            "<strong>Szélesség:</strong> 118 cm",
+            "<strong>Súly:</strong> 345 kg"
           ]
         },
         {
-          "manufacturer": "Honda",
-          "model": "TRX 500 Foreman 4x4",
-          "desc": "A Honda TRX 500 Foreman 4x4 egy erős és megbízható ATV, amelyet kifejezetten nehéz terepen történő munkavégzéshez és túrázáshoz terveztek. A 475 cm³-es motor és a 4x4-es hajtás biztosítja a stabilitást és a nagyobb terhelhetőséget. Kényelmes felfüggesztésével és könnyen kezelhető vezérlésével ideális választás mind a kezdő, mind a tapasztalt sofőrök számára.",
+          "manufacturer": "Goes",
+          "model": "Terrox 400S",
+          "desc": "A Goes Terrox 400S egy kompakt, de erőteljes quad, amely a Terrox család rövidebb tengelytávú változata. Ideális választás szűk, technikás terepre, ahol fontos az agilitás és a könnyű kezelhetőség. Megbízható, 393 cm³-es motorja és a váltható 2WD/4WD hajtás kiváló irányíthatóságot biztosít egyedüli vezetők számára.",
           "specs": [
-            "<strong>Motor:</strong> 686cm³ SOHC, 4 ütemű",
-            "<strong>Teljesítmény:</strong> 48 LE",
-            "<strong>Váltó:</strong> Ultramatic CVT váltó, Kapcsolható 2WD / 4WD / Differenciálzár",
-            "<strong>Gumik:</strong> 26' Maxxis terepgumik",
-            "<strong>Fékek:</strong> Hidraulikus tárcsafékek elöl, Zárt többtárcsás fék hátul",
-            "<strong>Hossz:</strong> 207 cm",
-            "<strong>Szélesség:</strong> 123 cm",
-            "<strong>Tömeg:</strong> 317 kg"
+            "<strong>Motor:</strong> 393cm³ egyhengeres, 4 ütemű",
+            "<strong>Teljesítmény:</strong> ~26 LE",
+            "<strong>Váltó:</strong> Automata CVT, váltható 2WD / 4WD",
+            "<strong>Gumik:</strong> 25' terepgumik",
+            "<strong>Fékek:</strong> Hidraulikus tárcsafék elöl és hátul",
+            "<strong>Hossz:</strong> 206 cm",
+            "<strong>Szélesség:</strong> 118 cm",
+            "<strong>Súly:</strong> 330 kg"
           ]
         },
         {
-          "manufacturer": "Yamaha",
-          "model": "Grizzly 700 EPS",
-          "desc": "A Yamaha Grizzly 700 EPS egy rendkívül erős és dinamikus ATV, amely prémium kormányzási rendszert (EPS) kínál, így könnyedén irányítható akár a legnehezebb terepeken is. A 686 cm³-es motor és a nagy teherbírású 4x4-es hajtás tökéletes választássá teszi hosszú távú túrákhoz, valamint sárban és hegyvidéki utakon való közlekedéshez. A Grizzly kényelmes, stabil és erőteljes minden körülmények között.",
+          "manufacturer": "CFMoto",
+          "model": "450S",
+          "desc": "A CFMoto 450S egy modern, középkategóriás quad, amely kiváló egyensúlyt kínál teljesítmény, mozgékonyság és strapabírás között. A 400+ cm³-es egyhengeres motor gyors reakciót biztosít, míg a független felfüggesztés és a fejlett fékrendszer magabiztos irányítást nyújt különféle terepeken. A CFMoto megbízhatóságával párosítva ideális választás szabadidős és munkacélokra egyaránt.",
           "specs": [
-            "<strong>Motor:</strong> 518cm³ egyhengeres, 4 ütemű",
-            "<strong>Teljesítmény:</strong> 30 LE",
-            "<strong>Váltó:</strong> 5 fokozatú félautomata, Kapcsolható 2WD / 4WD",
-            "<strong>Gumik:</strong> 25' méretű terepgumik",
-            "<strong>Fékek:</strong> Hidraulikus tárcsafék elöl, Zárt dobfék hátul",
-            "<strong>Hossz:</strong> 209 cm",
-            "<strong>Szélesség:</strong> 120 cm",
-            "<strong>Tömeg:</strong> 295 kg"
+            "<strong>Motor:</strong> 400cm³ egyhengeres, 4 ütemű, folyadékhűtéses",
+            "<strong>Teljesítmény:</strong> ~33 LE",
+            "<strong>Váltó:</strong> Automata CVT, váltható 2WD / 4WD",
+            "<strong>Gumik:</strong> 25' terepgumik",
+            "<strong>Fékek:</strong> Hidraulikus tárcsafékek",
+            "<strong>Hossz:</strong> 210 cm",
+            "<strong>Szélesség:</strong> 113 cm",
+            "<strong>Súly:</strong> 365 kg"
           ]
         }
       ]

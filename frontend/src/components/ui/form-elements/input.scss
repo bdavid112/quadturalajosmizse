@@ -1,7 +1,7 @@
 @import '/src/styles/tokens.scss';
 
 input {
-  min-height: calc(3.5rem - 2px);
+  min-height: calc(3rem - 2px);
 
   &:is(:-webkit-autofill, :autofill) {
     -webkit-box-shadow: 0 0 0px 1000px $surface-100 inset;

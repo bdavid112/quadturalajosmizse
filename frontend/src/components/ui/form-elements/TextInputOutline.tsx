@@ -27,7 +27,7 @@ const TextInputOutline: React.FunctionComponent<Props> = ({
   return (
     <div className="width-full">
       <div
-        className={`flex align-center relative input-container min-height-lg border ${touched && !errorMessage ? 'border-success' : ''} ${errorMessage ? 'border-error outline-error' : ''}`}
+        className={`flex align-center relative input-container min-height-md border ${touched && !errorMessage ? 'border-success' : ''} ${errorMessage ? 'border-error outline-error' : ''}`}
       >
         <div className={`label-container absolute ${value ? 'populated' : ''}`}>
           <label

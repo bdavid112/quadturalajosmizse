@@ -9,6 +9,7 @@ import bookingRoutes from "./routes/bookings.js";
 import tourRoutes from "./routes/tours.js";
 import paymentIntent from "./routes/paymentIntent.js";
 import analyticsRoutes from "./routes/adminAnalytics.js";
+import reviewRoutes from "./routes/reviews.js";
 import { buildAdminPanel } from "./admin/admin.js";
 
 /* Initialize Server */
@@ -25,6 +26,7 @@ await connectDB();
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/tours", tourRoutes);
 app.use("/api/payment-intent", paymentIntent);
+app.use("/api/reviews", reviewRoutes);
 app.use("/api/admin", analyticsRoutes);
 
 /* Register AdminJS */

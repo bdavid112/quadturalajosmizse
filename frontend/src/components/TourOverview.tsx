@@ -4,6 +4,7 @@ import * as React from 'react'
 import ButtonPrimary from './ui/buttons/ButtonPrimary'
 import ButtonSecondaryOutline from './ui/buttons/ButtonSecondaryOutline'
 import { formatTextWithBreaks, insertStrongTags } from '@utils/formatText'
+import { NavLink } from 'react-router-dom'
 
 interface Props {
   title: string
@@ -12,6 +13,7 @@ interface Props {
   img: { url: string; alt: string }
   buttonLabels: { primary: string; secondary: string }
   objectPos?: string
+  onButtonClick?: () => void
 }
 
 const TourOverview: React.FunctionComponent<Props> = ({
@@ -21,6 +23,7 @@ const TourOverview: React.FunctionComponent<Props> = ({
   img,
   buttonLabels,
   objectPos,
+  onButtonClick,
 }) => {
   /* const { lang, setLang } = useLocalization() */
 
@@ -38,10 +41,15 @@ const TourOverview: React.FunctionComponent<Props> = ({
             ))}
           </ul>
           <div className="flex flex-gap-xs overview-button-group">
-            <ButtonPrimary label={buttonLabels.primary}></ButtonPrimary>
-            <ButtonSecondaryOutline
-              label={buttonLabels.secondary}
-            ></ButtonSecondaryOutline>
+            <ButtonPrimary
+              label={buttonLabels.primary}
+              onClick={onButtonClick}
+            ></ButtonPrimary>
+            <NavLink to={'/tours'}>
+              <ButtonSecondaryOutline
+                label={buttonLabels.secondary}
+              ></ButtonSecondaryOutline>
+            </NavLink>
           </div>
         </div>
         <picture>

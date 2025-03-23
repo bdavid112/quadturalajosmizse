@@ -11,10 +11,15 @@ import ButtonPrimary from '@components/ui/buttons/ButtonPrimary'
 import ButtonSecondaryOutline from '@components/ui/buttons/ButtonSecondaryOutline'
 import FAB from '@components/ui/buttons/FAB'
 import ResponsiveImage from '@components/ResponsiveImage'
+import { NavLink } from 'react-router-dom'
 
-interface Props {}
+interface Props {
+  onPrimaryButtonClick?: () => void
+}
 
-const MainHeroSection: React.FunctionComponent<Props> = ({}) => {
+const MainHeroSection: React.FunctionComponent<Props> = ({
+  onPrimaryButtonClick,
+}) => {
   const { lang } = useLocalization()
 
   return (
@@ -36,10 +41,13 @@ const MainHeroSection: React.FunctionComponent<Props> = ({}) => {
         <div className="flex flex-gap-xs button-group">
           <ButtonPrimary
             label={t('home.hero.buttons.primary', lang)}
+            onClick={onPrimaryButtonClick}
           ></ButtonPrimary>
-          <ButtonSecondaryOutline
-            label={t('home.hero.buttons.secondary', lang)}
-          ></ButtonSecondaryOutline>
+          <NavLink to={'/tours'}>
+            <ButtonSecondaryOutline
+              label={t('home.hero.buttons.secondary', lang)}
+            ></ButtonSecondaryOutline>
+          </NavLink>
         </div>
       </div>
       <FAB

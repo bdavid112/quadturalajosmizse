@@ -13,9 +13,13 @@ import { t } from '@utils/translator'
 import TourOverview from '@components/TourOverview'
 import { useEffect, useState } from 'react'
 
-interface Props {}
+interface Props {
+  onPrimaryButtonClick?: () => void
+}
 
-const ToursSection: React.FunctionComponent<Props> = ({}) => {
+const ToursSection: React.FunctionComponent<Props> = ({
+  onPrimaryButtonClick,
+}) => {
   const [overviews, setOverviews] = useState<
     {
       title: string
@@ -69,6 +73,7 @@ const ToursSection: React.FunctionComponent<Props> = ({}) => {
               attributes={overview.attribs}
               img={images[index]}
               buttonLabels={overview.buttons}
+              onButtonClick={onPrimaryButtonClick}
               objectPos={`${index == 0 ? 'obj-right' : 'obj-left'}`}
             ></TourOverview>
           ))}

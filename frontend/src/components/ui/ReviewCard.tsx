@@ -1,7 +1,5 @@
 import './review-card.scss'
 
-import image from '@assets/review-image.avif'
-
 import * as React from 'react'
 import Icon from './IconComponent'
 
@@ -10,6 +8,7 @@ interface Props {
   subtext: string
   name: string
   date: string
+  rating: number
 }
 
 const ReviewCard: React.FunctionComponent<Props> = ({
@@ -17,10 +16,17 @@ const ReviewCard: React.FunctionComponent<Props> = ({
   subtext,
   name,
   date,
+  rating,
 }) => {
   const stars = []
   for (let i = 0; i < 5; i++) {
-    stars.push(<Icon name="star" className="warning" />)
+    stars.push(
+      i <= rating - 1 ? (
+        <Icon name="star_fill" className="warning" />
+      ) : (
+        <Icon name="star" className="warning" />
+      )
+    )
   }
 
   return (
@@ -29,11 +35,11 @@ const ReviewCard: React.FunctionComponent<Props> = ({
       <span className="font-medium font-size-md">{title}</span>
       <p className="text-primary font-size-secondary">{subtext}</p>
       <div className="flex flex-gap-sm author">
-        <img
+        {/* <img
           className="review-image border-rounded-full"
           src={image}
           alt="Review profile image"
-        />
+        /> */}
         <div className="flex flex-col">
           <span className="font-medium">{name}</span>
           <span className="font-size-caption text-secondary">{date}</span>

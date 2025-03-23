@@ -140,6 +140,9 @@
 .width-screen {
   width: 100vw;
 }
+.height-content {
+  height: fit-content;
+}
 
 .min-width-xs {
   min-width: 9rem;
@@ -552,6 +555,9 @@
 /* ============ BORDER & OUTLINE ============== */
 /* ============================================= */
 
+.border-none {
+  border: none;
+}
 .border {
   border: 1px solid $text-muted;
 }

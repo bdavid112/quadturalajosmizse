@@ -12,6 +12,8 @@ import Tour from "../models/Tour.js";
 import tourResourceOptions from "./tourResourceOptions.js";
 import AdminUser from "../models/AdminUser.js";
 import adminUserResourceOptions from "./adminUserResourceOptions.js";
+import Review from "../models/Review.js";
+import reviewResourceOptions from "./reviewReourceOptions.js";
 
 // Load Dashboard Component
 const componentLoader = new ComponentLoader();
@@ -28,6 +30,7 @@ export async function buildAdminPanel() {
       { resource: Booking, options: bookingResourceOptions },
       { resource: Tour, options: tourResourceOptions },
       { resource: AdminUser, options: adminUserResourceOptions },
+      { resource: Review, options: reviewResourceOptions },
     ],
     rootPath: "/admin",
     locale,

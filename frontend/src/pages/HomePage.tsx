@@ -9,10 +9,21 @@ import MainLayout from '@layouts/MainLayout'
 import { t } from '@utils/translator'
 
 import * as React from 'react'
+import { useRef } from 'react'
 
 interface Props {}
 
 const HomePage: React.FunctionComponent<Props> = ({}) => {
+  const bookingSectionRef = useRef<HTMLDivElement>(null)
+
+  const scrollToBookingSection = () => {
+    if (bookingSectionRef.current) {
+      bookingSectionRef.current.scrollIntoView({
+        behavior: 'smooth',
+      })
+    }
+  }
+
   const { lang } = useLocalization()
 
   const accordions: { question: string; answer: string }[] = t(
@@ -22,10 +33,14 @@ const HomePage: React.FunctionComponent<Props> = ({}) => {
 
   return (
     <MainLayout>
-      <MainHeroSection></MainHeroSection>
-      <ToursSection></ToursSection>
+      <MainHeroSection
+        onPrimaryButtonClick={() => scrollToBookingSection()}
+      ></MainHeroSection>
+      <ToursSection
+        onPrimaryButtonClick={() => scrollToBookingSection()}
+      ></ToursSection>
       <WhyChooseUsSection></WhyChooseUsSection>
-      <BookingSection></BookingSection>
+      <BookingSection ref={bookingSectionRef}></BookingSection>
       <TestimonialsSection></TestimonialsSection>
       <FAQSection accordions={accordions}></FAQSection>
     </MainLayout>

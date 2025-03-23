@@ -10,16 +10,20 @@ import { useLocalization } from '@context/LocalizationContext'
 
 interface Props {
   plain?: boolean
+  ref?: React.Ref<HTMLDivElement>
 }
 
-const BookingSection: React.FunctionComponent<Props> = ({ plain = false }) => {
+const BookingSection: React.FunctionComponent<Props> = ({
+  plain = false,
+  ref,
+}) => {
   const { lang } = useLocalization()
 
   const instructions: string[] = t('home.booking.instructions.items', lang)
   const info: string[] = t('home.booking.info.items', lang)
 
   return (
-    <section className="booking-section relative">
+    <section ref={ref} className="booking-section relative">
       {!plain && (
         <img
           className="rotate-180 grunge-divider"

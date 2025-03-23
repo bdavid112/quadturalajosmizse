@@ -1,26 +1,44 @@
 import './testimonials-section.scss'
 
 import * as React from 'react'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { useLocalization } from '@context/LocalizationContext'
 
 import { t } from '@utils/translator'
 import { formatTextWithBreaks } from '@utils/formatText'
 
-import { useTestimonialsSection } from '@hooks/useTestimonialsSection'
-
 import ReviewForm from '@components/ui/forms/ReviewForm'
 import ReviewCard from '@components/ui/ReviewCard'
 import WaveBackground from '@components/ui/WaveBackground'
 import CardCarousel from '@components/ui/CardCarousel'
+import axios from 'axios'
 
 interface Props {}
 
 const TestimonialsSection: React.FunctionComponent<Props> = ({}) => {
   const { lang } = useLocalization()
-  const { reviews } = useTestimonialsSection()
   const formContainerRef = useRef<HTMLDivElement | null>(null)
+
+  const [reviews, setReviews] = useState<
+    {
+      name: string
+      comment: string
+      rating: string
+      createdAt: string
+    }[]
+  >([])
+
+  useEffect(() => {
+    axios
+      .get('/api/reviews/latest')
+      .then((res) => {
+        setReviews(res.data)
+      })
+      .catch((err) => {
+        console.error('Error fetching reviews:', err)
+      })
+  }, [])
 
   return (
     <section className="testimonials-section padding-y-4xl">
@@ -35,10 +53,11 @@ const TestimonialsSection: React.FunctionComponent<Props> = ({}) => {
           {reviews.map((review, index) => (
             <ReviewCard
               key={index}
-              title={review.title}
-              subtext={review.text}
+              title={'Értékelés'}
+              subtext={review.comment}
               name={review.name}
-              date={review.date}
+              date={review.createdAt.split('T')[0]}
+              rating={parseInt(review.rating)}
             ></ReviewCard>
           ))}
         </CardCarousel>

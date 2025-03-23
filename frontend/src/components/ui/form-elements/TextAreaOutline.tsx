@@ -7,7 +7,7 @@ interface Props {
   id: string
   name: string
   label: string
-  error?: boolean
+  errorMessage?: string
   helperText: string
   maxLength?: number
   onChange?: (name: string, value: string) => void
@@ -17,7 +17,7 @@ const TextAreaOutline: React.FunctionComponent<Props> = ({
   id,
   name,
   label,
-  error = false,
+  errorMessage,
   helperText,
   maxLength = 100,
   onChange,
@@ -56,14 +56,14 @@ const TextAreaOutline: React.FunctionComponent<Props> = ({
   return (
     <div className="width-full">
       <div
-        className={`flex min-width-md relative input-container textarea-container border ${error ? 'border-error' : ''}`}
+        className={`flex min-width-md relative input-container textarea-container border ${errorMessage ? 'border-error' : ''}`}
       >
         <div
           className={`label-container absolute padding-x-lg margin-y-lg ${text ? 'populated' : ''}`}
         >
           <label
             htmlFor={id}
-            className={`input-label ${error ? 'text-error' : ''}`}
+            className={`input-label ${errorMessage ? 'text-error' : ''}`}
           >
             {label}
           </label>
@@ -80,12 +80,12 @@ const TextAreaOutline: React.FunctionComponent<Props> = ({
       </div>
       <div className="padding-x-lg flex min-height-xs align-center justify-between">
         <span
-          className={`helper-text font-size-caption text-secondary ${error ? 'text-error' : ''}`}
+          className={`helper-text font-size-caption text-secondary ${errorMessage ? 'text-error' : ''}`}
         >
-          {helperText}
+          {errorMessage ? errorMessage : helperText}
         </span>
         <span
-          className={`font-size-caption text-secondary ${error ? 'text-error' : ''}`}
+          className={`font-size-caption text-secondary ${errorMessage ? 'text-error' : ''}`}
         >
           {text.length}/{maxLength}
         </span>

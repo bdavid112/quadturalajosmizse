@@ -17,6 +17,23 @@ router.get("/", async (_req: Request, res: Response): Promise<any> => {
   }
 });
 
+/* Get upcoming Bookings */
+router.get("/upcoming", async (_req: Request, res: Response): Promise<any> => {
+  try {
+    const today = new Date().toISOString().split("T")[0]; // 'YYYY-MM-DD'
+    const bookings = await Booking.find({ date: { $gte: today } }).sort({
+      date: 1,
+    });
+
+    return res.json(bookings);
+  } catch (error) {
+    return res.status(500).json({
+      error: "Failed to fetch bookings",
+      details: (error as Error).message,
+    });
+  }
+});
+
 /* Create a new Booking */
 router.post("/", async (req: Request, res: Response): Promise<any> => {
   try {

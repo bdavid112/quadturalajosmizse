@@ -4,20 +4,22 @@ export const generateCalendarDays = (date: Date, lang: string = 'hu') => {
   const year = date.getFullYear()
   const month = date.getMonth()
 
-  const firstDayOfMonth = new Date(year, month, 1).getDay()
+  let firstDayOfMonth = new Date(year, month, 1).getDay() // 0–6 (Sun–Sat)
   const daysInMonth = new Date(year, month + 1, 0).getDate()
+
+  // Adjust for Hungarian (week starts on Monday)
+  if (lang === 'hu') {
+    firstDayOfMonth = (firstDayOfMonth + 6) % 7
+  }
 
   const calendarDays: (number | null)[] = []
 
-  // Fill the blank days according to calendar format
-  let i = lang == 'hu' ? 1 : 0
-
-  // Fill in blank days from previous month
-  for (i; i < firstDayOfMonth; i++) {
+  // Add blank days for alignment
+  for (let i = 0; i < firstDayOfMonth; i++) {
     calendarDays.push(null)
   }
 
-  // Fill in actual days
+  // Add actual days
   for (let day = 1; day <= daysInMonth; day++) {
     calendarDays.push(day)
   }

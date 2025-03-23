@@ -115,11 +115,7 @@ export const useDatePickerKeyboardNav = (
         if (activeDateIndex > 0 && activeDateIndex <= calendarDays.length) {
           e.preventDefault()
           handleDateSelect(
-            new Date(
-              currentDate.getFullYear(),
-              currentDate.getMonth(),
-              activeDateIndex
-            )
+            new Date(selectedYear, selectedMonth, activeDateIndex)
           )
         }
         break

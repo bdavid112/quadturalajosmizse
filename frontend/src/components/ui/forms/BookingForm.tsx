@@ -125,6 +125,8 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
                   lang
                 )}
                 handleOnChange={updateField}
+                minYear={new Date().getFullYear()}
+                maxYear={new Date().getFullYear() + 1}
               ></DatePickerOutline>
             </div>
             <div className="width-half inline-block">

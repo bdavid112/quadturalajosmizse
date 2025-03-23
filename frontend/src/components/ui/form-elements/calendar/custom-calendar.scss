@@ -77,3 +77,18 @@ $view-container-height: 21.5rem;
     border: 1px solid $color-primary-500;
   }
 }
+
+/* Style taken days */
+
+.disabled-date {
+  color: $text-muted !important;
+  cursor: not-allowed !important;
+  text-decoration: line-through;
+
+  &:hover,
+  &:focus {
+    .calendar-cell-background {
+      background-color: transparent !important;
+    }
+  }
+}

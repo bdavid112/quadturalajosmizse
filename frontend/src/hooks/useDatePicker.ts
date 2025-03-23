@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { generateCalendarDays } from '@utils/calendarUtils'
+import axios from 'axios'
 
 export const useDatePicker = (
   lang: string,
@@ -36,7 +37,43 @@ export const useDatePicker = (
 
   /* Handle selecting an option */
 
+  const [takenDates, setTakenDates] = useState<Date[]>([])
+
+  useEffect(() => {
+    axios
+      .get('/api/bookings/upcoming')
+      .then((res) => {
+        const dates = res.data.map((booking: any) => new Date(booking.date))
+        setTakenDates(dates)
+      })
+      .catch((err) => console.error('Error fetching bookings:', err))
+  }, [])
+
+  const isTaken = (day: number) => {
+    return takenDates.some(
+      (d) =>
+        d.getFullYear() === selectedYear &&
+        d.getMonth() === selectedMonth &&
+        d.getDate() === day
+    )
+  }
+
+  const isWeekend = (day: number) => {
+    const date = new Date(selectedYear, selectedMonth, day)
+    return (
+      date.getMonth() === selectedMonth &&
+      (date.getDay() === 0 || date.getDay() === 6)
+    )
+  }
+
+  const isPast = (date: Date) => {
+    return date < new Date()
+  }
+
   const onDateSelect = (date: Date) => {
+    if (isTaken(date.getDate()) || !isWeekend(date.getDate()) || isPast(date)) {
+      return
+    }
     setSelectedDate(date)
     handleOnChange && handleOnChange(name, date.toLocaleDateString())
     setIsOpen(false)
@@ -110,5 +147,8 @@ export const useDatePicker = (
     onDateSelect,
     changeSelectedYear,
     changeSelectedMonth,
+    isTaken,
+    isWeekend,
+    isPast,
   }
 }

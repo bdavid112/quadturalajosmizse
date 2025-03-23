@@ -19,6 +19,9 @@ interface Props {
   closeDatePicker: () => void
   changeSelectedYear: (year: number) => void
   changeSelectedMonth: (month: number) => void
+  isTaken: (day: number) => boolean
+  isWeekend: (day: number) => boolean
+  isPast: (date: Date) => boolean
 }
 
 const CustomCalendar: React.FunctionComponent<Props> = ({
@@ -32,6 +35,9 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
   closeDatePicker,
   changeSelectedYear,
   changeSelectedMonth,
+  isTaken,
+  isWeekend,
+  isPast,
 }) => {
   const { lang } = useLocalization()
 
@@ -77,6 +83,9 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
               dateIndice={dateIndice}
               handleDateSelect={handleDateSelect}
               closeDatePicker={closeDatePicker}
+              isTaken={isTaken}
+              isWeekend={isWeekend}
+              isPast={isPast}
             ></CalendarDayView>
           </div>
         )}

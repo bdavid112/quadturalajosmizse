@@ -53,6 +53,9 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
     onDateSelect,
     changeSelectedYear,
     changeSelectedMonth,
+    isTaken,
+    isWeekend,
+    isPast,
   } = useDatePicker(lang, name, minYear, maxYear, defaultValue, handleOnChange)
 
   /* Custom hook to close the date picker if the users tabs out */
@@ -153,6 +156,9 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
           changeSelectedMonth={changeSelectedMonth}
           handleDateSelect={handleDateSelect}
           closeDatePicker={closeDatePicker}
+          isTaken={isTaken}
+          isWeekend={isWeekend}
+          isPast={isPast}
         ></CustomCalendar>
       </div>
     </div>

@@ -16,7 +16,11 @@ const CalendarYearView: React.FunctionComponent<Props> = ({
 }) => {
   /* Array of options for year selecting */
 
-  const yearOptions = generateYearOptions(2025, 2050)
+  const currentDate = new Date()
+  const yearOptions = generateYearOptions(
+    currentDate.getFullYear(),
+    currentDate.getFullYear() + 1
+  )
 
   return (
     <>

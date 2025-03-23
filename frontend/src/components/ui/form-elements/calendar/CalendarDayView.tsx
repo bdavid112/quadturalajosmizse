@@ -11,6 +11,9 @@ interface Props {
   dateIndice: number[]
   handleDateSelect?: (date: Date) => void
   closeDatePicker: () => void
+  isTaken: (day: number) => boolean
+  isWeekend: (day: number) => boolean
+  isPast: (date: Date) => boolean
 }
 
 const CalendarDayView: React.FunctionComponent<Props> = ({
@@ -19,6 +22,9 @@ const CalendarDayView: React.FunctionComponent<Props> = ({
   calendarDays,
   dateIndice,
   handleDateSelect,
+  isTaken,
+  isWeekend,
+  isPast,
 }) => {
   const { dayLabels, focusedDateIndex, activeDateIndex } = useCalendarDayView(
     calendarDays,
@@ -42,7 +48,7 @@ const CalendarDayView: React.FunctionComponent<Props> = ({
         {calendarDays.map((day, index) => (
           <div
             key={index}
-            className={`relative calendar-cell flex align-center justify-center transition-bezier-fast ${day == focusedDateIndex ? 'calendar-cell-focus' : ''} ${day == activeDateIndex ? 'calendar-cell-active' : ''} ${!day ? 'cursor-default' : ''} ${day && isToday(selectedYear, selectedMonth, day) ? 'calendar-today' : ''}`}
+            className={`relative calendar-cell flex align-center justify-center transition-bezier-fast ${day == focusedDateIndex ? 'calendar-cell-focus' : ''} ${day == activeDateIndex ? 'calendar-cell-active' : ''} ${!day ? 'cursor-default' : ''} ${day && isToday(selectedYear, selectedMonth, day) ? 'calendar-today' : ''} ${day && (isTaken(day) || !isWeekend(day) || isPast(new Date(selectedYear, selectedMonth, day))) ? 'disabled-date' : ''}`}
             onClick={() => {
               if (handleDateSelect && day) {
                 handleDateSelect(new Date(selectedYear, selectedMonth, day))

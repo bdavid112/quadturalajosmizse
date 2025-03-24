@@ -95,7 +95,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
                   handleOnChange={updateField}
                 ></TextInputOutline>
               </div>
-              <div className="width-half">
+              {/* <div className="width-half">
                 <TextInputOutline
                   id="phone"
                   name="phone"
@@ -107,6 +107,21 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
                   )}
                   handleOnChange={updateField}
                 ></TextInputOutline>
+              </div> */}
+              <div className="width-half inline-block">
+                <DatePickerOutline
+                  id="date"
+                  name="date"
+                  label={t(`ui.forms.booking-form.inputs.date.label`, lang)}
+                  errorMessage={errors.date}
+                  helperText={t(
+                    `ui.forms.booking-form.inputs.date.helper-text`,
+                    lang
+                  )}
+                  handleOnChange={updateField}
+                  minYear={new Date().getFullYear()}
+                  maxYear={new Date().getFullYear() + 1}
+                ></DatePickerOutline>
               </div>
             </div>
           </fieldset>
@@ -114,21 +129,6 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
             <legend>
               {t(`ui.forms.booking-form.group-titles.tour`, lang)}
             </legend>
-            <div className="width-half inline-block">
-              <DatePickerOutline
-                id="date"
-                name="date"
-                label={t(`ui.forms.booking-form.inputs.date.label`, lang)}
-                errorMessage={errors.date}
-                helperText={t(
-                  `ui.forms.booking-form.inputs.date.helper-text`,
-                  lang
-                )}
-                handleOnChange={updateField}
-                minYear={new Date().getFullYear()}
-                maxYear={new Date().getFullYear() + 1}
-              ></DatePickerOutline>
-            </div>
             <div className="width-half inline-block">
               <DropdownOutline
                 id="tourId"
@@ -143,11 +143,6 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
                 handleOnChange={updateField}
               ></DropdownOutline>
             </div>
-          </fieldset>
-          <fieldset className="form-group flex flex-gap-sm">
-            <legend>
-              {t(`ui.forms.booking-form.group-titles.quad`, lang)}
-            </legend>
             <div className="width-half inline-block">
               <NumberInputOutline
                 id="atvs"
@@ -162,6 +157,11 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
                 onChange={updateField}
               ></NumberInputOutline>
             </div>
+          </fieldset>
+          {/*  <fieldset className="form-group flex flex-gap-sm">
+            <legend>
+              {t(`ui.forms.booking-form.group-titles.quad`, lang)}
+            </legend>
             <div className="width-half inline-block">
               <NumberInputOutline
                 id="passengers"
@@ -176,7 +176,7 @@ const BookingForm: React.FunctionComponent<Props> = ({}) => {
                 onChange={updateField}
               ></NumberInputOutline>
             </div>
-          </fieldset>
+          </fieldset> */}
           <fieldset className="form-group">
             <legend>
               {t(`ui.forms.booking-form.group-titles.comment`, lang)}

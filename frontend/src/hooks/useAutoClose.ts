@@ -11,6 +11,7 @@ export function useAutoClose(
         containerRef.current &&
         !containerRef.current.contains(event.target as Node)
       ) {
+        console.log('AUTOCLOSE')
         setIsOpen(false)
       }
     }

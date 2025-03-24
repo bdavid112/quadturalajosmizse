@@ -8,7 +8,7 @@ import { useDatePicker } from '../../../hooks/useDatePicker'
 import { useAutoClose } from '../../../hooks/useAutoClose'
 import { useDatePickerKeyboardNav } from '../../../hooks/useDatePickerKeyboardNav'
 import { useLocalization } from '../../../context/LocalizationContext'
-import { formatDateForInput } from '@utils/formatText'
+import { formatDateTime } from '@utils/formatText'
 
 interface Props {
   id: string
@@ -53,6 +53,7 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
     onDateSelect,
     changeSelectedYear,
     changeSelectedMonth,
+    setSelectedTime,
     isTaken,
     isWeekend,
     isPast,
@@ -106,7 +107,7 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
         </div>
         <span className="padding-x-lg width-full absolute user-select-none">
           {selectedDate
-            ? selectedDate.toLocaleDateString()
+            ? formatDateTime(selectedDate)
             : `${t('ui.calendar.placeholder-text', lang)}`}
         </span>
         <div className="button-container absolute z-overlay flex">
@@ -126,10 +127,8 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
         <input
           id={id}
           name={name}
-          value={
-            selectedDate ? formatDateForInput(selectedDate.toISOString()) : ''
-          }
-          type="date"
+          value={selectedDate ? selectedDate.toISOString() : ''}
+          type="datetime"
           onChange={() => {}}
           disabled={true}
           className="hidden"
@@ -154,6 +153,7 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
           selectedMonth={selectedMonth}
           changeSelectedYear={changeSelectedYear}
           changeSelectedMonth={changeSelectedMonth}
+          changeSelectedTime={setSelectedTime}
           handleDateSelect={handleDateSelect}
           closeDatePicker={closeDatePicker}
           isTaken={isTaken}

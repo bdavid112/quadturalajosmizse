@@ -10,7 +10,6 @@ interface Props {
   calendarDays: (number | null)[]
   dateIndice: number[]
   handleDateSelect?: (date: Date) => void
-  closeDatePicker: () => void
   isTaken: (day: number) => boolean
   isWeekend: (day: number) => boolean
   isPast: (date: Date) => boolean

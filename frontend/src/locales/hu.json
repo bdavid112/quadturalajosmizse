@@ -59,7 +59,7 @@
       "booking-form": {
         "title": "Online időpontfoglalás",
         "group-titles": {
-          "contact": "Kapcsolattartási adatok",
+          "contact": "Kapcsolattartási adatok, időpont",
           "tour": "Túra részletek",
           "quad": "Quadok és utasok száma",
           "comment": "Egyéb megjegyzés"
@@ -89,7 +89,7 @@
             }
           },
           "date": {
-            "label": "Dátum",
+            "label": "Időpont",
             "helper-text": "Válaszd ki a tervezett időpontot",
             "errors": {
               "required": "Dátum kiválasztása kötelező"

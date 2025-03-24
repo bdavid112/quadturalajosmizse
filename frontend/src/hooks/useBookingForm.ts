@@ -7,11 +7,9 @@ export function useBookingForm(lang: string) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
     date: '',
     tourId: '',
     atvs: '2',
-    passengers: '0',
     comment: '',
   })
 
@@ -37,11 +35,9 @@ export function useBookingForm(lang: string) {
       setFormData({
         name: '',
         email: '',
-        phone: '',
         date: '',
         tourId: '',
         atvs: '2',
-        passengers: '0',
         comment: '',
       })
       toast.success(
@@ -70,7 +66,7 @@ export function useBookingForm(lang: string) {
       )
     }
 
-    if (
+    /* if (
       name === 'phone' &&
       !/^\+?\d{1,3}?[-.\s]?\(?\d{1,4}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
         value
@@ -80,7 +76,7 @@ export function useBookingForm(lang: string) {
         `ui.forms.booking-form.inputs.${name}.errors.wrong-format`,
         lang
       )
-    }
+    } */
 
     return error
   }

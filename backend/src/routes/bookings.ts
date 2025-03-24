@@ -37,19 +37,9 @@ router.get("/upcoming", async (_req: Request, res: Response): Promise<any> => {
 /* Create a new Booking */
 router.post("/", async (req: Request, res: Response): Promise<any> => {
   try {
-    const {
-      name,
-      email,
-      phone,
-      date,
-      tourId,
-      atvs,
-      passengers,
-      comment,
-      paidAt,
-      isPaid,
-    } = req.body;
-    if (!name || !email || !phone || !date || !tourId || !atvs) {
+    const { name, email, date, tourId, atvs, comment, paidAt, isPaid } =
+      req.body;
+    if (!name || !email || !date || !tourId || !atvs) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
@@ -59,17 +49,14 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
     }
 
     const tourPrices = tour.prices;
-    const revenue =
-      atvs * tourPrices.atvPrice + passengers * tourPrices.passengerPrice;
+    const revenue = atvs * tourPrices.atvPrice;
 
     const newBooking: IBooking = new Booking({
       name,
       email,
-      phone,
       date: new Date(date),
       tourId,
       atvs,
-      passengers,
       comment,
       revenue,
       paidAt,

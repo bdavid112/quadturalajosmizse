@@ -61,7 +61,6 @@ export const useDatePickerKeyboardNav = (
       setSelectedDateIndex(filteredCalendarDays.indexOf(date.getDate()) + 1)
       setActiveDateIndex(0)
       setFocusedDateIndex(0)
-      setIsParentOpen && setIsParentOpen(false)
     }
   }
 

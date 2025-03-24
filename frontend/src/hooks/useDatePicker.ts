@@ -26,6 +26,8 @@ export const useDatePicker = (
   )
   const [selectedYear, setSelectedYear] = useState(currentDate.getFullYear())
   const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth())
+  const [selectedDay, setSelectedDay] = useState(currentDate.getDate())
+  const [selectedTime, setSelectedTime] = useState<number | null>(null)
 
   /* Function to close the date picker */
 
@@ -74,11 +76,30 @@ export const useDatePicker = (
     if (isTaken(date.getDate()) || !isWeekend(date.getDate()) || isPast(date)) {
       return
     }
-    setSelectedDate(date)
-    handleOnChange && handleOnChange(name, date.toLocaleDateString())
-    setIsOpen(false)
+    setActiveView('time')
+    setSelectedDay(date.getDate())
     setTouched(true)
   }
+
+  useEffect(() => {
+    if (
+      selectedTime === 9 ||
+      selectedTime === 12 ||
+      selectedTime === 15 ||
+      selectedTime === 18
+    ) {
+      const date = new Date(
+        selectedYear,
+        selectedMonth,
+        selectedDay,
+        selectedTime
+      )
+      setSelectedDate(date)
+      handleOnChange && handleOnChange(name, date.toLocaleDateString())
+      setActiveView('date')
+      setIsOpen(false)
+    }
+  }, [selectedTime])
 
   /* Increase/decrease the value of selected year and month on left and right arrow button clicks within the bounds  */
 
@@ -147,6 +168,7 @@ export const useDatePicker = (
     onDateSelect,
     changeSelectedYear,
     changeSelectedMonth,
+    setSelectedTime,
     isTaken,
     isWeekend,
     isPast,

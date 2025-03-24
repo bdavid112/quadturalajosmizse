@@ -8,11 +8,9 @@ interface Props {
   bookingDetails: {
     name: string
     email: string
-    phone: string
     date: string
     tourId: string
     atvs: string
-    passengers?: string
     comment: string
     paidAt?: Date
     isPaid?: boolean

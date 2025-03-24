@@ -8,7 +8,7 @@ input {
   }
 }
 
-@mixin label-focused($color: $color-primary-500, $transform: -1.75rem) {
+@mixin label-focused($color: $color-primary-500, $transform: -1.5rem) {
   transform: translateY($transform) scale(87.5%);
   color: $color;
   background-color: $surface-100 !important;

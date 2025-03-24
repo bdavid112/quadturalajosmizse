@@ -10,11 +10,9 @@ interface Props {
   bookingDetails: {
     name: string
     email: string
-    phone: string
     date: string
     tourId: string
     atvs: string
-    passengers?: string
     comment: string
     paidAt?: Date
     isPaid?: boolean
@@ -33,11 +31,8 @@ const Checkout: React.FC<Props> = ({ bookingDetails, onSuccess }) => {
     axios
       .get(`/api/tours/${bookingDetails.tourId}`)
       .then((res) => {
-        let totalPrice
-        totalPrice = res.data.prices.atvPrice * Number(bookingDetails.atvs)
-        totalPrice =
-          totalPrice +
-          res.data.prices.passengerPrice * Number(bookingDetails.passengers)
+        const totalPrice =
+          res.data.prices.atvPrice * Number(bookingDetails.atvs)
         setAmount(totalPrice)
         bookingDetails.paidAt = new Date()
         bookingDetails.isPaid = true

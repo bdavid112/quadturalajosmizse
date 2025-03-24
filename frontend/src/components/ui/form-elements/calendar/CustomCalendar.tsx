@@ -7,6 +7,7 @@ import CalendarYearView from './CalendarYearView'
 import CalendarMonthView from './CalendarMonthView'
 import ButtonTriad from '../../buttons/ButtonTriad'
 import { useLocalization } from '../../../../context/LocalizationContext'
+import CalendarTimeView from './CalendarTimeView'
 
 interface Props {
   selectedYear: number
@@ -19,6 +20,7 @@ interface Props {
   closeDatePicker: () => void
   changeSelectedYear: (year: number) => void
   changeSelectedMonth: (month: number) => void
+  changeSelectedTime: (time: number) => void
   isTaken: (day: number) => boolean
   isWeekend: (day: number) => boolean
   isPast: (date: Date) => boolean
@@ -35,6 +37,7 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
   closeDatePicker,
   changeSelectedYear,
   changeSelectedMonth,
+  changeSelectedTime,
   isTaken,
   isWeekend,
   isPast,
@@ -46,35 +49,39 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
       <div
         className={`col-7 flex justify-between ${lang == 'en' ? 'flex-row-reverse' : ''}`}
       >
-        <ButtonTriad
-          allVisible={activeView == 'date'}
-          small={true}
-          label={selectedYear.toString()}
-          isParentOpen={activeView == 'year'}
-          handleLeftClick={() => {
-            changeSelectedYear(selectedYear - 1)
-          }}
-          handleMiddleClick={viewTogglers[0]}
-          handleRightClick={() => {
-            changeSelectedYear(selectedYear + 1)
-          }}
-        ></ButtonTriad>
-        <ButtonTriad
-          allVisible={activeView == 'date'}
-          small={true}
-          label={formatMonthToString(selectedMonth, lang, true)}
-          isParentOpen={activeView == 'month'}
-          handleLeftClick={() => {
-            changeSelectedMonth(selectedMonth - 1)
-          }}
-          handleMiddleClick={viewTogglers[1]}
-          handleRightClick={() => {
-            changeSelectedMonth(selectedMonth + 1)
-          }}
-        ></ButtonTriad>
+        {activeView !== 'time' && (
+          <>
+            <ButtonTriad
+              allVisible={activeView == 'date'}
+              small={true}
+              label={selectedYear.toString()}
+              isParentOpen={activeView == 'year'}
+              handleLeftClick={() => {
+                changeSelectedYear(selectedYear - 1)
+              }}
+              handleMiddleClick={viewTogglers[0]}
+              handleRightClick={() => {
+                changeSelectedYear(selectedYear + 1)
+              }}
+            ></ButtonTriad>
+            <ButtonTriad
+              allVisible={activeView == 'date'}
+              small={true}
+              label={formatMonthToString(selectedMonth, lang, true)}
+              isParentOpen={activeView == 'month'}
+              handleLeftClick={() => {
+                changeSelectedMonth(selectedMonth - 1)
+              }}
+              handleMiddleClick={viewTogglers[1]}
+              handleRightClick={() => {
+                changeSelectedMonth(selectedMonth + 1)
+              }}
+            ></ButtonTriad>
+          </>
+        )}
       </div>
       <div className="view-container">
-        {activeView == 'date' && (
+        {activeView === 'date' && (
           <div className="calendar-grid">
             <CalendarDayView
               calendarDays={calendarDays}
@@ -82,20 +89,22 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
               selectedMonth={selectedMonth}
               dateIndice={dateIndice}
               handleDateSelect={handleDateSelect}
-              closeDatePicker={closeDatePicker}
               isTaken={isTaken}
               isWeekend={isWeekend}
               isPast={isPast}
             ></CalendarDayView>
           </div>
         )}
-        {activeView == 'year' && (
+        {activeView === 'time' && (
+          <CalendarTimeView changeSelectedTime={changeSelectedTime} />
+        )}
+        {activeView === 'year' && (
           <CalendarYearView
             selectedYear={selectedYear}
             handleOptionSelect={changeSelectedYear}
           ></CalendarYearView>
         )}
-        {activeView == 'month' && (
+        {activeView === 'month' && (
           <CalendarMonthView
             selectedMonth={selectedMonth}
             handleOptionSelect={changeSelectedMonth}

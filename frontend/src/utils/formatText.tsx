@@ -82,6 +82,14 @@ export const formatTextWithParagraphs = (text: string, separator = '\n\n') => {
   return text.split(separator).map((part, index) => <p key={index}>{part}</p>)
 }
 
-export const formatDateForInput = (isoString: string) => {
-  return isoString.split('T')[0] // Extract only the date part
+export const formatDateTime = (date: Date) => {
+  const pad = (n: number) => n.toString().padStart(2, '0')
+
+  const year = date.getFullYear()
+  const month = pad(date.getMonth() + 1) // months are 0-indexed
+  const day = pad(date.getDate())
+  const hour = pad(date.getHours())
+  const minute = pad(date.getMinutes())
+
+  return `${year}. ${month}. ${day}. ${hour}:${minute}`
 }

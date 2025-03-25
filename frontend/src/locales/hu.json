@@ -10,6 +10,107 @@
         "faq": "GYIK"
       }
     },
+    "footer": {
+      "groups": [
+        {
+          "title": "Jogi információk",
+          "items": [
+            "Általános Szerződési Feltételek (ÁSZF)",
+            "Adatvédelmi tájékoztató",
+            "Kapcsolat"
+          ]
+        },
+        {
+          "title": "Közösségi média",
+          "items": ["Facebook", "Instagram"]
+        }
+      ],
+      "terms": {
+        "title": "Általános Szerződési Feltételek (ÁSZF)",
+        "content": [
+          {
+            "heading": "1. Szolgáltató adatai",
+            "text": [
+              "Cégnév: Quadtúra Lajosmizse",
+              "Székhely: [Cég címe]",
+              "E-mail: [kapcsolat e-mail]",
+              "Telefon: [telefonszám]",
+              "Adószám / Cégjegyzékszám: [ha van]"
+            ]
+          },
+          {
+            "heading": "2. Szolgáltatás leírása",
+            "text": [
+              "A weboldalon keresztül túrákra lehet időpontot foglalni. A túrák quad járművekkel történnek, meghatározott útvonalakon, túravezető kíséretével."
+            ]
+          },
+          {
+            "heading": "3. Foglalás menete",
+            "text": [
+              "A foglalás online történik, az időpont és jármű kiválasztása után.",
+              "A foglalás fizetéssel válik véglegessé.",
+              "A foglalásról visszaigazoló e-mailt küldünk."
+            ]
+          },
+          {
+            "heading": "4. Fizetési feltételek",
+            "text": [
+              "A fizetés bankkártyával, Stripe rendszeren keresztül történik.",
+              "A feltüntetett árak forintban értendők, tartalmazzák az ÁFÁ-t."
+            ]
+          },
+          {
+            "heading": "5. Lemondási feltételek",
+            "text": [
+              "A túra időpontja előtt 48 órával díjmentesen lemondható.",
+              "48 órán belüli lemondás esetén a befizetett összeg nem kerül visszatérítésre."
+            ]
+          },
+          {
+            "heading": "6. Felelősségvállalás",
+            "text": [
+              "A túrán minden résztvevő saját felelősségére vesz részt.",
+              "A résztvevők kötelesek a túravezető utasításait követni.",
+              "Alkohol vagy drog hatása alatt álló személyek nem vehetnek részt a túrán."
+            ]
+          },
+          {
+            "heading": "7. Adatkezelés",
+            "text": [
+              "Az adatokat a foglalás teljesítéséhez és kapcsolattartáshoz használjuk fel.",
+              "Az adatvédelmi tájékoztató külön dokumentumban található."
+            ]
+          }
+        ]
+      },
+      "privacy": {
+        "title": "Adatvédelmi tájékoztató",
+        "content": [
+          {
+            "heading": "1. Kezelt adatok köre",
+            "text": ["Név, e-mail cím, telefonszám, foglalási adatok."]
+          },
+          {
+            "heading": "2. Az adatkezelés célja",
+            "text": [
+              "A foglalások kezelése, kapcsolattartás, visszaigazolás küldése."
+            ]
+          },
+          {
+            "heading": "3. Adattárolás időtartama",
+            "text": [
+              "Az adatokat a foglalás teljesítését követő 1 évig tároljuk."
+            ]
+          },
+          {
+            "heading": "4. Adattovábbítás",
+            "text": [
+              "Az adatokat harmadik félnek nem továbbítjuk, kivéve jogszabályi kötelezettség esetén."
+            ]
+          }
+        ]
+      }
+    },
     "calendar": {
       "placeholder-text": "Válassz egy dátumot",
       "months": {

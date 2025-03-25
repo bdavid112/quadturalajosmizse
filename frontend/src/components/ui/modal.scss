@@ -18,6 +18,10 @@
   max-width: 90%;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   position: relative;
+
+  &.full {
+    width: min(100%, 800px);
+  }
 }
 
 .close-button {

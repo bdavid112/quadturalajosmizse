@@ -2,15 +2,26 @@ import './footer.scss'
 
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
-import TextInputOutline from '../form-elements/TextInputOutline'
-import ButtonPrimary from '../buttons/ButtonPrimary'
 import FAB from '../buttons/FAB'
 import Icon from '../IconComponent'
+import { useLocalization } from '@context/LocalizationContext'
+import { t } from '@utils/translator'
+import { useState } from 'react'
+import Modal from '../Modal'
+import LegalText from '../LegalText'
 
 interface Props {}
 
 const Footer: React.FunctionComponent<Props> = ({}) => {
-  /* const { lang, setLang } = useLocalization() */
+  const { lang } = useLocalization()
+
+  const [selectedDocumentIndex, setSelectedDocumentIndex] = useState<
+    number | null
+  >(null)
+
+  const isLegal = (title: string) => {
+    return title === 'Jogi információk' || title === 'Legal'
+  }
 
   const contacts = [
     {
@@ -27,36 +38,23 @@ const Footer: React.FunctionComponent<Props> = ({}) => {
     },
   ]
 
-  const groups = [
-    {
-      title: 'Services',
-      items: ['ATV tours', 'Motocross', 'Sightseeing', 'Buggy driving'],
-    },
-    {
-      title: 'About',
-      items: ['How we started', 'The team', 'Our goals', 'Our motivations'],
-    },
-    {
-      title: 'Social media',
-      items: ['Facebook', 'Instagram', 'Twitter', 'Youtube'],
-    },
-    {
-      title: 'Join Our Newsletter',
-      items: [
-        <TextInputOutline
-          id="newsletter-email"
-          name="newsletter-email"
-          label="Email"
-          helperText={''}
-        ></TextInputOutline>,
-        <ButtonPrimary fullWidth={true} label="Sign Up"></ButtonPrimary>,
-      ],
-    },
-  ]
+  const groups: { title: string; items: string[] }[] = t(
+    'ui.footer.groups',
+    lang
+  )
+
+  const modalContent: {
+    title: string
+    content: { heading: string; text: string[] }[]
+  }[] = [t('ui.footer.terms', lang), t('ui.footer.privacy', lang)]
+
+  React.useEffect(() => {
+    console.log(selectedDocumentIndex)
+  }, [selectedDocumentIndex])
 
   return (
     <footer className="width-full z-overlay footer flex justify-center padding-y-3xl relative">
-      <nav className="flex justify-between" aria-label="Footer Navigation">
+      <nav className="flex flex-gap-4xl" aria-label="Footer Navigation">
         <div className="flex flex-col flex-gap-lg">
           <div className="flex flex-gap-sm">
             <NavLink to={'/'} className="flex align-center">
@@ -92,7 +90,15 @@ const Footer: React.FunctionComponent<Props> = ({}) => {
           <ul key={index} className="flex flex-col flex-gap-md">
             <span className="group-title">{group.title}</span>
             {group.items.map((item, index) => (
-              <li key={index} className="font-size-secondary text-inverted">
+              <li
+                key={index}
+                onClick={() => {
+                  if (isLegal(group.title)) {
+                    setSelectedDocumentIndex(index)
+                  }
+                }}
+                className="font-size-secondary text-inverted cursor-pointer"
+              >
                 {item}
               </li>
             ))}
@@ -106,6 +112,20 @@ const Footer: React.FunctionComponent<Props> = ({}) => {
           window.scrollTo({ top: 0, behavior: 'smooth' })
         }}
       ></FAB>
+      <Modal
+        fullWidth={true}
+        isOpen={selectedDocumentIndex != null ? true : false}
+        onClose={() => {
+          setSelectedDocumentIndex(null)
+        }}
+      >
+        {selectedDocumentIndex != null && (
+          <LegalText
+            title={modalContent[selectedDocumentIndex!].title}
+            content={modalContent[selectedDocumentIndex!].content}
+          ></LegalText>
+        )}
+      </Modal>
     </footer>
   )
 }

@@ -10,6 +10,99 @@
         "faq": "FAQ"
       }
     },
+    "footer": {
+      "groups": [
+        {
+          "title": "Legal",
+          "items": ["Terms and Conditions", "Privacy Policy", "Contact"]
+        },
+        {
+          "title": "Social media",
+          "items": ["Facebook", "Instagram"]
+        }
+      ],
+      "terms": {
+        "title": "Terms & Conditions",
+        "content": [
+          {
+            "heading": "1. Provider Details",
+            "text": [
+              "Company name: Quadtúra Lajosmizse",
+              "Address: [Company address]",
+              "Email: [Contact email]",
+              "Phone: [Phone number]",
+              "Tax ID / Company Reg. Number: [if applicable]"
+            ]
+          },
+          {
+            "heading": "2. Service Description",
+            "text": [
+              "Our website allows users to book ATV tours online. Tours are guided, follow specific routes, and use quad vehicles."
+            ]
+          },
+          {
+            "heading": "3. Booking Process",
+            "text": [
+              "Booking is made online by selecting a time slot and vehicle.",
+              "The booking is confirmed only after payment.",
+              "A confirmation email will be sent after successful payment."
+            ]
+          },
+          {
+            "heading": "4. Payment Terms",
+            "text": [
+              "Payment is made online via Stripe using a credit/debit card.",
+              "All prices are in HUF and include VAT."
+            ]
+          },
+          {
+            "heading": "5. Cancellation Policy",
+            "text": [
+              "Cancellations are free of charge up to 48 hours before the tour.",
+              "Cancellations within 48 hours of the tour are non-refundable."
+            ]
+          },
+          {
+            "heading": "6. Liability",
+            "text": [
+              "Participation in the tour is at your own risk.",
+              "All participants must follow the guide’s instructions.",
+              "Persons under the influence of alcohol or drugs are not allowed to join."
+            ]
+          },
+          {
+            "heading": "7. Data Handling",
+            "text": [
+              "Personal data is only used for booking and communication purposes.",
+              "For more information, see our Privacy Policy."
+            ]
+          }
+        ]
+      },
+      "privacy": {
+        "title": "Privacy Policy",
+        "content": [
+          {
+            "heading": "1. Data We Collect",
+            "text": ["Name, email address, phone number, booking details."]
+          },
+          {
+            "heading": "2. Purpose of Data Processing",
+            "text": ["Handling bookings, communication, sending confirmations."]
+          },
+          {
+            "heading": "3. Data Retention Period",
+            "text": ["We store your data for up to 1 year after your booking."]
+          },
+          {
+            "heading": "4. Data Sharing",
+            "text": [
+              "We do not share your data with third parties unless required by law."
+            ]
+          }
+        ]
+      }
+    },
     "calendar": {
       "placeholder-text": "Pick a date",
       "months": {

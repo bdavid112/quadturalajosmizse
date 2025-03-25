@@ -54,7 +54,8 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
     changeSelectedYear,
     changeSelectedMonth,
     setSelectedTime,
-    isTaken,
+    isTakenDate,
+    isTakenTime,
     isWeekend,
     isPast,
   } = useDatePicker(lang, name, minYear, maxYear, defaultValue, handleOnChange)
@@ -89,12 +90,9 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
         }}
         onClick={() => toggleIsOpen()}
         onBlur={() => {
-          handleOnChange &&
-            !isOpen &&
-            handleOnChange(
-              name,
-              selectedDate ? selectedDate.toLocaleDateString() : ''
-            )
+          if (handleOnChange && !isOpen) {
+            handleOnChange(name, selectedDate ? selectedDate.toISOString() : '')
+          }
         }}
       >
         <div className={`label-container absolute populated`}>
@@ -155,8 +153,8 @@ const DatePickerOutline: React.FunctionComponent<Props> = ({
           changeSelectedMonth={changeSelectedMonth}
           changeSelectedTime={setSelectedTime}
           handleDateSelect={handleDateSelect}
-          closeDatePicker={closeDatePicker}
-          isTaken={isTaken}
+          isTakenDate={isTakenDate}
+          isTakenTime={isTakenTime}
           isWeekend={isWeekend}
           isPast={isPast}
         ></CustomCalendar>

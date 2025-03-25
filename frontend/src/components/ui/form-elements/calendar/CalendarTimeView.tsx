@@ -5,10 +5,12 @@ import './custom-calendar.scss'
 import * as React from 'react'
 
 interface Props {
+  isTakenTime: (time: number) => boolean
   changeSelectedTime: (time: number) => void
 }
 
 const CalendarTimeView: React.FunctionComponent<Props> = ({
+  isTakenTime,
   changeSelectedTime,
 }) => {
   /* const { lang } = useLocalization() */
@@ -32,7 +34,9 @@ const CalendarTimeView: React.FunctionComponent<Props> = ({
           <CustomOption
             key={index}
             option={option}
+            isDisabled={isTakenTime(parseInt(option.value))}
             onClick={() => {
+              if (isTakenTime(parseInt(option.value))) return
               changeSelectedTime(parseInt(option.value))
             }}
           ></CustomOption>

@@ -10,6 +10,9 @@ export const useDatePicker = (
   defaultValue?: Date,
   handleOnChange?: (name: string, value: string) => void
 ) => {
+  /* Allowed time blocks for bookings */
+  const allowedTimes = [9, 12, 15, 18]
+
   /* Current date for initializing calendar */
   const currentDate = new Date()
 
@@ -31,7 +34,10 @@ export const useDatePicker = (
 
   /* Function to close the date picker */
 
-  const closeDatePicker = () => setIsOpen(false)
+  const closeDatePicker = () => {
+    setActiveView('date')
+    setIsOpen(false)
+  }
 
   /* Refs */
 
@@ -51,12 +57,25 @@ export const useDatePicker = (
       .catch((err) => console.error('Error fetching bookings:', err))
   }, [])
 
-  const isTaken = (day: number) => {
+  const isTakenDate = (day: number) => {
+    return allowedTimes.every((hour) =>
+      takenDates.some(
+        (d) =>
+          d.getFullYear() === selectedYear &&
+          d.getMonth() === selectedMonth &&
+          d.getDate() === day &&
+          d.getHours() === hour
+      )
+    )
+  }
+
+  const isTakenTime = (time: number) => {
     return takenDates.some(
       (d) =>
         d.getFullYear() === selectedYear &&
         d.getMonth() === selectedMonth &&
-        d.getDate() === day
+        d.getDate() === selectedDay &&
+        d.getHours() === time
     )
   }
 
@@ -73,21 +92,21 @@ export const useDatePicker = (
   }
 
   const onDateSelect = (date: Date) => {
-    if (isTaken(date.getDate()) || !isWeekend(date.getDate()) || isPast(date)) {
+    if (
+      isTakenDate(date.getDate()) ||
+      !isWeekend(date.getDate()) ||
+      isPast(date)
+    ) {
       return
     }
+    setSelectedTime(null)
     setActiveView('time')
     setSelectedDay(date.getDate())
     setTouched(true)
   }
 
   useEffect(() => {
-    if (
-      selectedTime === 9 ||
-      selectedTime === 12 ||
-      selectedTime === 15 ||
-      selectedTime === 18
-    ) {
+    if (selectedTime && allowedTimes.includes(selectedTime)) {
       const date = new Date(
         selectedYear,
         selectedMonth,
@@ -95,7 +114,7 @@ export const useDatePicker = (
         selectedTime
       )
       setSelectedDate(date)
-      handleOnChange && handleOnChange(name, date.toLocaleDateString())
+      handleOnChange && handleOnChange(name, date.toISOString())
       setActiveView('date')
       setIsOpen(false)
     }
@@ -169,7 +188,8 @@ export const useDatePicker = (
     changeSelectedYear,
     changeSelectedMonth,
     setSelectedTime,
-    isTaken,
+    isTakenDate,
+    isTakenTime,
     isWeekend,
     isPast,
   }

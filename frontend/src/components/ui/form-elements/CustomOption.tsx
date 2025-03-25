@@ -14,6 +14,7 @@ interface Props {
   isSelected?: boolean
   isFocused?: boolean
   isActive?: boolean
+  isDisabled?: boolean
   onClick?: () => void
   onKeyDown?: (e: React.KeyboardEvent<HTMLDivElement>) => void
   onKeyUp?: (e: React.KeyboardEvent<HTMLDivElement>) => void
@@ -27,6 +28,7 @@ const CustomOption = React.forwardRef<HTMLDivElement, Props>(
       isSelected = false,
       isFocused,
       isActive,
+      isDisabled,
       onClick,
       onKeyDown,
     },
@@ -56,7 +58,9 @@ const CustomOption = React.forwardRef<HTMLDivElement, Props>(
           }
         }}
       >
-        <span className={`${isSelected ? 'font-medium' : ''}`}>
+        <span
+          className={`${isSelected ? 'font-medium' : ''} ${isDisabled ? 'line-through text-muted' : ''}`}
+        >
           {option.label}
         </span>
         {icon && isSelected && (

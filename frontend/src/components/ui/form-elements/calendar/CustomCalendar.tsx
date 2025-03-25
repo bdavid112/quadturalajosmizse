@@ -17,11 +17,11 @@ interface Props {
   dateIndice: number[]
   viewTogglers: (() => void)[]
   handleDateSelect?: (date: Date) => void
-  closeDatePicker: () => void
   changeSelectedYear: (year: number) => void
   changeSelectedMonth: (month: number) => void
   changeSelectedTime: (time: number) => void
-  isTaken: (day: number) => boolean
+  isTakenDate: (day: number) => boolean
+  isTakenTime: (time: number) => boolean
   isWeekend: (day: number) => boolean
   isPast: (date: Date) => boolean
 }
@@ -34,11 +34,11 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
   dateIndice,
   viewTogglers,
   handleDateSelect,
-  closeDatePicker,
   changeSelectedYear,
   changeSelectedMonth,
   changeSelectedTime,
-  isTaken,
+  isTakenDate,
+  isTakenTime,
   isWeekend,
   isPast,
 }) => {
@@ -89,14 +89,17 @@ const CustomCalendar: React.FunctionComponent<Props> = ({
               selectedMonth={selectedMonth}
               dateIndice={dateIndice}
               handleDateSelect={handleDateSelect}
-              isTaken={isTaken}
+              isTakenDate={isTakenDate}
               isWeekend={isWeekend}
               isPast={isPast}
             ></CalendarDayView>
           </div>
         )}
         {activeView === 'time' && (
-          <CalendarTimeView changeSelectedTime={changeSelectedTime} />
+          <CalendarTimeView
+            isTakenTime={isTakenTime}
+            changeSelectedTime={changeSelectedTime}
+          />
         )}
         {activeView === 'year' && (
           <CalendarYearView

@@ -20,7 +20,7 @@ A fully custom, full-stack web application built for an ATV tour company based i
 **Frontend:**
 - React
 - SCSS (modular styling)
-- 
+- Vite
 
 **Backend:**
 - Node.js + Express
